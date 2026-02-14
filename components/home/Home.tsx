@@ -1,6 +1,7 @@
 import { ChevronDown, Shield, TrendingUp, Home, CreditCard, Clock, ArrowRight, Building, Globe, Zap, Lock, BarChart3, Star, Users, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import LiveMarketRates from './LiveMarketRates';
 
 const HomePages: React.FC = () => {
   return (
@@ -123,6 +124,9 @@ const HomePages: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Live Market Rates */}
+      <LiveMarketRates />
 
       {/* Features Grid */}
       <section className="py-32 relative bg-slate-50">
