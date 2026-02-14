@@ -55,18 +55,18 @@ export function getVendorColor(vendor: string): string {
 export function getVendorLogo(vendor: string): { src: string; alt: string } {
   const logos = {
     mastercard: {
-      src: "/placeholder-logo.png",
+      src: "/placeholder-logo.svg",
       alt: "Mastercard",
     },
     visacard: {
-      src: "/placeholder-logo.png",
+      src: "/placeholder-logo.svg",
       alt: "Visa",
     },
     amex: {
-      src: "/placeholder-logo.png",
+      src: "/placeholder-logo.svg",
       alt: "American Express",
     },
   }
-  return logos[vendor as keyof typeof logos] || { src: "/placeholder-logo.png", alt: "Vendor Logo" }
+  return logos[vendor as keyof typeof logos] || { src: "/placeholder-logo.svg", alt: "Vendor Logo" }
 }
 

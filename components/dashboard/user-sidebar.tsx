@@ -37,7 +37,7 @@ export default function UserSidebar({ user }: UserSidebarProps) {
     <>
       {/* Mobile menu button */}
       <div className="lg:hidden fixed top-4 right-4 z-50">
-        <Button variant="outline" size="icon" className="bg-[#00130b] border-emerald-500/30 text-emerald-400" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <Button variant="outline" size="icon" className="bg-[#0f172a] border-indigo-500/30 text-indigo-400" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </div>
@@ -45,7 +45,7 @@ export default function UserSidebar({ user }: UserSidebarProps) {
       {/* Sidebar */}
       <div
         className={cn(
-          "fixed inset-y-0 left-0 z-40 w-72 bg-[#00130b] border-r border-white/5 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static shadow-2xl",
+          "fixed inset-y-0 left-0 z-40 w-72 bg-[#0f172a] border-r border-white/5 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static shadow-2xl",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
@@ -53,34 +53,34 @@ export default function UserSidebar({ user }: UserSidebarProps) {
           {/* Header/Logo */}
           <div className="p-8 pb-10">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-2xl group-hover:scale-110 transition-transform bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6 text-emerald-500" />
+              <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-2xl group-hover:scale-110 transition-transform bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
+                <ShieldCheck className="w-6 h-6 text-indigo-500" />
               </div>
               <span className="text-xl font-black tracking-tighter text-white">
-                PRIME<span className="text-emerald-500 italic">HARBOR</span>
+                FIRST<span className="text-indigo-500 italic">STATE</span>
               </span>
             </Link>
           </div>
 
           {/* User Profile Hook */}
           <div className="px-6 mb-10">
-            <div className="p-4 rounded-[1.5rem] bg-emerald-500/5 border border-emerald-500/10 flex items-center space-x-4">
+            <div className="p-4 rounded-[1.5rem] bg-indigo-500/5 border border-indigo-500/10 flex items-center space-x-4">
               <div className="relative">
-                <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-500 font-black text-lg overflow-hidden">
+                <div className="w-12 h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-500 font-black text-lg overflow-hidden">
                   {user.profileImage ? (
                     <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     user.bankInfo.bio.firstname[0]
                   )}
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-[#00130b] rounded-full"></div>
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-indigo-500 border-2 border-[#0f172a] rounded-full"></div>
               </div>
               <div className="overflow-hidden">
                 <p className="text-sm font-black text-white truncate">
                   {user.bankInfo.bio.firstname} {user.bankInfo.bio.lastname}
                 </p>
                 <div className="flex items-center gap-1">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-emerald-500/70 truncate">{user.bankNumber}</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-indigo-500/70 truncate">{user.bankNumber}</p>
                 </div>
               </div>
             </div>
@@ -98,12 +98,12 @@ export default function UserSidebar({ user }: UserSidebarProps) {
                   className={cn(
                     "flex items-center space-x-4 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 group",
                     isActive
-                      ? "bg-emerald-500 text-[#001c10] shadow-xl shadow-emerald-500/10"
+                      ? "bg-indigo-500 text-[#020617] shadow-xl shadow-indigo-500/10"
                       : "text-slate-400 hover:text-white hover:bg-white/5",
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-[#001c10]" : "text-emerald-500/50")} />
+                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-[#020617]" : "text-indigo-500/50")} />
                   <span>{item.name}</span>
                 </Link>
               )

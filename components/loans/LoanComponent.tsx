@@ -17,10 +17,10 @@ export default function LoanComponent({ loan, showDetails = false }: LoanCompone
 
   const getStatusConfig = (status: string) => {
     switch (status) {
-      case 'approved': return { label: 'Auth Approved', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' }
+      case 'approved': return { label: 'Auth Approved', color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20' }
       case 'pending': return { label: 'Under Review', color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20' }
       case 'rejected': return { label: 'Auth Denied', color: 'text-red-400 bg-red-500/10 border-red-500/20' }
-      case 'active': return { label: 'Live Stream', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.2)]' }
+      case 'active': return { label: 'Live Stream', color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20 shadow-[0_0_10px_rgba(16,185,129,0.2)]' }
       case 'completed': return { label: 'Protocol Terminated', color: 'text-slate-400 bg-white/5 border-white/10' }
       case 'defaulted': return { label: 'System Alert', color: 'text-red-500 bg-red-500/10 border-red-500/20 animate-pulse' }
       default: return { label: 'Unknown', color: 'text-slate-500 bg-white/5' }
@@ -52,8 +52,8 @@ export default function LoanComponent({ loan, showDetails = false }: LoanCompone
       {/* Loan Details */}
       <div className="grid grid-cols-2 gap-8 text-sm relative z-10">
         <div className="flex items-center space-x-4">
-          <div className="h-10 w-10 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20">
-            <DollarSign className="h-5 w-5 text-emerald-500" />
+          <div className="h-10 w-10 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20">
+            <DollarSign className="h-5 w-5 text-indigo-500" />
           </div>
           <div>
             <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Principal</div>
@@ -84,12 +84,12 @@ export default function LoanComponent({ loan, showDetails = false }: LoanCompone
             </div>
 
             <div className="flex items-center space-x-4">
-              <div className="h-10 w-10 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20">
-                <TrendingUp className="h-5 w-5 text-emerald-500" />
+              <div className="h-10 w-10 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20">
+                <TrendingUp className="h-5 w-5 text-indigo-500" />
               </div>
               <div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Interest</div>
-                <div className="font-black text-white text-lg">{loan.interestRate}<span className="text-emerald-500 text-xs">%</span></div>
+                <div className="font-black text-white text-lg">{loan.interestRate}<span className="text-indigo-500 text-xs">%</span></div>
               </div>
             </div>
           </>
@@ -104,14 +104,14 @@ export default function LoanComponent({ loan, showDetails = false }: LoanCompone
               <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">Repayment Stream</p>
               <p className="text-xs text-slate-400 font-medium">Remaining: <span className="text-white font-bold">{(loan.remainingBalance || 0).toFixed(2)} {loan.currency}</span></p>
             </div>
-            <span className="text-xl font-black text-emerald-400">{progress.toFixed(1)}%</span>
+            <span className="text-xl font-black text-indigo-400">{progress.toFixed(1)}%</span>
           </div>
           <div className="relative h-2 w-full bg-white/5 rounded-full overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}% ` }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute top-0 left-0 h-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]"
+              className="absolute top-0 left-0 h-full bg-indigo-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]"
             />
           </div>
         </div>

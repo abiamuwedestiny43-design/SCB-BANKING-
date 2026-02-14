@@ -74,10 +74,10 @@ export default function TAXVerificationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#001c10] flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
+    <div className="min-h-screen bg-[#020617] flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="w-full max-w-2xl space-y-10 relative z-10">
 
@@ -87,7 +87,7 @@ export default function TAXVerificationPage() {
             <ArrowLeft className="h-6 w-6 group-hover:-translate-x-1 transition-transform" />
           </Button>
           <div className="space-y-1">
-            <div className="flex items-center gap-2 text-emerald-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 w-fit mx-auto md:mx-0 rounded-full">
+            <div className="flex items-center gap-2 text-indigo-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 w-fit mx-auto md:mx-0 rounded-full">
               <Shield className="h-3 w-3" />
               Identity Verification
             </div>
@@ -102,8 +102,8 @@ export default function TAXVerificationPage() {
         {transferDetails && (
           <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
             <Card className="border border-white/10 shadow-3xl bg-white/[0.03] backdrop-blur-xl rounded-[2.5rem] overflow-hidden group">
-              <div className="p-8 border-b border-white/5 bg-emerald-500/5 cursor-default">
-                <p className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Transfer Summary</p>
+              <div className="p-8 border-b border-white/5 bg-indigo-500/5 cursor-default">
+                <p className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Transfer Summary</p>
               </div>
               <CardContent className="p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="space-y-1">
@@ -128,12 +128,12 @@ export default function TAXVerificationPage() {
         {/* TAX Verification Card */}
         <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
           <Card className="border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-white/[0.04] backdrop-blur-2xl rounded-[3rem] overflow-hidden relative">
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent"></div>
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
             <CardHeader className="p-10 pb-6">
               <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-20 w-20 rounded-[2rem] bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 shadow-2xl relative group overflow-hidden">
+                <div className="h-20 w-20 rounded-[2rem] bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-500 shadow-2xl relative group overflow-hidden">
                   <Shield className="h-10 w-10 relative z-10 group-hover:scale-110 transition-transform" />
-                  <div className="absolute inset-0 bg-emerald-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
                 <div className="space-y-2">
                   <CardTitle className="text-3xl font-black text-white lowercase tracking-tighter">Tax Authorization <span className="text-slate-500 italic">Code</span></CardTitle>
@@ -162,7 +162,7 @@ export default function TAXVerificationPage() {
                     onChange={(e) => setTaxCode(e.target.value)}
                     placeholder="......"
                     disabled={isLoading || isVerified}
-                    className="h-24 text-center text-4xl font-black tracking-[0.5em] bg-black/40 border-white/10 rounded-[2rem] shadow-inner focus:ring-emerald-500 placeholder:text-white/5 text-emerald-500 transition-all focus:border-emerald-500/50"
+                    className="h-24 text-center text-4xl font-black tracking-[0.5em] bg-black/40 border-white/10 rounded-[2rem] shadow-inner focus:ring-indigo-500 placeholder:text-white/5 text-indigo-500 transition-all focus:border-indigo-500/50"
                   />
                   <p className="text-[9px] text-slate-700 font-black uppercase tracking-widest italic leading-relaxed">
                     TAX code verifies compliance for international transfers.
@@ -172,7 +172,7 @@ export default function TAXVerificationPage() {
                 <div className="flex flex-col md:flex-row gap-4">
                   <Button
                     type="submit"
-                    className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-[#001c10] font-black h-16 rounded-2xl shadow-xl shadow-emerald-500/20 uppercase tracking-tighter text-lg transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
+                    className="flex-1 bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black h-16 rounded-2xl shadow-xl shadow-indigo-500/20 uppercase tracking-tighter text-lg transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
                     disabled={isLoading || isVerified}
                   >
                     {isLoading ? (
@@ -205,16 +205,16 @@ export default function TAXVerificationPage() {
               <div key={idx} className="flex flex-col items-center gap-3 group">
                 <div className={cn(
                   "h-10 w-10 rounded-xl flex items-center justify-center text-[10px] font-black border transition-all duration-500",
-                  step.active ? "bg-emerald-500 border-emerald-500 text-[#001c10] shadow-[0_0_15px_rgba(16,185,129,0.5)] scale-110" :
-                    step.done ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-500" :
+                  step.active ? "bg-indigo-500 border-indigo-500 text-[#020617] shadow-[0_0_15px_rgba(16,185,129,0.5)] scale-110" :
+                    step.done ? "bg-indigo-500/20 border-indigo-500/40 text-indigo-500" :
                       "bg-black/40 border-white/10 text-slate-700"
                 )}>
                   {step.percent}
                 </div>
                 <span className={cn(
                   "text-[8px] font-black uppercase tracking-widest transition-colors",
-                  step.active ? "text-emerald-500" :
-                    step.done ? "text-emerald-500/50" :
+                  step.active ? "text-indigo-500" :
+                    step.done ? "text-indigo-500/50" :
                       "text-slate-800"
                 )}>{step.label}</span>
               </div>

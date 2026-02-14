@@ -30,12 +30,12 @@ export default async function AdminDashboard() {
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
             <ShieldCheck className="w-3 h-3" /> System Secured
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
@@ -47,11 +47,11 @@ export default async function AdminDashboard() {
         <div className="flex items-center gap-4">
           <div className="text-right hidden md:block">
             <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none mb-1">System Status</p>
-            <p className="text-sm font-black text-emerald-400">ONLINE</p>
+            <p className="text-sm font-black text-indigo-400">ONLINE</p>
           </div>
           <div className="h-10 w-[1px] bg-white/5 hidden md:block"></div>
           <button className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all flex items-center gap-2 text-sm">
-            Generate Reports <Activity className="w-4 h-4 text-emerald-500" />
+            Generate Reports <Activity className="w-4 h-4 text-indigo-500" />
           </button>
         </div>
       </div>
@@ -63,8 +63,8 @@ export default async function AdminDashboard() {
             title: "Global Accounts",
             value: stats.totalUsers,
             icon: Users,
-            color: "text-emerald-400",
-            bg: "bg-emerald-500/10",
+            color: "text-indigo-400",
+            bg: "bg-indigo-500/10",
             desc: "Active user base",
             link: "/admin/users"
           },
@@ -109,7 +109,7 @@ export default async function AdminDashboard() {
                 <div className="text-4xl font-black text-white mb-1">{stat.value}</div>
                 <div className="flex items-center justify-between">
                   <p className="text-xs text-slate-500 font-medium">{stat.desc}</p>
-                  <ArrowUpRight className="w-4 h-4 text-emerald-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0" />
+                  <ArrowUpRight className="w-4 h-4 text-indigo-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0" />
                 </div>
               </CardContent>
             </Card>
@@ -123,18 +123,18 @@ export default async function AdminDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Quick Access Tools */}
             <Card className="bg-white/[0.03] border-white/5 rounded-[2.5rem] p-8 overflow-hidden relative">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-emerald-500/5 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-500/5 rounded-full blur-3xl"></div>
               <h3 className="text-xl font-black text-white mb-6 flex items-center gap-3">
-                <Zap className="w-5 h-5 text-emerald-500" /> Quick Actions
+                <Zap className="w-5 h-5 text-indigo-500" /> Quick Actions
               </h3>
               <div className="grid grid-cols-1 gap-4">
-                <Link href="/admin/transfer-codes" className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all group">
+                <Link href="/admin/transfer-codes" className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all group">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-bold text-white text-sm">Security Codes</p>
                       <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest">Manage COT / IMF / TAC</p>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-500 transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-500 transition-colors" />
                   </div>
                 </Link>
                 <Link href="/admin/settings" className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group">
@@ -156,13 +156,13 @@ export default async function AdminDashboard() {
               </h3>
               <div className="space-y-4">
                 {[
-                  { color: "bg-emerald-500Shadow", label: "ADMIN_ACCESS", text: "Admin Access Granted", time: "02m ago" },
+                  { color: "bg-indigo-500Shadow", label: "ADMIN_ACCESS", text: "Admin Access Granted", time: "02m ago" },
                   { color: "bg-blue-500Shadow", label: "TRANSFER", text: "Global Transfer Logged", time: "14m ago" },
                   { color: "bg-orange-500Shadow", label: "USER_KYC", text: "New KYC Submission", time: "28m ago" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5 group hover:bg-white/5 transition-all">
                     <div>
-                      <p className="text-[8px] font-black text-emerald-500 tracking-widest mb-1">{item.label}</p>
+                      <p className="text-[8px] font-black text-indigo-500 tracking-widest mb-1">{item.label}</p>
                       <p className="text-xs font-bold text-white">{item.text}</p>
                     </div>
                     <p className="text-[10px] font-black text-slate-500">{item.time}</p>
@@ -179,12 +179,12 @@ export default async function AdminDashboard() {
               <p className="text-slate-500 text-sm font-medium">Monitoring real-time assets across 12 regions.</p>
             </div>
             <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity">
-              <Globe className="w-[500px] h-[500px] absolute -right-24 -bottom-24 text-emerald-500/20" />
+              <Globe className="w-[500px] h-[500px] absolute -right-24 -bottom-24 text-indigo-500/20" />
             </div>
             <div className="absolute bottom-10 left-10 flex gap-6 z-10">
               <div className="text-center">
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Active Users</p>
-                <p className="text-2xl font-black text-emerald-400">12/12</p>
+                <p className="text-2xl font-black text-indigo-400">12/12</p>
               </div>
               <div className="text-center">
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Response Time</p>
@@ -196,8 +196,8 @@ export default async function AdminDashboard() {
 
         {/* System Integrity & Health */}
         <div className="space-y-8">
-          <Card className="bg-gradient-to-br from-[#003d24] to-[#001c10] border-emerald-500/20 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-emerald-500/10 rounded-full blur-[100px]"></div>
+          <Card className="bg-gradient-to-br from-[#1e293b] to-[#020617] border-indigo-500/20 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-indigo-500/10 rounded-full blur-[100px]"></div>
             <h3 className="text-xl font-black text-white mb-8 relative z-10 tracking-tight">System Health</h3>
             <div className="space-y-6 relative z-10">
               {[
@@ -209,10 +209,10 @@ export default async function AdminDashboard() {
                 <div key={i} className="space-y-2">
                   <div className="flex justify-between items-center text-xs">
                     <span className="text-white font-black uppercase tracking-widest opacity-60">{service.label}</span>
-                    <span className="text-emerald-400 font-black">{service.status}</span>
+                    <span className="text-indigo-400 font-black">{service.status}</span>
                   </div>
                   <div className="h-1.5 w-full bg-black/40 rounded-full overflow-hidden">
-                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${service.health}%` }}></div>
+                    <div className="h-full bg-indigo-500 rounded-full" style={{ width: `${service.health}%` }}></div>
                   </div>
                 </div>
               ))}

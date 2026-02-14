@@ -19,8 +19,8 @@ export default function MortgageServicesPage() {
       description: "Navigating affordability, down payments, and timelines with high-precision guidance and competitive rates.",
       icon: Key,
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
-      color: "text-emerald-500",
-      bg: "bg-emerald-500/10"
+      color: "text-indigo-500",
+      bg: "bg-indigo-500/10"
     },
     {
       title: "Equity Refinance",
@@ -39,14 +39,14 @@ export default function MortgageServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#001c10] text-slate-200 selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-[#020617] text-slate-200 selection:bg-indigo-500/30">
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-32">
         <div
           className="absolute inset-0 bg-fixed bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80')" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#001c10]/80 via-[#001c10]/60 to-[#001c10]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/80 via-[#020617]/60 to-[#020617]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center space-y-8">
@@ -56,14 +56,14 @@ export default function MortgageServicesPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
               <Landmark className="w-3 h-3" /> Real Estate Finance Protocol
             </div>
             <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter lowercase">
-              mortgage <span className="text-emerald-500 italic">services</span>
+              mortgage <span className="text-indigo-500 italic">services</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-400 font-medium">
-              Clarity from pre-qualification to the final signature. Secure your cornerstone with PrimeHarbor.
+              Clarity from pre-qualification to the final signature. Secure your cornerstone with First State.
             </p>
           </motion.div>
 
@@ -73,7 +73,7 @@ export default function MortgageServicesPage() {
             transition={{ delay: 0.5, duration: 1 }}
             className="flex flex-wrap justify-center gap-4 pt-8"
           >
-            <Button size="lg" className="bg-emerald-500 hover:bg-emerald-400 text-[#001c10] font-black px-10 h-16 rounded-2xl shadow-xl shadow-emerald-500/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black px-10 h-16 rounded-2xl shadow-xl shadow-indigo-500/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Pre-Qualify Now</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white/10 bg-white/5 hover:bg-white/10 text-white font-black px-10 h-16 rounded-2xl backdrop-blur-md text-lg uppercase tracking-tight" asChild>
@@ -83,8 +83,8 @@ export default function MortgageServicesPage() {
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-emerald-500" />
-          <p className="text-[10px] font-black uppercase tracking-widest text-emerald-500">Scroll Down</p>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-indigo-500" />
+          <p className="text-[10px] font-black uppercase tracking-widest text-indigo-500">Scroll Down</p>
         </div>
       </section>
 
@@ -105,7 +105,7 @@ export default function MortgageServicesPage() {
             <motion.div {...fadeInUp} className="lg:col-span-7">
               <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 group shadow-3xl">
                 <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Prime Property" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#001c10] to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] to-transparent opacity-60" />
                 <div className="absolute top-8 left-8">
                   <div className="px-4 py-2 rounded-2xl bg-white/[0.05] border border-white/10 backdrop-blur-md text-white font-black text-xs uppercase tracking-widest">Global Asset Hub</div>
                 </div>
@@ -115,7 +115,7 @@ export default function MortgageServicesPage() {
             <motion.div {...fadeInUp} className="lg:col-span-5 space-y-8">
               <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-lg space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="h-10 w-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20">
+                  <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 border border-indigo-500/20">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <h3 className="text-2xl font-black text-white tracking-tighter">Secure Underwriting</h3>
@@ -129,7 +129,7 @@ export default function MortgageServicesPage() {
                     "Digital Escrow Integration"
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-slate-300 font-bold">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> {item}
+                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" /> {item}
                     </li>
                   ))}
                 </ul>
@@ -164,7 +164,7 @@ export default function MortgageServicesPage() {
                     <h3 className="text-3xl font-black text-white tracking-tighter">{feature.title}</h3>
                     <p className="text-slate-400 font-medium leading-relaxed max-w-sm">{feature.description}</p>
                   </div>
-                  <Button variant="ghost" className="text-emerald-500 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
+                  <Button variant="ghost" className="text-indigo-500 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
                     Initialize Protocol <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
@@ -185,7 +185,7 @@ export default function MortgageServicesPage() {
                 transition={{ delay: i * 0.1 }}
                 className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all group"
               >
-                <div className="h-12 w-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-8 border border-emerald-500/20 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-500/10">
+                <div className="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 mb-8 border border-indigo-500/20 group-hover:scale-110 transition-transform shadow-lg shadow-indigo-500/10">
                   <m.icon className="w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-black text-white lowercase tracking-tighter mb-2">{m.title}</h4>
@@ -197,22 +197,22 @@ export default function MortgageServicesPage() {
       </section>
 
       {/* CTA section */}
-      <section className="py-32 relative overflow-hidden bg-gradient-to-b from-transparent to-[#00130b]">
+      <section className="py-32 relative overflow-hidden bg-gradient-to-b from-transparent to-[#0f172a]">
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-12">
           <motion.div {...fadeInUp} className="space-y-4">
             <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter">
-              Secure your <span className="text-emerald-500">Ground Zero</span>
+              Secure your <span className="text-indigo-500">Ground Zero</span>
             </h2>
             <p className="text-xl text-slate-400 font-medium">
-              Join the future of residency financing with PrimeHarbor's automated mortgage gateway.
+              Join the future of residency financing with First State's automated mortgage gateway.
             </p>
           </motion.div>
 
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="flex justify-center flex-wrap gap-6">
-            <Button size="lg" className="bg-emerald-500 text-[#001c10] hover:bg-emerald-400 font-black px-12 h-16 rounded-2xl shadow-xl shadow-emerald-500/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-indigo-500 text-[#020617] hover:bg-indigo-400 font-black px-12 h-16 rounded-2xl shadow-xl shadow-indigo-500/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Start Application</Link>
             </Button>
-            <Button size="lg" variant="ghost" className="text-emerald-500 font-black px-12 h-16 rounded-2xl border border-emerald-500/20 hover:bg-emerald-500/10 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" variant="ghost" className="text-indigo-500 font-black px-12 h-16 rounded-2xl border border-indigo-500/20 hover:bg-indigo-500/10 text-lg uppercase tracking-tight" asChild>
               <Link href="/contact">Speak to Consultant</Link>
             </Button>
           </motion.div>

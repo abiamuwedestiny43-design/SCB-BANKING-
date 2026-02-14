@@ -43,10 +43,10 @@ const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="animate-slide-in-left">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">
                 Our Mission
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-slate-600 mb-6">
                 Our mission is to empower individuals and businesses by providing
                 exceptional financial solutions rooted in integrity, innovation,
                 and customer-centricity. We believe banking should not just be
@@ -56,7 +56,7 @@ const AboutPage: React.FC = () => {
                 community investment, we strive to be more than a bank — we aim
                 to be a trusted financial partner for life.
               </p>
-              <p className="text-gray-600">
+              <p className="text-slate-600">
                 We commit to listening first, understanding your goals deeply, and
                 tailoring our services accordingly. We nurture financial literacy,
                 support entrepreneurs, and channel growth back into the neighborhoods
@@ -64,10 +64,10 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
             <div className="animate-slide-in-right">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">
                 Our Vision
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-slate-600 mb-6">
                 We envision a future where banking is seamless, accessible to all,
                 and a force for social and environmental good. Our aim is to lead
                 in sustainable finance, digital innovation, and community enrichment,
@@ -76,7 +76,7 @@ const AboutPage: React.FC = () => {
                 and each loan carries meaning — driving both individual prosperity
                 and communal well-being.
               </p>
-              <p className="text-gray-600">
+              <p className="text-slate-600">
                 By harnessing emerging technologies, embracing green initiatives,
                 and championing inclusive policies, we strive to create a banking
                 ecosystem where financial access is equitable, risk is well-managed,
@@ -89,9 +89,9 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">
+          <h2 className="text-3xl font-bold text-center text-slate-900 mb-16">
             Our Values
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -126,13 +126,13 @@ const AboutPage: React.FC = () => {
                 className="text-center animate-fade-in-up"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
-                  <value.icon className="w-8 h-8 text-green-600" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-6">
+                  <value.icon className="w-8 h-8 text-indigo-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-slate-900 mb-4">
                   {value.title}
                 </h3>
-                <p className="text-gray-600">{value.description}</p>
+                <p className="text-slate-600">{value.description}</p>
               </div>
             ))}
           </div>
@@ -140,7 +140,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-20 bg-green-600 text-white">
+      <section className="py-20 bg-indigo-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -153,7 +153,7 @@ const AboutPage: React.FC = () => {
                 <div className="text-3xl md:text-4xl font-bold mb-2">
                   {stat.number}
                 </div>
-                <div className="text-green-100">{stat.label}</div>
+                <div className="text-indigo-100">{stat.label}</div>
               </div>
             ))}
           </div>

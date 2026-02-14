@@ -72,7 +72,7 @@ export default function ResetPasswordPage() {
 
     if (!token || !email) {
         return (
-            <div className="relative min-h-screen flex items-center justify-center bg-gray-900">
+            <div className="relative min-h-screen flex items-center justify-center bg-slate-900">
                 <Card className="w-full max-w-md mx-auto bg-white/10 backdrop-blur-md border border-white/20">
                     <CardContent className="pt-6 text-center">
                         <Alert variant="destructive" className="mb-4">
@@ -88,7 +88,7 @@ export default function ResetPasswordPage() {
     }
 
     return (
-        <div className="relative min-h-screen flex items-center justify-center bg-gray-900">
+        <div className="relative min-h-screen flex items-center justify-center bg-slate-900">
             {/* Background Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center"
@@ -114,13 +114,13 @@ export default function ResetPasswordPage() {
                             </Alert>
                         )}
                         {message && (
-                            <Alert className="bg-green-500/20 text-green-100 border-green-500/50">
+                            <Alert className="bg-indigo-500/20 text-indigo-100 border-indigo-500/50">
                                 <AlertDescription>{message}</AlertDescription>
                             </Alert>
                         )}
 
                         <div className="space-y-2">
-                            <Label htmlFor="newPassword" className="text-gray-100">
+                            <Label htmlFor="newPassword" className="text-slate-100">
                                 New Password
                             </Label>
                             <Input
@@ -136,7 +136,7 @@ export default function ResetPasswordPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="confirmPassword" className="text-gray-100">
+                            <Label htmlFor="confirmPassword" className="text-slate-100">
                                 Confirm Password
                             </Label>
                             <Input
@@ -161,7 +161,7 @@ export default function ResetPasswordPage() {
                         </Button>
 
                         <div className="text-center">
-                            <Link href="/login" className="inline-flex items-center text-sm text-gray-200 hover:text-white hover:underline">
+                            <Link href="/login" className="inline-flex items-center text-sm text-slate-200 hover:text-white hover:underline">
                                 <ArrowLeft className="mr-2 h-4 w-4" />
                                 Back to Login
                             </Link>

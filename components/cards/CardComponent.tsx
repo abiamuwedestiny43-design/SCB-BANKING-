@@ -26,7 +26,7 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
 
   const getStatusConfig = (status: string) => {
     switch (status) {
-      case "active": return { label: "Live Gateway", color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.2)]" }
+      case "active": return { label: "Live Gateway", color: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20 shadow-[0_0_10px_rgba(99,102,241,0.2)]" }
       case "pending": return { label: "Pending Auth", color: "text-yellow-400 bg-yellow-500/10 border-yellow-500/20" }
       case "blocked": return { label: "Circuit Broken", color: "text-red-500 bg-red-500/10 border-red-500/20 animate-pulse" }
       case "rejected": return { label: "Auth Denied", color: "text-red-400 bg-red-500/10 border-red-500/20" }
@@ -40,7 +40,7 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
   return (
     <div className="w-full max-w-xl mx-auto space-y-6 relative group">
       {/* Glossy Overlay for the whole container */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+      <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
 
       {/* Card Front */}
       <div
@@ -54,12 +54,12 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
         {/* Header */}
         <div className="flex justify-between items-start relative z-10">
           <div className="space-y-1">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">PrimeHarbor Bank <span className="text-emerald-500 italic">Premium</span></p>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">First State Bank <span className="text-indigo-500 italic">Premium</span></p>
             <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-white/90">
               {card.cardType} <span className="opacity-40 italic">System</span>
             </h3>
           </div>
-          <div className="w-16 h-10 relative opacity-90 grayscale brightness-200 group-hover:grayscale-0 transition-all">
+          <div className="w-16 h-10 relative opacity-90 slatescale brightness-200 group-hover:slatescale-0 transition-all">
             <Image src={vendorLogo.src} alt={vendorLogo.alt} fill style={{ objectFit: "contain" }} />
           </div>
         </div>

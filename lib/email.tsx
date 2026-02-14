@@ -19,7 +19,7 @@ export interface EmailOptions {
 
 export async function sendEmail({ to, subject, html, from }: EmailOptions) {
   const mailOptions = {
-    from: from || process.env.SMTP_FROM || "noreply@primeharborbnk.online",
+    from: from || process.env.SMTP_FROM || "noreply@firststatebank.online",
     to,
     subject,
     html,
@@ -46,22 +46,22 @@ export function generateTransferCode(): string {
 
 const brandStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-  body { font-family: 'Inter', Arial, sans-serif; line-height: 1.6; color: #cbd5e1; background-color: #001c10; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-  .container { max-width: 600px; margin: 40px auto; background: #002a18; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-  .header { padding: 40px; text-align: center; background: linear-gradient(to bottom, #003d24, #002a18); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  body { font-family: 'Inter', Arial, sans-serif; line-height: 1.6; color: #cbd5e1; background-color: #020617; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 600px; margin: 40px auto; background: #1e293b; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+  .header { padding: 40px; text-align: center; background: linear-gradient(to bottom, #1e293b, #1e293b); border-bottom: 1px solid rgba(255,255,255,0.05); }
   .logo { font-size: 24px; font-weight: 900; color: #ffffff; letter-spacing: -1px; text-transform: lowercase; font-style: italic; text-decoration: none; }
-  .logo span { color: #10b981; }
+  .logo span { color: #6366f1; }
   .content { padding: 40px; }
   h1 { font-size: 28px; font-weight: 900; color: #ffffff; margin: 0 0 10px; letter-spacing: -1px; line-height: 1.2; }
   p { margin: 0 0 20px; color: #94a3b8; font-size: 15px; }
   .info-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 24px; margin: 24px 0; }
   .info-label { color: #64748b; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
   .info-value { color: #ffffff; font-weight: 700; font-size: 14px; }
-  .button { display: inline-block; padding: 16px 32px; background: #10b981; color: #001c10 !important; text-decoration: none; border-radius: 12px; font-weight: 900; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+  .button { display: inline-block; padding: 16px 32px; background: #6366f1; color: #020617 !important; text-decoration: none; border-radius: 12px; font-weight: 900; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
   .footer { padding: 30px 40px; text-align: center; color: #475569; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.05); }
-  .otp-code { font-size: 40px; font-weight: 900; color: #10b981; letter-spacing: 10px; margin: 20px 0; font-family: monospace; text-align: center; background: rgba(16, 185, 129, 0.05); padding: 20px; border-radius: 12px; border: 1px dashed rgba(16, 185, 129, 0.3); }
+  .otp-code { font-size: 40px; font-weight: 900; color: #6366f1; letter-spacing: 10px; margin: 20px 0; font-family: monospace; text-align: center; background: rgba(99, 102, 241, 0.05); padding: 20px; border-radius: 12px; border: 1px dashed rgba(99, 102, 241, 0.3); }
   .badge { display: inline-block; padding: 4px 12px; border-radius: 99px; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-  .badge-success { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+  .badge-success { background: rgba(99, 102, 241, 0.1); color: #6366f1; }
   .badge-danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
   .amount { font-size: 32px; font-weight: 900; color: #ffffff; margin: 12px 0; }
   .divider { height: 1px; background: rgba(255,255,255,0.05); margin: 20px 0; }
@@ -69,7 +69,7 @@ const brandStyles = `
 
 export const emailTemplates = {
   welcome: (name: string, accountNumber: string) => ({
-    subject: "Welcome to PrimeHarbor Bank - Account Initialized",
+    subject: "Welcome to First State Bank - Account Initialized",
     html: `
       <!DOCTYPE html>
       <html>
@@ -81,7 +81,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Account Setup</div>
@@ -111,7 +111,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
               <p>Secure Transaction ID: ${Math.random().toString(36).substring(7).toUpperCase()}</p>
             </div>
           </div>
@@ -133,7 +133,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">High Priority Authorization</div>
@@ -156,7 +156,7 @@ export const emailTemplates = {
               <p style="font-size: 12px; color: #64748b;">Security Notice: If you did not initiate this transfer, immediately disable your account and contact support.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -186,7 +186,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge ${type === "credit" ? "badge-success" : "badge-danger"}">
@@ -195,7 +195,7 @@ export const emailTemplates = {
               <h1>Transaction ${type === "credit" ? "Received" : "Sent"}</h1>
               <p>A balance update has been recorded on your primary account.</p>
               
-              <div class="amount" style="color: ${type === "credit" ? "#10b981" : "#ffffff"}">
+              <div class="amount" style="color: ${type === "credit" ? "#6366f1" : "#ffffff"}">
                 ${type === "credit" ? "+" : "-"}${amount.toLocaleString()} ${currency}
               </div>
               
@@ -219,7 +219,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -240,7 +240,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Verification Complete</div>
@@ -260,7 +260,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -281,7 +281,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">Security Recovery</div>
@@ -295,7 +295,7 @@ export const emailTemplates = {
               <p style="font-size: 12px; color: #64748b;">This link will expire in 60 minutes. If you did not request this, please ignore this transmission.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -316,7 +316,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Profile Update</div>
@@ -332,7 +332,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -353,12 +353,12 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">Security Synchronized</div>
               <h1>Password Updated</h1>
-              <p>Your password for PRIMEHARBOR BANK has been successfully changed.</p>
+              <p>Your password for FIRST STATE BANK BANK has been successfully changed.</p>
               
               <div class="info-box">
                 <div class="info-label">Change Status</div>
@@ -371,7 +371,7 @@ export const emailTemplates = {
               <p style="font-size: 12px; color: #64748b;">If you did not authorize this change, immediately terminate all active sessions and contact security.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -397,7 +397,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Application Logged</div>
@@ -418,7 +418,7 @@ export const emailTemplates = {
               <p>The review process typically completes within 72-96 hours. You will receive an alert once the decision is finalized.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -446,7 +446,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge ${status === 'approved' ? 'badge-success' : 'badge-danger'}">
@@ -472,7 +472,7 @@ export const emailTemplates = {
         : `<p>If you require clarification on this decision, contact support.</p>`}
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -493,7 +493,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Card Requested</div>
@@ -514,7 +514,7 @@ export const emailTemplates = {
               <p>Once approved, your physical card will be dispatched via secure mail. Virtual credentials will be active immediately upon approval.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -541,7 +541,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge ${status === 'active' ? 'badge-success' : 'badge-danger'}">
@@ -574,7 +574,7 @@ export const emailTemplates = {
         : `<p>Identity or credit requirements were not met for this specific card request.</p>`}
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -595,7 +595,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Manual Clearance</div>
@@ -615,7 +615,7 @@ export const emailTemplates = {
               <p>Total account access is now enabled. All restrictions have been removed.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -636,7 +636,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">prime<span>harbor</span></div>
+              <div class="logo">first<span>state</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Elevated Access</div>
@@ -645,7 +645,7 @@ export const emailTemplates = {
               
               <div class="info-box">
                 <div class="info-label">Assigned Role</div>
-                <div class="info-value" style="color: #10b981;">NETWORK ${role.toUpperCase()}</div>
+                <div class="info-value" style="color: #6366f1;">NETWORK ${role.toUpperCase()}</div>
                 <div class="divider"></div>
                 <div class="info-label">Authorizing Entity</div>
                 <div class="info-value">${adminEmail}</div>
@@ -654,7 +654,7 @@ export const emailTemplates = {
               <p>New dashboard capabilities should be visible upon your next login session.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PRIMEHARBOR BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
             </div>
           </div>
         </body>

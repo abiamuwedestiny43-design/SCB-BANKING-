@@ -69,7 +69,7 @@ export default function CreateUserPage() {
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="flex flex-col gap-4 relative z-10">
@@ -85,7 +85,7 @@ export default function CreateUserPage() {
         </Button>
 
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
             <UserPlus className="w-3 h-3" /> Account Creation
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
@@ -96,7 +96,7 @@ export default function CreateUserPage() {
       </div>
 
       <Card className="max-w-4xl bg-white/[0.03] border-white/5 rounded-[2.5rem] relative z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 h-32 w-32 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-500/5 rounded-full blur-3xl"></div>
 
         <CardHeader className="p-8 border-b border-white/5 bg-white/[0.01]">
           <CardTitle className="text-2xl font-black text-white italic tracking-tight">Account Details</CardTitle>
@@ -110,7 +110,7 @@ export default function CreateUserPage() {
             {/* Account Credentials */}
             <div className="space-y-4">
               <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1 h-6 bg-emerald-500 rounded-full"></div>
+                <div className="w-1 h-6 bg-indigo-500 rounded-full"></div>
                 Account Credentials
               </h3>
 
@@ -121,7 +121,7 @@ export default function CreateUserPage() {
                   type="file"
                   accept="image/*"
                   onChange={(e) => setFormData((prev) => ({ ...prev, profileImageFile: e.target.files?.[0] || null }))}
-                  className="block w-full text-sm text-slate-400 font-medium file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:text-sm file:font-bold file:bg-emerald-500 file:text-[#001c10] hover:file:bg-emerald-400 file:transition-all file:cursor-pointer"
+                  className="block w-full text-sm text-slate-400 font-medium file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:text-sm file:font-bold file:bg-indigo-500 file:text-[#020617] hover:file:bg-indigo-400 file:transition-all file:cursor-pointer"
                 />
               </div>
 
@@ -134,7 +134,7 @@ export default function CreateUserPage() {
                     value={formData.email}
                     onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
                 <div className="space-y-2">
@@ -145,7 +145,7 @@ export default function CreateUserPage() {
                     value={formData.password}
                     onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function CreateUserPage() {
                     value={formData.usercode}
                     onChange={(e) => setFormData((prev) => ({ ...prev, usercode: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
                 <div className="space-y-2">
@@ -170,7 +170,7 @@ export default function CreateUserPage() {
                     value={formData.securityPin}
                     onChange={(e) => setFormData((prev) => ({ ...prev, securityPin: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function CreateUserPage() {
             {/* Personal Information */}
             <div className="space-y-4">
               <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1 h-6 bg-emerald-500 rounded-full"></div>
+                <div className="w-1 h-6 bg-indigo-500 rounded-full"></div>
                 Personal Information
               </h3>
 
@@ -191,7 +191,7 @@ export default function CreateUserPage() {
                     value={formData.firstname}
                     onChange={(e) => setFormData((prev) => ({ ...prev, firstname: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
                 <div className="space-y-2">
@@ -201,7 +201,7 @@ export default function CreateUserPage() {
                     value={formData.lastname}
                     onChange={(e) => setFormData((prev) => ({ ...prev, lastname: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
               </div>
@@ -213,7 +213,7 @@ export default function CreateUserPage() {
                   value={formData.phone}
                   onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
                   required
-                  className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                  className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                 />
               </div>
             </div>
@@ -221,7 +221,7 @@ export default function CreateUserPage() {
             {/* Address Information */}
             <div className="space-y-4">
               <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1 h-6 bg-emerald-500 rounded-full"></div>
+                <div className="w-1 h-6 bg-indigo-500 rounded-full"></div>
                 Address Information
               </h3>
 
@@ -232,7 +232,7 @@ export default function CreateUserPage() {
                   value={formData.address}
                   onChange={(e) => setFormData((prev) => ({ ...prev, address: e.target.value }))}
                   required
-                  className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                  className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                 />
               </div>
 
@@ -244,7 +244,7 @@ export default function CreateUserPage() {
                     value={formData.city}
                     onChange={(e) => setFormData((prev) => ({ ...prev, city: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
                 <div className="space-y-2">
@@ -254,7 +254,7 @@ export default function CreateUserPage() {
                     value={formData.state}
                     onChange={(e) => setFormData((prev) => ({ ...prev, state: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
               </div>
@@ -267,7 +267,7 @@ export default function CreateUserPage() {
                     value={formData.country}
                     onChange={(e) => setFormData((prev) => ({ ...prev, country: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
                 <div className="space-y-2">
@@ -277,7 +277,7 @@ export default function CreateUserPage() {
                     value={formData.zipcode}
                     onChange={(e) => setFormData((prev) => ({ ...prev, zipcode: e.target.value }))}
                     required
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
               </div>
@@ -286,7 +286,7 @@ export default function CreateUserPage() {
             {/* Account Configuration */}
             <div className="space-y-4">
               <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1 h-6 bg-emerald-500 rounded-full"></div>
+                <div className="w-1 h-6 bg-indigo-500 rounded-full"></div>
                 Account Configuration
               </h3>
 
@@ -297,10 +297,10 @@ export default function CreateUserPage() {
                     value={formData.currency}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, currency: value }))}
                   >
-                    <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all">
+                    <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#001c10] border-white/10 rounded-xl">
+                    <SelectContent className="bg-[#020617] border-white/10 rounded-xl">
                       <SelectItem value="USD" className="text-white hover:bg-white/5">USD — US Dollar</SelectItem>
                       <SelectItem value="EUR" className="text-white hover:bg-white/5">EUR — Euro</SelectItem>
                       <SelectItem value="GBP" className="text-white hover:bg-white/5">GBP — British Pound</SelectItem>
@@ -324,7 +324,7 @@ export default function CreateUserPage() {
                     onChange={(e) =>
                       setFormData((prev) => ({ ...prev, initialBalance: Number.parseFloat(e.target.value) || 0 }))
                     }
-                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500 transition-all font-medium"
+                    className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500 transition-all font-medium"
                   />
                 </div>
               </div>
@@ -334,12 +334,12 @@ export default function CreateUserPage() {
                 <Label className="text-slate-300 font-medium">Access Levels</Label>
                 <div className="flex flex-wrap gap-4">
                   {["member", "administrator", "super-admin"].map((role) => (
-                    <div key={role} className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-emerald-500/30 transition-all">
+                    <div key={role} className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-indigo-500/30 transition-all">
                       <Checkbox
                         id={role}
                         checked={formData.roles.includes(role)}
                         onCheckedChange={(checked) => handleRoleChange(role, checked as boolean)}
-                        className="border-white/20 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500"
+                        className="border-white/20 data-[state=checked]:bg-indigo-500 data-[state=checked]:border-indigo-500"
                       />
                       <Label htmlFor={role} className="capitalize text-white font-medium cursor-pointer">
                         {role.replace("-", " ")}
@@ -353,23 +353,23 @@ export default function CreateUserPage() {
               <div className="space-y-3">
                 <Label className="text-slate-300 font-medium">Account Permissions</Label>
                 <div className="flex flex-wrap gap-4">
-                  <div className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-emerald-500/30 transition-all">
+                  <div className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-indigo-500/30 transition-all">
                     <Checkbox
                       id="verified"
                       checked={formData.verified}
                       onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, verified: checked as boolean }))}
-                      className="border-white/20 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500"
+                      className="border-white/20 data-[state=checked]:bg-indigo-500 data-[state=checked]:border-indigo-500"
                     />
                     <Label htmlFor="verified" className="text-white font-medium cursor-pointer">Account Verified</Label>
                   </div>
-                  <div className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-emerald-500/30 transition-all">
+                  <div className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-indigo-500/30 transition-all">
                     <Checkbox
                       id="canTransfer"
                       checked={formData.canTransfer}
                       onCheckedChange={(checked) =>
                         setFormData((prev) => ({ ...prev, canTransfer: checked as boolean }))
                       }
-                      className="border-white/20 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500"
+                      className="border-white/20 data-[state=checked]:bg-indigo-500 data-[state=checked]:border-indigo-500"
                     />
                     <Label htmlFor="canTransfer" className="text-white font-medium cursor-pointer">Transfer Enabled</Label>
                   </div>
@@ -382,7 +382,7 @@ export default function CreateUserPage() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="bg-emerald-500 hover:bg-emerald-400 text-[#001c10] font-black h-12 px-8 rounded-xl shadow-xl shadow-emerald-500/20 transition-all"
+                className="bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black h-12 px-8 rounded-xl shadow-xl shadow-indigo-500/20 transition-all"
               >
                 {isLoading ? "Creating Account..." : "Create Account"}
               </Button>

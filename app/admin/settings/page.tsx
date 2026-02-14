@@ -126,7 +126,7 @@ export default function AdminSettingsPage() {
 
   if (loading) {
     return (
-      <div className="p-10 text-emerald-500 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
+      <div className="p-10 text-indigo-500 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
         <Cpu className="w-5 h-5 animate-spin" />
         Accessing System Variables...
       </div>
@@ -136,11 +136,11 @@ export default function AdminSettingsPage() {
   return (
     <div className="p-4 md:p-10 space-y-10 relative max-w-5xl">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="space-y-2 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
           <Settings className="w-3 h-3" /> System Architecture
         </div>
         <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
@@ -162,14 +162,14 @@ export default function AdminSettingsPage() {
           <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden">
             <CardHeader className="p-8 border-b border-white/5 bg-white/[0.01]">
               <CardTitle className="text-2xl font-black text-white italic tracking-tight">Transfer Protocols</CardTitle>
-              <CardDescription className="text-slate-500 font-medium">Control the global flow of assets across the PRIMEHARBOR framework.</CardDescription>
+              <CardDescription className="text-slate-500 font-medium">Control the global flow of assets across the FIRST STATE BANK framework.</CardDescription>
             </CardHeader>
             <CardContent className="p-8 space-y-12">
               {/* Global Transfers */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 rounded-[2rem] bg-white/5 border border-white/5 group hover:bg-emerald-500/5 hover:border-emerald-500/20 transition-all">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 rounded-[2rem] bg-white/5 border border-white/5 group hover:bg-indigo-500/5 hover:border-indigo-500/20 transition-all">
                 <div className="space-y-1">
                   <Label className="text-lg font-black text-white flex items-center gap-2 italic">
-                    <Globe className="w-4 h-4 text-emerald-500" /> UNIFIED TRANSFERS
+                    <Globe className="w-4 h-4 text-indigo-500" /> UNIFIED TRANSFERS
                   </Label>
                   <p className="text-sm text-slate-500 max-w-sm">Disable ALL asset migrations (Local & International) cluster-wide.</p>
                 </div>
@@ -177,7 +177,7 @@ export default function AdminSettingsPage() {
                   <Switch
                     checked={globalEnabled}
                     onCheckedChange={setGlobalEnabled}
-                    className="data-[state=checked]:bg-emerald-500"
+                    className="data-[state=checked]:bg-indigo-500"
                     disabled={saving}
                   />
                   <Button
@@ -196,7 +196,7 @@ export default function AdminSettingsPage() {
                   <Label className="text-lg font-black text-white flex items-center gap-2 italic">
                     <Database className="w-4 h-4 text-blue-500" /> INTRASYSTEM ASSETS
                   </Label>
-                  <p className="text-sm text-slate-500 max-w-sm">Restrict migrations within the internal PRIMEHARBOR BANK node network.</p>
+                  <p className="text-sm text-slate-500 max-w-sm">Restrict migrations within the internal FIRST STATE BANK BANK node network.</p>
                 </div>
                 <div className="flex items-center gap-6">
                   <Switch
@@ -232,7 +232,7 @@ export default function AdminSettingsPage() {
                       <Button
                         onClick={() => bulkSetUsersTransfer(true, "all")}
                         disabled={bulkBusy}
-                        className="w-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 font-black hover:bg-emerald-500 hover:text-black transition-all uppercase tracking-widest text-[9px] h-10"
+                        className="w-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 font-black hover:bg-indigo-500 hover:text-black transition-all uppercase tracking-widest text-[9px] h-10"
                       >
                         Enable All
                       </Button>
@@ -274,7 +274,7 @@ export default function AdminSettingsPage() {
                       <Button
                         onClick={() => bulkSetUsersTransfer(true, "international")}
                         disabled={bulkBusy}
-                        className="w-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 font-black hover:bg-emerald-500 hover:text-black transition-all uppercase tracking-widest text-[9px] h-10"
+                        className="w-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 font-black hover:bg-indigo-500 hover:text-black transition-all uppercase tracking-widest text-[9px] h-10"
                       >
                         Enable Intl
                       </Button>
@@ -296,9 +296,9 @@ export default function AdminSettingsPage() {
         {/* Side Panel */}
         <div className="space-y-8">
           <Card className="bg-white/[0.03] border-white/5 rounded-[2.5rem] p-8 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-3xl"></div>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-3xl"></div>
             <h3 className="text-xl font-black text-white mb-6 flex items-center gap-3 italic">
-              <ShieldCheck className="w-5 h-5 text-emerald-500" /> INDIVIDUAL OVERRIDE
+              <ShieldCheck className="w-5 h-5 text-indigo-500" /> INDIVIDUAL OVERRIDE
             </h3>
             <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6 leading-relaxed">
               Target specific identity Details for precise protocol modulation.
@@ -310,7 +310,7 @@ export default function AdminSettingsPage() {
                   placeholder="Identity Node (Email/ID)"
                   value={singleUserId}
                   onChange={(e) => setSingleUserId(e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-xl h-12 text-white font-mono text-xs focus:border-emerald-500 transition-all placeholder:text-slate-600"
+                  className="bg-white/5 border-white/10 rounded-xl h-12 text-white font-mono text-xs focus:border-indigo-500 transition-all placeholder:text-slate-600"
                 />
                 <Button
                   size="sm"
@@ -333,7 +333,7 @@ export default function AdminSettingsPage() {
                       setSingleBusy(false)
                     }
                   }}
-                  className="absolute right-1 top-1 h-10 px-4 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 font-black text-[10px] uppercase tracking-widest"
+                  className="absolute right-1 top-1 h-10 px-4 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-500 font-black text-[10px] uppercase tracking-widest"
                 >
                   {singleBusy ? "..." : "FETCH"}
                 </Button>
@@ -342,7 +342,7 @@ export default function AdminSettingsPage() {
               {foundUser && (
                 <div className="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-5 animate-in fade-in slide-in-from-top-4 duration-300">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 font-black text-xs uppercase">
+                    <div className="w-10 h-10 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-500 font-black text-xs uppercase">
                       {foundUser.name[0]}
                     </div>
                     <div>
@@ -367,7 +367,7 @@ export default function AdminSettingsPage() {
                       <Switch
                         checked={foundUser.canInternationalTransfer}
                         onCheckedChange={(val) => toggleUserPerm("international", val)}
-                        className="data-[state=checked]:bg-emerald-500 scale-75"
+                        className="data-[state=checked]:bg-indigo-500 scale-75"
                       />
                     </div>
                   </div>
@@ -376,10 +376,10 @@ export default function AdminSettingsPage() {
             </div>
           </Card>
 
-          <Card className="bg-gradient-to-br from-[#003d24] to-[#001c10] border-emerald-500/20 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-emerald-500/10 rounded-full blur-[100px]"></div>
+          <Card className="bg-gradient-to-br from-[#1e293b] to-[#020617] border-indigo-500/20 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-indigo-500/10 rounded-full blur-[100px]"></div>
             <div className="relative z-10 space-y-4">
-              <p className="text-[10px] font-black text-emerald-500 uppercase tracking-widest leading-none">Global Master Key</p>
+              <p className="text-[10px] font-black text-indigo-500 uppercase tracking-widest leading-none">Global Master Key</p>
               <h3 className="text-xl font-black text-white italic tracking-tight italic">System Integrity</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Changes made in this module propagate instantly through our global server architecture. Proceed with highest caution.

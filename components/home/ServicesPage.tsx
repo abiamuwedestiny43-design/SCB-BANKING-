@@ -26,7 +26,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -68,20 +68,20 @@ const ServicesPage: React.FC = () => {
               }
             ].map((service, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
-                  <service.icon className="w-8 h-8 text-green-600" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-6">
+                  <service.icon className="w-8 h-8 text-indigo-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-4">{service.title}</h3>
+                <p className="text-slate-600 mb-6">{service.description}</p>
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <li key={idx} className="flex items-center text-sm text-slate-600">
+                      <CheckCircle className="w-4 h-4 text-indigo-600 mr-2" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <button className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium">
+                <button className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
                   Learn More
                 </button>
               </div>
@@ -91,16 +91,16 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-green-600 text-white">
+      <section className="py-20 bg-indigo-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-green-100 mb-8">
+          <p className="text-xl text-indigo-100 mb-8">
             Contact us today to discuss how we can help you achieve your financial goals
           </p>
           <Link href="/contact">
-            <button className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-indigo-600 px-8 py-4 rounded-lg text-lg font-medium hover:bg-slate-100 transition-colors">
               Schedule a Consultation
             </button>
           </Link>

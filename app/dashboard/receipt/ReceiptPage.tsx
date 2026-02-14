@@ -58,8 +58,8 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
 
       const colors = {
         primary: [0, 28, 16], // Dark Emerald
-        secondary: [16, 185, 129], // Emerald
-        success: [16, 185, 129],
+        secondary: [99, 102, 241], // Emerald
+        success: [99, 102, 241],
         text: [15, 23, 42],
         textMuted: [71, 85, 105],
         textLight: [148, 163, 184],
@@ -78,11 +78,11 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.text("PRIME", margin, 25)
 
       doc.setFont("helvetica", "normal")
-      doc.setTextColor(16, 185, 129)
+      doc.setTextColor(99, 102, 241)
       doc.text("HARBOR", margin + 32, 25)
 
       doc.setFontSize(10)
-      doc.setTextColor(16, 185, 129)
+      doc.setTextColor(99, 102, 241)
       doc.setFont("helvetica", "bold")
       doc.text("SECURE TRANSFER RECEIPT", margin, 32)
 
@@ -163,7 +163,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.text("Sender & Bank Info", margin, y)
       y += 10
 
-      y = addRow("Bank Name", "PrimeHarbor Bank", y)
+      y = addRow("Bank Name", "First State Bank", y)
       y = addRow("Reference No", transfer.txRef, y)
       y = addRow("Transfer Type", transfer.txRegion || "International", y)
 
@@ -220,9 +220,9 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.setFontSize(8)
       doc.setTextColor(...colors.textLight)
       doc.setFont("helvetica", "normal")
-      doc.text("PrimeHarbor Banking System V2.4", pageWidth / 2, footerY + 8, { align: "center" })
-      doc.text("This document is an official record of a financial transfer. Issued by PrimeHarbor Bank.", pageWidth / 2, footerY + 12, { align: "center" })
-      doc.text("PrimeHarbor Bank © 2026 | Secure • Authorized • Verified", pageWidth / 2, footerY + 16, { align: "center" })
+      doc.text("First State Banking System V2.4", pageWidth / 2, footerY + 8, { align: "center" })
+      doc.text("This document is an official record of a financial transfer. Issued by First State Bank.", pageWidth / 2, footerY + 12, { align: "center" })
+      doc.text("First State Bank © 2026 | Secure • Authorized • Verified", pageWidth / 2, footerY + 16, { align: "center" })
 
       // Watermark
       doc.setTextColor(245, 245, 245)
@@ -231,7 +231,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.text("VERIFIED", pageWidth / 2, pageHeight / 2 + 20, { align: "center", angle: 45 })
 
       const timestamp = new Date().toISOString().slice(0, 10)
-      doc.save(`PrimeHarbor_Receipt_${transfer.txRef}_${timestamp}.pdf`)
+      doc.save(`First State_Receipt_${transfer.txRef}_${timestamp}.pdf`)
     } catch (err) {
       console.error("Receipt generation failed:", err)
       alert("System failed to compile receipt protocol.")
@@ -245,10 +245,10 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#001c10] w-full p-6 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
+    <div className="min-h-screen bg-[#020617] w-full p-6 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto space-y-10 relative z-10">
 
@@ -260,7 +260,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
               Dashboard
             </Link>
           </Button>
-          <div className="px-5 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-500 text-[10px] font-black uppercase tracking-widest animate-pulse">
+          <div className="px-5 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-500 text-[10px] font-black uppercase tracking-widest animate-pulse">
             Transfer Completed
           </div>
         </motion.div>
@@ -271,9 +271,9 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
           <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-8">
             <Card className="border border-white/10 shadow-3xl bg-white/[0.03] backdrop-blur-xl rounded-[3rem] overflow-hidden relative group">
               <div className="absolute top-0 right-0 p-8">
-                <div className="h-20 w-20 rounded-3xl bg-black/40 border border-white/10 flex items-center justify-center text-emerald-500 shadow-2xl overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
+                <div className="h-20 w-20 rounded-3xl bg-black/40 border border-white/10 flex items-center justify-center text-indigo-500 shadow-2xl overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
                   <CheckCircle className="h-10 w-10 relative z-10" />
-                  <div className="absolute inset-0 bg-emerald-500/10 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-indigo-500/10 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               </div>
 
@@ -300,24 +300,24 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                 </div>
 
                 {/* Value Metrics */}
-                <div className="p-10 rounded-[2.5rem] bg-emerald-500/[0.03] border border-emerald-500/20 relative overflow-hidden group/value">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-3xl rounded-full -mr-16 -mt-16 group-hover/value:bg-emerald-500/20 transition-colors"></div>
+                <div className="p-10 rounded-[2.5rem] bg-indigo-500/[0.03] border border-indigo-500/20 relative overflow-hidden group/value">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-3xl rounded-full -mr-16 -mt-16 group-hover/value:bg-indigo-500/20 transition-colors"></div>
                   <div className="space-y-8">
                     <div className="flex items-center justify-between">
                       <div className="space-y-1">
-                        <p className="text-[10px] font-black text-emerald-500 uppercase tracking-widest flex items-center gap-2">
-                          <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <p className="text-[10px] font-black text-indigo-500 uppercase tracking-widest flex items-center gap-2">
+                          <div className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse"></div>
                           Amount
                         </p>
                         <p className="text-5xl font-black text-white tracking-tighter">
                           {formatCurrency(transfer.amount, transfer.currency)}
                         </p>
                       </div>
-                      <div className="h-16 w-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500">
+                      <div className="h-16 w-16 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-500">
                         <DollarSign className="h-8 w-8" />
                       </div>
                     </div>
-                    <div className="pt-8 border-t border-emerald-500/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div className="pt-8 border-t border-indigo-500/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                       <div className="space-y-1">
                         <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Service Fee</p>
                         <p className="text-lg font-bold text-slate-400">
@@ -347,7 +347,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                       { label: "Account Holder", value: transfer.bankHolder, icon: User, color: 'text-blue-500' },
                       { label: "Account Number", value: transfer.bankAccount, icon: Hash, color: 'text-orange-500' },
                       { label: "Bank Name", value: transfer.bankName, icon: Building, color: 'text-purple-500' },
-                      { label: "Transfer Type", value: transfer.txRegion, icon: Globe, color: 'text-emerald-500' },
+                      { label: "Transfer Type", value: transfer.txRegion, icon: Globe, color: 'text-indigo-500' },
                     ].map((node, i) => (
                       <div key={i} className="flex items-center gap-4 group/node">
                         <div className={cn("h-10 w-10 shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover/node:bg-white/10", node.color)}>
@@ -366,7 +366,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                 {transfer.txReason && (
                   <div className="p-8 rounded-[2rem] bg-black/40 border border-white/5 space-y-3">
                     <div className="flex items-center gap-2">
-                      <Info className="h-3 w-3 text-emerald-500" />
+                      <Info className="h-3 w-3 text-indigo-500" />
                       <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Description</p>
                     </div>
                     <p className="text-slate-400 font-medium italic lowercase leading-relaxed">
@@ -388,7 +388,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
 
               <div className="space-y-4">
                 <Button
-                  className="w-full h-16 bg-emerald-500 hover:bg-emerald-400 text-[#001c10] font-black rounded-2xl shadow-xl shadow-emerald-500/20 uppercase tracking-tighter text-md transition-all hover:-translate-y-1"
+                  className="w-full h-16 bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black rounded-2xl shadow-xl shadow-indigo-500/20 uppercase tracking-tighter text-md transition-all hover:-translate-y-1"
                   onClick={handleDownload}
                 >
                   <Download className="mr-3 h-5 w-5" />
@@ -401,7 +401,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
 
               <div className="pt-8 border-t border-white/5 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgb(16,185,129)]"></div>
+                  <div className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_8px_rgb(16,185,129)]"></div>
                   <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Compliance Verified</span>
                 </div>
                 <p className="text-[10px] text-slate-700 font-medium leading-relaxed italic">

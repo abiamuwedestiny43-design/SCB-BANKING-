@@ -101,11 +101,11 @@ export default async function AdminTransactionsPage({
     const userDoc = await getCurrentUser()
     if (!userDoc) {
       return (
-        <div className="min-h-screen bg-[#001c10] flex items-center justify-center p-6 text-center">
+        <div className="min-h-screen bg-[#020617] flex items-center justify-center p-6 text-center">
           <div className="space-y-4">
             <h1 className="text-2xl font-black text-white uppercase tracking-widest">Authentication Breach</h1>
             <p className="text-slate-500">Authorized personnel only.</p>
-            <Button asChild className="bg-emerald-500 text-black font-black uppercase tracking-widest text-xs px-8 py-4 rounded-xl">
+            <Button asChild className="bg-indigo-500 text-black font-black uppercase tracking-widest text-xs px-8 py-4 rounded-xl">
               <Link href="/login">Re-authenticate</Link>
             </Button>
           </div>
@@ -135,20 +135,20 @@ export default async function AdminTransactionsPage({
     return (
       <div className="p-4 md:p-10 space-y-10 relative pb-20">
         {/* Background Decor */}
-        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
               <Activity className="w-3 h-3" /> Transaction History
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter">
               Global <span className="text-slate-500 italic font-medium">Transfers</span>
             </h1>
             <p className="text-slate-400 font-medium max-w-xl text-lg leading-relaxed">
-              Monitoring global movement of assets across the PRIMEHARBOR BANK ecosystem. Transaction status and records.
+              Monitoring global movement of assets across the FIRST STATE BANK BANK ecosystem. Transaction status and records.
             </p>
           </div>
 
@@ -165,7 +165,7 @@ export default async function AdminTransactionsPage({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
           {[
             { label: "Total Transactions", value: total, icon: Database, color: "text-blue-400", bg: "bg-blue-500/5", border: "border-blue-500/10" },
-            { label: "Completed", value: successCount, icon: ShieldCheck, color: "text-emerald-400", bg: "bg-emerald-500/5", border: "border-emerald-500/10" },
+            { label: "Completed", value: successCount, icon: ShieldCheck, color: "text-indigo-400", bg: "bg-indigo-500/5", border: "border-indigo-500/10" },
             { label: "Pending Review", value: pendingCount, icon: Clock, color: "text-yellow-400", bg: "bg-yellow-500/5", border: "border-yellow-500/10" },
             { label: "Failed", value: failedCount, icon: Lock, color: "text-red-400", bg: "bg-red-500/5", border: "border-red-500/10" },
           ].map((stat, i) => (
@@ -190,8 +190,8 @@ export default async function AdminTransactionsPage({
             <h2 className="text-2xl font-black text-white italic tracking-tight">Real-Time Data Streams</h2>
             <div className="h-px bg-white/5 flex-1" />
             <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Live Updates</span>
+              <div className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
+              <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Live Updates</span>
             </div>
           </div>
 
@@ -210,7 +210,7 @@ export default async function AdminTransactionsPage({
   } catch (error) {
     console.error("Error in AdminTransactionsPage:", error)
     return (
-      <div className="min-h-screen bg-[#001c10] flex items-center justify-center p-6 text-center">
+      <div className="min-h-screen bg-[#020617] flex items-center justify-center p-6 text-center">
         <div className="space-y-6">
           <div className="w-20 h-20 bg-red-500/10 border border-red-500/20 rounded-full flex items-center justify-center mx-auto">
             <Lock className="w-10 h-10 text-red-500" />

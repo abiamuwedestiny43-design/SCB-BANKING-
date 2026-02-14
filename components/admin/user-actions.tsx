@@ -149,7 +149,7 @@ export default function UserActions({ userId }: UserActionsProps) {
             e.stopPropagation()
             setMenuOpen(!menuOpen)
           }}
-          className="h-10 px-4 rounded-xl bg-white/5 hover:bg-emerald-500/10 text-slate-400 hover:text-emerald-500 border border-white/5 hover:border-emerald-500/20 transition-all gap-2 font-black uppercase tracking-widest text-[10px] relative z-[40]"
+          className="h-10 px-4 rounded-xl bg-white/5 hover:bg-indigo-500/10 text-slate-400 hover:text-indigo-500 border border-white/5 hover:border-indigo-500/20 transition-all gap-2 font-black uppercase tracking-widest text-[10px] relative z-[40]"
         >
           <Cpu className="h-3 w-3" /> Protocols
         </Button>
@@ -169,14 +169,14 @@ export default function UserActions({ userId }: UserActionsProps) {
                 top: activeBtn ? activeBtn.getBoundingClientRect().bottom + 8 : 0,
                 right: activeBtn ? window.innerWidth - activeBtn.getBoundingClientRect().right : 0,
               }}
-              className="w-56 bg-[#001c10] border border-emerald-500/20 backdrop-blur-xl rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-[101] animate-in fade-in zoom-in-95 duration-200"
+              className="w-56 bg-[#020617] border border-indigo-500/20 backdrop-blur-xl rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-[101] animate-in fade-in zoom-in-95 duration-200"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => handleAction("view")}
                 className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-white hover:bg-white/5 transition-colors text-left"
               >
-                <Edit className="h-4 w-4 text-emerald-500" />
+                <Edit className="h-4 w-4 text-indigo-500" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Edit Metadata</span>
               </button>
 
@@ -184,9 +184,9 @@ export default function UserActions({ userId }: UserActionsProps) {
 
               <button
                 onClick={() => handleAction("credit")}
-                className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-white hover:bg-emerald-500/10 transition-colors group text-left"
+                className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-white hover:bg-indigo-500/10 transition-colors group text-left"
               >
-                <ArrowUpRight className="h-4 w-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+                <ArrowUpRight className="h-4 w-4 text-indigo-400 group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Credit Assets</span>
               </button>
 
@@ -204,7 +204,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                 onClick={() => handleAction("approve")}
                 className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-white hover:bg-white/5 transition-colors text-left"
               >
-                <CheckCircle className="h-4 w-4 text-emerald-500" />
+                <CheckCircle className="h-4 w-4 text-indigo-500" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Approve Account</span>
               </button>
 
@@ -221,19 +221,19 @@ export default function UserActions({ userId }: UserActionsProps) {
       </div>
 
       <Dialog open={txOpen} onOpenChange={setTxOpen}>
-        <DialogContent className="sm:max-w-md bg-[#001c10] border-emerald-500/20 text-white rounded-[2.5rem] overflow-hidden p-0 shadow-3xl">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <DialogContent className="sm:max-w-md bg-[#020617] border-indigo-500/20 text-white rounded-[2.5rem] overflow-hidden p-0 shadow-3xl">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="p-8 space-y-8 relative z-10">
             <DialogHeader>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[9px] font-black uppercase tracking-[0.2em] mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[9px] font-black uppercase tracking-[0.2em] mb-4">
                 <Zap className="w-3 h-3" /> Asset Migration Protocol
               </div>
               <DialogTitle className="text-3xl font-black italic tracking-tighter flex items-center gap-3">
                 {txType === "credit" ? (
                   <>
-                    <ArrowUpRight className="w-8 h-8 text-emerald-500" />
-                    Asset <span className="text-emerald-500">Credit</span>
+                    <ArrowUpRight className="w-8 h-8 text-indigo-500" />
+                    Asset <span className="text-indigo-500">Credit</span>
                   </>
                 ) : (
                   <>
@@ -252,7 +252,7 @@ export default function UserActions({ userId }: UserActionsProps) {
 
             {txSuccess ? (
               <div className="py-12 flex flex-col items-center justify-center space-y-6 text-center animate-in zoom-in-95 duration-300">
-                <div className="w-20 h-20 rounded-full bg-emerald-500 flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+                <div className="w-20 h-20 rounded-full bg-indigo-500 flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.5)]">
                   <CheckCircle className="w-10 h-10 text-black" />
                 </div>
                 <div>
@@ -272,9 +272,9 @@ export default function UserActions({ userId }: UserActionsProps) {
                       value={txAmount}
                       onChange={(e) => setTxAmount(e.target.value)}
                       placeholder="0.00"
-                      className="bg-white/5 border-white/10 rounded-2xl h-14 text-2xl font-black text-white focus:border-emerald-500 transition-all pl-10"
+                      className="bg-white/5 border-white/10 rounded-2xl h-14 text-2xl font-black text-white focus:border-indigo-500 transition-all pl-10"
                     />
-                    <DollarSign className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-emerald-500/50" />
+                    <DollarSign className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-indigo-500/50" />
                   </div>
                 </div>
 
@@ -284,7 +284,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                     <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
                       <SelectValue placeholder="Select currency" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                    <SelectContent className="bg-[#020617] border-white/10 text-white">
                       <SelectItem value="USD">USD — US Dollar</SelectItem>
                       <SelectItem value="EUR">EUR — Euro</SelectItem>
                       <SelectItem value="GBP">GBP — British Pound</SelectItem>
@@ -316,7 +316,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                     onClick={submitTransaction}
                     disabled={isLoading}
                     className={`flex-1 h-12 rounded-xl font-black uppercase tracking-widest text-[10px] shadow-xl ${txType === 'credit'
-                      ? 'bg-emerald-500 hover:bg-emerald-400 text-black shadow-emerald-500/20'
+                      ? 'bg-indigo-500 hover:bg-indigo-400 text-black shadow-indigo-500/20'
                       : 'bg-blue-500 hover:bg-blue-400 text-white shadow-blue-500/20'
                       }`}
                   >

@@ -19,8 +19,8 @@ export default function InvestmentServicesPage() {
       description: "Evidence-based allocation with periodic rebalancing and automated tax-aware placement strategies.",
       icon: GanttChartSquare,
       image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
-      color: "text-emerald-500",
-      bg: "bg-emerald-500/10"
+      color: "text-indigo-500",
+      bg: "bg-indigo-500/10"
     },
     {
       title: "Wealth Preservation",
@@ -39,14 +39,14 @@ export default function InvestmentServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#001c10] text-slate-200 selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-[#020617] text-slate-200 selection:bg-indigo-500/30">
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-32">
         <div
           className="absolute inset-0 bg-fixed bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&q=80')" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#001c10]/80 via-[#001c10]/60 to-[#001c10]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/80 via-[#020617]/60 to-[#020617]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center space-y-8">
@@ -56,11 +56,11 @@ export default function InvestmentServicesPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
               <TrendingUp className="w-3 h-3" /> Capital Management
             </div>
             <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter lowercase">
-              investment <span className="text-emerald-500 italic">services</span>
+              investment <span className="text-indigo-500 italic">services</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-400 font-medium">
               Disciplined portfolios, evidence-based strategies, and tax-aware sequencing for long-term growth.
@@ -73,7 +73,7 @@ export default function InvestmentServicesPage() {
             transition={{ delay: 0.5, duration: 1 }}
             className="flex flex-wrap justify-center gap-4 pt-8"
           >
-            <Button size="lg" className="bg-emerald-500 hover:bg-emerald-400 text-[#001c10] font-black px-10 h-16 rounded-2xl shadow-xl shadow-emerald-500/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black px-10 h-16 rounded-2xl shadow-xl shadow-indigo-500/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Start Investing</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white/10 bg-white/5 hover:bg-white/10 text-white font-black px-10 h-16 rounded-2xl backdrop-blur-md text-lg uppercase tracking-tight" asChild>
@@ -83,8 +83,8 @@ export default function InvestmentServicesPage() {
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-emerald-500" />
-          <p className="text-[10px] font-black uppercase tracking-widest text-emerald-500">Scroll Down</p>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-indigo-500" />
+          <p className="text-[10px] font-black uppercase tracking-widest text-indigo-500">Scroll Down</p>
         </div>
       </section>
 
@@ -94,7 +94,7 @@ export default function InvestmentServicesPage() {
           <div className="grid lg:grid-cols-12 gap-20 items-center">
             <motion.div {...fadeInUp} className="lg:col-span-6 space-y-10">
               <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-tight">
-                Compounding <br /><span className="text-emerald-500">Human Capital</span>
+                Compounding <br /><span className="text-indigo-500">Human Capital</span>
               </h2>
               <div className="space-y-6 text-lg text-slate-400 font-medium leading-relaxed">
                 <p>
@@ -113,20 +113,20 @@ export default function InvestmentServicesPage() {
                   <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Asset Classes</p>
                 </div>
                 <div className="space-y-1 text-center">
-                  <p className="text-3xl font-black text-emerald-500 tracking-tighter">24/7</p>
+                  <p className="text-3xl font-black text-indigo-500 tracking-tighter">24/7</p>
                   <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Market Watch</p>
                 </div>
               </div>
             </motion.div>
 
             <motion.div {...fadeInUp} className="lg:col-span-6 relative">
-              <div className="absolute -inset-10 bg-emerald-500/10 blur-[100px] rounded-full opacity-20" />
+              <div className="absolute -inset-10 bg-indigo-500/10 blur-[100px] rounded-full opacity-20" />
               <div className="relative p-8 rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-md space-y-8 shadow-3xl overflow-hidden group">
                 <div className="flex items-center justify-between mb-8">
-                  <div className="h-12 w-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20">
+                  <div className="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 border border-indigo-500/20">
                     <BarChart4 className="w-6 h-6" />
                   </div>
-                  <p className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Live Flux Output</p>
+                  <p className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Live Flux Output</p>
                 </div>
                 <div className="space-y-3">
                   <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
@@ -134,7 +134,7 @@ export default function InvestmentServicesPage() {
                       initial={{ width: 0 }}
                       whileInView={{ width: "70%" }}
                       transition={{ duration: 1.5, ease: "easeOut" }}
-                      className="h-full bg-emerald-500"
+                      className="h-full bg-indigo-500"
                     />
                   </div>
                   <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
@@ -186,7 +186,7 @@ export default function InvestmentServicesPage() {
                     <h3 className="text-3xl font-black text-white tracking-tighter">{feature.title}</h3>
                     <p className="text-slate-400 font-medium leading-relaxed max-w-sm">{feature.description}</p>
                   </div>
-                  <Button variant="ghost" className="text-emerald-500 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
+                  <Button variant="ghost" className="text-indigo-500 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
                     Learn More <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
@@ -207,7 +207,7 @@ export default function InvestmentServicesPage() {
                 transition={{ delay: i * 0.1 }}
                 className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all group"
               >
-                <div className="h-12 w-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-8 border border-emerald-500/20 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-500/10">
+                <div className="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 mb-8 border border-indigo-500/20 group-hover:scale-110 transition-transform shadow-lg shadow-indigo-500/10">
                   <m.icon className="w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-black text-white lowercase tracking-tighter mb-2">{m.title}</h4>
@@ -219,22 +219,22 @@ export default function InvestmentServicesPage() {
       </section>
 
       {/* CTA section */}
-      <section className="py-32 relative overflow-hidden bg-gradient-to-b from-transparent to-[#00130b]">
+      <section className="py-32 relative overflow-hidden bg-gradient-to-b from-transparent to-[#0f172a]">
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-12">
           <motion.div {...fadeInUp} className="space-y-4">
             <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter">
-              Start Scaling your <span className="text-emerald-500 italic">Net Worth</span>
+              Start Scaling your <span className="text-indigo-500 italic">Net Worth</span>
             </h2>
             <p className="text-xl text-slate-400 font-medium">
-              Join the upper echelon of investors who leverage the PrimeHarbor investment platform.
+              Join the upper echelon of investors who leverage the First State investment platform.
             </p>
           </motion.div>
 
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="flex justify-center flex-wrap gap-6">
-            <Button size="lg" className="bg-emerald-500 text-[#001c10] hover:bg-emerald-400 font-black px-12 h-16 rounded-2xl shadow-xl shadow-emerald-500/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-indigo-500 text-[#020617] hover:bg-indigo-400 font-black px-12 h-16 rounded-2xl shadow-xl shadow-indigo-500/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Open Account</Link>
             </Button>
-            <Button size="lg" variant="ghost" className="text-emerald-500 font-black px-12 h-16 rounded-2xl border border-emerald-500/20 hover:bg-emerald-500/10 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" variant="ghost" className="text-indigo-500 font-black px-12 h-16 rounded-2xl border border-indigo-500/20 hover:bg-indigo-500/10 text-lg uppercase tracking-tight" asChild>
               <Link href="/contact">Financial Planning</Link>
             </Button>
           </motion.div>

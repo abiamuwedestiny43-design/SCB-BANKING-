@@ -1,6 +1,6 @@
 export default function FinancialPlanningPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
       <section
         className="relative h-[400px] md:h-[580px] w-full mb-8 flex items-center justify-center text-center overflow-hidden"
@@ -29,7 +29,7 @@ export default function FinancialPlanningPage() {
               className="w-full h-44 object-cover rounded-md mb-4"
             />
             <h3 className="text-xl font-semibold mb-2">Tax & Estate</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Coordinate investment location, tax-loss harvesting, and estate documentation. Protect family members and
               reduce friction during life's transitions.
             </p>
@@ -41,7 +41,7 @@ export default function FinancialPlanningPage() {
               className="w-full h-44 object-cover rounded-md mb-4"
             />
             <h3 className="text-xl font-semibold mb-2">Education Funding</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Model future costs and contribution paths with realistic assumptions. Set up flexible strategies that
               adapt as life evolves.
             </p>
@@ -51,19 +51,19 @@ export default function FinancialPlanningPage() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="p-6 bg-white rounded-lg shadow animate-zoom-in">
             <h4 className="font-semibold mb-2">Holistic View</h4>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Connect income, spending, savings, and investments into one coherent plan.
             </p>
           </div>
           <div className="p-6 bg-white rounded-lg shadow animate-zoom-in animation-delay-100">
             <h4 className="font-semibold mb-2">Milestones</h4>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Plan for home purchases, family growth, career shifts, and retirement timing with confidence.
             </p>
           </div>
           <div className="p-6 bg-white rounded-lg shadow animate-zoom-in animation-delay-200">
             <h4 className="font-semibold mb-2">Accountability</h4>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Periodic check-ins and dashboards keep your goals visible and your progress on track.
             </p>
           </div>

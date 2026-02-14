@@ -19,17 +19,17 @@ export default async function SecurityPage() {
   const auditLogs = getAuditLogs(user._id.toString(), 10)
 
   return (
-    <div className="min-h-screen bg-[#001c10] w-full p-6 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
+    <div className="min-h-screen bg-[#020617] w-full p-6 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto space-y-12 relative z-10">
 
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/5">
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-emerald-500 font-black uppercase tracking-widest text-[10px] px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 w-fit rounded-full">
+            <div className="flex items-center gap-2 text-indigo-500 font-black uppercase tracking-widest text-[10px] px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 w-fit rounded-full">
               <Shield className="h-3 w-3" />
               Security
             </div>
@@ -43,10 +43,10 @@ export default async function SecurityPage() {
         {/* Security Status Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md rounded-[2.5rem] overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <CardHeader className="p-8 border-b border-white/5">
               <CardTitle className="text-2xl font-black text-white lowercase tracking-tighter flex items-center gap-3">
-                <Shield className="h-5 w-5 text-emerald-500" />
+                <Shield className="h-5 w-5 text-indigo-500" />
                 Account <span className="text-slate-500 italic">Status</span>
               </CardTitle>
             </CardHeader>
@@ -59,10 +59,10 @@ export default async function SecurityPage() {
                 { label: "Local Transfers", value: localEnabled ? "Enabled" : "Disabled", active: localEnabled },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between group/row">
-                  <span className="text-slate-400 font-bold lowercase text-sm group-hover/row:text-emerald-500 transition-colors">{item.label}</span>
+                  <span className="text-slate-400 font-bold lowercase text-sm group-hover/row:text-indigo-500 transition-colors">{item.label}</span>
                   <Badge className={cn(
                     "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border transition-all",
-                    item.active ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" : "bg-red-500/10 text-red-500 border-red-500/20"
+                    item.active ? "bg-indigo-500/10 text-indigo-500 border-indigo-500/20" : "bg-red-500/10 text-red-500 border-red-500/20"
                   )}>
                     {item.value}
                   </Badge>
@@ -81,17 +81,17 @@ export default async function SecurityPage() {
             </CardHeader>
             <CardContent className="p-8 space-y-6">
               {[
-                { label: "PIN Protection", value: "Active", active: true, color: 'emerald' },
-                { label: "Notifications", value: "Enabled", active: true, color: 'emerald' },
+                { label: "PIN Protection", value: "Active", active: true, color: 'indigo' },
+                { label: "Notifications", value: "Enabled", active: true, color: 'indigo' },
                 { label: "Session Timeout", value: "7 Days", active: true, color: 'blue' },
-                { label: "App Status", value: "Online", active: true, color: 'emerald' },
+                { label: "App Status", value: "Online", active: true, color: 'indigo' },
                 { label: "Privacy Mode", value: "Standard", active: false, color: 'slate' },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between group/row">
                   <span className="text-slate-400 font-bold lowercase text-sm group-hover/row:text-blue-500 transition-colors">{item.label}</span>
                   <Badge className={cn(
                     "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border transition-all",
-                    item.active ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" : "bg-white/5 text-slate-500 border-white/10"
+                    item.active ? "bg-indigo-500/10 text-indigo-500 border-indigo-500/20" : "bg-white/5 text-slate-500 border-white/10"
                   )}>
                     {item.value}
                   </Badge>
@@ -103,12 +103,12 @@ export default async function SecurityPage() {
 
         {/* Recent Activity */}
         <Card className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md rounded-[3rem] overflow-hidden relative group">
-          <div className="absolute inset-0 bg-emerald-500/[0.01] pointer-events-none"></div>
+          <div className="absolute inset-0 bg-indigo-500/[0.01] pointer-events-none"></div>
           <CardHeader className="p-10 border-b border-white/5">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="space-y-1">
                 <CardTitle className="text-3xl font-black text-white lowercase tracking-tighter flex items-center gap-4">
-                  <Clock className="h-6 w-6 text-emerald-500" />
+                  <Clock className="h-6 w-6 text-indigo-500" />
                   Activity <span className="text-slate-500 italic">Logs</span>
                 </CardTitle>
                 <CardDescription className="text-slate-500 font-medium">Recent login and security activity.</CardDescription>
@@ -126,7 +126,7 @@ export default async function SecurityPage() {
                     <div className="flex items-center gap-6 w-full md:w-auto">
                       <div className={cn(
                         "h-14 w-14 rounded-2xl flex items-center justify-center border shadow-2xl transition-transform group-hover/log:scale-110",
-                        log.success ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-500" : "bg-red-500/10 border-red-500/20 text-red-500"
+                        log.success ? "bg-indigo-500/10 border-indigo-500/20 text-indigo-500" : "bg-red-500/10 border-red-500/20 text-red-500"
                       )}>
                         <Shield className="h-6 w-6" />
                       </div>
@@ -146,7 +146,7 @@ export default async function SecurityPage() {
                     </div>
                     <Badge className={cn(
                       "mt-4 md:mt-0 px-5 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all",
-                      log.success ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" : "bg-red-500/10 text-red-500 border-red-500/20"
+                      log.success ? "bg-indigo-500/10 text-indigo-500 border-indigo-500/20" : "bg-red-500/10 text-red-500 border-red-500/20"
                     )}>
                       {log.success ? "Authorized" : "Denied"}
                     </Badge>

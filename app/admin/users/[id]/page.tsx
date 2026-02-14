@@ -60,7 +60,7 @@ export default async function UserDetailsPage({ params }: { params: { id: string
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-50">
@@ -71,7 +71,7 @@ export default async function UserDetailsPage({ params }: { params: { id: string
             </Link>
           </Button>
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
               <UserIcon className="w-3 h-3" /> User Profile
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
@@ -91,7 +91,7 @@ export default async function UserDetailsPage({ params }: { params: { id: string
         </div>
       </div>
 
-      <Suspense fallback={<div className="text-emerald-500 font-black animate-pulse">LOADING USER DATA...</div>}>
+      <Suspense fallback={<div className="text-indigo-500 font-black animate-pulse">LOADING USER DATA...</div>}>
         <UserDetailsContent userId={params.id} />
       </Suspense>
     </div>
@@ -110,7 +110,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
           <CardHeader className="p-10 border-b border-white/5 bg-white/[0.01]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="flex items-center gap-6">
-                <div className="w-20 h-20 rounded-[2rem] bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-4xl font-black overflow-hidden">
+                <div className="w-20 h-20 rounded-[2rem] bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-4xl font-black overflow-hidden">
                   {user.profileImage ? (
                     <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
@@ -121,7 +121,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                   <h2 className="text-3xl font-black text-white uppercase tracking-tight">{user.name}</h2>
                   <div className="flex gap-2 mt-2">
                     {user.roles.map((role) => (
-                      <Badge key={role} className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 text-[9px] font-black uppercase tracking-widest">
+                      <Badge key={role} className="bg-indigo-500/10 text-indigo-500 border-indigo-500/20 text-[9px] font-black uppercase tracking-widest">
                         {role}
                       </Badge>
                     ))}
@@ -137,7 +137,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
           <CardContent className="p-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-8">
-                <h3 className="text-sm font-black text-emerald-400 uppercase tracking-[0.2em] mb-4">Account Details</h3>
+                <h3 className="text-sm font-black text-indigo-400 uppercase tracking-[0.2em] mb-4">Account Details</h3>
                 {[
                   { label: "Email Address", value: user.email, icon: Mail },
                   { label: "Account Number", value: user.bankNumber, icon: CreditCard, mono: true },
@@ -148,7 +148,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                     <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-2">
                       <item.icon className="w-3 h-3" /> {item.label}
                     </p>
-                    <p className={`text-sm font-bold text-white ${item.mono ? 'font-mono tracking-widest text-emerald-500' : ''}`}>{item.value}</p>
+                    <p className={`text-sm font-bold text-white ${item.mono ? 'font-mono tracking-widest text-indigo-500' : ''}`}>{item.value}</p>
                   </div>
                 ))}
               </div>
@@ -193,7 +193,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                   {user.transfers.map((transfer) => (
                     <tr key={transfer.id} className="hover:bg-white/[0.02] transition-colors group">
                       <td className="px-10 py-4">
-                        <Badge className={`uppercase text-[9px] font-black px-2 py-0.5 rounded-lg ${transfer.txStatus === 'success' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20Shadow' : 'bg-red-500/10 text-red-500 border-red-500/20Shadow'}`}>
+                        <Badge className={`uppercase text-[9px] font-black px-2 py-0.5 rounded-lg ${transfer.txStatus === 'success' ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20Shadow' : 'bg-red-500/10 text-red-500 border-red-500/20Shadow'}`}>
                           {transfer.txStatus}
                         </Badge>
                       </td>
@@ -223,11 +223,11 @@ async function UserDetailsContent({ userId }: { userId: string }) {
 
       {/* Side Integrity Panel */}
       <div className="space-y-8">
-        <Card className="bg-gradient-to-br from-[#003d24] to-[#001c10] border-emerald-500/20 rounded-[2.5rem] p-10 overflow-hidden relative shadow-3xl">
-          <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-emerald-500/10 rounded-full blur-[100px]"></div>
+        <Card className="bg-gradient-to-br from-[#1e293b] to-[#020617] border-indigo-500/20 rounded-[2.5rem] p-10 overflow-hidden relative shadow-3xl">
+          <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-indigo-500/10 rounded-full blur-[100px]"></div>
           <div className="relative z-10 space-y-8">
             <div className="space-y-1">
-              <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Total Balance</p>
+              <p className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Total Balance</p>
               <p className="text-4xl sm:text-5xl font-black text-white tracking-tighter">
                 {formatCurrency(user.balance, user.currency)}
               </p>
@@ -240,7 +240,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 rounded-2xl bg-black/20 border border-white/5">
                   <span className="text-xs font-black text-white uppercase tracking-widest">Verified</span>
-                  <Badge className={user.verified ? "bg-emerald-500 text-black font-black" : "bg-red-500 text-white font-black"}>
+                  <Badge className={user.verified ? "bg-indigo-500 text-black font-black" : "bg-red-500 text-white font-black"}>
                     {user.verified ? "YES" : "NO"}
                   </Badge>
                 </div>
@@ -252,13 +252,13 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-2xl bg-black/20 border border-white/5">
                   <span className="text-xs font-black text-white uppercase tracking-widest">Local Transfer</span>
-                  <Badge className={user.canLocalTransfer ? "bg-emerald-500 text-black font-black" : "bg-slate-700 text-slate-400 font-black"}>
+                  <Badge className={user.canLocalTransfer ? "bg-indigo-500 text-black font-black" : "bg-slate-700 text-slate-400 font-black"}>
                     {user.canLocalTransfer ? "ALLOWED" : "LOCKED"}
                   </Badge>
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-2xl bg-black/20 border border-white/5">
                   <span className="text-xs font-black text-white uppercase tracking-widest">Intl Transfer</span>
-                  <Badge className={user.canInternationalTransfer ? "bg-emerald-500 text-black font-black" : "bg-slate-700 text-slate-400 font-black"}>
+                  <Badge className={user.canInternationalTransfer ? "bg-indigo-500 text-black font-black" : "bg-slate-700 text-slate-400 font-black"}>
                     {user.canInternationalTransfer ? "ALLOWED" : "LOCKED"}
                   </Badge>
                 </div>
@@ -266,7 +266,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
             </div>
 
             <div className="pt-10 border-t border-white/5">
-              <div className="flex items-center gap-3 text-emerald-500/50">
+              <div className="flex items-center gap-3 text-indigo-500/50">
                 <Clock className="w-4 h-4" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Customer Since {new Date(user.registerTime).getFullYear()}</span>
               </div>
@@ -277,7 +277,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
         {/* System Advisory */}
         <Card className="bg-white/[0.03] border-white/5 rounded-[2.5rem] p-8 space-y-4 relative">
           <h3 className="text-sm font-black text-white italic tracking-tight">System Status</h3>
-          <p className="text-xs text-slate-500 leading-relaxed italic border-l-2 border-emerald-500/30 pl-4">
+          <p className="text-xs text-slate-500 leading-relaxed italic border-l-2 border-indigo-500/30 pl-4">
             "Account status is normal. All logins originated from verified locations."
           </p>
         </Card>

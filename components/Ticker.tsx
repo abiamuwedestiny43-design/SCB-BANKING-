@@ -78,10 +78,10 @@ const Ticker = () => {
     const displayItems = [...repeatedItems, ...repeatedItems]
 
     return (
-        <div className="h-10 w-full bg-[#001c10]/95 backdrop-blur-md border-b border-emerald-500/10 flex items-center overflow-hidden z-[60] fixed top-0">
-            <div className="flex items-center gap-4 px-6 border-r border-emerald-500/20 bg-[#001c10] z-20 shrink-0">
-                <Activity className="w-4 h-4 text-emerald-500 animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500/70">Live Market</span>
+        <div className="h-10 w-full bg-[#020617]/95 backdrop-blur-md border-b border-indigo-500/10 flex items-center overflow-hidden z-[60] fixed top-0">
+            <div className="flex items-center gap-4 px-6 border-r border-indigo-500/20 bg-[#020617] z-20 shrink-0">
+                <Activity className="w-4 h-4 text-indigo-500 animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-500/70">Live Market</span>
             </div>
 
             <div className="flex-1 overflow-hidden relative">
@@ -95,7 +95,7 @@ const Ticker = () => {
                                     <span className="text-[11px] font-bold text-slate-400">{item.label}</span>
                                     <span className="text-xs font-mono font-bold text-white tracking-wider">${item.price}</span>
                                 </div>
-                                <div className={`flex items-center gap-1 text-[10px] font-bold ${item.change >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                                <div className={`flex items-center gap-1 text-[10px] font-bold ${item.change >= 0 ? 'text-indigo-400' : 'text-rose-400'}`}>
                                     {item.change >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
                                     <span>{Math.abs(item.change).toFixed(2)}%</span>
                                 </div>

@@ -103,14 +103,14 @@ export default function ApplyForLoanPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#001c10] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
+    <div className="min-h-screen bg-[#020617] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-3xl mx-auto space-y-10 relative z-10">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-emerald-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 w-fit rounded-full">
+          <div className="flex items-center gap-2 text-indigo-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 w-fit rounded-full">
             <Calculator className="h-3 w-3" />
             Capital Acquisition
           </div>
@@ -123,16 +123,16 @@ export default function ApplyForLoanPage() {
         {message && (
           <Alert className={cn(
             "border-none shadow-2xl backdrop-blur-md rounded-2xl p-6",
-            message.type === 'success' ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-red-500/10 border-red-500/20'
+            message.type === 'success' ? 'bg-indigo-500/10 border-indigo-500/20' : 'bg-red-500/10 border-red-500/20'
           )}>
             {message.type === 'success' ? (
-              <CheckCircle className="h-6 w-6 text-emerald-500" />
+              <CheckCircle className="h-6 w-6 text-indigo-500" />
             ) : (
               <AlertCircle className="h-6 w-6 text-red-500" />
             )}
             <AlertDescription className={cn(
               "font-bold text-base ml-2",
-              message.type === 'success' ? 'text-emerald-400' : 'text-red-400'
+              message.type === 'success' ? 'text-indigo-400' : 'text-red-400'
             )}>
               {message.text}
             </AlertDescription>
@@ -141,7 +141,7 @@ export default function ApplyForLoanPage() {
 
         <Card className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md rounded-[2.5rem] overflow-hidden">
           <CardHeader className="p-8 md:p-10 border-b border-white/5 space-y-2">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">Protocol Initialization</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-500">Protocol Initialization</p>
             <CardTitle className="text-3xl font-black text-white lowercase">Application <span className="text-slate-500 italic">Parameters</span></CardTitle>
             <CardDescription className="text-slate-400 font-medium">Please provide precise operational data for rapid authorization processing.</CardDescription>
           </CardHeader>
@@ -150,12 +150,12 @@ export default function ApplyForLoanPage() {
             <div className="space-y-4">
               <Label htmlFor="loanType" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Select Protocol Class</Label>
               <Select value={formData.loanType} onValueChange={(value) => setFormData({ ...formData, loanType: value })}>
-                <SelectTrigger className="h-16 bg-black/40 border-white/10 rounded-2xl text-white font-bold px-6 focus:ring-emerald-500/40">
+                <SelectTrigger className="h-16 bg-black/40 border-white/10 rounded-2xl text-white font-bold px-6 focus:ring-indigo-500/40">
                   <SelectValue placeholder="Select functional class" />
                 </SelectTrigger>
-                <SelectContent className="bg-[#001c10] border-white/10 text-white rounded-2xl shadow-2xl">
+                <SelectContent className="bg-[#020617] border-white/10 text-white rounded-2xl shadow-2xl">
                   {loanTypes.map((type) => (
-                    <SelectItem key={type.value} value={type.value} className="focus:bg-emerald-500/10 focus:text-emerald-400 py-4 rounded-xl cursor-pointer">
+                    <SelectItem key={type.value} value={type.value} className="focus:bg-indigo-500/10 focus:text-indigo-400 py-4 rounded-xl cursor-pointer">
                       <div className="space-y-1">
                         <div className="font-black text-sm uppercase tracking-tight">{type.label}</div>
                         <div className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">{type.description}</div>
@@ -173,12 +173,12 @@ export default function ApplyForLoanPage() {
                   Principal Amount <span className="text-slate-600 block text-[9px] mt-1 italic capitalize">Range: {loanDetails?.minAmount.toLocaleString() || '0'} - {loanDetails?.maxAmount.toLocaleString() || '0'} USD</span>
                 </Label>
                 <div className="relative">
-                  <DollarSign className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-emerald-500" />
+                  <DollarSign className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-indigo-500" />
                   <Input
                     id="amount"
                     type="number"
                     placeholder="0.00"
-                    className="h-16 pl-14 bg-black/40 border-white/10 rounded-2xl text-white font-black text-xl focus:ring-emerald-500/40 placeholder:text-white/5"
+                    className="h-16 pl-14 bg-black/40 border-white/10 rounded-2xl text-white font-black text-xl focus:ring-indigo-500/40 placeholder:text-white/5"
                     value={formData.amount}
                     onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
                   />
@@ -195,7 +195,7 @@ export default function ApplyForLoanPage() {
                     id="duration"
                     type="number"
                     placeholder="0"
-                    className="h-16 pl-14 bg-black/40 border-white/10 rounded-2xl text-white font-black text-xl focus:ring-emerald-500/40 placeholder:text-white/5"
+                    className="h-16 pl-14 bg-black/40 border-white/10 rounded-2xl text-white font-black text-xl focus:ring-indigo-500/40 placeholder:text-white/5"
                     value={formData.duration}
                     onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
                   />
@@ -208,20 +208,20 @@ export default function ApplyForLoanPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-emerald-500/5 border border-emerald-500/20 p-8 rounded-[2rem] shadow-inner relative overflow-hidden"
+                className="bg-indigo-500/5 border border-indigo-500/20 p-8 rounded-[2rem] shadow-inner relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="h-8 w-8 bg-emerald-500/20 rounded-lg flex items-center justify-center border border-emerald-500/30">
-                    <Calculator className="h-4 w-4 text-emerald-500" />
+                  <div className="h-8 w-8 bg-indigo-500/20 rounded-lg flex items-center justify-center border border-indigo-500/30">
+                    <Calculator className="h-4 w-4 text-indigo-500" />
                   </div>
-                  <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Projection Engine</span>
+                  <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em]">Projection Engine</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
                   <div className="space-y-1">
                     <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none mb-1">Interest Rate</div>
-                    <div className="text-2xl font-black text-white">{loanDetails.interestRate}<span className="text-emerald-500 italic">%</span></div>
+                    <div className="text-2xl font-black text-white">{loanDetails.interestRate}<span className="text-indigo-500 italic">%</span></div>
                   </div>
                   <div className="space-y-1">
                     <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none mb-1">Monthly Cost</div>
@@ -233,7 +233,7 @@ export default function ApplyForLoanPage() {
                     <Button
                       onClick={handleCalculate}
                       disabled={!formData.amount || !formData.duration}
-                      className="h-12 px-6 bg-emerald-500 hover:bg-emerald-400 text-[#001c10] font-black rounded-xl shadow-lg shadow-emerald-500/20 text-xs uppercase tracking-widest"
+                      className="h-12 px-6 bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black rounded-xl shadow-lg shadow-indigo-500/20 text-xs uppercase tracking-widest"
                     >
                       Process Feed
                     </Button>
@@ -251,9 +251,9 @@ export default function ApplyForLoanPage() {
                     <SelectTrigger className="h-16 bg-black/40 border-white/10 rounded-2xl text-white font-bold px-6">
                       <SelectValue placeholder="Status identifier" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#001c10] border-white/10 text-white rounded-2xl shadow-2xl">
+                    <SelectContent className="bg-[#020617] border-white/10 text-white rounded-2xl shadow-2xl">
                       {employmentStatuses.map((status) => (
-                        <SelectItem key={status.value} value={status.value} className="focus:bg-emerald-500/10 focus:text-emerald-400 py-4 rounded-xl cursor-pointer">
+                        <SelectItem key={status.value} value={status.value} className="focus:bg-indigo-500/10 focus:text-indigo-400 py-4 rounded-xl cursor-pointer">
                           <span className="font-bold text-xs uppercase tracking-widest">{status.label}</span>
                         </SelectItem>
                       ))}
@@ -264,7 +264,7 @@ export default function ApplyForLoanPage() {
                 <div className="space-y-4">
                   <Label htmlFor="annualIncome" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Annual Gross Velocity</Label>
                   <div className="relative">
-                    <TrendingUp className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-emerald-500" />
+                    <TrendingUp className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-indigo-500" />
                     <Input
                       id="annualIncome"
                       type="number"
@@ -296,7 +296,7 @@ export default function ApplyForLoanPage() {
                 <Textarea
                   id="purpose"
                   placeholder="Define the primary objective for this capital procurement..."
-                  className="min-h-[150px] bg-black/40 border-white/10 rounded-2xl text-white font-medium p-6 focus:ring-emerald-500/40 resize-none"
+                  className="min-h-[150px] bg-black/40 border-white/10 rounded-2xl text-white font-medium p-6 focus:ring-indigo-500/40 resize-none"
                   value={formData.purpose}
                   onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
                 />
@@ -315,7 +315,7 @@ export default function ApplyForLoanPage() {
               <Button
                 onClick={handleApply}
                 disabled={isSubmitting}
-                className="h-16 flex-[2] bg-emerald-500 hover:bg-emerald-400 text-[#001c10] font-black rounded-2xl shadow-xl shadow-emerald-500/20 text-lg uppercase tracking-tight"
+                className="h-16 flex-[2] bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black rounded-2xl shadow-xl shadow-indigo-500/20 text-lg uppercase tracking-tight"
               >
                 {isSubmitting ? 'Processing Application...' : 'Deploy Protocol'}
               </Button>

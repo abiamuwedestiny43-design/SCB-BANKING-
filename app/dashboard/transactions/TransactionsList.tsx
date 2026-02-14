@@ -135,7 +135,7 @@ export default function TransactionsList({
   const getStatusConfig = (status: string) => {
     switch (status.toLowerCase()) {
       case "success":
-        return { color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20", icon: CheckCircle2 }
+        return { color: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20", icon: CheckCircle2 }
       case "pending":
         return { color: "text-yellow-400 bg-yellow-500/10 border-yellow-500/20", icon: Clock }
       case "cancelled":
@@ -157,7 +157,7 @@ export default function TransactionsList({
       {/* Header Section */}
       <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-emerald-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 w-fit rounded-full">
+          <div className="flex items-center gap-2 text-indigo-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 w-fit rounded-full">
             <ArrowRightLeft className="h-3 w-3" />
             Transactions
           </div>
@@ -173,10 +173,10 @@ export default function TransactionsList({
             disabled={isLoading || total === 0}
             className="h-12 px-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 font-bold text-white flex items-center gap-2 transition-all"
           >
-            <Download className="h-4 w-4 text-emerald-500" />
+            <Download className="h-4 w-4 text-indigo-500" />
             {isLoading ? "Exporting..." : "Download CSV"}
           </Button>
-          <Button asChild className="h-12 px-6 bg-emerald-500 hover:bg-emerald-400 text-[#001c10] rounded-xl shadow-xl shadow-emerald-500/20 font-black">
+          <Button asChild className="h-12 px-6 bg-indigo-500 hover:bg-indigo-400 text-[#020617] rounded-xl shadow-xl shadow-indigo-500/20 font-black">
             <Link href="/dashboard" className="flex items-center gap-2">
               <ChevronLeft className="h-4 w-4" />
               Back
@@ -194,10 +194,10 @@ export default function TransactionsList({
               <div className="lg:col-span-3 space-y-2">
                 <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Status</Label>
                 <Select value={filters.status} onValueChange={(value) => handleFilterChange("status", value)}>
-                  <SelectTrigger className="h-12 bg-white/5 border-white/10 rounded-xl font-bold text-white focus:ring-emerald-500">
+                  <SelectTrigger className="h-12 bg-white/5 border-white/10 rounded-xl font-bold text-white focus:ring-indigo-500">
                     <SelectValue placeholder="All Status" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#002a18] border-white/10 text-white rounded-xl">
+                  <SelectContent className="bg-[#1e293b] border-white/10 text-white rounded-xl">
                     <SelectItem value="all">All Statuses</SelectItem>
                     <SelectItem value="pending">Pending</SelectItem>
                     <SelectItem value="success">Completed</SelectItem>
@@ -210,10 +210,10 @@ export default function TransactionsList({
               <div className="lg:col-span-3 space-y-2">
                 <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Type</Label>
                 <Select value={filters.type} onValueChange={(value) => handleFilterChange("type", value)}>
-                  <SelectTrigger className="h-12 bg-white/5 border-white/10 rounded-xl font-bold text-white focus:ring-emerald-500">
+                  <SelectTrigger className="h-12 bg-white/5 border-white/10 rounded-xl font-bold text-white focus:ring-indigo-500">
                     <SelectValue placeholder="All Types" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#002a18] border-white/10 text-white rounded-xl">
+                  <SelectContent className="bg-[#1e293b] border-white/10 text-white rounded-xl">
                     <SelectItem value="all">All Types</SelectItem>
                     <SelectItem value="debit">Debit</SelectItem>
                     <SelectItem value="credit">Credit</SelectItem>
@@ -225,15 +225,15 @@ export default function TransactionsList({
                 <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Search</Label>
                 <form onSubmit={handleSearch} className="flex gap-2">
                   <div className="relative flex-1 group">
-                    <Search className="absolute left-3 top-3.5 h-4 w-4 text-slate-500 group-focus-within:text-emerald-500 transition-colors" />
+                    <Search className="absolute left-3 top-3.5 h-4 w-4 text-slate-500 group-focus-within:text-indigo-500 transition-colors" />
                     <Input
                       placeholder="Search transactions..."
                       value={filters.search}
                       onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
-                      className="pl-10 h-12 bg-white/5 border-white/10 focus:bg-white/10 focus:ring-emerald-500 transition-all rounded-xl font-bold text-white"
+                      className="pl-10 h-12 bg-white/5 border-white/10 focus:bg-white/10 focus:ring-indigo-500 transition-all rounded-xl font-bold text-white"
                     />
                   </div>
-                  <Button type="submit" className="h-12 w-12 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-[#001c10] shadow-lg shadow-emerald-500/20">
+                  <Button type="submit" className="h-12 w-12 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-[#020617] shadow-lg shadow-indigo-500/20">
                     <Filter className="h-4 w-4" />
                   </Button>
                 </form>
@@ -248,7 +248,7 @@ export default function TransactionsList({
         <div className="flex items-center justify-between px-2">
           <h2 className="text-xl font-black text-white flex items-center gap-3">
             Transactions
-            <span className="text-[10px] font-black bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 px-3 py-1 rounded-full uppercase tracking-widest">{total} Found</span>
+            <span className="text-[10px] font-black bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 px-3 py-1 rounded-full uppercase tracking-widest">{total} Found</span>
           </h2>
           {(filters.status !== "all" || filters.type !== "all" || filters.search) && (
             <button
@@ -283,18 +283,18 @@ export default function TransactionsList({
                     <Link
                       key={transaction._id}
                       href={`/dashboard/receipt/${transaction.txRef}`}
-                      className="p-8 flex flex-col md:flex-row md:items-center justify-between hover:bg-white/[0.04] transition-all group border-l-4 border-transparent hover:border-emerald-500"
+                      className="p-8 flex flex-col md:flex-row md:items-center justify-between hover:bg-white/[0.04] transition-all group border-l-4 border-transparent hover:border-indigo-500"
                     >
                       <div className="flex items-center gap-8 flex-1">
                         <div className={cn(
                           "h-16 w-16 rounded-2xl flex items-center justify-center shadow-2xl transition-all group-hover:scale-110 duration-500",
-                          transaction.txType === "credit" ? "bg-emerald-500/10 text-emerald-500" : "bg-red-500/10 text-red-500"
+                          transaction.txType === "credit" ? "bg-indigo-500/10 text-indigo-500" : "bg-red-500/10 text-red-500"
                         )}>
                           {transaction.txType === "credit" ? <ArrowDownLeft className="h-8 w-8" /> : <ArrowUpRight className="h-8 w-8" />}
                         </div>
                         <div className="space-y-2 flex-1 min-w-0">
                           <div className="flex items-center gap-3">
-                            <p className="text-xl font-black text-white group-hover:text-emerald-400 transition-colors truncate">
+                            <p className="text-xl font-black text-white group-hover:text-indigo-400 transition-colors truncate">
                               {transaction.txType === "credit" ? "Credit" : "Debit"}
                               <span className="font-medium text-slate-500 ml-3 italic">
                                 {transaction.recipient ? `• ${transaction.recipient}` : ""}
@@ -305,7 +305,7 @@ export default function TransactionsList({
                             </span>
                           </div>
                           <div className="flex flex-wrap items-center gap-4 text-slate-500 font-black text-[10px] uppercase tracking-widest">
-                            <span className="flex items-center gap-1.5 bg-[#001c10] px-2.5 py-1 rounded text-emerald-500 border border-emerald-500/20 shadow-sm">
+                            <span className="flex items-center gap-1.5 bg-[#020617] px-2.5 py-1 rounded text-indigo-500 border border-indigo-500/20 shadow-sm">
                               <Hash className="h-3 w-3" />
                               {transaction.txRef}
                             </span>
@@ -323,13 +323,13 @@ export default function TransactionsList({
                       <div className="mt-6 md:mt-0 flex md:flex-col items-end justify-between md:justify-center gap-3 ml-0 md:ml-10 pl-0 md:pl-10 border-l-0 md:border-l border-white/5">
                         <p className={cn(
                           "text-3xl font-black tracking-tighter",
-                          transaction.txType === "credit" ? "text-emerald-400" : "text-white"
+                          transaction.txType === "credit" ? "text-indigo-400" : "text-white"
                         )}>
                           {transaction.txType === "credit" ? "+" : "−"}
                           {formatCurrency(transaction.amount, transaction.currency)}
                         </p>
-                        <div className="flex items-center gap-2 group-hover:text-emerald-400 transition-colors">
-                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-emerald-400 transition-colors">View Details</span>
+                        <div className="flex items-center gap-2 group-hover:text-indigo-400 transition-colors">
+                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-indigo-400 transition-colors">View Details</span>
                           <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
@@ -345,7 +345,7 @@ export default function TransactionsList({
         {totalPages > 1 && (
           <motion.div {...fadeInUp} className="flex flex-col md:flex-row items-center justify-between p-8 bg-white/[0.03] backdrop-blur border border-white/5 rounded-[3rem] gap-6">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
-              Showing <span className="text-white">{(currentPage - 1) * 10 + 1}</span> - <span className="text-white">{Math.min(currentPage * 10, total)}</span> <span className="mx-2 opacity-30">|</span> Total Transactions: <span className="text-emerald-500">{total}</span>
+              Showing <span className="text-white">{(currentPage - 1) * 10 + 1}</span> - <span className="text-white">{Math.min(currentPage * 10, total)}</span> <span className="mx-2 opacity-30">|</span> Total Transactions: <span className="text-indigo-500">{total}</span>
             </p>
             <div className="flex items-center gap-4">
               <Button
@@ -372,7 +372,7 @@ export default function TransactionsList({
                       onClick={() => handlePageChange(pageNum)}
                       className={cn(
                         "h-10 min-w-[40px] px-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all",
-                        currentPage === pageNum ? "bg-emerald-500 text-[#001c10] shadow-xl shadow-emerald-500/20 scale-105" : "text-slate-500 hover:text-white"
+                        currentPage === pageNum ? "bg-indigo-500 text-[#020617] shadow-xl shadow-indigo-500/20 scale-105" : "text-slate-500 hover:text-white"
                       )}
                     >
                       {pageNum}

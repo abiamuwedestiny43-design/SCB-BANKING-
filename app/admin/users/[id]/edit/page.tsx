@@ -123,16 +123,16 @@ export default function AdminEditUserPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#001c10] flex items-center justify-center">
-        <div className="text-emerald-500 font-black animate-pulse tracking-[0.3em] uppercase">LOADING USER...</div>
+      <div className="min-h-screen bg-[#020617] flex items-center justify-center">
+        <div className="text-indigo-500 font-black animate-pulse tracking-[0.3em] uppercase">LOADING USER...</div>
       </div>
     )
   }
 
   return (
-    <div className="p-4 md:p-10 space-y-10 relative bg-[#001c10] min-h-screen pt-20">
+    <div className="p-4 md:p-10 space-y-10 relative bg-[#020617] min-h-screen pt-20">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Header */}
@@ -142,7 +142,7 @@ export default function AdminEditUserPage() {
             <ArrowLeft className="h-6 w-6" />
           </Button>
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
               <Fingerprint className="w-3 h-3" /> Edit Profile
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">
@@ -155,7 +155,7 @@ export default function AdminEditUserPage() {
           <Button
             onClick={onSave}
             disabled={saving}
-            className="h-12 px-8 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-black shadow-lg shadow-emerald-500/20 transition-all uppercase tracking-widest text-xs"
+            className="h-12 px-8 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-black font-black shadow-lg shadow-indigo-500/20 transition-all uppercase tracking-widest text-xs"
           >
             {saving ? (
               <Zap className="h-4 w-4 mr-2 animate-spin" />
@@ -179,7 +179,7 @@ export default function AdminEditUserPage() {
         <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden backdrop-blur-md">
           <CardHeader className="p-10 border-b border-white/5 bg-white/[0.01]">
             <CardTitle className="text-2xl font-black text-white italic tracking-tight flex items-center gap-3">
-              <UserIcon className="w-6 h-6 text-emerald-500" /> Personal Information
+              <UserIcon className="w-6 h-6 text-indigo-500" /> Personal Information
             </CardTitle>
             <CardDescription className="text-slate-500 font-medium">Core profile details for the user.</CardDescription>
           </CardHeader>
@@ -190,7 +190,7 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.email}
                   onChange={(e) => onChange("email", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
               <div className="space-y-2">
@@ -198,7 +198,7 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.firstname}
                   onChange={(e) => onChange("firstname", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
               <div className="space-y-2">
@@ -206,7 +206,7 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.lastname}
                   onChange={(e) => onChange("lastname", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
               <div className="space-y-2">
@@ -214,7 +214,7 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.phone}
                   onChange={(e) => onChange("phone", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
               <div className="space-y-2">
@@ -223,16 +223,16 @@ export default function AdminEditUserPage() {
                   type="date"
                   value={form.birthdate}
                   onChange={(e) => onChange("birthdate", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500 [color-scheme:dark]"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500 [color-scheme:dark]"
                 />
               </div>
               <div className="space-y-2">
                 <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Gender</Label>
                 <Select value={form.gender} onValueChange={(v) => onChange("gender", v)}>
-                  <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:ring-emerald-500">
+                  <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:ring-indigo-500">
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                  <SelectContent className="bg-[#020617] border-white/10 text-white">
                     <SelectItem value="Not set">Not set</SelectItem>
                     <SelectItem value="male">Male</SelectItem>
                     <SelectItem value="female">Female</SelectItem>
@@ -245,16 +245,16 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.religion}
                   onChange={(e) => onChange("religion", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
               <div className="space-y-2">
                 <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Currency</Label>
                 <Select value={form.currency} onValueChange={(v) => onChange("currency", v)}>
-                  <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:ring-emerald-500">
+                  <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:ring-indigo-500">
                     <SelectValue placeholder="Currency" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                  <SelectContent className="bg-[#020617] border-white/10 text-white">
                     <SelectItem value="USD">USD — US Dollar</SelectItem>
                     <SelectItem value="EUR">EUR — Euro</SelectItem>
                     <SelectItem value="GBP">GBP — British Pound</SelectItem>
@@ -285,7 +285,7 @@ export default function AdminEditUserPage() {
               <Input
                 value={form.location}
                 onChange={(e) => onChange("location", e.target.value)}
-                className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -294,7 +294,7 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.city}
                   onChange={(e) => onChange("city", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
               <div className="space-y-2">
@@ -302,7 +302,7 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.state}
                   onChange={(e) => onChange("state", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
               <div className="space-y-2">
@@ -310,7 +310,7 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.country}
                   onChange={(e) => onChange("country", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
               <div className="space-y-2">
@@ -318,7 +318,7 @@ export default function AdminEditUserPage() {
                 <Input
                   value={form.zipcode}
                   onChange={(e) => onChange("zipcode", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-emerald-500"
+                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-indigo-500"
                 />
               </div>
             </div>
@@ -329,14 +329,14 @@ export default function AdminEditUserPage() {
         <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden lg:col-span-2 backdrop-blur-md">
           <CardHeader className="p-10 border-b border-white/5 bg-white/[0.01]">
             <CardTitle className="text-2xl font-black text-white italic tracking-tight flex items-center gap-3">
-              <ShieldCheck className="w-6 h-6 text-emerald-500" /> Account Settings
+              <ShieldCheck className="w-6 h-6 text-indigo-500" /> Account Settings
             </CardTitle>
             <CardDescription className="text-slate-500 font-medium">Access permissions, security filters, and system-level overrides.</CardDescription>
           </CardHeader>
           <CardContent className="p-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               <div className="space-y-6">
-                <h3 className="text-xs font-black text-emerald-500 uppercase tracking-widest mb-4">Account Status</h3>
+                <h3 className="text-xs font-black text-indigo-500 uppercase tracking-widest mb-4">Account Status</h3>
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Verified</Label>
@@ -344,7 +344,7 @@ export default function AdminEditUserPage() {
                       <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                      <SelectContent className="bg-[#020617] border-white/10 text-white">
                         <SelectItem value="true">YES (VERIFIED)</SelectItem>
                         <SelectItem value="false">NO (UNVERIFIED)</SelectItem>
                       </SelectContent>
@@ -359,7 +359,7 @@ export default function AdminEditUserPage() {
                       <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                      <SelectContent className="bg-[#020617] border-white/10 text-white">
                         <SelectItem value="true">ENABLED</SelectItem>
                         <SelectItem value="false">LOCKED</SelectItem>
                       </SelectContent>
@@ -380,7 +380,7 @@ export default function AdminEditUserPage() {
                       <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                      <SelectContent className="bg-[#020617] border-white/10 text-white">
                         <SelectItem value="true">ALLOWED</SelectItem>
                         <SelectItem value="false">RESTRICTED</SelectItem>
                       </SelectContent>
@@ -395,7 +395,7 @@ export default function AdminEditUserPage() {
                       <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                      <SelectContent className="bg-[#020617] border-white/10 text-white">
                         <SelectItem value="true">ALLOWED</SelectItem>
                         <SelectItem value="false">RESTRICTED</SelectItem>
                       </SelectContent>
@@ -416,7 +416,7 @@ export default function AdminEditUserPage() {
                       <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                      <SelectContent className="bg-[#020617] border-white/10 text-white">
                         <SelectItem value="true">ACTIVE</SelectItem>
                         <SelectItem value="false">BYPASS</SelectItem>
                       </SelectContent>
@@ -431,7 +431,7 @@ export default function AdminEditUserPage() {
                       <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#001c10] border-white/10 text-white">
+                      <SelectContent className="bg-[#020617] border-white/10 text-white">
                         <SelectItem value="true">ENFORCED</SelectItem>
                         <SelectItem value="false">DISABLED</SelectItem>
                       </SelectContent>
@@ -461,7 +461,7 @@ export default function AdminEditUserPage() {
                             onChange("roles", newRoles)
                             setRolesInput(newRoles.join(", "))
                           }}
-                          className="peer appearance-none h-6 w-6 rounded-lg bg-white/5 border border-white/20 checked:bg-emerald-500 checked:border-emerald-500 transition-all cursor-pointer"
+                          className="peer appearance-none h-6 w-6 rounded-lg bg-white/5 border border-white/20 checked:bg-indigo-500 checked:border-indigo-500 transition-all cursor-pointer"
                         />
                         <div className="absolute inset-0 flex items-center justify-center text-black font-black text-[10px] pointer-events-none opacity-0 peer-checked:opacity-100">
                           ✓
@@ -487,7 +487,7 @@ export default function AdminEditUserPage() {
           <Button
             onClick={onSave}
             disabled={saving}
-            className="h-14 px-16 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black font-black shadow-2xl shadow-emerald-500/30 transition-all uppercase tracking-[0.2em] text-xs"
+            className="h-14 px-16 rounded-2xl bg-indigo-500 hover:bg-indigo-400 text-black font-black shadow-2xl shadow-indigo-500/30 transition-all uppercase tracking-[0.2em] text-xs"
           >
             {saving ? "SAVING..." : "SAVE CHANGES"}
           </Button>

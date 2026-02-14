@@ -22,17 +22,17 @@ export default function CardsClient({ cards }: CardsClientProps) {
     const activeCards = cards.filter((card: any) => card.status === "active" || card.status === "pending")
 
     return (
-        <div className="min-h-screen bg-[#001c10] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
+        <div className="min-h-screen bg-[#020617] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
             {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="max-w-6xl mx-auto space-y-10 relative z-10">
 
                 {/* Header Section */}
                 <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-emerald-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 w-fit rounded-full">
+                        <div className="flex items-center gap-2 text-indigo-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 w-fit rounded-full">
                             <CreditCard className="h-3 w-3" />
                             Secure Payments
                         </div>
@@ -48,7 +48,7 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                 Dashboard
                             </Link>
                         </Button>
-                        <Button asChild className="h-12 px-6 bg-emerald-500 hover:bg-emerald-400 text-[#001c10] rounded-xl shadow-xl shadow-emerald-500/20 font-black transition-all hover:-translate-y-1">
+                        <Button asChild className="h-12 px-6 bg-indigo-500 hover:bg-indigo-400 text-[#020617] rounded-xl shadow-xl shadow-indigo-500/20 font-black transition-all hover:-translate-y-1">
                             <Link href="/dashboard/card/apply" className="flex items-center gap-2">
                                 <Plus className="h-4 w-4" />
                                 New Card
@@ -60,9 +60,9 @@ export default function CardsClient({ cards }: CardsClientProps) {
                 {/* Info Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
-                        <UICard className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md p-6 rounded-[2rem] group hover:bg-emerald-500/5 transition-all duration-500">
+                        <UICard className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md p-6 rounded-[2rem] group hover:bg-indigo-500/5 transition-all duration-500">
                             <div className="flex items-center gap-5">
-                                <div className="h-14 w-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-500 shadow-lg transition-transform group-hover:scale-110">
+                                <div className="h-14 w-14 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-500 shadow-lg transition-transform group-hover:scale-110">
                                     <ShieldCheck className="h-7 w-7" />
                                 </div>
                                 <div className="space-y-0.5">
@@ -112,7 +112,7 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                     <h3 className="text-2xl font-black text-white lowercase">No active cards <span className="text-slate-500 italic">found</span></h3>
                                     <p className="text-slate-500 font-medium max-w-sm mx-auto">Apply for a premium virtual or physical card to enable secure transactions.</p>
                                 </div>
-                                <Button asChild className="h-16 px-10 bg-emerald-500 hover:bg-emerald-400 text-[#001c10] rounded-2xl shadow-xl shadow-emerald-500/20 font-black text-lg transition-transform hover:scale-105">
+                                <Button asChild className="h-16 px-10 bg-indigo-500 hover:bg-indigo-400 text-[#020617] rounded-2xl shadow-xl shadow-indigo-500/20 font-black text-lg transition-transform hover:scale-105">
                                     <Link href="/dashboard/card/apply">Get Your First Card</Link>
                                 </Button>
                             </CardContent>
@@ -134,7 +134,7 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                         <span className={cn(
                                             "text-[8px] font-black uppercase px-4 py-1.5 rounded-full shadow-2xl border backdrop-blur-md tracking-widest",
                                             card.status === 'active'
-                                                ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40 shadow-emerald-500/10'
+                                                ? 'bg-indigo-500/20 text-indigo-400 border-indigo-500/40 shadow-indigo-500/10'
                                                 : 'bg-yellow-500/20 text-yellow-400 border-yellow-500/40 shadow-yellow-500/10'
                                         )}>
                                             {card.status} <span className="text-[10px] ml-1">●</span>

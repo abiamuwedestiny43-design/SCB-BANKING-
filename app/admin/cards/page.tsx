@@ -103,7 +103,7 @@ export default function AdminCardsPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20'
+      case 'active': return 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20'
       case 'pending': return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20'
       case 'rejected': return 'text-red-400 bg-red-500/10 border-red-500/20'
       case 'blocked': return 'text-slate-400 bg-white/5 border-white/10'
@@ -113,8 +113,8 @@ export default function AdminCardsPage() {
 
   if (loading) {
     return (
-      <div className="p-10 text-emerald-500 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
-        <div className="w-5 h-5 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+      <div className="p-10 text-indigo-500 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
+        <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
         Syncing Card Assets...
       </div>
     )
@@ -123,11 +123,11 @@ export default function AdminCardsPage() {
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="space-y-2 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
           <CreditCard className="w-3 h-3" /> Card Management
         </div>
         <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
@@ -138,22 +138,22 @@ export default function AdminCardsPage() {
 
       {/* Filters */}
       <Card className="bg-white/[0.03] border-white/5 rounded-[2.5rem] p-8 relative z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 h-32 w-32 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-500/5 rounded-full blur-3xl"></div>
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-emerald-500/50" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-indigo-500/50" />
             <Input
               placeholder="Search by name, account number, or card details..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-12 bg-white/5 border-white/10 rounded-2xl h-14 text-white focus:border-emerald-500 transition-all font-medium"
+              className="pl-12 bg-white/5 border-white/10 rounded-2xl h-14 text-white focus:border-indigo-500 transition-all font-medium"
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
             <SelectTrigger className="h-14 w-full md:w-[220px] bg-white/5 border-white/10 rounded-2xl text-slate-400 font-bold">
               <SelectValue placeholder="System State" />
             </SelectTrigger>
-            <SelectContent className="bg-[#001c10] border-white/10 text-slate-300">
+            <SelectContent className="bg-[#020617] border-white/10 text-slate-300">
               <SelectItem value="all">All Cards</SelectItem>
               <SelectItem value="pending">Review Required</SelectItem>
               <SelectItem value="active">Active</SelectItem>
@@ -197,7 +197,7 @@ export default function AdminCardsPage() {
                   <tr key={card._id} className="group hover:bg-white/[0.02] transition-colors">
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-black text-xs uppercase tracking-tighter">
+                        <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 font-black text-xs uppercase tracking-tighter">
                           {card?.cardHolderName?.[0]}
                         </div>
                         <div>
@@ -209,7 +209,7 @@ export default function AdminCardsPage() {
                     <td className="px-8 py-6">
                       <div className="space-y-1">
                         <p className="text-sm font-bold text-white capitalize">{card.vendor} • {card.cardType}</p>
-                        <p className="text-[10px] font-black font-mono text-emerald-500 tracking-[0.2em]">**** {card.cardNumber.slice(-4)}</p>
+                        <p className="text-[10px] font-black font-mono text-indigo-500 tracking-[0.2em]">**** {card.cardNumber.slice(-4)}</p>
                       </div>
                     </td>
                     <td className="px-8 py-6 text-sm font-mono text-slate-400">{card?.userId?.bankNumber}</td>
@@ -226,7 +226,7 @@ export default function AdminCardsPage() {
                             <Button
                               size="sm"
                               onClick={() => updateCardStatus(card._id, 'active')}
-                              className="h-10 px-6 rounded-xl bg-emerald-500 text-[#001c10] font-black text-[10px] uppercase tracking-widest hover:bg-emerald-400 transition-all"
+                              className="h-10 px-6 rounded-xl bg-indigo-500 text-[#020617] font-black text-[10px] uppercase tracking-widest hover:bg-indigo-400 transition-all"
                             >
                               Provision
                             </Button>

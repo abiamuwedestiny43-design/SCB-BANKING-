@@ -113,7 +113,7 @@ export default function TransactionsList({
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "success":
-        return <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-[0_0_10px_rgba(16,185,129,0.1)]">SUCCESS</Badge>
+        return <Badge className="bg-indigo-500/10 text-indigo-500 border-indigo-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-[0_0_10px_rgba(16,185,129,0.1)]">SUCCESS</Badge>
       case "pending":
         return <Badge className="bg-yellow-500/10 text-yellow-500 border-yellow-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-[0_0_10px_rgba(234,179,8,0.1)]">PENDING</Badge>
       case "failed":
@@ -134,13 +134,13 @@ export default function TransactionsList({
             <div className="lg:col-span-3 space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Client Identity</label>
               <Select value={filters.user || "all"} onValueChange={(value) => handleFilterChange("user", value)}>
-                <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:ring-emerald-500/20 capitalize font-medium">
+                <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:ring-indigo-500/20 capitalize font-medium">
                   <SelectValue placeholder="All Clients" />
                 </SelectTrigger>
-                <SelectContent className="bg-[#001c10] border-emerald-500/20 text-white backdrop-blur-xl">
+                <SelectContent className="bg-[#020617] border-indigo-500/20 text-white backdrop-blur-xl">
                   <SelectItem value="all">All Accounts</SelectItem>
                   {users.map(user => (
-                    <SelectItem key={user.id} value={user.id} className="focus:bg-emerald-500 focus:text-black">
+                    <SelectItem key={user.id} value={user.id} className="focus:bg-indigo-500 focus:text-black">
                       {user.name}
                     </SelectItem>
                   ))}
@@ -152,10 +152,10 @@ export default function TransactionsList({
           <div className="lg:col-span-2 space-y-2">
             <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Status</label>
             <Select value={filters.status} onValueChange={(value) => handleFilterChange("status", value)}>
-              <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:ring-emerald-500/20 capitalize font-medium">
+              <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:ring-indigo-500/20 capitalize font-medium">
                 <SelectValue placeholder="All Statuses" />
               </SelectTrigger>
-              <SelectContent className="bg-[#001c10] border-emerald-500/20 text-white backdrop-blur-xl">
+              <SelectContent className="bg-[#020617] border-indigo-500/20 text-white backdrop-blur-xl">
                 <SelectItem value="all">All Statuses</SelectItem>
                 <SelectItem value="pending">Pending</SelectItem>
                 <SelectItem value="success">Completed</SelectItem>
@@ -167,10 +167,10 @@ export default function TransactionsList({
           <div className="lg:col-span-2 space-y-2">
             <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Transaction Type</label>
             <Select value={filters.type} onValueChange={(value) => handleFilterChange("type", value)}>
-              <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:ring-emerald-500/20 capitalize font-medium">
+              <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:ring-indigo-500/20 capitalize font-medium">
                 <SelectValue placeholder="All Types" />
               </SelectTrigger>
-              <SelectContent className="bg-[#001c10] border-emerald-500/20 text-white backdrop-blur-xl">
+              <SelectContent className="bg-[#020617] border-indigo-500/20 text-white backdrop-blur-xl">
                 <SelectItem value="all">All Transactions</SelectItem>
                 <SelectItem value="debit">Debit</SelectItem>
                 <SelectItem value="credit">Credit</SelectItem>
@@ -182,15 +182,15 @@ export default function TransactionsList({
             <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Search Records</label>
             <form onSubmit={handleSearch} className="flex gap-3">
               <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-emerald-500/50" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-indigo-500/50" />
                 <Input
                   placeholder="Reference, name, or transaction details..."
                   value={filters.search}
                   onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
-                  className="pl-12 bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-emerald-500/50 transition-all font-medium"
+                  className="pl-12 bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500/50 transition-all font-medium"
                 />
               </div>
-              <Button type="submit" className="h-12 px-6 rounded-xl bg-emerald-500 text-[#001c10] font-black hover:bg-emerald-400 shadow-xl shadow-emerald-500/20">
+              <Button type="submit" className="h-12 px-6 rounded-xl bg-indigo-500 text-[#020617] font-black hover:bg-indigo-400 shadow-xl shadow-indigo-500/20">
                 Search
               </Button>
             </form>
@@ -206,7 +206,7 @@ export default function TransactionsList({
             <p className="text-slate-500 font-medium italic">No transactions found matching the current filters.</p>
             <Button
               variant="link"
-              className="text-emerald-500 font-black uppercase tracking-widest text-[10px]"
+              className="text-indigo-500 font-black uppercase tracking-widest text-[10px]"
               onClick={() => {
                 const clearFilters = { status: "all", type: "all", search: "" }
                 if (isAdmin) (clearFilters as any).user = "all"
@@ -225,12 +225,12 @@ export default function TransactionsList({
                 href={isAdmin ? `/admin/transactions/${transaction._id}` : `/dashboard/receipt/${transaction.txRef}`}
                 className="group block"
               >
-                <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 group-hover:bg-white/[0.04] group-hover:border-emerald-500/20 transition-all duration-300 relative overflow-hidden">
+                <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 group-hover:bg-white/[0.04] group-hover:border-indigo-500/20 transition-all duration-300 relative overflow-hidden">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
                     <div className="flex items-center gap-6">
                       {/* Icon Cluster */}
                       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border ${transaction.txType === "credit"
-                        ? "bg-emerald-500/5 border-emerald-500/10 text-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.05)]"
+                        ? "bg-indigo-500/5 border-indigo-500/10 text-indigo-500 shadow-[0_0_15px_rgba(16,185,129,0.05)]"
                         : "bg-red-500/5 border-red-500/10 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.05)]"
                         }`}>
                         {transaction.txType === "credit" ? (
@@ -259,7 +259,7 @@ export default function TransactionsList({
                           {isAdmin && transaction.userName && (
                             <>
                               <span className="w-1 h-1 rounded-full bg-slate-700" />
-                              <span className="text-emerald-500 font-black uppercase tracking-widest text-[9px] flex items-center gap-1">
+                              <span className="text-indigo-500 font-black uppercase tracking-widest text-[9px] flex items-center gap-1">
                                 <UserIcon className="w-2 h-2" /> {transaction.userName}
                               </span>
                             </>
@@ -270,7 +270,7 @@ export default function TransactionsList({
 
                     {/* Value Cluster */}
                     <div className="flex items-center md:items-end flex-row md:flex-col justify-between md:justify-center gap-2">
-                      <p className={`text-2xl font-black tracking-tighter ${transaction.txType === "credit" ? "text-emerald-500" : "text-white"
+                      <p className={`text-2xl font-black tracking-tighter ${transaction.txType === "credit" ? "text-indigo-500" : "text-white"
                         }`}>
                         {transaction.txType === "credit" ? "+" : "-"}{formatCurrency(transaction.amount, transaction.currency)}
                       </p>
@@ -324,7 +324,7 @@ export default function TransactionsList({
                       size="sm"
                       onClick={() => handlePageChange(pageNum)}
                       className={`w-10 h-10 rounded-xl font-black text-[10px] transition-all ${currentPage === pageNum
-                        ? "bg-emerald-500 text-[#001c10] shadow-lg shadow-emerald-500/20"
+                        ? "bg-indigo-500 text-[#020617] shadow-lg shadow-indigo-500/20"
                         : "bg-white/5 border border-white/5 text-slate-500 hover:text-white"
                         }`}
                     >

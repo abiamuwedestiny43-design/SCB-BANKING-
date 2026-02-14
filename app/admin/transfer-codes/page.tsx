@@ -76,11 +76,11 @@ export default function AdminTransferCodesPage() {
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="space-y-2 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-black uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
           <Key className="w-3 h-3" /> Security Codes
         </div>
         <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
@@ -98,11 +98,11 @@ export default function AdminTransferCodesPage() {
           >
             <div>
               <CardTitle className="text-2xl font-black text-white italic tracking-tight flex items-center gap-3">
-                <ShieldCheck className="w-6 h-6 text-emerald-500" /> Transfer Verification Codes
+                <ShieldCheck className="w-6 h-6 text-indigo-500" /> Transfer Verification Codes
               </CardTitle>
               <CardDescription className="text-slate-500 font-medium">Global security codes for transfer auditing.</CardDescription>
             </div>
-            <div className={`p-2 rounded-xl bg-white/5 text-slate-400 group-hover:text-emerald-500 transition-all ${expandedSections.codes ? '' : 'rotate-180'}`}>
+            <div className={`p-2 rounded-xl bg-white/5 text-slate-400 group-hover:text-indigo-500 transition-all ${expandedSections.codes ? '' : 'rotate-180'}`}>
               <ChevronUp className="w-5 h-5" />
             </div>
           </CardHeader>
@@ -111,7 +111,7 @@ export default function AdminTransferCodesPage() {
             <CardContent className="p-8 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
-                  { label: "COT Code", value: cot, set: setCot, color: "text-emerald-500" },
+                  { label: "COT Code", value: cot, set: setCot, color: "text-indigo-500" },
                   { label: "IMF Code", value: imf, set: setImf, color: "text-blue-500" },
                   { label: "ESI Code", value: esi, set: setEsi, color: "text-purple-500" },
                   { label: "DCO Code", value: dco, set: setDco, color: "text-orange-500" },
@@ -126,13 +126,13 @@ export default function AdminTransferCodesPage() {
                       <Input
                         value={row.value}
                         onChange={(e) => row.set(e.target.value)}
-                        className="bg-white/5 border-white/10 rounded-xl h-12 text-white font-mono focus:border-emerald-500 focus:ring-0 transition-all"
+                        className="bg-white/5 border-white/10 rounded-xl h-12 text-white font-mono focus:border-indigo-500 focus:ring-0 transition-all"
                       />
                       <Button
                         type="button"
                         variant="ghost"
                         onClick={() => row.set(genCode())}
-                        className="h-12 w-12 rounded-xl bg-white/5 hover:bg-emerald-500/20 text-slate-400 hover:text-emerald-500 border border-white/5"
+                        className="h-12 w-12 rounded-xl bg-white/5 hover:bg-indigo-500/20 text-slate-400 hover:text-indigo-500 border border-white/5"
                       >
                         <Zap className="h-4 w-4" />
                       </Button>
@@ -145,7 +145,7 @@ export default function AdminTransferCodesPage() {
                 <Button
                   onClick={save}
                   disabled={saving}
-                  className="w-full bg-emerald-500 hover:bg-emerald-400 text-[#001c10] font-black h-14 rounded-2xl shadow-xl shadow-emerald-500/20 uppercase tracking-widest text-xs"
+                  className="w-full bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black h-14 rounded-2xl shadow-xl shadow-indigo-500/20 uppercase tracking-widest text-xs"
                 >
                   {saving ? "SAVING..." : "Publish Global Codes"}
                 </Button>
