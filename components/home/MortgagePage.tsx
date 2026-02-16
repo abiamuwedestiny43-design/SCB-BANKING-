@@ -22,10 +22,10 @@ const MortgagePage: React.FC = () => {
             Our mortgage process is transparent, efficient, and designed to fit your unique financial needs. We provide clear information on loan options, rates, and repayment plans, empowering you to make confident decisions. With HB Bank, you'll have access to tools, calculators, and advisors to ensure a smooth journey from pre-approval to closing. Start your path to homeownership today and experience the peace of mind that comes from working with a trusted financial partner committed to your success.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+            <button className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
               Get Pre-Approved
             </button>
-            <button className="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-50 transition-colors font-medium">
+            <button className="border border-orange-600 text-orange-600 px-6 py-3 rounded-lg hover:bg-orange-50 transition-colors font-medium">
               Calculate Payment
             </button>
           </div>
@@ -65,12 +65,12 @@ const MortgagePage: React.FC = () => {
                 <ul className="space-y-2 mb-6">
                   {mortgage.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-indigo-600 mr-2 flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <button className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                <button className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
                   Learn More
                 </button>
               </div>
@@ -87,19 +87,19 @@ const MortgagePage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Home Price</label>
-                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="$300,000" />
+                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="$300,000" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Down Payment</label>
-                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="$60,000" />
+                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="$60,000" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Interest Rate (%)</label>
-                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="3.125" step="0.001" />
+                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="3.125" step="0.001" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Loan Term</label>
-                <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                   <option>30 Years</option>
                   <option>20 Years</option>
                   <option>15 Years</option>
@@ -107,12 +107,12 @@ const MortgagePage: React.FC = () => {
                 </select>
               </div>
             </div>
-            <button className="w-full mt-6 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+            <button className="w-full mt-6 bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
               Calculate Payment
             </button>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-indigo-50 rounded-lg">
-                <div className="text-2xl font-bold text-indigo-600 mb-2">$1,157</div>
+              <div className="text-center p-6 bg-orange-50 rounded-lg">
+                <div className="text-2xl font-bold text-orange-600 mb-2">$1,157</div>
                 <div className="text-slate-600 text-sm">Principal & Interest</div>
               </div>
               <div className="text-center p-6 bg-blue-50 rounded-lg">
@@ -144,11 +144,11 @@ const MortgagePage: React.FC = () => {
               { step: '4', title: 'Close & Move In', description: 'Complete the process and get your keys', icon: Star }
             ].map((item, index) => (
               <div key={index} className="text-center animate-slide-in-up" style={{ animationDelay: `${index * 150}ms` }}>
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 text-white rounded-full text-xl font-bold mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-600 text-white rounded-full text-xl font-bold mb-6">
                   {item.step}
                 </div>
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-4">
-                  <item.icon className="w-6 h-6 text-indigo-600" />
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full mb-4">
+                  <item.icon className="w-6 h-6 text-orange-600" />
                 </div>
                 <h3 className="text-lg font-semibold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-600 text-sm">{item.description}</p>

@@ -51,7 +51,7 @@ export default async function AnalyticsPage() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
                     <h1 className="text-3xl md:text-4xl font-black text-black tracking-tight">
-                        Analytics <span className="text-indigo-700">Console</span>
+                        Analytics <span className="text-orange-700">Console</span>
                     </h1>
                     <p className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">Real-time insights into platform performance.</p>
                 </div>
@@ -65,7 +65,7 @@ export default async function AnalyticsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Card className="bg-white border-slate-200 shadow-sm rounded-[2rem] p-6 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Users className="w-24 h-24 text-indigo-600" />
+                        <Users className="w-24 h-24 text-orange-600" />
                     </div>
                     <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest">Total Users</CardTitle>
@@ -93,12 +93,12 @@ export default async function AnalyticsPage() {
                     </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-indigo-600 to-violet-700 text-white border-none shadow-lg shadow-indigo-200 rounded-[2rem] p-6 relative overflow-hidden">
+                <Card className="bg-gradient-to-br from-orange-600 to-violet-700 text-white border-none shadow-lg shadow-orange-200 rounded-[2rem] p-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-4 opacity-20">
                         <DollarSign className="w-24 h-24 text-white" />
                     </div>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-indigo-200 uppercase tracking-widest">Total Volume</CardTitle>
+                        <CardTitle className="text-sm font-black text-orange-200 uppercase tracking-widest">Total Volume</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-4xl font-black text-white mb-2">

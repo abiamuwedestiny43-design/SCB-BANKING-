@@ -31,12 +31,12 @@ export default async function AdminDashboard() {
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-[10px] font-black uppercase tracking-widest">
             <ShieldCheck className="w-3 h-3" /> System Secured
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter">
@@ -48,11 +48,11 @@ export default async function AdminDashboard() {
         <div className="flex items-center gap-4">
           <div className="text-right hidden md:block">
             <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">System Status</p>
-            <p className="text-sm font-black text-indigo-700 uppercase">Online</p>
+            <p className="text-sm font-black text-orange-700 uppercase">Online</p>
           </div>
           <div className="h-10 w-[1px] bg-slate-200 hidden md:block"></div>
           <button className="px-6 py-3 rounded-xl bg-white border border-slate-200 text-black font-black hover:bg-white transition-all flex items-center gap-2 text-sm shadow-sm">
-            Generate Reports <Activity className="w-4 h-4 text-indigo-600" />
+            Generate Reports <Activity className="w-4 h-4 text-orange-600" />
           </button>
         </div>
       </div>
@@ -64,8 +64,8 @@ export default async function AdminDashboard() {
             title: "Global Accounts",
             value: stats.totalUsers,
             icon: Users,
-            color: "text-indigo-600",
-            bg: "bg-indigo-50",
+            color: "text-orange-600",
+            bg: "bg-orange-50",
             desc: "Active user base",
             link: "/admin/users"
           },
@@ -98,7 +98,7 @@ export default async function AdminDashboard() {
           },
         ].map((stat, i) => (
           <Link key={i} href={stat.link}>
-            <Card className="bg-white border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all duration-300 group cursor-pointer overflow-hidden relative rounded-[2rem]">
+            <Card className="bg-white border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group cursor-pointer overflow-hidden relative rounded-[2rem]">
               <div className={`absolute -right-4 -top-4 w-24 h-24 ${stat.bg} rounded-full blur-2xl group-hover:scale-150 transition-transform`}></div>
               <CardHeader className="flex flex-row items-center justify-between pb-2 relative z-10">
                 <CardTitle className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">{stat.title}</CardTitle>
@@ -110,7 +110,7 @@ export default async function AdminDashboard() {
                 <div className="text-4xl font-black text-black mb-1">{stat.value}</div>
                 <div className="flex items-center justify-between">
                   <p className="text-xs text-slate-900 font-black">{stat.desc}</p>
-                  <ArrowUpRight className="w-4 h-4 text-indigo-600 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0" />
+                  <ArrowUpRight className="w-4 h-4 text-orange-600 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0" />
                 </div>
               </CardContent>
             </Card>
@@ -124,18 +124,18 @@ export default async function AdminDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Quick Access Tools */}
             <Card className="bg-white border-slate-200 shadow-sm rounded-[2.5rem] p-8 overflow-hidden relative">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-50 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 h-32 w-32 bg-orange-50 rounded-full blur-3xl"></div>
               <h3 className="text-xl font-black text-black mb-6 flex items-center gap-3">
-                <Zap className="w-5 h-5 text-indigo-700" /> Quick Actions
+                <Zap className="w-5 h-5 text-orange-700" /> Quick Actions
               </h3>
               <div className="grid grid-cols-1 gap-4">
-                <Link href="/admin/transfer-codes" className="p-4 rounded-2xl bg-white border border-slate-100 hover:bg-indigo-50 hover:border-indigo-200 transition-all group">
+                <Link href="/admin/transfer-codes" className="p-4 rounded-2xl bg-white border border-slate-100 hover:bg-orange-50 hover:border-orange-200 transition-all group">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-bold text-slate-900 text-sm">Security Codes</p>
                       <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest">Manage COT / IMF / TAC</p>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-orange-600 transition-colors" />
                   </div>
                 </Link>
                 <Link href="/admin/settings" className="p-4 rounded-2xl bg-white border border-slate-100 hover:bg-blue-50 hover:border-blue-200 transition-all group">
@@ -157,13 +157,13 @@ export default async function AdminDashboard() {
               </h3>
               <div className="space-y-4">
                 {[
-                  { color: "text-indigo-600", label: "ADMIN_ACCESS", text: "Admin Access Granted", time: "02m ago" },
+                  { color: "text-orange-600", label: "ADMIN_ACCESS", text: "Admin Access Granted", time: "02m ago" },
                   { color: "text-blue-600", label: "TRANSFER", text: "Global Transfer Logged", time: "14m ago" },
                   { color: "text-orange-600", label: "USER_KYC", text: "New KYC Submission", time: "28m ago" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-100 group hover:bg-slate-100 transition-all">
                     <div>
-                      <p className="text-[8px] font-black text-indigo-600 tracking-widest mb-1">{item.label}</p>
+                      <p className="text-[8px] font-black text-orange-600 tracking-widest mb-1">{item.label}</p>
                       <p className="text-xs font-bold text-slate-900">{item.text}</p>
                     </div>
                     <p className="text-[10px] font-black text-slate-400">{item.time}</p>
@@ -180,12 +180,12 @@ export default async function AdminDashboard() {
               <p className="text-slate-500 text-sm font-medium">Monitoring real-time assets across 12 regions.</p>
             </div>
             <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-              <Globe className="w-[500px] h-[500px] absolute -right-24 -bottom-24 text-indigo-600/20" />
+              <Globe className="w-[500px] h-[500px] absolute -right-24 -bottom-24 text-orange-600/20" />
             </div>
             <div className="absolute bottom-10 left-10 flex gap-6 z-10">
               <div className="text-center">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Active Users</p>
-                <p className="text-2xl font-black text-indigo-600">12/12</p>
+                <p className="text-2xl font-black text-orange-600">12/12</p>
               </div>
               <div className="text-center">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Response Time</p>
@@ -197,7 +197,7 @@ export default async function AdminDashboard() {
 
         {/* System Integrity & Health */}
         <div className="space-y-8">
-          <Card className="bg-gradient-to-br from-indigo-600 to-indigo-800 border-indigo-500/20 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
+          <Card className="bg-gradient-to-br from-orange-600 to-orange-800 border-orange-500/20 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
             <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[100px]"></div>
             <h3 className="text-xl font-black text-white mb-8 relative z-10 tracking-tight">System Health</h3>
             <div className="space-y-6 relative z-10">
@@ -226,7 +226,7 @@ export default async function AdminDashboard() {
             <div className="mt-10 pt-8 border-t border-white/10 relative z-10">
               <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em] mb-4">Security Advisory</p>
               <div className="p-4 rounded-2xl bg-white/10 border border-white/5">
-                <p className="text-xs text-indigo-50 leading-relaxed italic">
+                <p className="text-xs text-orange-50 leading-relaxed italic">
                   "All systems remain within standard parameters. No unauthorized attempts detected in the last 24h cycle."
                 </p>
               </div>

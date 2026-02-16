@@ -114,7 +114,7 @@ export default function ResetPasswordPage() {
                             </Alert>
                         )}
                         {message && (
-                            <Alert className="bg-indigo-500/20 text-indigo-100 border-indigo-500/50">
+                            <Alert className="bg-orange-500/20 text-orange-100 border-orange-500/50">
                                 <AlertDescription>{message}</AlertDescription>
                             </Alert>
                         )}

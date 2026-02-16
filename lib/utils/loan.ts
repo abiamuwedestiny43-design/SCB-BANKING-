@@ -59,7 +59,7 @@ export function generateLoanNumber(): string {
 
 export function getStatusColor(status: string): string {
   switch (status) {
-    case 'approved': return 'bg-indigo-100 text-indigo-800'
+    case 'approved': return 'bg-orange-100 text-orange-800'
     case 'pending': return 'bg-yellow-100 text-yellow-800'
     case 'rejected': return 'bg-red-100 text-red-800'
     case 'active': return 'bg-blue-100 text-blue-800'

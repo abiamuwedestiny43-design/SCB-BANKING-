@@ -231,10 +231,10 @@ export default function TransferPage() {
         {/* Header Section */}
         <motion.div {...fadeInUp} className="text-center space-y-4">
           <div className="inline-flex items-center justify-center p-4 bg-white border border-slate-200 rounded-3xl mb-2 shadow-sm">
-            <ArrowRightLeft className="h-10 w-10 text-indigo-600" />
+            <ArrowRightLeft className="h-10 w-10 text-orange-600" />
           </div>
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-indigo-600 text-[10px] font-black uppercase tracking-widest mx-auto shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-orange-600 text-[10px] font-black uppercase tracking-widest mx-auto shadow-sm">
               <ShieldCheck className="w-3 h-3" /> Secure Transfer Gateway
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase">
@@ -251,7 +251,7 @@ export default function TransferPage() {
         <div className="grid grid-cols-1 gap-10">
           <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
             <Card className="border border-slate-200 bg-white overflow-hidden rounded-[3rem] shadow-xl relative">
-              <div className="h-2 bg-gradient-to-r from-indigo-600 via-indigo-400 to-indigo-600 opacity-80" />
+              <div className="h-2 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-80" />
               <CardHeader className="p-10 pb-6 border-b border-slate-100 bg-white">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
                   <div className="space-y-2">
@@ -264,7 +264,7 @@ export default function TransferPage() {
                       onClick={() => setTransferType("local")}
                       className={cn(
                         "flex items-center gap-2 px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all",
-                        transferType === "local" ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20" : "text-slate-500 hover:text-indigo-600"
+                        transferType === "local" ? "bg-orange-600 text-white shadow-lg shadow-orange-600/20" : "text-slate-500 hover:text-orange-600"
                       )}
                     >
                       <MapPin className="h-4 w-4" /> Local Transfer
@@ -295,7 +295,7 @@ export default function TransferPage() {
                   {/* Beneficiary Quick Select */}
                   <div className="space-y-6">
                     <Label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] flex items-center gap-3">
-                      <BookUser className="h-4 w-4 text-indigo-600" />
+                      <BookUser className="h-4 w-4 text-orange-600" />
                       Saved Recipient Tokens
                     </Label>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -303,10 +303,10 @@ export default function TransferPage() {
                         onClick={() => setSelectedBeneficiaryId(null)}
                         className={cn(
                           "p-6 rounded-[2rem] border-2 transition-all cursor-pointer flex items-center gap-5 group relative overflow-hidden",
-                          !selectedBeneficiaryId ? "border-indigo-600 bg-indigo-50 shadow-lg shadow-indigo-600/5" : "border-slate-100 bg-white hover:border-slate-200"
+                          !selectedBeneficiaryId ? "border-orange-600 bg-orange-50 shadow-lg shadow-orange-600/5" : "border-slate-100 bg-white hover:border-slate-200"
                         )}
                       >
-                        <div className={cn("h-7 w-7 rounded-full border-2 flex items-center justify-center transition-all shrink-0", !selectedBeneficiaryId ? "border-indigo-600 bg-indigo-600" : "border-slate-300")}>
+                        <div className={cn("h-7 w-7 rounded-full border-2 flex items-center justify-center transition-all shrink-0", !selectedBeneficiaryId ? "border-orange-600 bg-orange-600" : "border-slate-300")}>
                           {!selectedBeneficiaryId && <CheckCircle2 className="h-4 w-4 text-white" />}
                         </div>
                         <div>
@@ -320,11 +320,11 @@ export default function TransferPage() {
                           onClick={() => setSelectedBeneficiaryId(b._id)}
                           className={cn(
                             "p-6 rounded-[2rem] border-2 transition-all cursor-pointer flex items-center justify-between group relative overflow-hidden",
-                            selectedBeneficiaryId === b._id ? "border-indigo-600 bg-indigo-50 shadow-lg shadow-indigo-600/5" : "border-slate-100 bg-white hover:border-slate-200"
+                            selectedBeneficiaryId === b._id ? "border-orange-600 bg-orange-50 shadow-lg shadow-orange-600/5" : "border-slate-100 bg-white hover:border-slate-200"
                           )}
                         >
                           <div className="flex items-center gap-5 flex-1 overflow-hidden z-10">
-                            <div className={cn("h-7 w-7 rounded-full border-2 flex items-center justify-center shrink-0 transition-all", selectedBeneficiaryId === b._id ? "border-indigo-600 bg-indigo-600" : "border-slate-300")}>
+                            <div className={cn("h-7 w-7 rounded-full border-2 flex items-center justify-center shrink-0 transition-all", selectedBeneficiaryId === b._id ? "border-orange-600 bg-orange-600" : "border-slate-300")}>
                               {selectedBeneficiaryId === b._id && <CheckCircle2 className="h-4 w-4 text-white" />}
                             </div>
                             <div className="truncate">
@@ -332,7 +332,7 @@ export default function TransferPage() {
                               <p className="text-[10px] uppercase font-bold text-slate-400 tracking-tighter truncate">{b.bankInfo.bankName} <span className="mx-1 opacity-30">|</span> {b.bankAccount}</p>
                             </div>
                           </div>
-                          <span className={cn("text-[8px] font-black px-2 py-1 rounded bg-white shadow-sm uppercase ml-2 border z-10", b.bankRegion === 'international' ? 'text-blue-600 border-blue-100' : 'text-indigo-600 border-indigo-100')}>
+                          <span className={cn("text-[8px] font-black px-2 py-1 rounded bg-white shadow-sm uppercase ml-2 border z-10", b.bankRegion === 'international' ? 'text-blue-600 border-blue-100' : 'text-orange-600 border-orange-100')}>
                             {b.bankRegion === 'international' ? 'WIRE' : 'LOCAL'}
                           </span>
                         </div>
@@ -344,7 +344,7 @@ export default function TransferPage() {
                     <div className="space-y-4">
                       <Label htmlFor="bankName" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Destination Institution</Label>
                       <div className="relative group">
-                        <Banknote className="absolute left-4 top-4 h-5 w-5 text-slate-300 group-focus-within:text-indigo-600 transition-colors" />
+                        <Banknote className="absolute left-4 top-4 h-5 w-5 text-slate-300 group-focus-within:text-orange-600 transition-colors" />
                         <Input
                           id="bankName"
                           placeholder="Bank Name (e.g. JPMorgan)"
@@ -352,7 +352,7 @@ export default function TransferPage() {
                           onChange={(e) => handleChange("bankName", e.target.value)}
                           required
                           disabled={isLoading}
-                          className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-indigo-600 focus:ring-indigo-600/10 transition-all rounded-2xl font-bold text-slate-900 placeholder:text-slate-300"
+                          className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-orange-600 focus:ring-orange-600/10 transition-all rounded-2xl font-bold text-slate-900 placeholder:text-slate-300"
                         />
                       </div>
                     </div>
@@ -360,7 +360,7 @@ export default function TransferPage() {
                     <div className="space-y-4">
                       <Label htmlFor="accountNumber" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Account Credentials</Label>
                       <div className="relative group">
-                        <CreditCard className="absolute left-4 top-4 h-5 w-5 text-slate-300 group-focus-within:text-indigo-600 transition-colors" />
+                        <CreditCard className="absolute left-4 top-4 h-5 w-5 text-slate-300 group-focus-within:text-orange-600 transition-colors" />
                         <Input
                           id="accountNumber"
                           placeholder="Account Number"
@@ -368,7 +368,7 @@ export default function TransferPage() {
                           onChange={(e) => handleChange("accountNumber", e.target.value)}
                           required
                           disabled={isLoading}
-                          className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-indigo-600 focus:ring-indigo-600/10 transition-all rounded-2xl font-bold text-slate-900 placeholder:text-slate-300"
+                          className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-orange-600 focus:ring-orange-600/10 transition-all rounded-2xl font-bold text-slate-900 placeholder:text-slate-300"
                         />
                       </div>
                     </div>
@@ -376,7 +376,7 @@ export default function TransferPage() {
                     <div className="space-y-4 col-span-1 md:col-span-2">
                       <Label htmlFor="accountHolder" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Primary Beneficiary</Label>
                       <div className="relative group">
-                        <User className="absolute left-4 top-4 h-5 w-5 text-slate-300 group-focus-within:text-indigo-600 transition-colors" />
+                        <User className="absolute left-4 top-4 h-5 w-5 text-slate-300 group-focus-within:text-orange-600 transition-colors" />
                         <Input
                           id="accountHolder"
                           placeholder="Account Holder Name"
@@ -384,7 +384,7 @@ export default function TransferPage() {
                           onChange={(e) => handleChange("accountHolder", e.target.value)}
                           required
                           disabled={isLoading}
-                          className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-indigo-600 focus:ring-indigo-600/10 transition-all rounded-2xl font-bold text-slate-900 placeholder:text-slate-300 uppercase"
+                          className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-orange-600 focus:ring-orange-600/10 transition-all rounded-2xl font-bold text-slate-900 placeholder:text-slate-300 uppercase"
                         />
                       </div>
                     </div>
@@ -394,14 +394,14 @@ export default function TransferPage() {
                         <div className="space-y-4">
                           <Label htmlFor="country" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Jurisdiction</Label>
                           <Select value={formData.country} onValueChange={(value) => handleChange("country", value)}>
-                            <SelectTrigger className="h-14 bg-white border-slate-200 rounded-2xl font-bold text-slate-900 focus:ring-indigo-600/10 focus:border-indigo-600">
+                            <SelectTrigger className="h-14 bg-white border-slate-200 rounded-2xl font-bold text-slate-900 focus:ring-orange-600/10 focus:border-orange-600">
                               <SelectValue placeholder="Select Country" />
                             </SelectTrigger>
                             <SelectContent className="max-h-72 rounded-2xl bg-white border-slate-200 text-slate-900 shadow-2xl">
                               {[
                                 "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe",
                               ].map((c) => (
-                                <SelectItem key={c} value={c} className="rounded-xl hover:bg-white focus:bg-indigo-50 px-4 py-3 cursor-pointer">
+                                <SelectItem key={c} value={c} className="rounded-xl hover:bg-white focus:bg-orange-50 px-4 py-3 cursor-pointer">
                                   {c}
                                 </SelectItem>
                               ))}
@@ -412,14 +412,14 @@ export default function TransferPage() {
                         <div className="space-y-4">
                           <Label htmlFor="routingCode" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">SWIFT BIC / Routing</Label>
                           <div className="relative group">
-                            <Globe className="absolute left-4 top-4 h-5 w-5 text-slate-300 group-focus-within:text-indigo-600 transition-colors" />
+                            <Globe className="absolute left-4 top-4 h-5 w-5 text-slate-300 group-focus-within:text-orange-600 transition-colors" />
                             <Input
                               id="routingCode"
                               placeholder="SWIFT BIC / Routing"
                               value={formData.routingCode}
                               onChange={(e) => handleChange("routingCode", e.target.value)}
                               disabled={isLoading}
-                              className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-indigo-600 focus:ring-indigo-600/10 transition-all rounded-2xl font-bold text-slate-900 placeholder:text-slate-300 uppercase"
+                              className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-orange-600 focus:ring-orange-600/10 transition-all rounded-2xl font-bold text-slate-900 placeholder:text-slate-300 uppercase"
                             />
                           </div>
                         </div>
@@ -429,7 +429,7 @@ export default function TransferPage() {
                     <div className="space-y-4">
                       <Label htmlFor="amount" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Asset Value</Label>
                       <div className="relative group">
-                        <span className="absolute left-6 top-4 text-3xl font-black text-slate-300 group-focus-within:text-indigo-600 transition-colors">$</span>
+                        <span className="absolute left-6 top-4 text-3xl font-black text-slate-300 group-focus-within:text-orange-600 transition-colors">$</span>
                         <Input
                           id="amount"
                           type="number"
@@ -439,7 +439,7 @@ export default function TransferPage() {
                           onChange={(e) => handleChange("amount", e.target.value)}
                           required
                           disabled={isLoading}
-                          className="pl-14 h-20 bg-white border-slate-200 focus:bg-white focus:border-indigo-600 focus:ring-indigo-600/10 shadow-sm transition-all rounded-2xl text-4xl font-black text-slate-900"
+                          className="pl-14 h-20 bg-white border-slate-200 focus:bg-white focus:border-orange-600 focus:ring-orange-600/10 shadow-sm transition-all rounded-2xl text-4xl font-black text-slate-900"
                         />
                       </div>
                     </div>
@@ -465,14 +465,14 @@ export default function TransferPage() {
                       onChange={(e) => handleChange("description", e.target.value)}
                       disabled={isLoading}
                       placeholder="Specify the nature of this transaction"
-                      className="min-h-[140px] bg-white border-slate-200 focus:bg-white focus:border-indigo-600 focus:ring-indigo-600/10 transition-all rounded-[2rem] p-8 font-medium text-slate-900 placeholder:text-slate-300 shadow-inner"
+                      className="min-h-[140px] bg-white border-slate-200 focus:bg-white focus:border-orange-600 focus:ring-orange-600/10 transition-all rounded-[2rem] p-8 font-medium text-slate-900 placeholder:text-slate-300 shadow-inner"
                     />
                   </div>
 
                   <div className="p-8 bg-white border border-slate-200 rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="flex items-center gap-5">
                       <div className="h-14 w-14 bg-white rounded-2xl flex items-center justify-center border border-slate-200 shadow-sm">
-                        <BookUser className="h-7 w-7 text-indigo-600" />
+                        <BookUser className="h-7 w-7 text-orange-600" />
                       </div>
                       <div>
                         <p className="text-sm font-black text-slate-900 uppercase tracking-tight">Sync Credentials</p>
@@ -502,7 +502,7 @@ export default function TransferPage() {
                           htmlFor="save-yes"
                           className={cn(
                             "cursor-pointer px-10 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all",
-                            saveBeneficiaryChoice === "yes" ? "bg-indigo-600 text-white shadow-md" : "text-slate-400 hover:text-indigo-600"
+                            saveBeneficiaryChoice === "yes" ? "bg-orange-600 text-white shadow-md" : "text-slate-400 hover:text-orange-600"
                           )}
                         >
                           Commit
@@ -515,7 +515,7 @@ export default function TransferPage() {
                     <Button
                       type="submit"
                       disabled={isLoading || !canTransferAll}
-                      className="w-full bg-indigo-600 hover:bg-slate-900 text-white font-black h-20 rounded-[2.5rem] shadow-xl shadow-indigo-600/10 transition-all hover:scale-[1.02] active:scale-[0.98] group text-xl uppercase tracking-tighter disabled:bg-slate-200"
+                      className="w-full bg-orange-600 hover:bg-slate-900 text-white font-black h-20 rounded-[2.5rem] shadow-xl shadow-orange-600/10 transition-all hover:scale-[1.02] active:scale-[0.98] group text-xl uppercase tracking-tighter disabled:bg-slate-200"
                     >
                       {isLoading ? (
                         <Loader2 className="h-8 w-8 animate-spin" />
@@ -528,11 +528,11 @@ export default function TransferPage() {
                     </Button>
                     <div className="flex flex-col items-center gap-2 opacity-60">
                       <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">
-                        <ShieldCheck className="h-3 w-3 text-indigo-600" />
+                        <ShieldCheck className="h-3 w-3 text-orange-600" />
                         Encrypted Execution Environment
                       </div>
                       <div className="h-1 w-32 bg-slate-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-indigo-600 w-2/3 animate-[shimmer_2s_infinite]"></div>
+                        <div className="h-full bg-orange-600 w-2/3 animate-[shimmer_2s_infinite]"></div>
                       </div>
                     </div>
                   </div>
@@ -548,17 +548,17 @@ export default function TransferPage() {
         {showOtpDialog && (
           <Dialog open={showOtpDialog} onOpenChange={setShowOtpDialog}>
             <DialogContent className="rounded-[3rem] border-slate-200 bg-white shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] p-12 max-w-lg overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-2 bg-indigo-600" />
+              <div className="absolute top-0 left-0 w-full h-2 bg-orange-600" />
               <DialogHeader className="space-y-6">
-                <div className="h-20 w-20 bg-indigo-50 border border-indigo-100 rounded-[2rem] flex items-center justify-center mx-auto mb-2 shadow-sm">
-                  <ShieldCheck className="h-10 w-10 text-indigo-600" />
+                <div className="h-20 w-20 bg-orange-50 border border-orange-100 rounded-[2rem] flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <ShieldCheck className="h-10 w-10 text-orange-600" />
                 </div>
                 <div className="space-y-2 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-600">Verification Protocol</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-orange-600">Verification Protocol</p>
                   <DialogTitle className="text-4xl font-black text-slate-900 uppercase tracking-tighter">Identity <span className="text-slate-400 italic">Auth</span></DialogTitle>
                 </div>
                 <DialogDescription className="text-center text-slate-500 font-bold text-base leading-relaxed">
-                  A verification token has been dispatched to your global relay. Input the <span className="text-indigo-600 font-black">6-DIGIT</span> sequence below.
+                  A verification token has been dispatched to your global relay. Input the <span className="text-orange-600 font-black">6-DIGIT</span> sequence below.
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-12 pt-8">
@@ -570,7 +570,7 @@ export default function TransferPage() {
                     value={otpCode}
                     onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ""))}
                     placeholder="000000"
-                    className="h-24 text-center text-5xl font-black tracking-[1.5rem] bg-white border-slate-200 rounded-[2rem] shadow-inner focus:border-indigo-600 focus:ring-0 placeholder:text-slate-200 text-indigo-600"
+                    className="h-24 text-center text-5xl font-black tracking-[1.5rem] bg-white border-slate-200 rounded-[2rem] shadow-inner focus:border-orange-600 focus:ring-0 placeholder:text-slate-200 text-orange-600"
                   />
                 </div>
                 <div className="flex flex-col gap-4">

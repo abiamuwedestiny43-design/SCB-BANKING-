@@ -169,15 +169,15 @@ export default function SettingsClient({ user }: SettingsPageProps) {
     return (
         <div className="min-h-screen bg-white w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
             {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-indigo-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="max-w-6xl mx-auto space-y-10 relative z-10">
 
                 {/* Header Section */}
                 <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-200">
                     <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-indigo-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-50 border border-indigo-100 w-fit rounded-full">
+                        <div className="flex items-center gap-2 text-orange-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-50 border border-orange-100 w-fit rounded-full">
                             <Settings className="h-3 w-3" />
                             Account Settings
                         </div>
@@ -191,13 +191,13 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                             <p className="text-sm font-black text-slate-900 tracking-tight uppercase">{profileData.firstname} {profileData.lastname}</p>
                             <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-black">Verified Member</p>
                         </div>
-                        <div className="h-16 w-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-indigo-600 text-2xl font-black shadow-sm relative group cursor-pointer overflow-hidden">
+                        <div className="h-16 w-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-orange-600 text-2xl font-black shadow-sm relative group cursor-pointer overflow-hidden">
                             {user?.profileImage ? (
                                 <img src={user.profileImage} alt="Profile" className="h-full w-full object-cover transition-opacity" />
                             ) : (
                                 <span className="uppercase">{profileData.firstname?.[0]}{profileData.lastname?.[0]}</span>
                             )}
-                            <div className="absolute inset-0 bg-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute inset-0 bg-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
                     </div>
                 </motion.div>
@@ -206,12 +206,12 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                     <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
                         <Alert className={cn(
                             "border-none shadow-xl bg-white rounded-2xl p-6",
-                            message.type === "success" ? "border-l-4 border-indigo-600" : "border-l-4 border-red-600"
+                            message.type === "success" ? "border-l-4 border-orange-600" : "border-l-4 border-red-600"
                         )}>
-                            {message.type === "success" ? <CheckCircle className="h-6 w-6 text-indigo-600" /> : <AlertCircle className="h-6 w-6 text-red-600" />}
+                            {message.type === "success" ? <CheckCircle className="h-6 w-6 text-orange-600" /> : <AlertCircle className="h-6 w-6 text-red-600" />}
                             <AlertDescription className={cn(
                                 "font-black uppercase text-lg ml-3",
-                                message.type === "success" ? "text-indigo-600" : "text-red-600"
+                                message.type === "success" ? "text-orange-600" : "text-red-600"
                             )}>
                                 {message.text}
                             </AlertDescription>
@@ -239,8 +239,8 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                             className={cn(
                                                 "flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-500 whitespace-nowrap group",
                                                 activeTab === item.id
-                                                    ? "bg-indigo-600 text-white shadow-xl shadow-indigo-600/20 font-black"
-                                                    : "text-slate-500 hover:bg-white hover:text-indigo-600 font-bold"
+                                                    ? "bg-orange-600 text-white shadow-xl shadow-orange-600/20 font-black"
+                                                    : "text-slate-500 hover:bg-white hover:text-orange-600 font-bold"
                                             )}
                                         >
                                             <item.icon className={cn("h-4 w-4 transition-transform group-hover:scale-110", activeTab === item.id ? "text-white" : "text-slate-400")} />
@@ -266,7 +266,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                 >
                                     <Card className="border border-slate-200 shadow-xl overflow-hidden bg-white rounded-[3rem]">
                                         <div className="relative">
-                                            <div className="h-40 bg-gradient-to-r from-slate-900 to-indigo-900 relative overflow-hidden group">
+                                            <div className="h-40 bg-gradient-to-r from-slate-900 to-orange-900 relative overflow-hidden group">
                                                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
                                                 {/* Decorative Label */}
                                                 <div className="absolute top-8 right-8 text-right hidden md:block">
@@ -332,12 +332,12 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                                         <div key={field.key} className="space-y-3">
                                                             <Label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{field.label}</Label>
                                                             <div className="relative group">
-                                                                <field.icon className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
+                                                                <field.icon className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-orange-600 transition-colors" />
                                                                 <Input
                                                                     type={field.type || "text"}
                                                                     value={(profileData as any)[field.key]}
                                                                     onChange={(e) => setProfileData({ ...profileData, [field.key]: e.target.value })}
-                                                                    className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-indigo-600 focus:ring-indigo-600/10 text-slate-900 font-bold transition-all rounded-2xl shadow-inner placeholder:text-slate-300"
+                                                                    className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-orange-600 focus:ring-orange-600/10 text-slate-900 font-bold transition-all rounded-2xl shadow-inner placeholder:text-slate-300"
                                                                 />
                                                             </div>
                                                         </div>
@@ -348,7 +348,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                                     <Button
                                                         type="submit"
                                                         disabled={isLoading}
-                                                        className="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-12 h-14 rounded-2xl shadow-xl shadow-indigo-600/10 transition-all hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-tight"
+                                                        className="bg-orange-600 hover:bg-orange-700 text-white font-black px-12 h-14 rounded-2xl shadow-xl shadow-orange-600/10 transition-all hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-tight"
                                                     >
                                                         {isLoading ? "Saving..." : "Commit Changes"}
                                                     </Button>
@@ -368,9 +368,9 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                 >
                                     <Card className="border border-slate-200 shadow-xl overflow-hidden bg-white rounded-[3rem]">
                                         <CardHeader className="bg-white p-12 border-b border-slate-100 relative overflow-hidden">
-                                            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-600/[0.03] rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none"></div>
+                                            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/[0.03] rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none"></div>
                                             <div className="flex items-center gap-6 relative z-10">
-                                                <div className="p-5 bg-white border border-slate-200 rounded-3xl shadow-sm flex items-center justify-center text-indigo-600">
+                                                <div className="p-5 bg-white border border-slate-200 rounded-3xl shadow-sm flex items-center justify-center text-orange-600">
                                                     <Lock className="h-8 w-8" />
                                                 </div>
                                                 <div className="space-y-1">
@@ -387,7 +387,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                                         type="password"
                                                         value={passwordData.currentPassword}
                                                         onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
-                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-indigo-600 focus:ring-indigo-600/10 transition-all"
+                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-orange-600 focus:ring-orange-600/10 transition-all"
                                                     />
                                                 </div>
                                                 <div className="space-y-3">
@@ -396,7 +396,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                                         type="password"
                                                         value={passwordData.newPassword}
                                                         onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
-                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-indigo-600 focus:ring-indigo-600/10 transition-all"
+                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-orange-600 focus:ring-orange-600/10 transition-all"
                                                     />
                                                     <p className="text-[10px] text-slate-400 font-black uppercase tracking-tight ml-1">Complexity Rule: Enhanced cryptographic requirements apply.</p>
                                                 </div>
@@ -406,7 +406,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                                         type="password"
                                                         value={passwordData.confirmPassword}
                                                         onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
-                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-indigo-600 focus:ring-indigo-600/10 transition-all"
+                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-orange-600 focus:ring-orange-600/10 transition-all"
                                                     />
                                                 </div>
                                                 <Button
@@ -431,9 +431,9 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                 >
                                     <Card className="border border-slate-200 shadow-xl overflow-hidden bg-white rounded-[3rem]">
                                         <CardHeader className="bg-white p-12 border-b border-slate-100 relative overflow-hidden">
-                                            <div className="absolute bottom-0 right-0 w-64 h-64 bg-indigo-600/[0.03] rounded-full -mr-32 -mb-32 blur-3xl pointer-events-none"></div>
+                                            <div className="absolute bottom-0 right-0 w-64 h-64 bg-orange-600/[0.03] rounded-full -mr-32 -mb-32 blur-3xl pointer-events-none"></div>
                                             <div className="flex items-center gap-6 relative z-10">
-                                                <div className="p-5 bg-white border border-slate-200 rounded-3xl shadow-sm flex items-center justify-center text-indigo-600">
+                                                <div className="p-5 bg-white border border-slate-200 rounded-3xl shadow-sm flex items-center justify-center text-orange-600">
                                                     <Bell className="h-8 w-8" />
                                                 </div>
                                                 <div className="space-y-1">
@@ -449,9 +449,9 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                                 { title: "Financial Forecasts", desc: "Periodic analysis regarding market movements.", icon: Settings, enabled: false },
                                                 { title: "Mobile Push", desc: "Direct alerts to your registered devices.", icon: Phone, enabled: true },
                                             ].map((item, i) => (
-                                                <div key={i} className="flex items-center justify-between p-6 rounded-[2rem] bg-white border border-slate-100 group hover:bg-indigo-50 hover:border-indigo-200 transition-all duration-500">
+                                                <div key={i} className="flex items-center justify-between p-6 rounded-[2rem] bg-white border border-slate-100 group hover:bg-orange-50 hover:border-orange-200 transition-all duration-500">
                                                     <div className="flex items-center gap-5">
-                                                        <div className="h-12 w-12 rounded-2xl bg-white flex items-center justify-center text-slate-400 group-hover:text-indigo-600 border border-slate-200 shadow-sm transition-colors">
+                                                        <div className="h-12 w-12 rounded-2xl bg-white flex items-center justify-center text-slate-400 group-hover:text-orange-600 border border-slate-200 shadow-sm transition-colors">
                                                             <item.icon className="h-5 w-5" />
                                                         </div>
                                                         <div className="space-y-0.5">
@@ -461,7 +461,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                                     </div>
                                                     <div className={cn(
                                                         "h-8 w-14 rounded-full relative cursor-pointer transition-all duration-500 p-1 flex items-center shadow-inner",
-                                                        item.enabled ? "bg-indigo-600" : "bg-slate-200"
+                                                        item.enabled ? "bg-orange-600" : "bg-slate-200"
                                                     )}>
                                                         <div className={cn(
                                                             "h-6 w-6 rounded-full transition-all duration-500 shadow-md flex items-center justify-center",
@@ -485,8 +485,8 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <Card className="border border-slate-200 shadow-xl bg-white overflow-hidden rounded-[2.5rem] group hover:bg-white transition-all">
                                 <CardHeader className="pb-4 px-8 pt-8">
-                                    <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-3 text-slate-400 group-hover:text-indigo-600 transition-colors">
-                                        <div className="h-8 w-8 bg-indigo-50 rounded-xl flex items-center justify-center border border-indigo-100 group-hover:scale-110 transition-transform">
+                                    <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-3 text-slate-400 group-hover:text-orange-600 transition-colors">
+                                        <div className="h-8 w-8 bg-orange-50 rounded-xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform">
                                             <ShieldCheck className="h-4 w-4" />
                                         </div>
                                         Verification Audit
@@ -497,7 +497,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                         <div className="relative z-10 flex items-center gap-4">
                                             <div className={cn(
                                                 "p-3 rounded-2xl flex items-center justify-center shadow-sm",
-                                                user?.bankAccount?.verified ? "bg-indigo-600 text-white" : "bg-yellow-500 text-white"
+                                                user?.bankAccount?.verified ? "bg-orange-600 text-white" : "bg-yellow-500 text-white"
                                             )}>
                                                 {user?.bankAccount?.verified ? <CheckCircle className="h-5 w-5" /> : <AlertCircle className="h-5 w-5" />}
                                             </div>
@@ -506,14 +506,14 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                         <span className={cn(
                                             "relative z-10 px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest border shadow-sm",
                                             user?.bankAccount?.verified
-                                                ? "bg-indigo-50 text-indigo-600 border-indigo-100"
+                                                ? "bg-orange-50 text-orange-600 border-orange-100"
                                                 : "bg-yellow-50 text-yellow-600 border-yellow-100"
                                         )}>
                                             {user?.bankAccount?.verified ? "Verified" : "Pending Audit"}
                                         </span>
                                         {/* Background Trace */}
                                         <div className="absolute right-0 bottom-0 opacity-[0.03] pointer-events-none transform translate-x-10 translate-y-10">
-                                            <ShieldCheck className="h-24 w-24 text-indigo-600" />
+                                            <ShieldCheck className="h-24 w-24 text-orange-600" />
                                         </div>
                                     </div>
                                 </CardContent>
@@ -533,7 +533,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                         <div className="relative z-10 flex items-center gap-4">
                                             <div className={cn(
                                                 "p-3 rounded-2xl flex items-center justify-center shadow-sm",
-                                                user?.bankAccount?.canTransfer ? "bg-indigo-600 text-white" : "bg-red-600 text-white"
+                                                user?.bankAccount?.canTransfer ? "bg-orange-600 text-white" : "bg-red-600 text-white"
                                             )}>
                                                 {user?.bankAccount?.canTransfer ? <CheckCircle className="h-5 w-5" /> : <ShieldAlert className="h-5 w-5" />}
                                             </div>
@@ -542,7 +542,7 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                         <span className={cn(
                                             "relative z-10 px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest border shadow-sm",
                                             user?.bankAccount?.canTransfer
-                                                ? "bg-indigo-50 text-indigo-600 border-indigo-100"
+                                                ? "bg-orange-50 text-orange-600 border-orange-100"
                                                 : "bg-red-50 text-red-600 border-red-100"
                                         )}>
                                             {user?.bankAccount?.canTransfer ? "Authorized" : "Restricted"}

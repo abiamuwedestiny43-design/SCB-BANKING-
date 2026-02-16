@@ -36,24 +36,24 @@ const ContactPage: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
-                      <input type="text" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+                      <input type="text" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
-                      <input type="text" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+                      <input type="text" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
-                    <input type="email" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+                    <input type="email" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">Phone</label>
-                    <input type="tel" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+                    <input type="tel" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
-                    <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                       <option>General Inquiry</option>
                       <option>Account Services</option>
                       <option>Loan Information</option>
@@ -63,9 +63,9 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                    <textarea rows={5} className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="How can we help you?"></textarea>
+                    <textarea rows={5} className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="How can we help you?"></textarea>
                   </div>
-                  <button className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                  <button className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
                     Send Message
                   </button>
                 </form>
@@ -79,8 +79,8 @@ const ContactPage: React.FC = () => {
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                        <Phone className="w-6 h-6 text-indigo-600" />
+                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <Phone className="w-6 h-6 text-orange-600" />
                       </div>
                     </div>
                     <div className="ml-4">
@@ -91,8 +91,8 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                        <Mail className="w-6 h-6 text-indigo-600" />
+                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <Mail className="w-6 h-6 text-orange-600" />
                       </div>
                     </div>
                     <div className="ml-4">
@@ -103,8 +103,8 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                        <MapPin className="w-6 h-6 text-indigo-600" />
+                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <MapPin className="w-6 h-6 text-orange-600" />
                       </div>
                     </div>
                     <div className="ml-4">
@@ -137,12 +137,12 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-indigo-50 p-6 rounded-lg">
+              <div className="bg-orange-50 p-6 rounded-lg">
                 <h3 className="text-lg font-semibold text-slate-900 mb-3">Need Immediate Help?</h3>
                 <p className="text-slate-600 mb-4">
                   For urgent account issues or to report a lost/stolen card, call our 24/7 hotline:
                 </p>
-                <div className="text-2xl font-bold text-indigo-600">(995) 911-BANK</div>
+                <div className="text-2xl font-bold text-orange-600">(995) 911-BANK</div>
               </div>
             </div>
           </div>
@@ -178,19 +178,19 @@ const ContactPage: React.FC = () => {
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">{branch.name}</h3>
                 <div className="space-y-3 text-slate-600">
                   <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-indigo-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <MapPin className="w-5 h-5 text-orange-600 mr-2 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{branch.address}</span>
                   </div>
                   <div className="flex items-center">
-                    <Phone className="w-5 h-5 text-indigo-600 mr-2 flex-shrink-0" />
+                    <Phone className="w-5 h-5 text-orange-600 mr-2 flex-shrink-0" />
                     <span className="text-sm">{branch.phone}</span>
                   </div>
                   <div className="flex items-start">
-                    <Clock className="w-5 h-5 text-indigo-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <Clock className="w-5 h-5 text-orange-600 mr-2 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{branch.hours}</span>
                   </div>
                 </div>
-                <button className="mt-4 w-full text-indigo-600 font-medium hover:text-indigo-700 text-sm border border-indigo-600 py-2 rounded-lg hover:bg-indigo-50 transition-colors">
+                <button className="mt-4 w-full text-orange-600 font-medium hover:text-orange-700 text-sm border border-orange-600 py-2 rounded-lg hover:bg-orange-50 transition-colors">
                   Get Directions
                 </button>
               </div>

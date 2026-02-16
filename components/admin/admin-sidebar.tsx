@@ -39,7 +39,7 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
     <>
       {/* Mobile menu button */}
       <div className="lg:hidden fixed top-4 right-4 z-50">
-        <Button variant="outline" size="icon" className="bg-[#0f172a] border-indigo-500/30 text-indigo-400" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <Button variant="outline" size="icon" className="bg-[#0f172a] border-orange-500/30 text-orange-400" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </div>
@@ -59,31 +59,31 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
                 <Image src="/logo.svg" alt="Logo" fill className="object-cover" />
               </div>
               <span className="text-xl font-black tracking-tighter text-black">
-                FIRST<span className="text-indigo-700 italic">STATE</span>
+                FIRST<span className="text-orange-700 italic">STATE</span>
               </span>
             </Link>
           </div>
 
           {/* User Profile Hook */}
           <div className="px-6 mb-10">
-            <div className="p-4 rounded-[1.5rem] bg-indigo-50 border border-indigo-100 flex items-center space-x-4">
+            <div className="p-4 rounded-[1.5rem] bg-orange-50 border border-orange-100 flex items-center space-x-4">
               <div className="relative">
-                <div className="w-12 h-12 bg-white border border-indigo-200 rounded-xl flex items-center justify-center text-indigo-600 font-black text-lg overflow-hidden">
+                <div className="w-12 h-12 bg-white border border-orange-200 rounded-xl flex items-center justify-center text-orange-600 font-black text-lg overflow-hidden">
                   {user.profileImage ? (
                     <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     user.bankInfo.bio.firstname[0]
                   )}
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-indigo-600 border-2 border-white rounded-full"></div>
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-600 border-2 border-white rounded-full"></div>
               </div>
               <div className="overflow-hidden">
                 <p className="text-sm font-black text-black truncate">
                   {user.bankInfo.bio.firstname} {user.bankInfo.bio.lastname}
                 </p>
                 <div className="flex items-center gap-1">
-                  <Shield className="w-3 h-3 text-indigo-700" />
-                  <p className="text-[10px] font-black uppercase tracking-widest text-indigo-700">Super Admin</p>
+                  <Shield className="w-3 h-3 text-orange-700" />
+                  <p className="text-[10px] font-black uppercase tracking-widest text-orange-700">Super Admin</p>
                 </div>
               </div>
             </div>
@@ -101,12 +101,12 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
                   className={cn(
                     "flex items-center space-x-4 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 group",
                     isActive
-                      ? "bg-indigo-700 text-white shadow-xl shadow-indigo-700/20"
-                      : "text-black hover:text-indigo-700 hover:bg-indigo-50",
+                      ? "bg-orange-700 text-white shadow-xl shadow-orange-700/20"
+                      : "text-black hover:text-orange-700 hover:bg-orange-50",
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-white" : "text-indigo-600/60")} />
+                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-white" : "text-orange-600/60")} />
                   <span>{item.name === "Loan Protocols" ? "Loan Services" : item.name}</span>
                 </Link>
               )

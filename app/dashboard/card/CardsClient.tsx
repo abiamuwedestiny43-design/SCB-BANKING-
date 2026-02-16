@@ -32,7 +32,7 @@ export default function CardsClient({ cards }: CardsClientProps) {
                 {/* Header Section */}
                 <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-indigo-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-white border border-slate-200 w-fit rounded-full shadow-sm">
+                        <div className="flex items-center gap-2 text-orange-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-white border border-slate-200 w-fit rounded-full shadow-sm">
                             <CreditCard className="h-3 w-3" />
                             Secure Payments
                         </div>
@@ -48,7 +48,7 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                 Dashboard
                             </Link>
                         </Button>
-                        <Button asChild className="h-12 px-6 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-xl shadow-indigo-600/10 font-black transition-all hover:-translate-y-1">
+                        <Button asChild className="h-12 px-6 bg-orange-600 hover:bg-orange-700 text-white rounded-xl shadow-xl shadow-orange-600/10 font-black transition-all hover:-translate-y-1">
                             <Link href="/dashboard/card/apply" className="flex items-center gap-2">
                                 <Plus className="h-4 w-4" />
                                 New Card
@@ -60,9 +60,9 @@ export default function CardsClient({ cards }: CardsClientProps) {
                 {/* Info Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
-                        <UICard className="border border-slate-200 shadow-sm bg-white p-6 rounded-[2rem] group hover:border-indigo-300 transition-all duration-500">
+                        <UICard className="border border-slate-200 shadow-sm bg-white p-6 rounded-[2rem] group hover:border-orange-300 transition-all duration-500">
                             <div className="flex items-center gap-5">
-                                <div className="h-14 w-14 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-indigo-600 shadow-sm transition-transform group-hover:scale-110">
+                                <div className="h-14 w-14 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-orange-600 shadow-sm transition-transform group-hover:scale-110">
                                     <ShieldCheck className="h-7 w-7" />
                                 </div>
                                 <div className="space-y-0.5">
@@ -112,7 +112,7 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                     <h3 className="text-2xl font-black text-slate-900">No active cards <span className="text-slate-400 italic">found</span></h3>
                                     <p className="text-slate-500 font-medium max-w-sm mx-auto">Apply for a premium virtual or physical card to enable secure transactions.</p>
                                 </div>
-                                <Button asChild className="h-16 px-10 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl shadow-xl shadow-indigo-600/10 font-black text-lg transition-transform hover:scale-105">
+                                <Button asChild className="h-16 px-10 bg-orange-600 hover:bg-orange-700 text-white rounded-2xl shadow-xl shadow-orange-600/10 font-black text-lg transition-transform hover:scale-105">
                                     <Link href="/dashboard/card/apply">Get Your First Card</Link>
                                 </Button>
                             </CardContent>
@@ -134,7 +134,7 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                         <span className={cn(
                                             "text-[8px] font-black uppercase px-4 py-1.5 rounded-full shadow-2xl border backdrop-blur-md tracking-widest",
                                             card.status === 'active'
-                                                ? 'bg-indigo-600 text-white border-white/20'
+                                                ? 'bg-orange-600 text-white border-white/20'
                                                 : 'bg-yellow-500 text-white border-white/20'
                                         )}>
                                             {card.status} <span className="text-[10px] ml-1">●</span>

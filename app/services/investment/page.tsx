@@ -19,8 +19,8 @@ export default function InvestmentServicesPage() {
       description: "Evidence-based allocation with periodic rebalancing and automated tax-aware placement strategies.",
       icon: GanttChartSquare,
       image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
-      color: "text-indigo-500",
-      bg: "bg-indigo-500/10"
+      color: "text-orange-500",
+      bg: "bg-orange-500/10"
     },
     {
       title: "Wealth Preservation",
@@ -39,7 +39,7 @@ export default function InvestmentServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-orange-500/30">
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-36 pb-20 bg-white">
         {/* Animated Background Elements */}
@@ -57,11 +57,11 @@ export default function InvestmentServicesPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-orange-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4 shadow-sm">
               <TrendingUp className="w-3 h-3" /> Capital Management
             </div>
             <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter lowercase">
-              investment <span className="text-indigo-600 italic">services</span>
+              investment <span className="text-orange-600 italic">services</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
               Disciplined portfolios, evidence-based strategies, and tax-aware sequencing for long-term growth.
@@ -74,7 +74,7 @@ export default function InvestmentServicesPage() {
             transition={{ delay: 0.5, duration: 1 }}
             className="flex flex-wrap justify-center gap-4 pt-8"
           >
-            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-10 h-16 rounded-2xl shadow-xl shadow-indigo-600/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white font-black px-10 h-16 rounded-2xl shadow-xl shadow-orange-600/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Start Investing</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-black px-10 h-16 rounded-2xl backdrop-blur-md text-lg uppercase tracking-tight shadow-sm" asChild>
@@ -84,8 +84,8 @@ export default function InvestmentServicesPage() {
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-indigo-600" />
-          <p className="text-[10px] font-black uppercase tracking-widest text-indigo-600">Scroll Down</p>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-orange-600" />
+          <p className="text-[10px] font-black uppercase tracking-widest text-orange-600">Scroll Down</p>
         </div>
       </section>
 
@@ -95,7 +95,7 @@ export default function InvestmentServicesPage() {
           <div className="grid lg:grid-cols-12 gap-20 items-center">
             <motion.div {...fadeInUp} className="lg:col-span-6 space-y-10">
               <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight uppercase relative z-10">
-                Compounding <br /><span className="text-indigo-600 italic">Human Capital</span>
+                Compounding <br /><span className="text-orange-600 italic">Human Capital</span>
               </h2>
               <div className="space-y-6 text-lg text-slate-600 font-medium leading-relaxed relative z-10">
                 <p>
@@ -114,7 +114,7 @@ export default function InvestmentServicesPage() {
                   <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Asset Classes</p>
                 </div>
                 <div className="space-y-1 text-center">
-                  <p className="text-3xl font-black text-indigo-600 tracking-tighter">24/7</p>
+                  <p className="text-3xl font-black text-orange-600 tracking-tighter">24/7</p>
                   <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Market Watch</p>
                 </div>
               </div>
@@ -124,10 +124,10 @@ export default function InvestmentServicesPage() {
               <div className="absolute -inset-10 bg-slate-50 blur-[100px] rounded-full opacity-20" />
               <div className="relative p-8 rounded-[3rem] bg-white border border-slate-200 backdrop-blur-md space-y-8 shadow-2xl overflow-hidden group">
                 <div className="flex items-center justify-between mb-8">
-                  <div className="h-12 w-12 rounded-xl bg-white flex items-center justify-center text-indigo-600 border border-slate-200 shadow-sm">
+                  <div className="h-12 w-12 rounded-xl bg-white flex items-center justify-center text-orange-600 border border-slate-200 shadow-sm">
                     <BarChart4 className="w-6 h-6" />
                   </div>
-                  <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Live Flux Output</p>
+                  <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest">Live Flux Output</p>
                 </div>
                 <div className="space-y-3">
                   <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
@@ -135,7 +135,7 @@ export default function InvestmentServicesPage() {
                       initial={{ width: 0 }}
                       whileInView={{ width: "70%" }}
                       transition={{ duration: 1.5, ease: "easeOut" }}
-                      className="h-full bg-indigo-600"
+                      className="h-full bg-orange-600"
                     />
                   </div>
                   <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
@@ -187,7 +187,7 @@ export default function InvestmentServicesPage() {
                     <h3 className="text-3xl font-black text-white tracking-tighter">{feature.title}</h3>
                     <p className="text-slate-300 font-medium leading-relaxed max-w-sm">{feature.description}</p>
                   </div>
-                  <Button variant="ghost" className="text-indigo-400 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
+                  <Button variant="ghost" className="text-orange-400 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
                     Learn More <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
@@ -206,9 +206,9 @@ export default function InvestmentServicesPage() {
                 key={i}
                 {...fadeInUp}
                 transition={{ delay: i * 0.1 }}
-                className="p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:border-indigo-100 hover:shadow-2xl transition-all group"
+                className="p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:border-orange-100 hover:shadow-2xl transition-all group"
               >
-                <div className="h-12 w-12 rounded-xl bg-white flex items-center justify-center text-indigo-600 mb-8 border border-slate-200 group-hover:scale-110 transition-transform shadow-sm">
+                <div className="h-12 w-12 rounded-xl bg-white flex items-center justify-center text-orange-600 mb-8 border border-slate-200 group-hover:scale-110 transition-transform shadow-sm">
                   <m.icon className="w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-black text-slate-900 lowercase tracking-tighter mb-2">{m.title}</h4>
@@ -224,7 +224,7 @@ export default function InvestmentServicesPage() {
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-12">
           <motion.div {...fadeInUp} className="space-y-4">
             <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase italic relative z-10">
-              Start Scaling your <span className="text-indigo-600 not-italic uppercase">Net Worth</span>
+              Start Scaling your <span className="text-orange-600 not-italic uppercase">Net Worth</span>
             </h2>
             <p className="text-xl text-slate-600 font-medium relative z-10">
               Join the upper echelon of investors who leverage the First State investment platform.
@@ -232,7 +232,7 @@ export default function InvestmentServicesPage() {
           </motion.div>
 
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="flex justify-center flex-wrap gap-6 relative z-10">
-            <Button size="lg" className="bg-indigo-600 text-white hover:bg-indigo-700 font-black px-12 h-16 rounded-2xl shadow-xl shadow-indigo-600/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 font-black px-12 h-16 rounded-2xl shadow-xl shadow-orange-600/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Open Account</Link>
             </Button>
             <Button size="lg" variant="outline" className="text-slate-900 border-slate-200 bg-white hover:bg-slate-50 font-black px-12 h-16 rounded-2xl text-lg uppercase tracking-tight shadow-sm" asChild>

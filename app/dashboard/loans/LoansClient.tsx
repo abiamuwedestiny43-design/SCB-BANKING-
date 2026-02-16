@@ -26,15 +26,15 @@ export default function LoansClient({ loans }: LoansClientProps) {
     return (
         <div className="min-h-screen bg-[#020617] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
             {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="max-w-6xl mx-auto space-y-10 relative z-10">
 
                 {/* Header Section */}
                 <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-indigo-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 w-fit rounded-full">
+                        <div className="flex items-center gap-2 text-orange-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 w-fit rounded-full">
                             <Landmark className="h-3 w-3" />
                             Credit Systems
                         </div>
@@ -50,7 +50,7 @@ export default function LoansClient({ loans }: LoansClientProps) {
                                 Dashboard
                             </Link>
                         </Button>
-                        <Button asChild className="h-12 px-6 bg-indigo-500 hover:bg-indigo-400 text-[#020617] rounded-xl shadow-xl shadow-indigo-500/20 font-black transition-all hover:-translate-y-1">
+                        <Button asChild className="h-12 px-6 bg-orange-500 hover:bg-orange-400 text-[#020617] rounded-xl shadow-xl shadow-orange-500/20 font-black transition-all hover:-translate-y-1">
                             <Link href="/dashboard/loans/apply" className="flex items-center gap-2">
                                 <Plus className="h-4 w-4" />
                                 Apply for Loan
@@ -62,12 +62,12 @@ export default function LoansClient({ loans }: LoansClientProps) {
                 {/* Status Overview cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {[
-                        { label: "Active Loans", val: activeLoans.length, icon: TrendingUp, color: "text-indigo-400", bg: "bg-indigo-500/10 border-indigo-500/20" },
+                        { label: "Active Loans", val: activeLoans.length, icon: TrendingUp, color: "text-orange-400", bg: "bg-orange-500/10 border-orange-500/20" },
                         { label: "Pending Requests", val: pendingLoans.length, icon: Clock, color: "text-yellow-400", bg: "bg-yellow-500/10 border-yellow-500/20" },
                         { label: "Loan History", val: completedLoans.length, icon: CheckCircle2, color: "text-slate-400", bg: "bg-white/5 border-white/10" },
                     ].map((item, i) => (
                         <motion.div key={i} {...fadeInUp} transition={{ delay: 0.1 * i }}>
-                            <Card className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md p-8 rounded-[2rem] relative overflow-hidden group hover:bg-indigo-500/5 transition-all duration-500">
+                            <Card className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md p-8 rounded-[2rem] relative overflow-hidden group hover:bg-orange-500/5 transition-all duration-500">
                                 <div className="flex items-center justify-between relative z-10">
                                     <div className="space-y-1">
                                         <p className="text-[10px] font-black uppercase text-slate-500 tracking-[0.2em]">{item.label}</p>
@@ -93,7 +93,7 @@ export default function LoansClient({ loans }: LoansClientProps) {
                                     <h3 className="text-2xl font-black text-white lowercase">No loans <span className="text-slate-500 italic">found</span></h3>
                                     <p className="text-slate-500 font-medium max-w-sm mx-auto">Apply for a new loan to access funding for your needs.</p>
                                 </div>
-                                <Button asChild className="h-16 px-10 bg-indigo-500 hover:bg-indigo-400 text-[#020617] rounded-2xl shadow-xl shadow-indigo-500/20 font-black text-lg transition-transform hover:scale-105">
+                                <Button asChild className="h-16 px-10 bg-orange-500 hover:bg-orange-400 text-[#020617] rounded-2xl shadow-xl shadow-orange-500/20 font-black text-lg transition-transform hover:scale-105">
                                     <Link href="/dashboard/loans/apply">Apply Now</Link>
                                 </Button>
                             </CardContent>
@@ -131,7 +131,7 @@ export default function LoansClient({ loans }: LoansClientProps) {
                         {activeLoans.length > 0 && (
                             <motion.div {...fadeInUp} className="space-y-8">
                                 <h2 className="text-xl font-black text-white flex items-center gap-3 uppercase tracking-widest">
-                                    <div className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                                    <div className="h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
                                     Active Loans
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

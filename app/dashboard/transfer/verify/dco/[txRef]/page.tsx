@@ -76,8 +76,8 @@ export default function DCOVerificationPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-indigo-600/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-600/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-600/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-orange-600/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="w-full max-w-2xl space-y-10 relative z-10">
 
@@ -87,7 +87,7 @@ export default function DCOVerificationPage() {
             <ArrowLeft className="h-6 w-6 group-hover:-translate-x-1 transition-transform" />
           </Button>
           <div className="space-y-1">
-            <div className="flex items-center gap-2 text-indigo-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-50 border border-indigo-100 w-fit mx-auto md:mx-0 rounded-full shadow-sm">
+            <div className="flex items-center gap-2 text-orange-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-50 border border-orange-100 w-fit mx-auto md:mx-0 rounded-full shadow-sm">
               <Shield className="h-3 w-3" />
               Diplomatic Protocol Clearance
             </div>
@@ -128,12 +128,12 @@ export default function DCOVerificationPage() {
         {/* DCO Verification Card */}
         <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
           <Card className="border border-slate-200 shadow-2xl bg-white rounded-[3rem] overflow-hidden relative">
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-indigo-600 to-transparent"></div>
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-orange-600 to-transparent"></div>
             <CardHeader className="p-10 pb-6">
               <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-20 w-20 rounded-[2rem] bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shadow-sm relative group overflow-hidden">
+                <div className="h-20 w-20 rounded-[2rem] bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 shadow-sm relative group overflow-hidden">
                   <Shield className="h-10 w-10 relative z-10 group-hover:scale-110 transition-transform" />
-                  <div className="absolute inset-0 bg-indigo-600/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-orange-600/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
                 <div className="space-y-2">
                   <CardTitle className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Clearance <span className="text-slate-400 italic">Gate</span></CardTitle>
@@ -162,7 +162,7 @@ export default function DCOVerificationPage() {
                     onChange={(e) => setDcoCode(e.target.value)}
                     placeholder="......"
                     disabled={isLoading || isVerified}
-                    className="h-24 text-center text-4xl font-black tracking-[0.8em] bg-white border-slate-200 rounded-[2rem] shadow-inner focus:ring-0 focus:border-indigo-600 placeholder:text-slate-200 text-indigo-600 transition-all uppercase"
+                    className="h-24 text-center text-4xl font-black tracking-[0.8em] bg-white border-slate-200 rounded-[2rem] shadow-inner focus:ring-0 focus:border-orange-600 placeholder:text-slate-200 text-orange-600 transition-all uppercase"
                   />
                   <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">
                     Mandatory secure diplomatic protocol clearance.
@@ -172,7 +172,7 @@ export default function DCOVerificationPage() {
                 <div className="flex flex-col md:flex-row gap-4">
                   <Button
                     type="submit"
-                    className="flex-1 bg-indigo-600 hover:bg-slate-900 text-white font-black h-16 rounded-2xl shadow-xl shadow-indigo-600/10 uppercase tracking-tighter text-lg transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
+                    className="flex-1 bg-orange-600 hover:bg-slate-900 text-white font-black h-16 rounded-2xl shadow-xl shadow-orange-600/10 uppercase tracking-tighter text-lg transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
                     disabled={isLoading || isVerified}
                   >
                     {isLoading ? (
@@ -205,16 +205,16 @@ export default function DCOVerificationPage() {
               <div key={idx} className="flex flex-col items-center gap-3 group">
                 <div className={cn(
                   "h-10 w-10 rounded-xl flex items-center justify-center text-[10px] font-black border transition-all duration-500",
-                  step.active ? "bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-600/20 scale-110" :
-                    step.done ? "bg-indigo-50 border-indigo-100 text-indigo-600 shadow-sm" :
+                  step.active ? "bg-orange-600 border-orange-600 text-white shadow-lg shadow-orange-600/20 scale-110" :
+                    step.done ? "bg-orange-50 border-orange-100 text-orange-600 shadow-sm" :
                       "bg-white border-slate-200 text-slate-400"
                 )}>
                   {step.percent}
                 </div>
                 <span className={cn(
                   "text-[8px] font-black uppercase tracking-widest transition-colors",
-                  step.active ? "text-indigo-600" :
-                    step.done ? "text-indigo-400" :
+                  step.active ? "text-orange-600" :
+                    step.done ? "text-orange-400" :
                       "text-slate-300"
                 )}>{step.label}</span>
               </div>

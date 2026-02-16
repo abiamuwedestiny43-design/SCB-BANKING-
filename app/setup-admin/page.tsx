@@ -41,8 +41,8 @@ export default function SetupAdminPage() {
                 <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
                     {/* Header */}
                     <div className="text-center mb-8">
-                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 mb-4">
-                            <Shield className="w-8 h-8 text-indigo-400" />
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 mb-4">
+                            <Shield className="w-8 h-8 text-orange-400" />
                         </div>
                         <h1 className="text-3xl md:text-4xl font-black text-white mb-2">
                             Admin Setup
@@ -71,7 +71,7 @@ export default function SetupAdminPage() {
                         <button
                             onClick={createAdmin}
                             disabled={loading}
-                            className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-black py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
+                            className="w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
                         >
                             {loading ? (
                                 <>
@@ -180,7 +180,7 @@ export default function SetupAdminPage() {
 
                             <a
                                 href="/login"
-                                className="block w-full bg-indigo-500 hover:bg-indigo-400 text-white font-black py-4 rounded-xl text-center transition-all"
+                                className="block w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-4 rounded-xl text-center transition-all"
                             >
                                 Go to Login Page →
                             </a>

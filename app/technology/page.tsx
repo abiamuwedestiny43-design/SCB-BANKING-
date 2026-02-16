@@ -8,20 +8,20 @@ export default function TechnologyPage() {
     return (
         <div className="bg-white text-slate-900 min-h-screen">
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-indigo-50">
+            <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-orange-50">
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                    <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-indigo-200/30 rounded-full blur-[100px]"></div>
+                    <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-orange-200/30 rounded-full blur-[100px]"></div>
                     <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-emerald-200/30 rounded-full blur-[100px]"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16 space-y-6">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs font-black tracking-widest uppercase">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-200 text-orange-600 text-xs font-black tracking-widest uppercase">
                             <Server className="w-3 h-3" /> Banking Infrastructure
                         </div>
                         <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter text-slate-900">
                             Your Money, <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-700">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700">
                                 Perfectly Protected
                             </span>
                         </h1>
@@ -32,7 +32,7 @@ export default function TechnologyPage() {
 
                     {/* Main Banking System Image */}
                     <div className="relative group max-w-5xl mx-auto">
-                        <div className="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-indigo-600 rounded-[2.5rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                        <div className="absolute -inset-1 bg-gradient-to-tr from-orange-500 to-orange-600 rounded-[2.5rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                         <div className="relative rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl">
                             <Image
                                 src="/business-banking-hero.jpg"
@@ -56,7 +56,7 @@ export default function TechnologyPage() {
                                     </div>
                                     <div className="p-4 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20">
                                         <div className="flex items-center gap-2 mb-2">
-                                            <Shield className="w-5 h-5 text-indigo-400" />
+                                            <Shield className="w-5 h-5 text-orange-400" />
                                             <p className="text-xs text-slate-300 font-bold uppercase tracking-wider">Security</p>
                                         </div>
                                         <p className="text-3xl font-black text-white">AES-256</p>
@@ -86,7 +86,7 @@ export default function TechnologyPage() {
             <section className="py-32 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-20 space-y-4">
-                        <span className="text-indigo-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full bg-indigo-100 border border-indigo-200">Our Technology</span>
+                        <span className="text-orange-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full bg-orange-100 border border-orange-200">Our Technology</span>
                         <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900">Enterprise-Grade Infrastructure</h2>
                         <p className="text-slate-600 max-w-2xl mx-auto text-lg">Built with the most advanced technologies to ensure security, speed, and reliability.</p>
                     </div>
@@ -97,7 +97,7 @@ export default function TechnologyPage() {
                                 icon: Shield,
                                 title: 'Military-Grade Security',
                                 desc: 'AES-256 encryption, multi-factor authentication, and real-time fraud detection protect every transaction.',
-                                color: 'indigo'
+                                color: 'orange'
                             },
                             {
                                 icon: Server,
@@ -130,7 +130,7 @@ export default function TechnologyPage() {
                                 color: 'orange'
                             }
                         ].map((tech, i) => (
-                            <div key={i} className="group p-8 rounded-[2rem] bg-gradient-to-br from-white to-slate-50 border border-slate-200 hover:border-indigo-300 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                            <div key={i} className="group p-8 rounded-[2rem] bg-gradient-to-br from-white to-slate-50 border border-slate-200 hover:border-orange-300 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                                 <div className={`h-14 w-14 rounded-2xl bg-${tech.color}-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-${tech.color}-200`}>
                                     <tech.icon className={`w-7 h-7 text-${tech.color}-600`} />
                                 </div>
@@ -143,13 +143,13 @@ export default function TechnologyPage() {
             </section>
 
             {/* System Architecture */}
-            <section className="py-32 bg-gradient-to-br from-slate-50 to-indigo-50">
+            <section className="py-32 bg-gradient-to-br from-slate-50 to-orange-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <div className="space-y-8">
                             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-tight text-slate-900">
                                 Scalable & <br />
-                                <span className="text-indigo-600">Resilient Architecture</span>
+                                <span className="text-orange-600">Resilient Architecture</span>
                             </h2>
                             <p className="text-lg text-slate-600 leading-relaxed">
                                 Our microservices architecture ensures that your banking experience is always fast, secure, and available—even during peak usage.
@@ -163,14 +163,14 @@ export default function TechnologyPage() {
                                     'Zero-downtime deployments and updates'
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
-                                        <CheckCircle2 className="w-5 h-5 text-indigo-600 flex-shrink-0" /> {item}
+                                        <CheckCircle2 className="w-5 h-5 text-orange-600 flex-shrink-0" /> {item}
                                     </li>
                                 ))}
                             </ul>
 
                             <div className="pt-6">
                                 <Link href="/about">
-                                    <button className="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all flex items-center gap-2 shadow-lg">
+                                    <button className="bg-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-700 transition-all flex items-center gap-2 shadow-lg">
                                         Learn More About Us <ArrowRight className="w-4 h-4" />
                                     </button>
                                 </Link>
@@ -178,7 +178,7 @@ export default function TechnologyPage() {
                         </div>
 
                         <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-[2.5rem] blur-xl opacity-20"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-purple-600 rounded-[2.5rem] blur-xl opacity-20"></div>
                             <Image
                                 src="/investment-services-hero.jpg"
                                 alt="Banking System Architecture"
@@ -208,7 +208,7 @@ export default function TechnologyPage() {
             <section className="py-32 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="rounded-[3rem] bg-gradient-to-b from-slate-50 to-white p-8 md:p-16 border border-slate-200 overflow-hidden relative">
-                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-100/50 rounded-full blur-[100px] pointer-events-none"></div>
+                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-100/50 rounded-full blur-[100px] pointer-events-none"></div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
                             <div className="relative h-[500px] w-full rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl">
@@ -228,8 +228,8 @@ export default function TechnologyPage() {
                             </div>
 
                             <div className="space-y-8">
-                                <div className="inline-block p-3 rounded-xl bg-indigo-100 border border-indigo-200">
-                                    <Lock className="w-8 h-8 text-indigo-600" />
+                                <div className="inline-block p-3 rounded-xl bg-orange-100 border border-orange-200">
+                                    <Lock className="w-8 h-8 text-orange-600" />
                                 </div>
                                 <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1] text-slate-900">
                                     Security That Never Sleeps
@@ -262,15 +262,15 @@ export default function TechnologyPage() {
             </section>
 
             {/* CTA */}
-            <section className="py-20 pb-32 bg-gradient-to-br from-indigo-600 to-indigo-700">
+            <section className="py-20 pb-32 bg-gradient-to-br from-orange-600 to-orange-700">
                 <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white">Experience the Future of Banking</h2>
-                    <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
+                    <p className="text-xl text-orange-100 max-w-2xl mx-auto">
                         Join thousands of customers who trust our technology to power their financial future.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link href="/register" className="w-full sm:w-auto">
-                            <button className="w-full bg-white text-indigo-600 px-12 py-5 rounded-2xl text-xl font-black hover:bg-indigo-50 transition-all hover:scale-105 shadow-2xl">
+                            <button className="w-full bg-white text-orange-600 px-12 py-5 rounded-2xl text-xl font-black hover:bg-orange-50 transition-all hover:scale-105 shadow-2xl">
                                 Open Your Account
                             </button>
                         </Link>

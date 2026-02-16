@@ -7,19 +7,19 @@ const AboutPage: React.FC = () => {
     <div className="bg-white text-slate-900 min-h-screen overflow-hidden font-sans">
       {/* Background Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-50/50 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-50/30 rounded-full blur-[120px] animate-pulse delay-700"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-orange-50/50 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-orange-50/30 rounded-full blur-[120px] animate-pulse delay-700"></div>
       </div>
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm font-bold tracking-wider mb-8 animate-fade-in uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-sm font-bold tracking-wider mb-8 animate-fade-in uppercase">
             <Zap className="w-4 h-4" /> Our Legacy & Vision
           </div>
           <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-8 text-slate-900 uppercase">
             Pioneering the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-700 italic">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-700 italic">
               Future of Trust.
             </span>
           </h1>
@@ -37,7 +37,7 @@ const AboutPage: React.FC = () => {
               { number: "100+", label: "Global Hubs" },
             ].map((stat, index) => (
               <div key={index} className="text-center group">
-                <div className="text-3xl md:text-4xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">
+                <div className="text-3xl md:text-4xl font-black text-slate-900 group-hover:text-orange-600 transition-colors">
                   {stat.number}
                 </div>
                 <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
@@ -54,7 +54,7 @@ const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/10 to-indigo-600/10 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/10 to-orange-600/10 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
               <div className="relative rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?w=800&auto=format&fit=crop&q=60"
@@ -67,7 +67,7 @@ const AboutPage: React.FC = () => {
 
             <div className="space-y-8">
               <h2 className="text-4xl font-black tracking-tight text-slate-900 uppercase">
-                Our <span className="text-indigo-600 italic">Genesis</span>
+                Our <span className="text-orange-600 italic">Genesis</span>
               </h2>
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg font-medium">
                 <p>
@@ -85,7 +85,7 @@ const AboutPage: React.FC = () => {
               </div>
               <div className="pt-4">
                 <Link href="/contact">
-                  <button className="flex items-center gap-2 text-indigo-600 font-black uppercase tracking-widest text-sm group">
+                  <button className="flex items-center gap-2 text-orange-600 font-black uppercase tracking-widest text-sm group">
                     Join our journey <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
@@ -97,12 +97,12 @@ const AboutPage: React.FC = () => {
 
       {/* Mission & Vision */}
       <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-indigo-500/5 rounded-full blur-[120px]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-500/5 rounded-full blur-[120px]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="p-12 rounded-[3rem] bg-white border border-slate-200 shadow-xl hover:border-indigo-200 transition-all duration-500">
-              <div className="h-16 w-16 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-8">
-                <Target className="w-8 h-8 text-indigo-600" />
+            <div className="p-12 rounded-[3rem] bg-white border border-slate-200 shadow-xl hover:border-orange-200 transition-all duration-500">
+              <div className="h-16 w-16 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-8">
+                <Target className="w-8 h-8 text-orange-600" />
               </div>
               <h2 className="text-3xl font-black text-slate-900 mb-6 uppercase">Our Mission</h2>
               <p className="text-slate-600 leading-relaxed font-medium">
@@ -136,7 +136,7 @@ const AboutPage: React.FC = () => {
       <section className="py-32 relative bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 text-slate-900">
-            <p className="text-xs font-black tracking-[0.5em] uppercase text-indigo-600 mb-4">Core Principles</p>
+            <p className="text-xs font-black tracking-[0.5em] uppercase text-orange-600 mb-4">Core Principles</p>
             <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase">The FIRST STATE BANK Standard</h2>
           </div>
 
@@ -146,9 +146,9 @@ const AboutPage: React.FC = () => {
                 icon: Shield,
                 title: "Integrity",
                 description: "Upholding the highest ethical standards in all we do, ensuring transparency and accountability.",
-                color: "text-indigo-600",
-                bg: "bg-indigo-50",
-                border: "border-indigo-100"
+                color: "text-orange-600",
+                bg: "bg-orange-50",
+                border: "border-orange-100"
               },
               {
                 icon: Users,
@@ -177,7 +177,7 @@ const AboutPage: React.FC = () => {
             ].map((value, index) => (
               <div
                 key={index}
-                className="group p-10 rounded-[2.5rem] bg-white border border-slate-200 hover:border-indigo-200 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 text-center"
+                className="group p-10 rounded-[2.5rem] bg-white border border-slate-200 hover:border-orange-200 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 text-center"
               >
                 <div className={`inline-flex items-center justify-center w-20 h-20 ${value.bg} ${value.border} border rounded-3xl mb-8 group-hover:scale-110 transition-transform`}>
                   <value.icon className={`w-10 h-10 ${value.color}`} />
@@ -196,14 +196,14 @@ const AboutPage: React.FC = () => {
       <section className="py-32 bg-slate-50">
         <div className="max-w-5xl mx-auto px-4">
           <div className="relative rounded-[3rem] bg-white p-12 md:p-20 text-center space-y-8 overflow-hidden border border-slate-200 shadow-2xl">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full -mr-32 -mt-32 blur-3xl opacity-50"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-full -mr-32 -mt-32 blur-3xl opacity-50"></div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight relative z-10 text-slate-900 uppercase">Start Your Legacy <br /> with First State Bank</h2>
             <p className="text-slate-600 max-w-xl mx-auto relative z-10 font-medium">
               Join thousands of clients who trust us with their financial future.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
               <Link href="/register">
-                <button className="w-full sm:w-auto bg-indigo-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-indigo-700 transition-all hover:scale-105 shadow-xl shadow-indigo-600/20">
+                <button className="w-full sm:w-auto bg-orange-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-orange-700 transition-all hover:scale-105 shadow-xl shadow-orange-600/20">
                   Get Started
                 </button>
               </Link>

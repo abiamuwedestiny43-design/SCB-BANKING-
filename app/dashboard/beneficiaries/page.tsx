@@ -88,15 +88,15 @@ export default function BeneficiariesPage() {
   return (
     <div className="min-h-screen bg-[#020617] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto space-y-10 relative z-10">
 
         {/* Header Section */}
         <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/5">
           <div className="space-y-2 text-center md:text-left">
-            <div className="flex items-center gap-2 text-indigo-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 w-fit rounded-full mx-auto md:mx-0">
+            <div className="flex items-center gap-2 text-orange-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 w-fit rounded-full mx-auto md:mx-0">
               <Users className="h-3 w-3" />
               Registry Management
             </div>
@@ -112,7 +112,7 @@ export default function BeneficiariesPage() {
           {/* Add Form */}
           <motion.div {...fadeInUp} className="lg:col-span-12 xl:col-span-5">
             <Card className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md rounded-[2.5rem] overflow-hidden">
-              <CardHeader className="p-8 border-b border-white/5 bg-indigo-500/5">
+              <CardHeader className="p-8 border-b border-white/5 bg-orange-500/5">
                 <CardTitle className="text-2xl font-black text-white lowercase tracking-tighter">Add <span className="text-slate-500 italic">Receiver</span></CardTitle>
                 <CardDescription className="text-slate-500 font-medium">Register a new recipient in the system.</CardDescription>
               </CardHeader>
@@ -131,12 +131,12 @@ export default function BeneficiariesPage() {
                   <div className="space-y-2">
                     <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Operational Region</Label>
                     <Select value={bankRegion} onValueChange={(v: any) => setBankRegion(v)}>
-                      <SelectTrigger className="h-14 bg-white/[0.02] border-white/5 rounded-2xl text-white font-bold focus:border-indigo-500/50 transition-all">
+                      <SelectTrigger className="h-14 bg-white/[0.02] border-white/5 rounded-2xl text-white font-bold focus:border-orange-500/50 transition-all">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent className="bg-[#020617] border-white/10 text-white rounded-2xl">
-                        <SelectItem value="local" className="focus:bg-indigo-500 focus:text-[#020617] disabled:opacity-30">Local Network</SelectItem>
-                        <SelectItem value="international" className="focus:bg-indigo-500 focus:text-[#020617] disabled:opacity-30">Cross-Border Relay</SelectItem>
+                        <SelectItem value="local" className="focus:bg-orange-500 focus:text-[#020617] disabled:opacity-30">Local Network</SelectItem>
+                        <SelectItem value="international" className="focus:bg-orange-500 focus:text-[#020617] disabled:opacity-30">Cross-Border Relay</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -144,12 +144,12 @@ export default function BeneficiariesPage() {
                   <div className="space-y-2">
                     <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Bank Name</Label>
                     <div className="relative group">
-                      <Landmark className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-indigo-500 transition-colors" />
+                      <Landmark className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-orange-500 transition-colors" />
                       <Input
                         placeholder="node_provider_name"
                         value={bankName}
                         onChange={(e) => setBankName(e.target.value)}
-                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-indigo-500/50 focus:ring-indigo-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
+                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-orange-500/50 focus:ring-orange-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
                       />
                     </div>
                   </div>
@@ -157,12 +157,12 @@ export default function BeneficiariesPage() {
                   <div className="space-y-2">
                     <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Holder</Label>
                     <div className="relative group">
-                      <Landmark className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-indigo-500 transition-colors" />
+                      <Landmark className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-orange-500 transition-colors" />
                       <Input
                         placeholder="authorized_entity_name"
                         value={bankHolder}
                         onChange={(e) => setBankHolder(e.target.value)}
-                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-indigo-500/50 focus:ring-indigo-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
+                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-orange-500/50 focus:ring-orange-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
                       />
                     </div>
                   </div>
@@ -170,12 +170,12 @@ export default function BeneficiariesPage() {
                   <div className="space-y-2">
                     <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Number / IBAN</Label>
                     <div className="relative group">
-                      <Fingerprint className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-indigo-500 transition-colors" />
+                      <Fingerprint className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-orange-500 transition-colors" />
                       <Input
                         placeholder="sequence_code_alpha"
                         value={bankAccount}
                         onChange={(e) => setBankAccount(e.target.value)}
-                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-indigo-500/50 focus:ring-indigo-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
+                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-orange-500/50 focus:ring-orange-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
                       />
                     </div>
                   </div>
@@ -203,7 +203,7 @@ export default function BeneficiariesPage() {
                 <Button
                   onClick={addBeneficiary}
                   disabled={saving}
-                  className="w-full bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black h-16 rounded-2xl shadow-xl shadow-indigo-500/20 uppercase tracking-tighter text-lg transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
+                  className="w-full bg-orange-500 hover:bg-orange-400 text-[#020617] font-black h-16 rounded-2xl shadow-xl shadow-orange-500/20 uppercase tracking-tighter text-lg transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
                 >
                   {saving ? "Saving..." : "Add Beneficiary"}
                 </Button>
@@ -215,7 +215,7 @@ export default function BeneficiariesPage() {
           <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-12 xl:col-span-7 space-y-6">
             <div className="flex items-center justify-between px-4 pb-2">
               <h2 className="text-2xl font-black text-white lowercase tracking-tighter">Active <span className="text-slate-500 italic">Beneficiaries</span></h2>
-              <div className="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
+              <div className="px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-black uppercase tracking-widest">
                 {isLoading ? "Loading..." : `${beneficiaries.length} Recipients`}
               </div>
             </div>
@@ -236,26 +236,26 @@ export default function BeneficiariesPage() {
                       transition={{ delay: index * 0.05 }}
                       className="group relative"
                     >
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
                       <div className="relative p-6 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-500 group-hover:bg-white/[0.05]">
                         <div className="flex items-center gap-5 w-full md:w-auto">
-                          <div className="h-14 w-14 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center text-indigo-500 shadow-2xl overflow-hidden relative">
+                          <div className="h-14 w-14 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center text-orange-500 shadow-2xl overflow-hidden relative">
                             <Landmark className="h-6 w-6 relative z-10" />
-                            <div className="absolute inset-0 bg-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute inset-0 bg-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                           </div>
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
                               <p className="font-black text-white text-lg tracking-tight lowercase">
                                 {b.bankInfo.bankHolder}
                               </p>
-                              <ShieldCheck className="h-3 w-3 text-indigo-500/50" />
+                              <ShieldCheck className="h-3 w-3 text-orange-500/50" />
                             </div>
                             <div className="flex items-center gap-3">
                               <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest">
                                 {b.bankInfo.bankName}
                               </p>
                               <span className="h-1 w-1 rounded-full bg-slate-800"></span>
-                              <p className="text-[10px] text-indigo-500/70 font-black tracking-[0.2em] uppercase">
+                              <p className="text-[10px] text-orange-500/70 font-black tracking-[0.2em] uppercase">
                                 {b.bankAccount.slice(0, 4)}••••{b.bankAccount.slice(-4)}
                               </p>
                             </div>

@@ -19,8 +19,8 @@ export default function MortgageServicesPage() {
       description: "Navigating affordability, down payments, and timelines with high-precision guidance and competitive rates.",
       icon: Key,
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
-      color: "text-indigo-500",
-      bg: "bg-indigo-500/10"
+      color: "text-orange-500",
+      bg: "bg-orange-500/10"
     },
     {
       title: "Equity Refinance",
@@ -39,7 +39,7 @@ export default function MortgageServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-orange-500/30">
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-32 bg-white">
         {/* Minimal Orbital Structure */}
@@ -55,11 +55,11 @@ export default function MortgageServicesPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
               <Landmark className="w-3 h-3" /> Real Estate Finance Protocol
             </div>
             <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter lowercase">
-              mortgage <span className="text-indigo-600 italic">services</span>
+              mortgage <span className="text-orange-600 italic">services</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
               Clarity from pre-qualification to the final signature. Secure your cornerstone with First State.
@@ -72,7 +72,7 @@ export default function MortgageServicesPage() {
             transition={{ delay: 0.5, duration: 1 }}
             className="flex flex-wrap justify-center gap-4 pt-8"
           >
-            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-10 h-16 rounded-2xl shadow-xl shadow-indigo-600/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white font-black px-10 h-16 rounded-2xl shadow-xl shadow-orange-600/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Pre-Qualify Now</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-slate-200 bg-white/50 hover:bg-slate-50 text-slate-600 font-black px-10 h-16 rounded-2xl backdrop-blur-md text-lg uppercase tracking-tight shadow-sm" asChild>
@@ -82,8 +82,8 @@ export default function MortgageServicesPage() {
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-indigo-600" />
-          <p className="text-[10px] font-black uppercase tracking-widest text-indigo-600">Scroll Down</p>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-orange-600" />
+          <p className="text-[10px] font-black uppercase tracking-widest text-orange-600">Scroll Down</p>
         </div>
       </section>
 
@@ -93,7 +93,7 @@ export default function MortgageServicesPage() {
           <div className="grid lg:grid-cols-12 gap-20 items-center">
             <motion.div {...fadeInUp} className="lg:col-span-12 text-center mb-16">
               <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter mb-8 leading-none uppercase">
-                Precision <span className="text-indigo-600 italic">Home Financing</span>
+                Precision <span className="text-orange-600 italic">Home Financing</span>
               </h2>
               <p className="text-xl text-slate-600 max-w-4xl mx-auto font-medium leading-relaxed">
                 From first-time buyers to seasoned homeowners, we provide clarity and competitive options.
@@ -106,7 +106,7 @@ export default function MortgageServicesPage() {
                 <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Prime Property" />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent opacity-60" />
                 <div className="absolute top-8 left-8">
-                  <div className="px-4 py-2 rounded-2xl bg-indigo-600 text-white font-black text-[10px] uppercase tracking-widest shadow-lg">Global Asset Hub</div>
+                  <div className="px-4 py-2 rounded-2xl bg-orange-600 text-white font-black text-[10px] uppercase tracking-widest shadow-lg">Global Asset Hub</div>
                 </div>
               </div>
             </motion.div>
@@ -114,7 +114,7 @@ export default function MortgageServicesPage() {
             <motion.div {...fadeInUp} className="lg:col-span-5 space-y-8">
               <div className="p-10 rounded-[3rem] bg-slate-50 border border-slate-200 backdrop-blur-lg space-y-6 shadow-sm">
                 <div className="flex items-center gap-4">
-                  <div className="h-10 w-10 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 border border-indigo-200 shadow-sm">
+                  <div className="h-10 w-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 border border-orange-200 shadow-sm">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <h3 className="text-2xl font-black text-slate-900 tracking-tighter uppercase italic">Secure Underwriting</h3>
@@ -128,7 +128,7 @@ export default function MortgageServicesPage() {
                     "Digital Escrow Integration"
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-slate-600 font-bold">
-                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" /> {item}
+                      <div className="w-1.5 h-1.5 rounded-full bg-orange-600" /> {item}
                     </li>
                   ))}
                 </ul>
@@ -163,7 +163,7 @@ export default function MortgageServicesPage() {
                     <h3 className="text-3xl font-black text-white tracking-tighter uppercase italic">{feature.title}</h3>
                     <p className="text-slate-300 font-medium leading-relaxed max-w-sm">{feature.description}</p>
                   </div>
-                  <Button variant="ghost" className="text-indigo-400 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
+                  <Button variant="ghost" className="text-orange-400 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
                     Initialize Protocol <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
@@ -182,9 +182,9 @@ export default function MortgageServicesPage() {
                 key={i}
                 {...fadeInUp}
                 transition={{ delay: i * 0.1 }}
-                className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-indigo-100 transition-all group"
+                className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-orange-100 transition-all group"
               >
-                <div className="h-12 w-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-8 border border-indigo-100 group-hover:scale-110 transition-transform shadow-sm">
+                <div className="h-12 w-12 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600 mb-8 border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
                   <m.icon className="w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-black text-slate-900 lowercase tracking-tighter mb-2">{m.title}</h4>
@@ -200,7 +200,7 @@ export default function MortgageServicesPage() {
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-12">
           <motion.div {...fadeInUp} className="space-y-4">
             <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase italic relative z-10">
-              Secure your <span className="text-indigo-600 not-italic uppercase">Ground Zero</span>
+              Secure your <span className="text-orange-600 not-italic uppercase">Ground Zero</span>
             </h2>
             <p className="text-xl text-slate-600 font-medium relative z-10">
               Join the future of residency financing with First State's automated mortgage gateway.
@@ -208,7 +208,7 @@ export default function MortgageServicesPage() {
           </motion.div>
 
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="flex justify-center flex-wrap gap-6 relative z-10">
-            <Button size="lg" className="bg-indigo-600 text-white hover:bg-indigo-700 font-black px-12 h-16 rounded-2xl shadow-xl shadow-indigo-600/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 font-black px-12 h-16 rounded-2xl shadow-xl shadow-orange-600/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Start Application</Link>
             </Button>
             <Button size="lg" variant="outline" className="text-slate-900 border-slate-200 bg-white hover:bg-slate-50 font-black px-12 h-16 rounded-2xl text-lg uppercase tracking-tight shadow-sm" asChild>

@@ -183,7 +183,7 @@ Complete session summary and accomplishments
 
 ### Color Palette
 
-- **Primary**: Indigo (indigo-500, indigo-600)
+- **Primary**: Orange (orange-500, orange-600)
 - **Background**: White, Slate-50
 - **Text**: Slate-900 (dark), Slate-600 (medium)
 - **Accents**: Emerald (positive), Rose (negative)

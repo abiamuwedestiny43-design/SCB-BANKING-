@@ -95,12 +95,12 @@ export default function ApplyForCardPage() {
   return (
     <div className="min-h-screen bg-[#020617] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto space-y-10 relative z-10">
         <div className="space-y-2 text-center md:text-left">
-          <div className="flex items-center gap-2 text-indigo-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 w-fit rounded-full mx-auto md:mx-0">
+          <div className="flex items-center gap-2 text-orange-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 w-fit rounded-full mx-auto md:mx-0">
             <CreditCard className="h-3 w-3" />
             Asset Management
           </div>
@@ -114,16 +114,16 @@ export default function ApplyForCardPage() {
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
             <Alert className={cn(
               "border-none shadow-2xl backdrop-blur-md rounded-2xl p-6",
-              message.type === 'success' ? 'bg-indigo-500/10 border-indigo-500/20' : 'bg-red-500/10 border-red-500/20'
+              message.type === 'success' ? 'bg-orange-500/10 border-orange-500/20' : 'bg-red-500/10 border-red-500/20'
             )}>
               {message.type === 'success' ? (
-                <CheckCircle className="h-6 w-6 text-indigo-500" />
+                <CheckCircle className="h-6 w-6 text-orange-500" />
               ) : (
                 <AlertCircle className="h-6 w-6 text-red-500" />
               )}
               <AlertDescription className={cn(
                 "font-bold text-base ml-2",
-                message.type === 'success' ? 'text-indigo-400' : 'text-red-400'
+                message.type === 'success' ? 'text-orange-400' : 'text-red-400'
               )}>
                 {message.text}
               </AlertDescription>
@@ -144,13 +144,13 @@ export default function ApplyForCardPage() {
                 className={cn(
                   "block cursor-pointer transition-all duration-500 rounded-[2.5rem] border p-8 space-y-6 relative overflow-hidden",
                   selectedCard === `${card.type}-${card.vendor}`
-                    ? 'bg-indigo-500/5 border-indigo-500/30 shadow-[0_0_30px_rgba(16,185,129,0.1)] ring-1 ring-indigo-500/20'
+                    ? 'bg-orange-500/5 border-orange-500/30 shadow-[0_0_30px_rgba(16,185,129,0.1)] ring-1 ring-orange-500/20'
                     : 'bg-white/[0.03] border-white/5 shadow-2xl hover:bg-white/[0.05]'
                 )}
               >
                 {/* Selected Indicator */}
                 {selectedCard === `${card.type}-${card.vendor}` && (
-                  <div className="absolute top-6 right-6 h-8 w-8 bg-indigo-500 rounded-full flex items-center justify-center shadow-lg shadow-indigo-500/20 z-10">
+                  <div className="absolute top-6 right-6 h-8 w-8 bg-orange-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/20 z-10">
                     <CheckCircle className="h-5 w-5 text-[#020617]" />
                   </div>
                 )}
@@ -178,8 +178,8 @@ export default function ApplyForCardPage() {
                 <div className="grid grid-cols-1 gap-3 pt-6 border-t border-white/5">
                   {card.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center gap-3">
-                      <div className="h-5 w-5 rounded-full bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
-                        <span className="text-[10px] text-indigo-500">✓</span>
+                      <div className="h-5 w-5 rounded-full bg-orange-500/10 flex items-center justify-center border border-orange-500/20">
+                        <span className="text-[10px] text-orange-500">✓</span>
                       </div>
                       <span className="text-xs text-slate-400 font-bold uppercase tracking-tighter opacity-80">{feature}</span>
                     </div>
@@ -187,7 +187,7 @@ export default function ApplyForCardPage() {
                 </div>
 
                 {/* Gloss Effect */}
-                <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-indigo-500/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-indigo-500/10 transition-all duration-1000"></div>
+                <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-orange-500/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-orange-500/10 transition-all duration-1000"></div>
               </Label>
             </div>
           ))}
@@ -204,7 +204,7 @@ export default function ApplyForCardPage() {
           <Button
             onClick={handleApply}
             disabled={isSubmitting || !selectedCard}
-            className="h-16 flex-[2] bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black rounded-2xl shadow-xl shadow-indigo-500/20 text-lg uppercase tracking-tight transition-transform hover:scale-[1.02]"
+            className="h-16 flex-[2] bg-orange-500 hover:bg-orange-400 text-[#020617] font-black rounded-2xl shadow-xl shadow-orange-500/20 text-lg uppercase tracking-tight transition-transform hover:scale-[1.02]"
           >
             {isSubmitting ? 'Syncing Authorization...' : 'Deploy Gateway'}
           </Button>

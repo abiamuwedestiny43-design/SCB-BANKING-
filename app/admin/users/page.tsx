@@ -49,12 +49,12 @@ export default async function UsersPage({ searchParams }: { searchParams: { sear
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-indigo-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-orange-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-[10px] font-black uppercase tracking-widest">
             <Users className="w-3 h-3" /> User Management
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter">
@@ -63,7 +63,7 @@ export default async function UsersPage({ searchParams }: { searchParams: { sear
           <p className="text-slate-900 font-bold max-w-md">Manage and view the global FIRST STATE BANK user base.</p>
         </div>
 
-        <Button asChild className="bg-indigo-600 hover:bg-indigo-700 text-white font-black h-12 px-8 rounded-xl shadow-xl shadow-indigo-600/10 transition-all hover:scale-105 active:scale-95">
+        <Button asChild className="bg-orange-600 hover:bg-orange-700 text-white font-black h-12 px-8 rounded-xl shadow-xl shadow-orange-600/10 transition-all hover:scale-105 active:scale-95">
           <Link href="/admin/users/create" className="flex items-center gap-2">
             <Plus className="h-5 w-5" />
             Create New Account
@@ -73,22 +73,22 @@ export default async function UsersPage({ searchParams }: { searchParams: { sear
 
       {/* Search Card */}
       <Card className="bg-white border-slate-200 shadow-sm rounded-[2.5rem] p-8 relative z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-50 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 h-32 w-32 bg-orange-50 rounded-full blur-3xl"></div>
         <form method="GET" className="flex flex-col md:flex-row gap-4 relative z-10">
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-indigo-600/30" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-orange-600/30" />
             <Input
               name="search"
               placeholder="Search by name, email, or account number..."
               defaultValue={searchParams.search}
-              className="pl-12 bg-white border-slate-200 rounded-2xl h-14 text-slate-900 focus:border-indigo-600 focus:ring-indigo-600/20 transition-all font-medium placeholder:text-slate-400"
+              className="pl-12 bg-white border-slate-200 rounded-2xl h-14 text-slate-900 focus:border-orange-600 focus:ring-orange-600/20 transition-all font-medium placeholder:text-slate-400"
             />
           </div>
           <Button type="submit" className="h-14 px-10 rounded-2xl bg-slate-900 hover:bg-black text-white font-bold shadow-lg shadow-black/10 transition-all">
             Execute Search
           </Button>
           {searchParams.search && (
-            <Button variant="ghost" asChild className="h-14 px-6 rounded-2xl text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 font-bold">
+            <Button variant="ghost" asChild className="h-14 px-6 rounded-2xl text-slate-500 hover:text-orange-600 hover:bg-orange-50 font-bold">
               <Link href="/admin/users">Reset</Link>
             </Button>
           )}
@@ -96,7 +96,7 @@ export default async function UsersPage({ searchParams }: { searchParams: { sear
       </Card>
 
       {/* Users Table */}
-      <Suspense fallback={<div className="flex items-center gap-2 text-indigo-600 font-black animate-pulse">
+      <Suspense fallback={<div className="flex items-center gap-2 text-orange-600 font-black animate-pulse">
         <Users className="w-5 h-5 animate-bounce" /> LOADING REGISTERED ENTITIES...
       </div>}>
         <UsersTable searchQuery={searchParams.search} />
@@ -123,7 +123,7 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
           <div className="hidden md:flex gap-4">
             <div className="p-3 bg-white border border-slate-100 rounded-2xl shadow-sm">
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Active Accounts</p>
-              <p className="text-xl font-black text-indigo-600">{users.length}</p>
+              <p className="text-xl font-black text-orange-600">{users.length}</p>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                   >
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 font-black text-lg overflow-hidden shadow-inner">
+                        <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 font-black text-lg overflow-hidden shadow-inner">
                           {user.profileImage ? (
                             <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
                           ) : (
@@ -157,12 +157,12 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                           )}
                         </div>
                         <div>
-                          <Link href={`/admin/users/${user.id}`} className="block text-sm font-black text-black hover:text-indigo-700 transition-colors uppercase tracking-tight">
+                          <Link href={`/admin/users/${user.id}`} className="block text-sm font-black text-black hover:text-orange-700 transition-colors uppercase tracking-tight">
                             {user.name}
                           </Link>
                           <div className="flex gap-2 mt-1">
                             {user.roles.map((role) => (
-                              <Badge key={role} className="bg-slate-100 border-none text-[9px] font-black uppercase tracking-tighter text-slate-500 px-1.5 py-0 group-hover:text-indigo-600 group-hover:bg-indigo-50 transition-colors">
+                              <Badge key={role} className="bg-slate-100 border-none text-[9px] font-black uppercase tracking-tighter text-slate-500 px-1.5 py-0 group-hover:text-orange-600 group-hover:bg-orange-50 transition-colors">
                                 {role}
                               </Badge>
                             ))}
@@ -188,8 +188,8 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                     <td className="px-8 py-6">
                       <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${user.verified ? 'bg-indigo-600' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.3)]'}`}></div>
-                          <span className={`text-[10px] font-black uppercase tracking-widest ${user.verified ? 'text-indigo-700' : 'text-red-700'}`}>
+                          <div className={`w-1.5 h-1.5 rounded-full ${user.verified ? 'bg-orange-600' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.3)]'}`}></div>
+                          <span className={`text-[10px] font-black uppercase tracking-widest ${user.verified ? 'text-orange-700' : 'text-red-700'}`}>
                             {user.verified ? "Verified" : "Pending Vetting"}
                           </span>
                         </div>

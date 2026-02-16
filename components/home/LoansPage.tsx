@@ -52,21 +52,21 @@ const LoansPage: React.FC = () => {
               }
             ].map((loan, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-6">
-                  <loan.icon className="w-8 h-8 text-indigo-600" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-6">
+                  <loan.icon className="w-8 h-8 text-orange-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-2">{loan.title}</h3>
-                <div className="text-2xl font-bold text-indigo-600 mb-4">Starting at {loan.rate}</div>
+                <div className="text-2xl font-bold text-orange-600 mb-4">Starting at {loan.rate}</div>
                 <p className="text-slate-600 mb-6">{loan.description}</p>
                 <ul className="space-y-2 mb-8">
                   {loan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-indigo-600 mr-2" />
+                      <CheckCircle className="w-4 h-4 text-orange-600 mr-2" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <button className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                <button className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
                   Apply Now
                 </button>
               </div>
@@ -83,15 +83,15 @@ const LoansPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Loan Amount</label>
-                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="$10,000" />
+                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="$10,000" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Interest Rate (%)</label>
-                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="4.5" step="0.1" />
+                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="4.5" step="0.1" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Loan Term (Years)</label>
-                <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                   <option>1 Year</option>
                   <option>2 Years</option>
                   <option>3 Years</option>
@@ -100,13 +100,13 @@ const LoansPage: React.FC = () => {
                 </select>
               </div>
               <div className="flex items-end">
-                <button className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                <button className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
                   Calculate Payment
                 </button>
               </div>
             </div>
-            <div className="mt-8 p-6 bg-indigo-50 rounded-lg text-center">
-              <div className="text-3xl font-bold text-indigo-600 mb-2">$247.50</div>
+            <div className="mt-8 p-6 bg-orange-50 rounded-lg text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-2">$247.50</div>
               <div className="text-slate-600">Estimated Monthly Payment</div>
             </div>
           </div>
@@ -124,7 +124,7 @@ const LoansPage: React.FC = () => {
               { step: '3', title: 'Receive Funds', description: 'Get your money deposited directly to your account' }
             ].map((item, index) => (
               <div key={index} className="text-center animate-slide-in-up" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 text-white rounded-full text-2xl font-bold mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-600 text-white rounded-full text-2xl font-bold mb-6">
                   {item.step}
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">{item.title}</h3>

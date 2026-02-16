@@ -7,19 +7,19 @@ const ServicesPage: React.FC = () => {
     <div className="bg-white text-slate-900 min-h-screen overflow-hidden font-sans">
       {/* Background Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-50/50 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-50/30 rounded-full blur-[120px] animate-pulse delay-700"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-orange-50/50 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-orange-50/30 rounded-full blur-[120px] animate-pulse delay-700"></div>
       </div>
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black tracking-[0.3em] uppercase mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-[10px] font-black tracking-[0.3em] uppercase mb-8">
             <Zap className="w-4 h-4" /> The Unified Financial Ecosystem
           </div>
           <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-8 text-slate-900 uppercase">
             Comprehensive <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-700 italic">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-700 italic">
               Legacy Services.
             </span>
           </h1>
@@ -41,8 +41,8 @@ const ServicesPage: React.FC = () => {
                 description: "Elite liquidity management and high-yield instruments for your lifestyle.",
                 features: ["Zero-Fee Checking", "Smart Savings Units", "Instant Credit Lines", "Metal Debit Cards"],
                 href: "/services/personal",
-                color: "text-indigo-600",
-                bg: "bg-indigo-50"
+                color: "text-orange-600",
+                bg: "bg-orange-50"
               },
               {
                 icon: Building,
@@ -92,7 +92,7 @@ const ServicesPage: React.FC = () => {
             ].map((service, index) => (
               <div
                 key={index}
-                className="group p-10 rounded-[3rem] bg-slate-50 border border-slate-200/60 hover:border-indigo-200 hover:bg-white transition-all duration-500 hover:-translate-y-2 flex flex-col hover:shadow-2xl hover:shadow-indigo-500/5 shadow-sm"
+                className="group p-10 rounded-[3rem] bg-slate-50 border border-slate-200/60 hover:border-orange-200 hover:bg-white transition-all duration-500 hover:-translate-y-2 flex flex-col hover:shadow-2xl hover:shadow-orange-500/5 shadow-sm"
               >
                 <div className={`h-20 w-20 rounded-3xl ${service.bg} border border-white flex items-center justify-center mb-10 group-hover:scale-110 transition-transform shadow-sm`}>
                   <service.icon className={`w-10 h-10 ${service.color}`} />
@@ -108,7 +108,7 @@ const ServicesPage: React.FC = () => {
                   ))}
                 </ul>
                 <Link href={service.href} className="block w-full">
-                  <button className="w-full py-5 rounded-2xl bg-indigo-600 text-white font-black hover:bg-indigo-700 transition-all text-xs uppercase tracking-widest shadow-lg shadow-indigo-600/20">
+                  <button className="w-full py-5 rounded-2xl bg-orange-600 text-white font-black hover:bg-orange-700 transition-all text-xs uppercase tracking-widest shadow-lg shadow-orange-600/20">
                     Explore Solution
                   </button>
                 </Link>
@@ -123,8 +123,8 @@ const ServicesPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <p className="text-[10px] font-black tracking-[0.5em] uppercase text-indigo-600 mb-6">The First State Platform</p>
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter leading-tight uppercase">Fortified <span className="text-indigo-600 italic">Digital Architecture</span></h2>
+              <p className="text-[10px] font-black tracking-[0.5em] uppercase text-orange-600 mb-6">The First State Platform</p>
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter leading-tight uppercase">Fortified <span className="text-orange-600 italic">Digital Architecture</span></h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-10 font-medium">
                 Behind every service is a military-grade infrastructure designed to protect your assets
                 while providing instantaneous global access.
@@ -132,13 +132,13 @@ const ServicesPage: React.FC = () => {
               <div className="grid grid-cols-2 gap-8">
                 <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
                   <div className="flex items-center gap-2 text-slate-900 font-black uppercase text-sm">
-                    <Lock className="w-5 h-5 text-indigo-600" /> AES-256
+                    <Lock className="w-5 h-5 text-orange-600" /> AES-256
                   </div>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Encryption Standards</p>
                 </div>
                 <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
                   <div className="flex items-center gap-2 text-slate-900 font-black uppercase text-sm">
-                    <BarChart3 className="w-5 h-5 text-indigo-600" /> Real-Time
+                    <BarChart3 className="w-5 h-5 text-orange-600" /> Real-Time
                   </div>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Instant Auditing</p>
                 </div>
@@ -146,7 +146,7 @@ const ServicesPage: React.FC = () => {
             </div>
 
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/20 to-indigo-600/20 rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
               <div className="relative rounded-[3rem] overflow-hidden border border-slate-200 bg-white p-1">
                 <img
                   src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80"
@@ -164,13 +164,13 @@ const ServicesPage: React.FC = () => {
       <section className="py-32 relative bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="relative rounded-[4rem] bg-slate-50 p-12 md:p-24 text-center space-y-10 overflow-hidden border border-slate-200 shadow-2xl">
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight relative z-10 uppercase italic">Scale Your <br /> <span className="text-indigo-600 not-italic uppercase">Potential Today.</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight relative z-10 uppercase italic">Scale Your <br /> <span className="text-orange-600 not-italic uppercase">Potential Today.</span></h2>
             <p className="text-xl text-slate-500 max-w-2xl mx-auto relative z-10 font-medium">
               Join the institutional-grade banking revolution. It takes less than 3 minutes to start your legacy.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
               <Link href="/register">
-                <button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-12 py-6 rounded-2xl text-xl font-black transition-all hover:scale-105 shadow-xl shadow-indigo-600/20 uppercase tracking-tight">
+                <button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-12 py-6 rounded-2xl text-xl font-black transition-all hover:scale-105 shadow-xl shadow-orange-600/20 uppercase tracking-tight">
                   Open Account
                 </button>
               </Link>

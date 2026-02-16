@@ -260,7 +260,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
               Dashboard
             </Link>
           </Button>
-          <div className="px-5 py-2 bg-white border border-slate-200 rounded-full text-indigo-600 text-[10px] font-black uppercase tracking-widest shadow-sm">
+          <div className="px-5 py-2 bg-white border border-slate-200 rounded-full text-orange-600 text-[10px] font-black uppercase tracking-widest shadow-sm">
             Transfer Completed
           </div>
         </motion.div>
@@ -269,9 +269,9 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
 
           {/* Receipt Artifact */}
           <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-8">
-            <Card className="border border-slate-200 shadow-2xl shadow-indigo-600/5 bg-white rounded-[3rem] overflow-hidden relative group">
+            <Card className="border border-slate-200 shadow-2xl shadow-orange-600/5 bg-white rounded-[3rem] overflow-hidden relative group">
               <div className="absolute top-0 right-0 p-8">
-                <div className="h-20 w-20 rounded-3xl bg-white border border-slate-200 flex items-center justify-center text-indigo-600 shadow-sm overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
+                <div className="h-20 w-20 rounded-3xl bg-white border border-slate-200 flex items-center justify-center text-orange-600 shadow-sm overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
                   <CheckCircle className="h-10 w-10 relative z-10" />
                   <div className="absolute inset-0 bg-slate-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
@@ -300,24 +300,24 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                 </div>
 
                 {/* Value Metrics */}
-                <div className="p-10 rounded-[2.5rem] bg-indigo-50 border border-indigo-100 relative overflow-hidden group/value">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 blur-3xl rounded-full -mr-16 -mt-16 group-hover/value:bg-indigo-500/10 transition-colors"></div>
+                <div className="p-10 rounded-[2.5rem] bg-orange-50 border border-orange-100 relative overflow-hidden group/value">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 blur-3xl rounded-full -mr-16 -mt-16 group-hover/value:bg-orange-500/10 transition-colors"></div>
                   <div className="space-y-8">
                     <div className="flex items-center justify-between">
                       <div className="space-y-1">
-                        <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest flex items-center gap-2">
-                          <div className="h-1.5 w-1.5 rounded-full bg-indigo-600 animate-pulse"></div>
+                        <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest flex items-center gap-2">
+                          <div className="h-1.5 w-1.5 rounded-full bg-orange-600 animate-pulse"></div>
                           Amount
                         </p>
                         <p className="text-5xl font-black text-slate-900 tracking-tighter">
                           {formatCurrency(transfer.amount, transfer.currency)}
                         </p>
                       </div>
-                      <div className="h-16 w-16 rounded-full bg-white border border-indigo-100 flex items-center justify-center text-indigo-600 shadow-sm">
+                      <div className="h-16 w-16 rounded-full bg-white border border-orange-100 flex items-center justify-center text-orange-600 shadow-sm">
                         <DollarSign className="h-8 w-8" />
                       </div>
                     </div>
-                    <div className="pt-8 border-t border-indigo-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div className="pt-8 border-t border-orange-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
                       <div className="space-y-1">
                         <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Service Fee</p>
                         <p className="text-lg font-bold text-slate-600">
@@ -337,16 +337,16 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                 {/* Node Trace */}
                 <div className="space-y-6 pt-6 border-t border-slate-100">
                   <div className="flex items-center gap-3">
-                    <div className="h-4 w-4 bg-indigo-50 rounded-full flex items-center justify-center">
-                      <div className="h-1.5 w-1.5 bg-indigo-600 rounded-full"></div>
+                    <div className="h-4 w-4 bg-orange-50 rounded-full flex items-center justify-center">
+                      <div className="h-1.5 w-1.5 bg-orange-600 rounded-full"></div>
                     </div>
                     <h3 className="text-[10px] font-black text-slate-900 uppercase tracking-[0.3em]">Beneficiary Details</h3>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                     {[
-                      { label: "Account Holder", value: transfer.bankHolder, icon: User, color: 'text-indigo-600', bg: 'bg-indigo-50' },
+                      { label: "Account Holder", value: transfer.bankHolder, icon: User, color: 'text-orange-600', bg: 'bg-orange-50' },
                       { label: "Account Number", value: transfer.bankAccount, icon: Hash, color: 'text-slate-600', bg: 'bg-slate-50' },
-                      { label: "Bank Name", value: transfer.bankName, icon: Building, color: 'text-indigo-600', bg: 'bg-indigo-50' },
+                      { label: "Bank Name", value: transfer.bankName, icon: Building, color: 'text-orange-600', bg: 'bg-orange-50' },
                       { label: "Transfer Type", value: transfer.txRegion, icon: Globe, color: 'text-slate-600', bg: 'bg-slate-50' },
                     ].map((node, i) => (
                       <div key={i} className="flex items-center gap-4 group/node">
@@ -366,7 +366,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                 {transfer.txReason && (
                   <div className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 space-y-3">
                     <div className="flex items-center gap-2">
-                      <Info className="h-3 w-3 text-indigo-600" />
+                      <Info className="h-3 w-3 text-orange-600" />
                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Description</p>
                     </div>
                     <p className="text-slate-600 font-medium italic leading-relaxed uppercase">
@@ -388,10 +388,10 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
 
               <div className="space-y-4">
                 <Button
-                  className="w-full h-16 bg-indigo-600 hover:bg-slate-900 text-white font-black rounded-2xl shadow-xl shadow-indigo-600/10 uppercase tracking-widest text-xs transition-all hover:-translate-y-1"
+                  className="w-full h-16 bg-orange-600 hover:bg-slate-900 text-white font-black rounded-2xl shadow-xl shadow-orange-600/10 uppercase tracking-widest text-xs transition-all hover:-translate-y-1"
                   onClick={handleDownload}
                 >
-                  <Download className="mr-3 h-5 w-5 text-indigo-200" />
+                  <Download className="mr-3 h-5 w-5 text-orange-200" />
                   Download PDF
                 </Button>
                 <Button variant="ghost" className="w-full h-16 border border-slate-200 hover:bg-slate-50 text-slate-600 font-black rounded-2xl transition-all uppercase tracking-widest text-xs" asChild>
@@ -401,7 +401,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
 
               <div className="pt-8 border-t border-slate-100 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_8px_rgb(99,102,241)]"></div>
+                  <div className="h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_8px_rgb(99,102,241)]"></div>
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Compliance Verified</span>
                 </div>
                 <p className="text-[10px] text-slate-500 font-medium leading-relaxed italic">

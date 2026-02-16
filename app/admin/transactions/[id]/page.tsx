@@ -44,7 +44,7 @@ export default async function AdminTransactionDetailsPage({ params }: { params: 
     return (
         <div className="p-4 md:p-10 space-y-10 relative">
             {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
@@ -71,7 +71,7 @@ export default async function AdminTransactionDetailsPage({ params }: { params: 
                 </div>
             </div>
 
-            <Suspense fallback={<div className="text-indigo-500 font-black animate-pulse">LOADING DETAILS...</div>}>
+            <Suspense fallback={<div className="text-orange-500 font-black animate-pulse">LOADING DETAILS...</div>}>
                 <TransactionContent id={params.id} />
             </Suspense>
         </div>
@@ -84,7 +84,7 @@ async function TransactionContent({ id }: { id: string }) {
 
     const isCredit = tx.txType === "credit"
     const statusColor = {
-        success: "bg-indigo-500/10 text-indigo-500 border-indigo-500/20",
+        success: "bg-orange-500/10 text-orange-500 border-orange-500/20",
         pending: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
         failed: "bg-red-500/10 text-red-500 border-red-500/20",
         cancelled: "bg-white0/10 text-slate-500 border-slate-500/20",
@@ -100,7 +100,7 @@ async function TransactionContent({ id }: { id: string }) {
                     <CardHeader className="p-10 border-b border-white/5 bg-white/[0.01]">
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                             <div className="flex items-center gap-6">
-                                <div className={`w-20 h-20 rounded-[2rem] ${isCredit ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' : 'bg-red-500/10 text-red-400 border-red-500/20'} border flex items-center justify-center text-4xl font-black`}>
+                                <div className={`w-20 h-20 rounded-[2rem] ${isCredit ? 'bg-orange-500/10 text-orange-400 border-orange-500/20' : 'bg-red-500/10 text-red-400 border-red-500/20'} border flex items-center justify-center text-4xl font-black`}>
                                     {isCredit ? <ArrowDownLeft className="w-10 h-10" /> : <ArrowUpRight className="w-10 h-10" />}
                                 </div>
                                 <div>
@@ -117,7 +117,7 @@ async function TransactionContent({ id }: { id: string }) {
                             </div>
                             <div className="text-left md:text-right">
                                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Audit Flux Value</p>
-                                <p className={`text-4xl font-black tracking-tighter ${isCredit ? 'text-indigo-500' : 'text-white'}`}>
+                                <p className={`text-4xl font-black tracking-tighter ${isCredit ? 'text-orange-500' : 'text-white'}`}>
                                     {isCredit ? '+' : '-'}{formatCurrency(tx.amount, tx.currency)}
                                 </p>
                             </div>
@@ -141,7 +141,7 @@ async function TransactionContent({ id }: { id: string }) {
                                         </p>
                                         {user ? (
                                             <Link href={`/admin/users/${user._id}`} className="block group">
-                                                <p className="text-sm font-bold text-white group-hover:text-indigo-500 transition-colors uppercase tracking-tight">
+                                                <p className="text-sm font-bold text-white group-hover:text-orange-500 transition-colors uppercase tracking-tight">
                                                     {user.bankInfo?.bio?.firstname} {user.bankInfo?.bio?.lastname}
                                                 </p>
                                                 <p className="text-xs text-slate-500 italic mt-0.5">{user.email}</p>
@@ -186,8 +186,8 @@ async function TransactionContent({ id }: { id: string }) {
                             {/* Destination Section */}
                             <div className="space-y-8">
                                 <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                                        <Globe className="w-4 h-4 text-indigo-400" />
+                                    <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+                                        <Globe className="w-4 h-4 text-orange-400" />
                                     </div>
                                     <h3 className="text-sm font-black text-white uppercase tracking-[0.2em]">Target Destination</h3>
                                 </div>
@@ -205,7 +205,7 @@ async function TransactionContent({ id }: { id: string }) {
                                         <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-2">
                                             Account Number
                                         </p>
-                                        <p className="text-sm font-mono font-bold text-indigo-500 tracking-widest">{tx.bankAccount}</p>
+                                        <p className="text-sm font-mono font-bold text-orange-500 tracking-widest">{tx.bankAccount}</p>
                                     </div>
 
                                     <div>
@@ -241,7 +241,7 @@ async function TransactionContent({ id }: { id: string }) {
                 <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden">
                     <CardHeader className="p-10 border-b border-white/5 bg-white/[0.01]">
                         <CardTitle className="text-2xl font-black text-white italic tracking-tight flex items-center gap-3">
-                            <ShieldCheck className="w-6 h-6 text-indigo-500" /> Verification Codes
+                            <ShieldCheck className="w-6 h-6 text-orange-500" /> Verification Codes
                         </CardTitle>
                         <CardDescription className="text-slate-500 font-medium">Compliance codes required for transfer completion.</CardDescription>
                     </CardHeader>
@@ -255,18 +255,18 @@ async function TransactionContent({ id }: { id: string }) {
                                 { name: "TAX", status: tx.verificationSteps?.taxVerified, label: "Revenue Audit" },
                                 { name: "TAC", status: tx.verificationSteps?.tacVerified, label: "Transmission Auth" },
                             ].map((protocol, i) => (
-                                <div key={i} className="p-6 rounded-2xl bg-black/20 border border-white/5 flex flex-col justify-between h-32 hover:border-indigo-500/20 transition-all">
+                                <div key={i} className="p-6 rounded-2xl bg-black/20 border border-white/5 flex flex-col justify-between h-32 hover:border-orange-500/20 transition-all">
                                     <div className="flex justify-between items-start">
                                         <span className="text-xs font-black text-white uppercase tracking-[0.2em]">{protocol.name}</span>
                                         {protocol.status ? (
-                                            <CheckCircle2 className="w-4 h-4 text-indigo-500 shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
+                                            <CheckCircle2 className="w-4 h-4 text-orange-500 shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
                                         ) : (
                                             <Lock className="w-4 h-4 text-slate-700" />
                                         )}
                                     </div>
                                     <div>
                                         <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">{protocol.label}</p>
-                                        <p className={`text-[10px] font-black mt-1 ${protocol.status ? 'text-indigo-500' : 'text-slate-600'}`}>
+                                        <p className={`text-[10px] font-black mt-1 ${protocol.status ? 'text-orange-500' : 'text-slate-600'}`}>
                                             {protocol.status ? "VERIFIED" : "PENDING"}
                                         </p>
                                     </div>
@@ -279,8 +279,8 @@ async function TransactionContent({ id }: { id: string }) {
 
             {/* Side Metadata Panel */}
             <div className="space-y-8">
-                <Card className="bg-[#020617] border-indigo-500/20 rounded-[2.5rem] p-10 overflow-hidden relative shadow-3xl">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <Card className="bg-[#020617] border-orange-500/20 rounded-[2.5rem] p-10 overflow-hidden relative shadow-3xl">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
                     <div className="relative z-10 space-y-8">
                         <div className="space-y-6">
                             <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest">Time Logs</h3>
@@ -314,7 +314,7 @@ async function TransactionContent({ id }: { id: string }) {
                         <div className="space-y-6">
                             <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest">Admin Actions</h3>
                             <div className="grid grid-cols-1 gap-3">
-                                <Button className="w-full bg-indigo-500 hover:bg-indigo-400 text-black font-black uppercase tracking-widest text-[10px] h-12 rounded-xl shadow-lg shadow-indigo-500/20">
+                                <Button className="w-full bg-orange-500 hover:bg-orange-400 text-black font-black uppercase tracking-widest text-[10px] h-12 rounded-xl shadow-lg shadow-orange-500/20">
                                     Manual Success Override
                                 </Button>
                                 <Button variant="ghost" className="w-full border border-red-500/20 text-red-500 hover:bg-red-500/10 font-black uppercase tracking-widest text-[10px] h-12 rounded-xl">

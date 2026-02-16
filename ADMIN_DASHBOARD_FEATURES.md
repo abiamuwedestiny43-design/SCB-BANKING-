@@ -23,7 +23,7 @@ The Admin Dashboard is a comprehensive control center for managing the entire ba
 
 ### 1. **Global Accounts**
 
-- **Icon**: Users icon (Indigo)
+- **Icon**: Users icon (Orange)
 - **Displays**: Total number of registered users
 - **Description**: Active user base
 - **Link**: `/admin/users`
@@ -217,7 +217,7 @@ All services show operational status with health percentages:
 ### Visual Elements
 
 - **Dark Theme**: Professional dark background (#020617)
-- **Gradient Accents**: Indigo and blue gradients
+- **Gradient Accents**: Orange and blue gradients
 - **Hover Effects**: Interactive card animations
 - **Responsive Design**: Works on all screen sizes
 - **Icons**: Lucide React icons throughout
@@ -225,7 +225,7 @@ All services show operational status with health percentages:
 
 ### Color Coding
 
-- **Indigo**: Primary actions and users
+- **Orange**: Primary actions and users
 - **Blue**: Transactions and transfers
 - **Purple**: Cards and assets
 - **Orange**: Pending items and alerts

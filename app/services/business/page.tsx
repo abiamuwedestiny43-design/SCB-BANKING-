@@ -19,8 +19,8 @@ export default function BusinessBankingPage() {
       description: "Operate with multi-user permissions, granular role controls, and global treasury management.",
       icon: Building2,
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
-      color: "text-indigo-500",
-      bg: "bg-indigo-500/10"
+      color: "text-orange-500",
+      bg: "bg-orange-500/10"
     },
     {
       title: "Commercial Flux",
@@ -39,7 +39,7 @@ export default function BusinessBankingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-orange-500/30">
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-32 bg-white">
         {/* Minimal Orbital Structure */}
@@ -55,11 +55,11 @@ export default function BusinessBankingPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
               <Zap className="w-3 h-3" /> Enterprise Infrastructure
             </div>
             <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter lowercase">
-              business <span className="text-indigo-600 italic">banking</span>
+              business <span className="text-orange-600 italic">banking</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
               Scale with confidence. First State provides the liquidity, controls, and insights your venture demands.
@@ -72,7 +72,7 @@ export default function BusinessBankingPage() {
             transition={{ delay: 0.5, duration: 1 }}
             className="flex flex-wrap justify-center gap-4 pt-8"
           >
-            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-10 h-16 rounded-2xl shadow-xl shadow-indigo-600/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white font-black px-10 h-16 rounded-2xl shadow-xl shadow-orange-600/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Launch Business Account</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-slate-200 bg-white/50 hover:bg-slate-50 text-slate-600 font-black px-10 h-16 rounded-2xl backdrop-blur-md text-lg uppercase tracking-tight shadow-sm" asChild>
@@ -82,8 +82,8 @@ export default function BusinessBankingPage() {
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-indigo-600" />
-          <p className="text-[10px] font-black uppercase tracking-widest text-indigo-600">Scroll Down</p>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-orange-600" />
+          <p className="text-[10px] font-black uppercase tracking-widest text-orange-600">Scroll Down</p>
         </div>
       </section>
 
@@ -93,7 +93,7 @@ export default function BusinessBankingPage() {
           <div className="grid lg:grid-cols-12 gap-20 items-center">
             <motion.div {...fadeInUp} className="lg:col-span-12 text-center mb-20">
               <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter mb-8 lowercase">
-                The Operating System for <span className="text-indigo-600">Corporate Finance</span>
+                The Operating System for <span className="text-orange-600">Corporate Finance</span>
               </h2>
               <p className="text-xl text-slate-600 max-w-4xl mx-auto font-medium leading-relaxed">
                 Modern ventures require more than just an account. You need a platform that understands cash flow cycles,
@@ -103,7 +103,7 @@ export default function BusinessBankingPage() {
 
             <motion.div {...fadeInUp} className="lg:col-span-5 relative">
               <div className="p-10 rounded-[3rem] bg-slate-50 border border-slate-200 backdrop-blur-md space-y-8 shadow-2xl">
-                <div className="h-16 w-16 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100 shadow-sm">
+                <div className="h-16 w-16 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 border border-orange-100 shadow-sm">
                   <PieChart className="w-8 h-8" />
                 </div>
                 <h3 className="text-3xl font-black text-slate-900 tracking-tighter lowercase">Liquidity Management</h3>
@@ -114,7 +114,7 @@ export default function BusinessBankingPage() {
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Encryption Standard</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-black text-indigo-600">99.9%</p>
+                    <p className="text-2xl font-black text-orange-600">99.9%</p>
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">System Uptime</p>
                   </div>
                 </div>
@@ -126,7 +126,7 @@ export default function BusinessBankingPage() {
                 <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&q=80" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Business Growth" />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent opacity-60" />
                 <div className="absolute bottom-10 left-10">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest shadow-lg">Secure Platform</div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-600 text-white text-[9px] font-black uppercase tracking-widest shadow-lg">Secure Platform</div>
                 </div>
               </div>
             </motion.div>
@@ -159,7 +159,7 @@ export default function BusinessBankingPage() {
                     <h3 className="text-3xl font-black text-white tracking-tighter">{feature.title}</h3>
                     <p className="text-slate-300 font-medium leading-relaxed max-w-sm">{feature.description}</p>
                   </div>
-                  <Button variant="ghost" className="text-indigo-400 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
+                  <Button variant="ghost" className="text-orange-400 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
                     Deploy Solution <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
@@ -174,7 +174,7 @@ export default function BusinessBankingPage() {
         <div className="max-w-7xl mx-auto px-6 text-center space-y-16">
           <div className="space-y-4">
             <h2 className="text-4xl font-black text-slate-900 tracking-tighter lowercase">Platform <span className="text-slate-400 italic">Capabilities</span></h2>
-            <div className="w-20 h-1 bg-indigo-600 mx-auto rounded-full" />
+            <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full" />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {metrics.map((m, i) => (
@@ -182,9 +182,9 @@ export default function BusinessBankingPage() {
                 key={i}
                 {...fadeInUp}
                 transition={{ delay: i * 0.1 }}
-                className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-indigo-100 transition-all group text-left"
+                className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-orange-100 transition-all group text-left"
               >
-                <div className="h-12 w-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-8 border border-indigo-100 group-hover:scale-110 transition-transform shadow-sm">
+                <div className="h-12 w-12 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600 mb-8 border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
                   <m.icon className="w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-black text-slate-900 lowercase tracking-tighter mb-2">{m.title}</h4>
@@ -199,7 +199,7 @@ export default function BusinessBankingPage() {
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center space-y-12">
           <motion.div {...fadeInUp} className="space-y-4">
             <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase relative z-10">
-              Ready to <span className="text-indigo-600 italic">Accelerate?</span>
+              Ready to <span className="text-orange-600 italic">Accelerate?</span>
             </h2>
             <p className="text-xl text-slate-600 font-medium max-w-2xl mx-auto relative z-10">
               Onboard your venture to the First State ecosystem and experience the future of commercial banking.
@@ -207,7 +207,7 @@ export default function BusinessBankingPage() {
           </motion.div>
 
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="flex justify-center flex-wrap gap-6 relative z-10">
-            <Button size="lg" className="bg-indigo-600 text-white hover:bg-indigo-700 font-black px-12 h-16 rounded-2xl shadow-xl shadow-indigo-600/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 font-black px-12 h-16 rounded-2xl shadow-xl shadow-orange-600/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Get Started</Link>
             </Button>
             <Button size="lg" variant="outline" className="text-slate-900 border-slate-200 bg-white hover:bg-slate-50 font-black px-12 h-16 rounded-2xl text-lg uppercase tracking-tight shadow-sm" asChild>

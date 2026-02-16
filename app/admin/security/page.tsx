@@ -13,8 +13,8 @@ export default function SecurityPage() {
         <div className="p-4 md:p-10 space-y-8 min-h-screen bg-slate-50/50">
             <div className="flex flex-col gap-2 relative z-10">
                 <h1 className="text-3xl md:text-4xl font-black text-black tracking-tight flex items-center gap-3">
-                    <Shield className="w-8 h-8 text-indigo-700" />
-                    Security <span className="text-indigo-700">Center</span>
+                    <Shield className="w-8 h-8 text-orange-700" />
+                    Security <span className="text-orange-700">Center</span>
                 </h1>
                 <p className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">
                     Monitor threats, enforce policies, and audit system integrity.
@@ -39,7 +39,7 @@ export default function SecurityPage() {
                 <Card className="bg-white border-slate-200 shadow-sm rounded-[2rem] p-6 lg:col-span-1">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
-                            <Key className="w-4 h-4 text-indigo-700" /> Password Strength
+                            <Key className="w-4 h-4 text-orange-700" /> Password Strength
                         </CardTitle>
                     </CardHeader>
                     <CardContent>

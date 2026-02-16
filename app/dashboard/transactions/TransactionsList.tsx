@@ -135,7 +135,7 @@ export default function TransactionsList({
   const getStatusConfig = (status: string) => {
     switch (status.toLowerCase()) {
       case "success":
-        return { color: "text-indigo-600 bg-indigo-50 border-indigo-100", icon: CheckCircle2 }
+        return { color: "text-orange-600 bg-orange-50 border-orange-100", icon: CheckCircle2 }
       case "pending":
         return { color: "text-yellow-600 bg-yellow-50 border-yellow-100", icon: Clock }
       case "cancelled":
@@ -157,7 +157,7 @@ export default function TransactionsList({
       {/* Header Section */}
       <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-indigo-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-indigo-50 border border-indigo-100 w-fit rounded-full">
+          <div className="flex items-center gap-2 text-orange-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-50 border border-orange-100 w-fit rounded-full">
             <ArrowRightLeft className="h-3 w-3" />
             Transactions
           </div>
@@ -173,10 +173,10 @@ export default function TransactionsList({
             disabled={isLoading || total === 0}
             className="h-12 px-6 rounded-xl border border-slate-200 bg-white hover:bg-white font-bold text-slate-900 flex items-center gap-2 transition-all shadow-sm"
           >
-            <Download className="h-4 w-4 text-indigo-600" />
+            <Download className="h-4 w-4 text-orange-600" />
             {isLoading ? "Exporting..." : "Download CSV"}
           </Button>
-          <Button asChild className="h-12 px-6 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-xl shadow-indigo-600/10 font-black">
+          <Button asChild className="h-12 px-6 bg-orange-600 hover:bg-orange-700 text-white rounded-xl shadow-xl shadow-orange-600/10 font-black">
             <Link href="/dashboard" className="flex items-center gap-2">
               <ChevronLeft className="h-4 w-4" />
               Back
@@ -194,7 +194,7 @@ export default function TransactionsList({
               <div className="lg:col-span-3 space-y-2">
                 <Label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Status</Label>
                 <Select value={filters.status} onValueChange={(value) => handleFilterChange("status", value)}>
-                  <SelectTrigger className="h-12 bg-white border-slate-200 rounded-xl font-bold text-slate-900 focus:ring-indigo-600">
+                  <SelectTrigger className="h-12 bg-white border-slate-200 rounded-xl font-bold text-slate-900 focus:ring-orange-600">
                     <SelectValue placeholder="All Status" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-slate-200 text-slate-900 rounded-xl">
@@ -210,7 +210,7 @@ export default function TransactionsList({
               <div className="lg:col-span-3 space-y-2">
                 <Label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Type</Label>
                 <Select value={filters.type} onValueChange={(value) => handleFilterChange("type", value)}>
-                  <SelectTrigger className="h-12 bg-white border-slate-200 rounded-xl font-bold text-slate-900 focus:ring-indigo-600">
+                  <SelectTrigger className="h-12 bg-white border-slate-200 rounded-xl font-bold text-slate-900 focus:ring-orange-600">
                     <SelectValue placeholder="All Types" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-slate-200 text-slate-900 rounded-xl">
@@ -225,12 +225,12 @@ export default function TransactionsList({
                 <Label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Search</Label>
                 <form onSubmit={handleSearch} className="flex gap-2">
                   <div className="relative flex-1 group">
-                    <Search className="absolute left-3 top-3.5 h-4 w-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
+                    <Search className="absolute left-3 top-3.5 h-4 w-4 text-slate-400 group-focus-within:text-orange-600 transition-colors" />
                     <Input
                       placeholder="Search transactions..."
                       value={filters.search}
                       onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
-                      className="pl-10 h-12 bg-white border-slate-200 focus:bg-white focus:ring-indigo-600 transition-all rounded-xl font-bold text-slate-900 placeholder:text-slate-400"
+                      className="pl-10 h-12 bg-white border-slate-200 focus:bg-white focus:ring-orange-600 transition-all rounded-xl font-bold text-slate-900 placeholder:text-slate-400"
                     />
                   </div>
                   <Button type="submit" className="h-12 w-12 rounded-xl bg-slate-900 hover:bg-black text-white shadow-lg shadow-black/10">
@@ -248,7 +248,7 @@ export default function TransactionsList({
         <div className="flex items-center justify-between px-2">
           <h2 className="text-xl font-black text-slate-900 flex items-center gap-3">
             Transactions
-            <span className="text-[10px] font-black bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-widest">{total} Found</span>
+            <span className="text-[10px] font-black bg-orange-50 text-orange-600 border border-orange-100 px-3 py-1 rounded-full uppercase tracking-widest">{total} Found</span>
           </h2>
           {(filters.status !== "all" || filters.type !== "all" || filters.search) && (
             <button
@@ -283,18 +283,18 @@ export default function TransactionsList({
                     <Link
                       key={transaction._id}
                       href={`/dashboard/receipt/${transaction.txRef}`}
-                      className="p-8 flex flex-col md:flex-row md:items-center justify-between hover:bg-white/50 transition-all group border-l-4 border-transparent hover:border-indigo-600"
+                      className="p-8 flex flex-col md:flex-row md:items-center justify-between hover:bg-white/50 transition-all group border-l-4 border-transparent hover:border-orange-600"
                     >
                       <div className="flex items-center gap-8 flex-1">
                         <div className={cn(
                           "h-16 w-16 rounded-2xl flex items-center justify-center shadow-sm transition-all group-hover:scale-110 duration-500",
-                          transaction.txType === "credit" ? "bg-indigo-50 text-indigo-600 border border-indigo-100" : "bg-red-50 text-red-600 border border-red-100"
+                          transaction.txType === "credit" ? "bg-orange-50 text-orange-600 border border-orange-100" : "bg-red-50 text-red-600 border border-red-100"
                         )}>
                           {transaction.txType === "credit" ? <ArrowDownLeft className="h-8 w-8" /> : <ArrowUpRight className="h-8 w-8" />}
                         </div>
                         <div className="space-y-2 flex-1 min-w-0">
                           <div className="flex items-center gap-3">
-                            <p className="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors truncate">
+                            <p className="text-xl font-black text-slate-900 group-hover:text-orange-600 transition-colors truncate">
                               {transaction.txType === "credit" ? "Credit" : "Debit"}
                               <span className="font-bold text-slate-400 ml-3 italic">
                                 {transaction.recipient ? `• ${transaction.recipient}` : ""}
@@ -323,13 +323,13 @@ export default function TransactionsList({
                       <div className="mt-6 md:mt-0 flex md:flex-col items-end justify-between md:justify-center gap-3 ml-0 md:ml-10 pl-0 md:pl-10 border-l-0 md:border-l border-slate-100">
                         <p className={cn(
                           "text-3xl font-black tracking-tighter",
-                          transaction.txType === "credit" ? "text-indigo-600" : "text-slate-900"
+                          transaction.txType === "credit" ? "text-orange-600" : "text-slate-900"
                         )}>
                           {transaction.txType === "credit" ? "+" : "−"}
                           {formatCurrency(transaction.amount, transaction.currency)}
                         </p>
-                        <div className="flex items-center gap-2 group-hover:text-indigo-600 transition-colors">
-                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-indigo-600 transition-colors">View Details</span>
+                        <div className="flex items-center gap-2 group-hover:text-orange-600 transition-colors">
+                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-orange-600 transition-colors">View Details</span>
                           <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
@@ -345,7 +345,7 @@ export default function TransactionsList({
         {totalPages > 1 && (
           <motion.div {...fadeInUp} className="flex flex-col md:flex-row items-center justify-between p-8 bg-white shadow-xl border border-slate-200 rounded-[3rem] gap-6">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-              Showing <span className="text-slate-900">{(currentPage - 1) * 10 + 1}</span> - <span className="text-slate-900">{Math.min(currentPage * 10, total)}</span> <span className="mx-2 opacity-30">|</span> Total Transactions: <span className="text-indigo-600">{total}</span>
+              Showing <span className="text-slate-900">{(currentPage - 1) * 10 + 1}</span> - <span className="text-slate-900">{Math.min(currentPage * 10, total)}</span> <span className="mx-2 opacity-30">|</span> Total Transactions: <span className="text-orange-600">{total}</span>
             </p>
             <div className="flex items-center gap-4">
               <Button
@@ -372,7 +372,7 @@ export default function TransactionsList({
                       onClick={() => handlePageChange(pageNum)}
                       className={cn(
                         "h-10 min-w-[40px] px-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all",
-                        currentPage === pageNum ? "bg-indigo-600 text-white shadow-xl shadow-indigo-600/20 scale-105" : "text-slate-400 hover:text-slate-900"
+                        currentPage === pageNum ? "bg-orange-600 text-white shadow-xl shadow-orange-600/20 scale-105" : "text-slate-400 hover:text-slate-900"
                       )}
                     >
                       {pageNum}

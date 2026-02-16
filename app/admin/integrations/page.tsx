@@ -89,8 +89,8 @@ export default function IntegrationsPage() {
         <div className="p-4 md:p-10 space-y-8 min-h-screen bg-slate-50/50">
             <div className="flex flex-col gap-2 relative z-10">
                 <h1 className="text-3xl md:text-4xl font-black text-black tracking-tight flex items-center gap-3">
-                    <Plug className="w-8 h-8 text-indigo-700" />
-                    System <span className="text-indigo-700">Integrations</span>
+                    <Plug className="w-8 h-8 text-orange-700" />
+                    System <span className="text-orange-700">Integrations</span>
                 </h1>
                 <p className="text-slate-900 font-bold max-w-2xl uppercase text-[10px] tracking-widest mt-1">
                     Connect third-party tools to extend the functionality of your banking platform.
@@ -99,13 +99,13 @@ export default function IntegrationsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {items.map((item) => (
-                    <Card key={item.id} className={`border-slate-200 shadow-sm rounded-[2rem] overflow-hidden transition-all duration-300 ${item.connected ? 'bg-white ring-2 ring-indigo-500/10' : 'bg-slate-50 opacity-80 hover:opacity-100 hover:bg-white'}`}>
+                    <Card key={item.id} className={`border-slate-200 shadow-sm rounded-[2rem] overflow-hidden transition-all duration-300 ${item.connected ? 'bg-white ring-2 ring-orange-500/10' : 'bg-slate-50 opacity-80 hover:opacity-100 hover:bg-white'}`}>
                         <CardHeader className="flex flex-row items-start justify-between pb-2 space-y-0">
                             <div className="flex gap-4">
                                 {item.icon}
                                 <div>
                                     <CardTitle className="text-lg font-black text-black uppercase tracking-tighter italic">{item.name}</CardTitle>
-                                    <Badge variant={item.connected ? "default" : "outline"} className={`mt-1 text-[9px] font-black uppercase tracking-widest ${item.connected ? 'bg-indigo-50 text-indigo-700 hover:bg-indigo-50 border-indigo-100' : 'text-slate-500'}`}>
+                                    <Badge variant={item.connected ? "default" : "outline"} className={`mt-1 text-[9px] font-black uppercase tracking-widest ${item.connected ? 'bg-orange-50 text-orange-700 hover:bg-orange-50 border-orange-100' : 'text-slate-500'}`}>
                                         {item.connected ? 'Active Connection' : 'System Offline'}
                                     </Badge>
                                 </div>
@@ -131,7 +131,7 @@ export default function IntegrationsPage() {
                                         <span className="text-slate-400">Last Sync</span>
                                         <span className="text-black font-black">{item.connected ? 'Operational' : 'Node Offline'}</span>
                                     </div>
-                                    <Button variant="outline" size="sm" className="w-full mt-2 rounded-xl text-xs font-bold border-indigo-100 text-indigo-600 hover:bg-indigo-50">
+                                    <Button variant="outline" size="sm" className="w-full mt-2 rounded-xl text-xs font-bold border-orange-100 text-orange-600 hover:bg-orange-50">
                                         Configure <ExternalLink className="w-3 h-3 ml-2" />
                                     </Button>
                                 </div>

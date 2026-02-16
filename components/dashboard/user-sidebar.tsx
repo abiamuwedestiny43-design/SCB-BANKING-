@@ -38,7 +38,7 @@ export default function UserSidebar({ user }: UserSidebarProps) {
     <>
       {/* Mobile menu button */}
       <div className="lg:hidden fixed top-4 right-4 z-50">
-        <Button variant="outline" size="icon" className="bg-white border-slate-200 text-indigo-600 shadow-sm" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <Button variant="outline" size="icon" className="bg-white border-slate-200 text-orange-600 shadow-sm" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </div>
@@ -54,34 +54,34 @@ export default function UserSidebar({ user }: UserSidebarProps) {
           {/* Header/Logo */}
           <div className="p-8 pb-10">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-sm group-hover:scale-110 transition-transform bg-indigo-50 border border-indigo-100 flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6 text-indigo-600" />
+              <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-sm group-hover:scale-110 transition-transform bg-orange-50 border border-orange-100 flex items-center justify-center">
+                <ShieldCheck className="w-6 h-6 text-orange-600" />
               </div>
               <span className="text-xl font-black tracking-tighter text-slate-900">
-                FIRST<span className="text-indigo-600 italic">STATE</span>
+                FIRST<span className="text-orange-600 italic">STATE</span>
               </span>
             </Link>
           </div>
 
           {/* User Profile Hook */}
           <div className="px-6 mb-10">
-            <div className="p-4 rounded-[1.5rem] bg-indigo-50 border border-indigo-100 flex items-center space-x-4">
+            <div className="p-4 rounded-[1.5rem] bg-orange-50 border border-orange-100 flex items-center space-x-4">
               <div className="relative">
-                <div className="w-12 h-12 bg-white border border-indigo-200 rounded-xl flex items-center justify-center text-indigo-600 font-black text-lg overflow-hidden">
+                <div className="w-12 h-12 bg-white border border-orange-200 rounded-xl flex items-center justify-center text-orange-600 font-black text-lg overflow-hidden">
                   {user.profileImage ? (
                     <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     user.bankInfo.bio.firstname[0]
                   )}
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-indigo-600 border-2 border-white rounded-full"></div>
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-600 border-2 border-white rounded-full"></div>
               </div>
               <div className="overflow-hidden">
                 <p className="text-sm font-black text-slate-900 truncate">
                   {user.bankInfo.bio.firstname} {user.bankInfo.bio.lastname}
                 </p>
                 <div className="flex items-center gap-1">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-indigo-600/70 truncate">{user.bankNumber}</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-orange-600/70 truncate">{user.bankNumber}</p>
                 </div>
               </div>
             </div>
@@ -99,12 +99,12 @@ export default function UserSidebar({ user }: UserSidebarProps) {
                   className={cn(
                     "flex items-center space-x-4 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 group",
                     isActive
-                      ? "bg-indigo-600 text-white shadow-xl shadow-indigo-600/20"
-                      : "text-slate-500 hover:text-indigo-600 hover:bg-indigo-50",
+                      ? "bg-orange-600 text-white shadow-xl shadow-orange-600/20"
+                      : "text-slate-500 hover:text-orange-600 hover:bg-orange-50",
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-white" : "text-indigo-500/50")} />
+                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-white" : "text-orange-500/50")} />
                   <span>{item.name}</span>
                 </Link>
               )
