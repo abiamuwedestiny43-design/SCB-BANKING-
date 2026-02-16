@@ -126,7 +126,7 @@ export default function AdminSettingsPage() {
 
   if (loading) {
     return (
-      <div className="p-10 text-indigo-500 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
+      <div className="p-10 text-indigo-700 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
         <Cpu className="w-5 h-5 animate-spin" />
         Accessing System Variables...
       </div>
@@ -143,10 +143,10 @@ export default function AdminSettingsPage() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-widest">
           <Settings className="w-3 h-3" /> System Architecture
         </div>
-        <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
-          Global <span className="text-slate-400 italic">Settings</span>
+        <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter uppercase">
+          Global <span className="text-slate-500 italic">Settings</span>
         </h1>
-        <p className="text-slate-600 font-medium max-w-md">Fine-tuning of core infrastructure and security parameters.</p>
+        <p className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">Fine-tuning of core infrastructure and security parameters.</p>
       </div>
 
       {error && (
@@ -161,17 +161,17 @@ export default function AdminSettingsPage() {
         <div className="lg:col-span-2 space-y-8">
           <Card className="bg-white border-slate-200 shadow-xl rounded-[3rem] overflow-hidden">
             <CardHeader className="p-8 border-b border-slate-100 bg-slate-50/50">
-              <CardTitle className="text-2xl font-black text-slate-900 italic tracking-tight uppercase">Transfer Protocols</CardTitle>
-              <CardDescription className="text-slate-500 font-medium">Control the global flow of assets across the FIRST STATE BANK framework.</CardDescription>
+              <CardTitle className="text-2xl font-black text-black italic tracking-tight uppercase">Transfer Protocols</CardTitle>
+              <CardDescription className="text-slate-900 font-black uppercase tracking-widest text-[10px] mt-1">Control the global flow of assets across the FIRST STATE BANK framework.</CardDescription>
             </CardHeader>
             <CardContent className="p-8 space-y-12">
               {/* Global Transfers */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 rounded-[2rem] bg-white border border-slate-100 group hover:border-indigo-300 hover:bg-indigo-50/30 transition-all shadow-sm">
                 <div className="space-y-1">
-                  <Label className="text-lg font-black text-slate-900 flex items-center gap-2 italic">
-                    <Globe className="w-4 h-4 text-indigo-600" /> UNIFIED TRANSFERS
+                  <Label className="text-lg font-black text-black flex items-center gap-2 italic">
+                    <Globe className="w-4 h-4 text-indigo-700" /> UNIFIED TRANSFERS
                   </Label>
-                  <p className="text-sm text-slate-500 max-w-sm">Disable ALL asset migrations (Local & International) cluster-wide.</p>
+                  <p className="text-sm text-slate-900 font-black">Disable ALL asset migrations (Local & International) cluster-wide.</p>
                 </div>
                 <div className="flex items-center gap-6">
                   <Switch
@@ -193,10 +193,10 @@ export default function AdminSettingsPage() {
               {/* Local Transfers */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 rounded-[2rem] bg-white border border-slate-100 group hover:border-blue-300 hover:bg-blue-50/30 transition-all shadow-sm">
                 <div className="space-y-1">
-                  <Label className="text-lg font-black text-slate-900 flex items-center gap-2 italic">
-                    <Database className="w-4 h-4 text-blue-600" /> INTRASYSTEM ASSETS
+                  <Label className="text-lg font-black text-black flex items-center gap-2 italic">
+                    <Database className="w-4 h-4 text-blue-700" /> INTRASYSTEM ASSETS
                   </Label>
-                  <p className="text-sm text-slate-500 max-w-sm">Restrict migrations within the internal FIRST STATE BANK node network.</p>
+                  <p className="text-sm text-slate-900 font-black">Restrict migrations within the internal FIRST STATE BANK node network.</p>
                 </div>
                 <div className="flex items-center gap-6">
                   <Switch
@@ -220,14 +220,14 @@ export default function AdminSettingsPage() {
               {/* Bulk Override */}
               <div className="space-y-8">
                 <div className="space-y-1">
-                  <Label className="text-xl font-black text-slate-900 italic uppercase">BULK PERMISSION OVERRIDE</Label>
-                  <p className="text-sm text-slate-500 font-medium">Atomic permission updates for the entire user registry. Use with caution.</p>
+                  <Label className="text-xl font-black text-black italic uppercase tracking-tighter">BULK PERMISSION OVERRIDE</Label>
+                  <p className="text-sm text-slate-900 font-black">Atomic permission updates for the entire user registry. Use with caution.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Unified */}
                   <div className="space-y-3 p-5 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Unified Protocol</p>
+                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Unified Protocol</p>
                     <div className="flex flex-col gap-2">
                       <Button
                         onClick={() => bulkSetUsersTransfer(true, "all")}
@@ -248,7 +248,7 @@ export default function AdminSettingsPage() {
 
                   {/* Local */}
                   <div className="space-y-3 p-5 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Local Details</p>
+                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Local Details</p>
                     <div className="flex flex-col gap-2">
                       <Button
                         onClick={() => bulkSetUsersTransfer(true, "local")}
@@ -269,7 +269,7 @@ export default function AdminSettingsPage() {
 
                   {/* International */}
                   <div className="space-y-3 p-5 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Intl Protocols</p>
+                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Intl Protocols</p>
                     <div className="flex flex-col gap-2">
                       <Button
                         onClick={() => bulkSetUsersTransfer(true, "international")}
@@ -297,7 +297,7 @@ export default function AdminSettingsPage() {
         <div className="space-y-8">
           <Card className="bg-white border-slate-200 shadow-xl rounded-[2.5rem] p-8 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/[0.03] rounded-full blur-3xl"></div>
-            <h3 className="text-xl font-black text-slate-900 mb-6 flex items-center gap-3 italic uppercase">
+            <h3 className="text-xl font-black text-black mb-6 flex items-center gap-3 italic uppercase">
               <ShieldCheck className="w-5 h-5 text-indigo-600" /> INDIVIDUAL OVERRIDE
             </h3>
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 leading-relaxed">
@@ -346,7 +346,7 @@ export default function AdminSettingsPage() {
                       {foundUser.name[0]}
                     </div>
                     <div>
-                      <p className="text-xs font-black text-slate-900 uppercase tracking-tight">{foundUser.name}</p>
+                      <p className="text-xs font-black text-black uppercase tracking-tight">{foundUser.name}</p>
                       <p className="text-[9px] text-slate-500 italic truncate max-w-[150px]">{foundUser.email}</p>
                     </div>
                   </div>
@@ -380,7 +380,7 @@ export default function AdminSettingsPage() {
             <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-indigo-500/[0.03] rounded-full blur-[100px] group-hover:bg-indigo-500/[0.05] transition-all"></div>
             <div className="relative z-10 space-y-4">
               <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest leading-none">Global Master Key</p>
-              <h3 className="text-xl font-black text-slate-900 italic tracking-tight uppercase">System Integrity</h3>
+              <h3 className="text-xl font-black text-black italic tracking-tight uppercase">System Integrity</h3>
               <p className="text-xs text-slate-500 font-medium leading-relaxed">
                 Changes made in this module propagate instantly through our global server architecture. Proceed with highest caution.
               </p>

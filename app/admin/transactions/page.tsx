@@ -101,11 +101,11 @@ export default async function AdminTransactionsPage({
     const userDoc = await getCurrentUser()
     if (!userDoc) {
       return (
-        <div className="min-h-screen bg-[#020617] flex items-center justify-center p-6 text-center">
+        <div className="min-h-screen bg-white flex items-center justify-center p-6 text-center">
           <div className="space-y-4">
-            <h1 className="text-2xl font-black text-white uppercase tracking-widest">Authentication Breach</h1>
-            <p className="text-slate-500">Authorized personnel only.</p>
-            <Button asChild className="bg-indigo-500 text-black font-black uppercase tracking-widest text-xs px-8 py-4 rounded-xl">
+            <h1 className="text-2xl font-black text-black uppercase tracking-widest">Authentication Breach</h1>
+            <p className="text-slate-900 font-black uppercase text-[10px] tracking-widest leading-none mt-2">Authorized personnel only.</p>
+            <Button asChild className="bg-indigo-700 text-white font-black uppercase tracking-widest text-xs px-8 py-4 rounded-xl shadow-xl shadow-indigo-700/20">
               <Link href="/login">Re-authenticate</Link>
             </Button>
           </div>
@@ -135,25 +135,25 @@ export default async function AdminTransactionsPage({
     return (
       <div className="p-4 md:p-10 space-y-10 relative pb-20">
         {/* Background Decor */}
-        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-blue-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest">
               <Activity className="w-3 h-3" /> Transaction History
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter">
+            <h1 className="text-4xl md:text-6xl font-black text-black tracking-tighter">
               Global <span className="text-slate-500 italic font-medium">Transfers</span>
             </h1>
-            <p className="text-slate-400 font-medium max-w-xl text-lg leading-relaxed">
+            <p className="text-slate-900 font-bold max-w-xl text-lg leading-relaxed mt-2 uppercase text-xs tracking-widest">
               Monitoring global movement of assets across the FIRST STATE BANK BANK ecosystem. Transaction status and records.
             </p>
           </div>
 
           <div className="flex gap-4">
-            <Button asChild variant="ghost" className="h-14 px-8 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-black border border-white/5 backdrop-blur-md uppercase tracking-widest text-[10px] gap-2">
+            <Button asChild variant="ghost" className="h-14 px-8 rounded-2xl bg-white border border-slate-200 text-black font-black hover:bg-slate-50 shadow-sm uppercase tracking-widest text-[10px] gap-2">
               <Link href="/admin">
                 <ChevronLeft className="h-4 w-4" /> Dashboard
               </Link>
@@ -164,17 +164,17 @@ export default async function AdminTransactionsPage({
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
           {[
-            { label: "Total Transactions", value: total, icon: Database, color: "text-blue-400", bg: "bg-blue-500/5", border: "border-blue-500/10" },
-            { label: "Completed", value: successCount, icon: ShieldCheck, color: "text-indigo-400", bg: "bg-indigo-500/5", border: "border-indigo-500/10" },
-            { label: "Pending Review", value: pendingCount, icon: Clock, color: "text-yellow-400", bg: "bg-yellow-500/5", border: "border-yellow-500/10" },
-            { label: "Failed", value: failedCount, icon: Lock, color: "text-red-400", bg: "bg-red-500/5", border: "border-red-500/10" },
+            { label: "Total Transactions", value: total, icon: Database, color: "text-blue-700", bg: "bg-blue-50", border: "border-blue-100" },
+            { label: "Completed", value: successCount, icon: ShieldCheck, color: "text-indigo-700", bg: "bg-indigo-50", border: "border-indigo-100" },
+            { label: "Pending Review", value: pendingCount, icon: Clock, color: "text-amber-700", bg: "bg-amber-50", border: "border-amber-100" },
+            { label: "Failed", value: failedCount, icon: Lock, color: "text-rose-700", bg: "bg-rose-50", border: "border-rose-100" },
           ].map((stat, i) => (
-            <Card key={i} className={`bg-white/[0.02] ${stat.border} rounded-[2rem] p-8 group hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden`}>
+            <Card key={i} className={`bg-white ${stat.border} rounded-[2rem] p-8 group hover:border-indigo-200 transition-all duration-500 relative overflow-hidden shadow-sm hover:shadow-lg`}>
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <stat.icon className={`w-16 h-16 ${stat.color}`} />
               </div>
               <div className="relative z-10">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-4">{stat.label}</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-700 mb-4">{stat.label}</p>
                 <div className={`text-5xl font-black ${stat.color} tracking-tighter mb-2`}>{stat.value}</div>
                 <div className="w-12 h-1 bg-white/5 rounded-full">
                   <div className={`h-full rounded-full ${stat.bg.replace('/5', '')} w-1/2`}></div>
@@ -187,7 +187,7 @@ export default async function AdminTransactionsPage({
         {/* Live Feed Container */}
         <div className="relative z-10">
           <div className="flex items-center gap-4 mb-6">
-            <h2 className="text-2xl font-black text-white italic tracking-tight">Real-Time Data Streams</h2>
+            <h2 className="text-2xl font-black text-black italic tracking-tight">Real-Time Data Streams</h2>
             <div className="h-px bg-white/5 flex-1" />
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />

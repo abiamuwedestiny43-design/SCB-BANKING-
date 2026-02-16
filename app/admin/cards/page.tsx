@@ -113,8 +113,8 @@ export default function AdminCardsPage() {
 
   if (loading) {
     return (
-      <div className="p-10 text-indigo-500 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
-        <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+      <div className="p-10 text-indigo-700 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
+        <div className="w-5 h-5 border-2 border-indigo-700 border-t-transparent rounded-full animate-spin"></div>
         Syncing Card Assets...
       </div>
     )
@@ -123,22 +123,22 @@ export default function AdminCardsPage() {
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="space-y-2 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest">
           <CreditCard className="w-3 h-3" /> Card Management
         </div>
-        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
+        <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter">
           Card <span className="text-slate-500 italic">Issuance</span>
         </h1>
-        <p className="text-slate-400 font-medium max-w-md">Overseeing physical and digital payment card applications.</p>
+        <p className="text-slate-900 font-bold max-w-md uppercase text-[10px] tracking-[0.2em]">Overseeing physical and digital payment card applications.</p>
       </div>
 
       {/* Filters */}
-      <Card className="bg-white/[0.03] border-white/5 rounded-[2.5rem] p-8 relative z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-500/5 rounded-full blur-3xl"></div>
+      <Card className="bg-white border-slate-200 rounded-[2.5rem] p-8 relative z-10 overflow-hidden shadow-sm">
+        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-50 rounded-full blur-3xl"></div>
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-indigo-500/50" />
@@ -146,14 +146,14 @@ export default function AdminCardsPage() {
               placeholder="Search by name, account number, or card details..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-12 bg-white/5 border-white/10 rounded-2xl h-14 text-white focus:border-indigo-500 transition-all font-medium"
+              className="pl-12 bg-white border-slate-200 rounded-2xl h-14 text-black focus:border-indigo-700 transition-all font-black placeholder:text-slate-500"
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="h-14 w-full md:w-[220px] bg-white/5 border-white/10 rounded-2xl text-slate-400 font-bold">
+            <SelectTrigger className="h-14 w-full md:w-[220px] bg-white border-slate-200 rounded-2xl text-black font-black uppercase text-xs tracking-widest">
               <SelectValue placeholder="System State" />
             </SelectTrigger>
-            <SelectContent className="bg-[#020617] border-white/10 text-slate-300">
+            <SelectContent className="bg-white border-slate-200 text-black backdrop-blur-xl">
               <SelectItem value="all">All Cards</SelectItem>
               <SelectItem value="pending">Review Required</SelectItem>
               <SelectItem value="active">Active</SelectItem>
@@ -165,17 +165,17 @@ export default function AdminCardsPage() {
       </Card>
 
       {/* Cards Table */}
-      <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden relative z-10">
-        <CardHeader className="p-8 border-b border-white/5 bg-white/[0.01]">
+      <Card className="bg-white border-slate-200 rounded-[3rem] overflow-hidden relative z-10 shadow-xl">
+        <CardHeader className="p-8 border-b border-slate-100 bg-white/50">
           <div className="flex justify-between items-center">
             <div>
-              <CardTitle className="text-2xl font-black text-white italic tracking-tight">Active Applications</CardTitle>
-              <CardDescription className="text-slate-500 font-medium">{filteredCards.length} cards registered in the system.</CardDescription>
+              <CardTitle className="text-2xl font-black text-black italic tracking-tight">Active Applications</CardTitle>
+              <CardDescription className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">{filteredCards.length} cards registered in the system.</CardDescription>
             </div>
             <div className="hidden md:flex gap-4">
               <div className="text-right">
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Active Assets</p>
-                <p className="text-lg font-black text-white">{cards.filter(c => c.status === 'active').length}</p>
+                <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest">Active Assets</p>
+                <p className="text-lg font-black text-black">{cards.filter(c => c.status === 'active').length}</p>
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function AdminCardsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/5 bg-black/20 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+                <tr className="border-b border-slate-100 bg-white/50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700">
                   <th className="px-8 py-6">Applicant</th>
                   <th className="px-8 py-6">Card Details</th>
                   <th className="px-8 py-6">Account</th>
@@ -201,7 +201,7 @@ export default function AdminCardsPage() {
                           {card?.cardHolderName?.[0]}
                         </div>
                         <div>
-                          <p className="text-sm font-black text-white uppercase tracking-tight">{card?.cardHolderName}</p>
+                          <p className="text-sm font-black text-black uppercase tracking-tight">{card?.cardHolderName}</p>
                           <p className="text-[10px] font-black text-slate-500 tracking-widest mt-1 opacity-60 truncate max-w-[150px]">{card?.userId?.email}</p>
                         </div>
                       </div>
@@ -212,7 +212,7 @@ export default function AdminCardsPage() {
                         <p className="text-[10px] font-black font-mono text-indigo-500 tracking-[0.2em]">**** {card.cardNumber.slice(-4)}</p>
                       </div>
                     </td>
-                    <td className="px-8 py-6 text-sm font-mono text-slate-400">{card?.userId?.bankNumber}</td>
+                    <td className="px-8 py-6 text-sm font-mono text-black font-black">{card?.userId?.bankNumber}</td>
                     <td className="px-8 py-6">
                       <Badge className={`px-3 py-1.5 rounded-xl border flex w-fit items-center gap-2 text-[10px] font-black uppercase tracking-widest ${getStatusColor(card.status)}Shadow ${getStatusColor(card.status)}`}>
                         {getStatusIcon(card.status)}

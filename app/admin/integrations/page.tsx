@@ -87,12 +87,12 @@ export default function IntegrationsPage() {
 
     return (
         <div className="p-4 md:p-10 space-y-8 min-h-screen bg-slate-50/50">
-            <div className="flex flex-col gap-2">
-                <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-                    <Plug className="w-8 h-8 text-indigo-600" />
-                    System <span className="text-indigo-600">Integrations</span>
+            <div className="flex flex-col gap-2 relative z-10">
+                <h1 className="text-3xl md:text-4xl font-black text-black tracking-tight flex items-center gap-3">
+                    <Plug className="w-8 h-8 text-indigo-700" />
+                    System <span className="text-indigo-700">Integrations</span>
                 </h1>
-                <p className="text-slate-500 font-medium max-w-2xl">
+                <p className="text-slate-900 font-bold max-w-2xl uppercase text-[10px] tracking-widest mt-1">
                     Connect third-party tools to extend the functionality of your banking platform.
                 </p>
             </div>
@@ -104,9 +104,9 @@ export default function IntegrationsPage() {
                             <div className="flex gap-4">
                                 {item.icon}
                                 <div>
-                                    <CardTitle className="text-lg font-bold text-slate-900">{item.name}</CardTitle>
-                                    <Badge variant={item.connected ? "default" : "outline"} className={`mt-1 ${item.connected ? 'bg-green-100 text-green-700 hover:bg-green-100 border-green-200' : 'text-slate-500'}`}>
-                                        {item.connected ? 'Active' : 'Disconnected'}
+                                    <CardTitle className="text-lg font-black text-black uppercase tracking-tighter italic">{item.name}</CardTitle>
+                                    <Badge variant={item.connected ? "default" : "outline"} className={`mt-1 text-[9px] font-black uppercase tracking-widest ${item.connected ? 'bg-indigo-50 text-indigo-700 hover:bg-indigo-50 border-indigo-100' : 'text-slate-500'}`}>
+                                        {item.connected ? 'Active Connection' : 'System Offline'}
                                     </Badge>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@ export default function IntegrationsPage() {
                             />
                         </CardHeader>
                         <CardContent>
-                            <p className="text-sm text-slate-500 mb-6 min-h-[40px]">{item.description}</p>
+                            <p className="text-sm text-black font-black mb-6 min-h-[40px] leading-relaxed italic">{item.description}</p>
 
                             {item.connected ? (
                                 <div className="space-y-3 pt-4 border-t border-slate-100">
@@ -129,7 +129,7 @@ export default function IntegrationsPage() {
                                     </div>
                                     <div className="flex items-center justify-between text-xs font-medium">
                                         <span className="text-slate-400">Last Sync</span>
-                                        <span className="text-slate-700">Just now</span>
+                                        <span className="text-black font-black">{item.connected ? 'Operational' : 'Node Offline'}</span>
                                     </div>
                                     <Button variant="outline" size="sm" className="w-full mt-2 rounded-xl text-xs font-bold border-indigo-100 text-indigo-600 hover:bg-indigo-50">
                                         Configure <ExternalLink className="w-3 h-3 ml-2" />

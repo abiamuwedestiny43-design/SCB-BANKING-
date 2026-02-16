@@ -11,12 +11,12 @@ import { Shield, ShieldAlert, Key, UserCheck, AlertTriangle } from "lucide-react
 export default function SecurityPage() {
     return (
         <div className="p-4 md:p-10 space-y-8 min-h-screen bg-slate-50/50">
-            <div className="flex flex-col gap-2">
-                <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-                    <Shield className="w-8 h-8 text-indigo-600" />
-                    Security <span className="text-indigo-600">Center</span>
+            <div className="flex flex-col gap-2 relative z-10">
+                <h1 className="text-3xl md:text-4xl font-black text-black tracking-tight flex items-center gap-3">
+                    <Shield className="w-8 h-8 text-indigo-700" />
+                    Security <span className="text-indigo-700">Center</span>
                 </h1>
-                <p className="text-slate-500 font-medium max-w-2xl">
+                <p className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">
                     Monitor threats, enforce policies, and audit system integrity.
                 </p>
             </div>
@@ -24,8 +24,8 @@ export default function SecurityPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <Card className="bg-white border-green-200 shadow-sm shadow-green-100 rounded-[2rem] p-6 lg:col-span-1 border-l-4 border-l-green-500">
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                            <ShieldAlert className="w-4 h-4 text-green-600" /> System Threat Level
+                        <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
+                            <ShieldAlert className="w-4 h-4 text-green-700" /> System Threat Level
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -38,12 +38,12 @@ export default function SecurityPage() {
 
                 <Card className="bg-white border-slate-200 shadow-sm rounded-[2rem] p-6 lg:col-span-1">
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                            <Key className="w-4 h-4 text-indigo-600" /> Password Strength
+                        <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
+                            <Key className="w-4 h-4 text-indigo-700" /> Password Strength
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-4xl font-black text-slate-900 mb-2">94%</div>
+                        <div className="text-4xl font-black text-black mb-2">94%</div>
                         <p className="text-xs text-slate-500 font-medium leading-relaxed">
                             Users compliant with complexity rules.
                         </p>
@@ -52,12 +52,12 @@ export default function SecurityPage() {
 
                 <Card className="bg-white border-slate-200 shadow-sm rounded-[2rem] p-6 lg:col-span-1">
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                            <UserCheck className="w-4 h-4 text-blue-600" /> Active Sessions
+                        <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
+                            <UserCheck className="w-4 h-4 text-blue-700" /> Active Sessions
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-4xl font-black text-slate-900 mb-2">14</div>
+                        <div className="text-4xl font-black text-black mb-2">14</div>
                         <p className="text-xs text-slate-500 font-medium leading-relaxed">
                             Authenticated administrators.
                         </p>
@@ -76,11 +76,8 @@ export default function SecurityPage() {
                         <Table>
                             <TableHeader>
                                 <TableRow className="bg-slate-50 hover:bg-slate-50 border-b border-slate-100">
-                                    <TableHead className="w-[100px] text-xs font-black text-slate-400 uppercase tracking-widest">Event ID</TableHead>
-                                    <TableHead className="text-xs font-black text-slate-400 uppercase tracking-widest">Action</TableHead>
-                                    <TableHead className="text-xs font-black text-slate-400 uppercase tracking-widest">User</TableHead>
-                                    <TableHead className="text-xs font-black text-slate-400 uppercase tracking-widest">Status</TableHead>
-                                    <TableHead className="text-right text-xs font-black text-slate-400 uppercase tracking-widest">Timestamp</TableHead>
+                                    <TableHead className="w-[100px] text-xs font-black text-slate-700 uppercase tracking-widest">Event ID</TableHead>
+                                    <TableHead className="text-right text-xs font-black text-slate-700 uppercase tracking-widest">Timestamp</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -93,8 +90,8 @@ export default function SecurityPage() {
                                 ].map((log) => (
                                     <TableRow key={log.id} className="hover:bg-slate-50 border-b border-slate-50 last:border-0">
                                         <TableCell className="font-mono text-xs text-slate-500">{log.id}</TableCell>
-                                        <TableCell className="font-bold text-slate-900">{log.action}</TableCell>
-                                        <TableCell className="text-slate-600 text-xs">{log.user}</TableCell>
+                                        <TableCell className="font-bold text-black font-black uppercase text-xs tracking-tight">{log.action}</TableCell>
+                                        <TableCell className="text-slate-900 font-bold text-xs">{log.user}</TableCell>
                                         <TableCell>
                                             <Badge variant="secondary" className={`
                         ${log.statusColor === 'green' ? 'bg-green-50 text-green-700' : ''}
@@ -124,8 +121,8 @@ export default function SecurityPage() {
                             ].map((policy, i) => (
                                 <div key={i} className="flex items-center justify-between pb-6 border-b border-slate-100 last:border-0 last:pb-0">
                                     <div className="space-y-1">
-                                        <p className="font-bold text-slate-900">{policy.name}</p>
-                                        <p className="text-sm text-slate-500">{policy.desc}</p>
+                                        <p className="font-black text-black uppercase tracking-tight italic">{policy.name}</p>
+                                        <p className="text-sm text-slate-900 font-bold">{policy.desc}</p>
                                     </div>
                                     <Switch defaultChecked={policy.active} />
                                 </div>

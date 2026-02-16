@@ -50,14 +50,14 @@ export default async function AnalyticsPage() {
         <div className="p-4 md:p-10 space-y-8 relative min-h-screen bg-slate-50/50">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                    <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-                        Analytics <span className="text-indigo-600">Console</span>
+                    <h1 className="text-3xl md:text-4xl font-black text-black tracking-tight">
+                        Analytics <span className="text-indigo-700">Console</span>
                     </h1>
-                    <p className="text-slate-500 font-medium">Real-time insights into platform performance.</p>
+                    <p className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">Real-time insights into platform performance.</p>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-slate-200 shadow-sm">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-xs font-bold text-slate-600">Live Updates Active</span>
+                    <span className="text-xs font-black text-black uppercase tracking-widest">Live Updates Active</span>
                 </div>
             </div>
 
@@ -68,10 +68,10 @@ export default async function AnalyticsPage() {
                         <Users className="w-24 h-24 text-indigo-600" />
                     </div>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-slate-400 uppercase tracking-widest">Total Users</CardTitle>
+                        <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest">Total Users</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-4xl font-black text-slate-900 mb-2">{data.totalUsers}</div>
+                        <div className="text-4xl font-black text-black mb-2">{data.totalUsers}</div>
                         <div className="flex items-center gap-1 text-green-600 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg w-fit">
                             <TrendingUp className="w-3 h-3" /> +12% this month
                         </div>
@@ -83,10 +83,10 @@ export default async function AnalyticsPage() {
                         <Activity className="w-24 h-24 text-blue-600" />
                     </div>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-slate-400 uppercase tracking-widest">Transactions</CardTitle>
+                        <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest">Transactions</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-4xl font-black text-slate-900 mb-2">{data.totalTransfers}</div>
+                        <div className="text-4xl font-black text-black mb-2">{data.totalTransfers}</div>
                         <div className="flex items-center gap-1 text-blue-600 text-xs font-bold bg-blue-50 px-2 py-1 rounded-lg w-fit">
                             <TrendingUp className="w-3 h-3" /> +5% today
                         </div>

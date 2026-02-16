@@ -39,19 +39,19 @@ export default async function AdminDashboard() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-widest">
             <ShieldCheck className="w-3 h-3" /> System Secured
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
-            Banking <span className="text-slate-400 italic">Overview</span>
+          <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter">
+            Banking <span className="text-slate-500 italic">Overview</span>
           </h1>
-          <p className="text-slate-600 font-medium max-w-md">Overseeing global financial operations and user accounts.</p>
+          <p className="text-slate-900 font-bold max-w-md">Overseeing global financial operations and user accounts.</p>
         </div>
 
         <div className="flex items-center gap-4">
           <div className="text-right hidden md:block">
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">System Status</p>
-            <p className="text-sm font-black text-indigo-600">ONLINE</p>
+            <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">System Status</p>
+            <p className="text-sm font-black text-indigo-700 uppercase">Online</p>
           </div>
           <div className="h-10 w-[1px] bg-slate-200 hidden md:block"></div>
-          <button className="px-6 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 font-bold hover:bg-white transition-all flex items-center gap-2 text-sm shadow-sm">
+          <button className="px-6 py-3 rounded-xl bg-white border border-slate-200 text-black font-black hover:bg-white transition-all flex items-center gap-2 text-sm shadow-sm">
             Generate Reports <Activity className="w-4 h-4 text-indigo-600" />
           </button>
         </div>
@@ -101,15 +101,15 @@ export default async function AdminDashboard() {
             <Card className="bg-white border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all duration-300 group cursor-pointer overflow-hidden relative rounded-[2rem]">
               <div className={`absolute -right-4 -top-4 w-24 h-24 ${stat.bg} rounded-full blur-2xl group-hover:scale-150 transition-transform`}></div>
               <CardHeader className="flex flex-row items-center justify-between pb-2 relative z-10">
-                <CardTitle className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">{stat.title}</CardTitle>
+                <CardTitle className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">{stat.title}</CardTitle>
                 <div className={`${stat.color} group-hover:scale-110 transition-transform`}>
                   <stat.icon className="h-5 w-5" />
                 </div>
               </CardHeader>
               <CardContent className="relative z-10">
-                <div className="text-4xl font-black text-slate-900 mb-1">{stat.value}</div>
+                <div className="text-4xl font-black text-black mb-1">{stat.value}</div>
                 <div className="flex items-center justify-between">
-                  <p className="text-xs text-slate-500 font-medium">{stat.desc}</p>
+                  <p className="text-xs text-slate-900 font-black">{stat.desc}</p>
                   <ArrowUpRight className="w-4 h-4 text-indigo-600 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0" />
                 </div>
               </CardContent>
@@ -125,8 +125,8 @@ export default async function AdminDashboard() {
             {/* Quick Access Tools */}
             <Card className="bg-white border-slate-200 shadow-sm rounded-[2.5rem] p-8 overflow-hidden relative">
               <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-50 rounded-full blur-3xl"></div>
-              <h3 className="text-xl font-black text-slate-900 mb-6 flex items-center gap-3">
-                <Zap className="w-5 h-5 text-indigo-600" /> Quick Actions
+              <h3 className="text-xl font-black text-black mb-6 flex items-center gap-3">
+                <Zap className="w-5 h-5 text-indigo-700" /> Quick Actions
               </h3>
               <div className="grid grid-cols-1 gap-4">
                 <Link href="/admin/transfer-codes" className="p-4 rounded-2xl bg-white border border-slate-100 hover:bg-indigo-50 hover:border-indigo-200 transition-all group">

@@ -131,8 +131,8 @@ export default function AdminLoansPage() {
 
   if (loading) {
     return (
-      <div className="p-10 text-indigo-500 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
-        <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+      <div className="p-10 text-indigo-700 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
+        <div className="w-5 h-5 border-2 border-indigo-700 border-t-transparent rounded-full animate-spin"></div>
         CALIBRATING LOAN SERVICES...
       </div>
     )
@@ -141,22 +141,22 @@ export default function AdminLoansPage() {
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="space-y-2 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest">
           <Banknote className="w-3 h-3" /> Asset Distribution
         </div>
-        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
+        <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter">
           Loan <span className="text-slate-500 italic">Services</span>
         </h1>
-        <p className="text-slate-400 font-medium max-w-md">Authorized vetting and execution of institutional credit frameworks.</p>
+        <p className="text-slate-900 font-bold max-w-md uppercase text-[10px] tracking-widest mt-1">Authorized vetting and execution of institutional credit frameworks.</p>
       </div>
 
       {/* Filters */}
-      <Card className="bg-white/[0.03] border-white/5 rounded-[2.5rem] p-8 relative z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-500/5 rounded-full blur-3xl"></div>
+      <Card className="bg-white border-slate-200 rounded-[2.5rem] p-8 relative z-10 overflow-hidden shadow-sm">
+        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-50 rounded-full blur-3xl"></div>
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-indigo-500/50" />
@@ -164,14 +164,14 @@ export default function AdminLoansPage() {
               placeholder="Query by applicant, account number, or loan type..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-12 bg-white/5 border-white/10 rounded-2xl h-14 text-white focus:border-indigo-500 transition-all font-medium"
+              className="pl-12 bg-white border-slate-200 rounded-2xl h-14 text-black focus:border-indigo-700 transition-all font-black placeholder:text-slate-500"
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="h-14 w-full md:w-[220px] bg-white/5 border-white/10 rounded-2xl text-slate-400 font-bold">
+            <SelectTrigger className="h-14 w-full md:w-[220px] bg-white border-slate-200 rounded-2xl text-black font-black uppercase text-xs tracking-widest">
               <SelectValue placeholder="Loan Status" />
             </SelectTrigger>
-            <SelectContent className="bg-[#020617] border-white/10 text-slate-300">
+            <SelectContent className="bg-white border-slate-200 text-black backdrop-blur-xl">
               <SelectItem value="all">All Loans</SelectItem>
               <SelectItem value="pending">Review Required</SelectItem>
               <SelectItem value="approved">Approved</SelectItem>
@@ -184,17 +184,17 @@ export default function AdminLoansPage() {
       </Card>
 
       {/* Loans Table */}
-      <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden relative z-10">
-        <CardHeader className="p-8 border-b border-white/5 bg-white/[0.01]">
+      <Card className="bg-white border-slate-200 rounded-[3rem] overflow-hidden relative z-10 shadow-xl">
+        <CardHeader className="p-8 border-b border-slate-100 bg-white/50">
           <div className="flex justify-between items-center">
             <div>
-              <CardTitle className="text-2xl font-black text-white italic tracking-tight">Active Applications</CardTitle>
-              <CardDescription className="text-slate-500 font-medium">{filteredLoans.length} loan protocols detected in current cycle.</CardDescription>
+              <CardTitle className="text-2xl font-black text-black italic tracking-tight">Active Applications</CardTitle>
+              <CardDescription className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-2">{filteredLoans.length} loan protocols detected in current cycle.</CardDescription>
             </div>
             <div className="hidden md:flex gap-4">
               <div className="text-right">
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Exposure</p>
-                <p className="text-lg font-black text-white">
+                <p className="text-lg font-black text-black">
                   ${loans.filter(l => l.status === 'active' || l.status === 'approved').reduce((acc, curr) => acc + curr.amount, 0).toLocaleString()}
                 </p>
               </div>
@@ -205,7 +205,7 @@ export default function AdminLoansPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/5 bg-black/20 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+                <tr className="border-b border-slate-100 bg-white/50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700">
                   <th className="px-8 py-6">Applicant</th>
                   <th className="px-8 py-6">Loan Details</th>
                   <th className="px-8 py-6">Capital</th>
@@ -222,7 +222,7 @@ export default function AdminLoansPage() {
                           {loan.userId.bankInfo.bio.firstname[0]}
                         </div>
                         <div>
-                          <p className="text-sm font-black text-white uppercase tracking-tight">{loan.userId.bankInfo.bio.firstname} {loan.userId.bankInfo.bio.lastname}</p>
+                          <p className="text-sm font-black text-black uppercase tracking-tight">{loan.userId.bankInfo.bio.firstname} {loan.userId.bankInfo.bio.lastname}</p>
                           <p className="text-[10px] font-black text-slate-500 tracking-widest mt-1 opacity-60 truncate max-w-[150px]">{loan.userId.email}</p>
                         </div>
                       </div>
@@ -234,7 +234,7 @@ export default function AdminLoansPage() {
                       </div>
                     </td>
                     <td className="px-8 py-6">
-                      <div className="text-lg font-black text-white tracking-tighter">${loan.amount.toLocaleString()}</div>
+                      <div className="text-lg font-black text-black tracking-tighter">${loan.amount.toLocaleString()}</div>
                       <div className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{loan.duration} MOS @ {loan.interestRate}%</div>
                     </td>
                     <td className="px-8 py-6">
@@ -286,10 +286,10 @@ export default function AdminLoansPage() {
 
       {/* Rejection Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="bg-[#020617] border-white/10 rounded-[2.5rem] p-10 max-w-lg">
+        <DialogContent className="bg-white border-slate-200 rounded-[2.5rem] p-10 max-w-lg shadow-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-black text-white tracking-tight">Decline Application</DialogTitle>
-            <DialogDescription className="text-slate-500 font-medium">
+            <DialogTitle className="text-2xl font-black text-slate-950 tracking-tight">Decline Application</DialogTitle>
+            <DialogDescription className="text-slate-700 font-medium">
               Please provide a reason for rejecting this loan application. This will be sent to the user.
             </DialogDescription>
           </DialogHeader>

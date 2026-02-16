@@ -57,10 +57,10 @@ export default async function UsersPage({ searchParams }: { searchParams: { sear
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-widest">
             <Users className="w-3 h-3" /> User Management
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
-            User <span className="text-slate-400 italic">Management</span>
+          <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter">
+            User <span className="text-slate-500 italic">Management</span>
           </h1>
-          <p className="text-slate-600 font-medium max-w-md">Manage and view the global FIRST STATE BANK user base.</p>
+          <p className="text-slate-900 font-bold max-w-md">Manage and view the global FIRST STATE BANK user base.</p>
         </div>
 
         <Button asChild className="bg-indigo-600 hover:bg-indigo-700 text-white font-black h-12 px-8 rounded-xl shadow-xl shadow-indigo-600/10 transition-all hover:scale-105 active:scale-95">
@@ -113,10 +113,10 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
       <CardHeader className="p-8 border-b border-slate-100 bg-white/50">
         <div className="flex justify-between items-center">
           <div>
-            <CardTitle className="text-2xl font-black text-slate-900 italic tracking-tight uppercase">
+            <CardTitle className="text-2xl font-black text-black italic tracking-tight uppercase">
               {searchQuery ? `Query Results (${users.length})` : "User Directory"}
             </CardTitle>
-            <CardDescription className="text-slate-500 font-bold">
+            <CardDescription className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">
               {searchQuery ? `Filtering for "${searchQuery}"` : "Global register of First State Bank users."}
             </CardDescription>
           </div>
@@ -132,7 +132,7 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-100 bg-white/50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+              <tr className="border-b border-slate-100 bg-white/50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700">
                 <th className="px-8 py-6">User Identity</th>
                 <th className="px-8 py-6">Banking Details</th>
                 <th className="px-8 py-6">Liquid Balance</th>
@@ -157,7 +157,7 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                           )}
                         </div>
                         <div>
-                          <Link href={`/admin/users/${user.id}`} className="block text-sm font-black text-slate-900 hover:text-indigo-600 transition-colors uppercase tracking-tight">
+                          <Link href={`/admin/users/${user.id}`} className="block text-sm font-black text-black hover:text-indigo-700 transition-colors uppercase tracking-tight">
                             {user.name}
                           </Link>
                           <div className="flex gap-2 mt-1">
@@ -181,7 +181,7 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                       </div>
                     </td>
                     <td className="px-8 py-6">
-                      <div className="text-lg font-black text-slate-900 tracking-tighter">
+                      <div className="text-lg font-black text-black tracking-tighter">
                         {formatCurrency(user.balance, user.currency)}
                       </div>
                     </td>
@@ -189,7 +189,7 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                       <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">
                           <div className={`w-1.5 h-1.5 rounded-full ${user.verified ? 'bg-indigo-600' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.3)]'}`}></div>
-                          <span className={`text-[10px] font-black uppercase tracking-widest ${user.verified ? 'text-indigo-600' : 'text-red-600'}`}>
+                          <span className={`text-[10px] font-black uppercase tracking-widest ${user.verified ? 'text-indigo-700' : 'text-red-700'}`}>
                             {user.verified ? "Verified" : "Pending Vetting"}
                           </span>
                         </div>

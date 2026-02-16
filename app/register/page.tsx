@@ -72,7 +72,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-white py-20 px-4 overflow-hidden selection:bg-indigo-500/30">
+    <div className="relative min-h-screen flex items-center justify-center bg-white pt-[180px] pb-20 px-4 overflow-hidden selection:bg-indigo-500/30">
       {/* Background Layer */}
       <div className="absolute inset-0 z-0">
         <Image

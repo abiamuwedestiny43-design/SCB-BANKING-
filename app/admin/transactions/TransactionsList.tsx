@@ -113,11 +113,11 @@ export default function TransactionsList({
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "success":
-        return <Badge className="bg-indigo-500/10 text-indigo-500 border-indigo-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-[0_0_10px_rgba(16,185,129,0.1)]">SUCCESS</Badge>
+        return <Badge className="bg-indigo-50 text-indigo-700 border-indigo-100 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-sm">SUCCESS</Badge>
       case "pending":
         return <Badge className="bg-yellow-500/10 text-yellow-500 border-yellow-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-[0_0_10px_rgba(234,179,8,0.1)]">PENDING</Badge>
       case "failed":
-        return <Badge className="bg-red-500/10 text-red-500 border-red-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-[0_0_10px_rgba(239,68,68,0.1)]">FAILED</Badge>
+        return <Badge className="bg-red-50 text-red-700 border-red-100 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-sm">FAILED</Badge>
       case "cancelled":
         return <Badge className="bg-white0/10 text-slate-500 border-slate-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5">CANCELLED</Badge>
       default:
@@ -128,16 +128,16 @@ export default function TransactionsList({
   return (
     <div className="space-y-8">
       {/* Filters Hub */}
-      <Card className="bg-white/[0.02] border-white/5 rounded-[2.5rem] p-8">
+      <Card className="bg-white border-slate-200 rounded-[2.5rem] p-8 shadow-sm">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
           {isAdmin && (
             <div className="lg:col-span-3 space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Client Identity</label>
               <Select value={filters.user || "all"} onValueChange={(value) => handleFilterChange("user", value)}>
-                <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-12 text-white focus:ring-indigo-500/20 capitalize font-medium">
+                <SelectTrigger className="bg-white border-slate-200 rounded-xl h-12 text-black focus:ring-indigo-500/20 capitalize font-black">
                   <SelectValue placeholder="All Clients" />
                 </SelectTrigger>
-                <SelectContent className="bg-[#020617] border-indigo-500/20 text-white backdrop-blur-xl">
+                <SelectContent className="bg-white border-slate-200 text-black backdrop-blur-xl">
                   <SelectItem value="all">All Accounts</SelectItem>
                   {users.map(user => (
                     <SelectItem key={user.id} value={user.id} className="focus:bg-indigo-500 focus:text-black">
@@ -187,10 +187,10 @@ export default function TransactionsList({
                   placeholder="Reference, name, or transaction details..."
                   value={filters.search}
                   onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
-                  className="pl-12 bg-white/5 border-white/10 rounded-xl h-12 text-white focus:border-indigo-500/50 transition-all font-medium"
+                  className="pl-12 bg-white border-slate-200 rounded-xl h-12 text-black focus:border-indigo-700/50 transition-all font-black placeholder:text-slate-500"
                 />
               </div>
-              <Button type="submit" className="h-12 px-6 rounded-xl bg-indigo-500 text-[#020617] font-black hover:bg-indigo-400 shadow-xl shadow-indigo-500/20">
+              <Button type="submit" className="h-12 px-6 rounded-xl bg-slate-950 text-white font-black hover:bg-black shadow-xl shadow-black/10">
                 Search
               </Button>
             </form>
@@ -225,7 +225,7 @@ export default function TransactionsList({
                 href={isAdmin ? `/admin/transactions/${transaction._id}` : `/dashboard/receipt/${transaction.txRef}`}
                 className="group block"
               >
-                <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 group-hover:bg-white/[0.04] group-hover:border-indigo-500/20 transition-all duration-300 relative overflow-hidden">
+                <div className="p-6 rounded-[2rem] bg-white border border-slate-100 group-hover:bg-slate-50 group-hover:border-indigo-200 transition-all duration-300 relative overflow-hidden shadow-sm hover:shadow-md">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
                     <div className="flex items-center gap-6">
                       {/* Icon Cluster */}
@@ -243,7 +243,7 @@ export default function TransactionsList({
                       {/* Info Cluster */}
                       <div className="space-y-1">
                         <div className="flex items-center gap-3">
-                          <p className="font-black text-white uppercase tracking-tight text-lg">
+                          <p className="font-black text-black uppercase tracking-tight text-lg">
                             {transaction.txType === "credit" ? "Credit" : "Debit"}
                           </p>
                           {getStatusBadge(transaction.status)}
@@ -259,9 +259,9 @@ export default function TransactionsList({
                           {isAdmin && transaction.userName && (
                             <>
                               <span className="w-1 h-1 rounded-full bg-slate-700" />
-                              <span className="text-indigo-500 font-black uppercase tracking-widest text-[9px] flex items-center gap-1">
+                              <p className="text-black font-black uppercase tracking-widest text-[10px] items-center gap-2 flex">
                                 <UserIcon className="w-2 h-2" /> {transaction.userName}
-                              </span>
+                              </p>
                             </>
                           )}
                         </div>
@@ -270,7 +270,7 @@ export default function TransactionsList({
 
                     {/* Value Cluster */}
                     <div className="flex items-center md:items-end flex-row md:flex-col justify-between md:justify-center gap-2">
-                      <p className={`text-2xl font-black tracking-tighter ${transaction.txType === "credit" ? "text-indigo-500" : "text-white"
+                      <p className={`text-2xl font-black tracking-tighter ${transaction.txType === "credit" ? "text-indigo-700" : "text-black"
                         }`}>
                         {transaction.txType === "credit" ? "+" : "-"}{formatCurrency(transaction.amount, transaction.currency)}
                       </p>

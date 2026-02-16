@@ -85,7 +85,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden selection:bg-indigo-500/30">
+    <div className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden selection:bg-indigo-500/30 pt-32 pb-12">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
