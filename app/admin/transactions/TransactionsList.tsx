@@ -119,9 +119,9 @@ export default function TransactionsList({
       case "failed":
         return <Badge className="bg-red-500/10 text-red-500 border-red-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-[0_0_10px_rgba(239,68,68,0.1)]">FAILED</Badge>
       case "cancelled":
-        return <Badge className="bg-slate-500/10 text-slate-500 border-slate-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5">CANCELLED</Badge>
+        return <Badge className="bg-white0/10 text-slate-500 border-slate-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5">CANCELLED</Badge>
       default:
-        return <Badge className="bg-slate-500/10 text-slate-400 border-slate-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5">{status.toUpperCase()}</Badge>
+        return <Badge className="bg-white0/10 text-slate-400 border-slate-500/20 text-[9px] font-black uppercase tracking-widest px-2 py-0.5">{status.toUpperCase()}</Badge>
     }
   }
 

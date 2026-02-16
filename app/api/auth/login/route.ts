@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
     console.log('[santech] Auth token set in cookie')
 
     return response
-  } catch (error) {
+  } catch (error: any) {
     console.error('Login error:', error)
     logAuditEvent({
       userId: 'unknown',

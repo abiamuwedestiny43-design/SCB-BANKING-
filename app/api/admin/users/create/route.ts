@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
     await newUser.save()
 
     try {
-      await sendWelcomeEmail(email, `${firstname} ${lastname}`, bankNumber, usercode)
+      await sendWelcomeEmail(email, `${firstname} ${lastname}`, bankNumber)
     } catch (err) {
       console.error("Email error:", err)
     }

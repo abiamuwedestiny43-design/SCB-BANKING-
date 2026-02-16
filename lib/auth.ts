@@ -35,7 +35,7 @@ export function verifyToken(token: string): AuthUser | null {
     const decoded = jwt.verify(token, JWT_SECRET) as AuthUser
     console.log("[santech] Token verified for user:", decoded.email, "with roles:", decoded.roles)
     return decoded
-  } catch (error) {
+  } catch (error: any) {
     console.log("[santech] Token verification failed:", error.message)
     return null
   }
@@ -85,7 +85,7 @@ export async function verifyTokenEdge(token: string): Promise<AuthUser | null> {
 
     console.log("[santech] Token verified for user:", decodedPayload.email, "with roles:", decodedPayload.roles)
     return decodedPayload as AuthUser
-  } catch (error) {
+  } catch (error: any) {
     console.log("[santech] Token verification failed:", error.message)
     return null
   }
@@ -138,7 +138,7 @@ export async function setAuthCookie(token: string): Promise<void> {
       path: "/",
     })
     console.log("[santech] Auth cookie set successfully")
-  } catch (error) {
+  } catch (error: any) {
     console.log("[santech] Error setting auth cookie:", error.message)
   }
 }
@@ -148,7 +148,7 @@ export async function clearAuthCookie(): Promise<void> {
     const cookieStore = cookies()
     cookieStore.delete("auth-token")
     console.log("[santech] Auth cookie cleared")
-  } catch (error) {
+  } catch (error: any) {
     console.log("[santech] Error clearing auth cookie:", error.message)
   }
 }
@@ -210,7 +210,7 @@ export async function verifyAdminToken(request: NextRequest): Promise<AuthUser |
       roles: user.roles,
       bankNumber: user.bankNumber,
     }
-  } catch (error) {
+  } catch (error: any) {
     console.log("[santech] Error verifying admin token:", error.message)
     return null
   }
@@ -220,7 +220,7 @@ export function getTokenPayload(token: string): AuthUser | null {
   try {
     const decoded = jwt.decode(token) as AuthUser
     return decoded
-  } catch (error) {
+  } catch (error: any) {
     console.log("[santech] Error decoding token:", error.message)
     return null
   }

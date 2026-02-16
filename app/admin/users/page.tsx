@@ -49,46 +49,46 @@ export default async function UsersPage({ searchParams }: { searchParams: { sear
   return (
     <div className="p-4 md:p-10 space-y-10 relative">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-indigo-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-widest">
             <Users className="w-3 h-3" /> User Management
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
-            User <span className="text-slate-500 italic">Management</span>
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+            User <span className="text-slate-400 italic">Management</span>
           </h1>
-          <p className="text-slate-400 font-medium max-w-md">Manage and view the global FIRST STATE BANK BANK user base.</p>
+          <p className="text-slate-600 font-medium max-w-md">Manage and view the global FIRST STATE BANK user base.</p>
         </div>
 
-        <Button asChild className="bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black h-12 px-8 rounded-xl shadow-xl shadow-indigo-500/20">
-          <Link href="/admin/users/create">
-            <Plus className="mr-2 h-5 w-5" />
+        <Button asChild className="bg-indigo-600 hover:bg-indigo-700 text-white font-black h-12 px-8 rounded-xl shadow-xl shadow-indigo-600/10 transition-all hover:scale-105 active:scale-95">
+          <Link href="/admin/users/create" className="flex items-center gap-2">
+            <Plus className="h-5 w-5" />
             Create New Account
           </Link>
         </Button>
       </div>
 
       {/* Search Card */}
-      <Card className="bg-white/[0.03] border-white/5 rounded-[2.5rem] p-8 relative z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-500/5 rounded-full blur-3xl"></div>
-        <form method="GET" className="flex flex-col md:flex-row gap-4">
+      <Card className="bg-white border-slate-200 shadow-sm rounded-[2.5rem] p-8 relative z-10 overflow-hidden">
+        <div className="absolute top-0 right-0 h-32 w-32 bg-indigo-50 rounded-full blur-3xl"></div>
+        <form method="GET" className="flex flex-col md:flex-row gap-4 relative z-10">
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-indigo-500/50" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-indigo-600/30" />
             <Input
               name="search"
               placeholder="Search by name, email, or account number..."
               defaultValue={searchParams.search}
-              className="pl-12 bg-white/5 border-white/10 rounded-2xl h-14 text-white focus:border-indigo-500 transition-all font-medium"
+              className="pl-12 bg-white border-slate-200 rounded-2xl h-14 text-slate-900 focus:border-indigo-600 focus:ring-indigo-600/20 transition-all font-medium placeholder:text-slate-400"
             />
           </div>
-          <Button type="submit" className="h-14 px-10 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-bold border border-white/10">
+          <Button type="submit" className="h-14 px-10 rounded-2xl bg-slate-900 hover:bg-black text-white font-bold shadow-lg shadow-black/10 transition-all">
             Execute Search
           </Button>
           {searchParams.search && (
-            <Button variant="ghost" asChild className="h-14 px-6 rounded-2xl text-slate-400 hover:text-white hover:bg-white/5 font-bold">
+            <Button variant="ghost" asChild className="h-14 px-6 rounded-2xl text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 font-bold">
               <Link href="/admin/users">Reset</Link>
             </Button>
           )}
@@ -96,7 +96,9 @@ export default async function UsersPage({ searchParams }: { searchParams: { sear
       </Card>
 
       {/* Users Table */}
-      <Suspense fallback={<div className="text-indigo-500 font-black animate-pulse">LOADING USERS...</div>}>
+      <Suspense fallback={<div className="flex items-center gap-2 text-indigo-600 font-black animate-pulse">
+        <Users className="w-5 h-5 animate-bounce" /> LOADING REGISTERED ENTITIES...
+      </div>}>
         <UsersTable searchQuery={searchParams.search} />
       </Suspense>
     </div>
@@ -107,21 +109,21 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
   const users = await getUsers(searchQuery)
 
   return (
-    <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden relative z-10">
-      <CardHeader className="p-8 border-b border-white/5 bg-white/[0.01]">
+    <Card className="bg-white border-slate-200 shadow-xl rounded-[3rem] overflow-hidden relative z-10">
+      <CardHeader className="p-8 border-b border-slate-100 bg-white/50">
         <div className="flex justify-between items-center">
           <div>
-            <CardTitle className="text-2xl font-black text-white italic tracking-tight">
+            <CardTitle className="text-2xl font-black text-slate-900 italic tracking-tight uppercase">
               {searchQuery ? `Query Results (${users.length})` : "User Directory"}
             </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">
+            <CardDescription className="text-slate-500 font-bold">
               {searchQuery ? `Filtering for "${searchQuery}"` : "Global register of First State Bank users."}
             </CardDescription>
           </div>
           <div className="hidden md:flex gap-4">
-            <div className="text-right">
-              <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Users</p>
-              <p className="text-lg font-black text-white">{users.length}</p>
+            <div className="p-3 bg-white border border-slate-100 rounded-2xl shadow-sm">
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Active Accounts</p>
+              <p className="text-xl font-black text-indigo-600">{users.length}</p>
             </div>
           </div>
         </div>
@@ -130,24 +132,24 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-white/5 bg-black/20 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
-                <th className="px-8 py-6">User</th>
-                <th className="px-8 py-6">Account Details</th>
-                <th className="px-8 py-6">Balance</th>
-                <th className="px-8 py-6">Status</th>
-                <th className="px-8 py-6 text-right">Actions</th>
+              <tr className="border-b border-slate-100 bg-white/50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                <th className="px-8 py-6">User Identity</th>
+                <th className="px-8 py-6">Banking Details</th>
+                <th className="px-8 py-6">Liquid Balance</th>
+                <th className="px-8 py-6">Asset Status</th>
+                <th className="px-8 py-6 text-right">Commands</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-slate-100">
               {users.length > 0 ? (
                 users.map((user, i) => (
                   <tr
                     key={user.id}
-                    className="group hover:bg-white/[0.02] transition-colors"
+                    className="group hover:bg-white/50 transition-colors"
                   >
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 font-black text-lg overflow-hidden">
+                        <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 font-black text-lg overflow-hidden shadow-inner">
                           {user.profileImage ? (
                             <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
                           ) : (
@@ -155,12 +157,12 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                           )}
                         </div>
                         <div>
-                          <Link href={`/admin/users/${user.id}`} className="block text-sm font-black text-white hover:text-indigo-400 transition-colors uppercase tracking-tight">
+                          <Link href={`/admin/users/${user.id}`} className="block text-sm font-black text-slate-900 hover:text-indigo-600 transition-colors uppercase tracking-tight">
                             {user.name}
                           </Link>
                           <div className="flex gap-2 mt-1">
                             {user.roles.map((role) => (
-                              <Badge key={role} className="bg-white/5 border-white/5 text-[9px] font-black uppercase tracking-tighter text-slate-500 px-1.5 py-0 group-hover:text-indigo-500 group-hover:bg-indigo-500/10 transition-colors">
+                              <Badge key={role} className="bg-slate-100 border-none text-[9px] font-black uppercase tracking-tighter text-slate-500 px-1.5 py-0 group-hover:text-indigo-600 group-hover:bg-indigo-50 transition-colors">
                                 {role}
                               </Badge>
                             ))}
@@ -170,37 +172,37 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                     </td>
                     <td className="px-8 py-6">
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
-                          <Mail className="w-3 h-3 text-slate-500" /> {user.email}
+                        <div className="flex items-center gap-2 text-xs text-slate-600 font-bold">
+                          <Mail className="w-3 h-3 text-slate-400" /> {user.email}
                         </div>
-                        <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                        <div className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                           <CreditCard className="w-3 h-3" /> {user.bankNumber}
                         </div>
                       </div>
                     </td>
                     <td className="px-8 py-6">
-                      <div className="text-lg font-black text-white tracking-tighter">
+                      <div className="text-lg font-black text-slate-900 tracking-tighter">
                         {formatCurrency(user.balance, user.currency)}
                       </div>
                     </td>
                     <td className="px-8 py-6">
                       <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${user.verified ? 'bg-indigo-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]' : 'bg-red-500'}`}></div>
-                          <span className={`text-[10px] font-black uppercase tracking-widest ${user.verified ? 'text-indigo-500' : 'text-red-500'}`}>
-                            {user.verified ? "Verified" : "Unverified"}
+                          <div className={`w-1.5 h-1.5 rounded-full ${user.verified ? 'bg-indigo-600' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.3)]'}`}></div>
+                          <span className={`text-[10px] font-black uppercase tracking-widest ${user.verified ? 'text-indigo-600' : 'text-red-600'}`}>
+                            {user.verified ? "Verified" : "Pending Vetting"}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${user.canTransfer ? 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]' : 'bg-slate-700'}`}></div>
-                          <span className={`text-[10px] font-black uppercase tracking-widest ${user.canTransfer ? 'text-blue-500' : 'text-slate-500'}`}>
-                            {user.canTransfer ? "Active" : "Locked"}
+                          <div className={`w-1.5 h-1.5 rounded-full ${user.canTransfer ? 'bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.2)]' : 'bg-slate-300'}`}></div>
+                          <span className={`text-[10px] font-black uppercase tracking-widest ${user.canTransfer ? 'text-blue-600' : 'text-slate-400'}`}>
+                            {user.canTransfer ? "Active Access" : "Locked"}
                           </span>
                         </div>
                       </div>
                     </td>
                     <td className="px-8 py-6">
-                      <div className="flex justify-end">
+                      <div className="flex justify-end scale-110 group-hover:translate-x-[-4px] transition-transform">
                         <UserActions userId={user.id} />
                       </div>
                     </td>
@@ -208,8 +210,8 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={5} className="px-8 py-20 text-center text-slate-500 italic font-medium">
-                    {searchQuery ? `No users matching "${searchQuery}" found.` : "No users have been created yet."}
+                  <td colSpan={5} className="px-8 py-20 text-center text-slate-400 italic font-bold">
+                    {searchQuery ? `No entities matching "${searchQuery}" found in the directory.` : "The global user directory is currently empty."}
                   </td>
                 </tr>
               )}

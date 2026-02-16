@@ -39,14 +39,13 @@ export default function BusinessBankingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-200 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-indigo-500/30">
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-32">
-        <div
-          className="absolute inset-0 bg-fixed bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&q=80')" }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/80 via-[#020617]/60 to-[#020617]" />
+      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-32 bg-white">
+        {/* Minimal Orbital Structure */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-100 rounded-full opacity-40"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-100 rounded-full opacity-40"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center space-y-8">
@@ -56,13 +55,13 @@ export default function BusinessBankingPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
               <Zap className="w-3 h-3" /> Enterprise Infrastructure
             </div>
-            <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter lowercase">
-              business <span className="text-indigo-500 italic">banking</span>
+            <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter lowercase">
+              business <span className="text-indigo-600 italic">banking</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-400 font-medium">
+            <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
               Scale with confidence. First State provides the liquidity, controls, and insights your venture demands.
             </p>
           </motion.div>
@@ -73,61 +72,61 @@ export default function BusinessBankingPage() {
             transition={{ delay: 0.5, duration: 1 }}
             className="flex flex-wrap justify-center gap-4 pt-8"
           >
-            <Button size="lg" className="bg-indigo-500 hover:bg-indigo-400 text-[#020617] font-black px-10 h-16 rounded-2xl shadow-xl shadow-indigo-500/20 text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-10 h-16 rounded-2xl shadow-xl shadow-indigo-600/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Launch Business Account</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white/10 bg-white/5 hover:bg-white/10 text-white font-black px-10 h-16 rounded-2xl backdrop-blur-md text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" variant="outline" className="border-slate-200 bg-white/50 hover:bg-slate-50 text-slate-600 font-black px-10 h-16 rounded-2xl backdrop-blur-md text-lg uppercase tracking-tight shadow-sm" asChild>
               <Link href="/about">Platform Overview</Link>
             </Button>
           </motion.div>
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-indigo-500" />
-          <p className="text-[10px] font-black uppercase tracking-widest text-indigo-500">Scroll Down</p>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-indigo-600" />
+          <p className="text-[10px] font-black uppercase tracking-widest text-indigo-600">Scroll Down</p>
         </div>
       </section>
 
       {/* Narrative Section */}
-      <section className="py-32 relative">
+      <section className="py-32 relative bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-12 gap-20 items-center">
             <motion.div {...fadeInUp} className="lg:col-span-12 text-center mb-20">
-              <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-8">
-                The Operating System for <span className="text-indigo-500">Corporate Finance</span>
+              <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter mb-8 lowercase">
+                The Operating System for <span className="text-indigo-600">Corporate Finance</span>
               </h2>
-              <p className="text-xl text-slate-400 max-w-4xl mx-auto font-medium leading-relaxed">
+              <p className="text-xl text-slate-600 max-w-4xl mx-auto font-medium leading-relaxed">
                 Modern ventures require more than just an account. You need a platform that understands cash flow cycles,
                 manages team spending, and provides the capital required for expansion.
               </p>
             </motion.div>
 
             <motion.div {...fadeInUp} className="lg:col-span-5 relative">
-              <div className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 backdrop-blur-md space-y-8 shadow-3xl">
-                <div className="h-16 w-16 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-500 border border-indigo-500/30">
+              <div className="p-10 rounded-[3rem] bg-slate-50 border border-slate-200 backdrop-blur-md space-y-8 shadow-2xl">
+                <div className="h-16 w-16 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100 shadow-sm">
                   <PieChart className="w-8 h-8" />
                 </div>
-                <h3 className="text-3xl font-black text-white tracking-tighter lowercase">Liquidity Management</h3>
-                <p className="text-slate-400 font-medium">Manage operating and reserve accounts with granular roles. Automate approvals and vendor payments, and get richer context for every transaction.</p>
-                <div className="pt-6 border-t border-white/5 grid grid-cols-2 gap-6">
+                <h3 className="text-3xl font-black text-slate-900 tracking-tighter lowercase">Liquidity Management</h3>
+                <p className="text-slate-600 font-medium leading-relaxed">Manage operating and reserve accounts with granular roles. Automate approvals and vendor payments, and get richer context for every transaction.</p>
+                <div className="pt-6 border-t border-slate-200 grid grid-cols-2 gap-6">
                   <div>
-                    <p className="text-2xl font-black text-white">256-bit</p>
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Encyption Standard</p>
+                    <p className="text-2xl font-black text-slate-900">256-bit</p>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Encryption Standard</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-black text-indigo-500">99.9%</p>
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">System Uptime</p>
+                    <p className="text-2xl font-black text-indigo-600">99.9%</p>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">System Uptime</p>
                   </div>
                 </div>
               </div>
             </motion.div>
 
             <motion.div {...fadeInUp} className="lg:col-span-7">
-              <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 group shadow-3xl">
+              <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-slate-200 group shadow-3xl">
                 <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&q=80" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Business Growth" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent opacity-60" />
                 <div className="absolute bottom-10 left-10">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500 text-[#020617] text-[9px] font-black uppercase tracking-widest">Secure Platform</div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest shadow-lg">Secure Platform</div>
                 </div>
               </div>
             </motion.div>
@@ -136,7 +135,7 @@ export default function BusinessBankingPage() {
       </section>
 
       {/* Product Grid */}
-      <section className="py-24 bg-black/20">
+      <section className="py-24 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10">
             {features.map((feature, i) => (
@@ -144,23 +143,23 @@ export default function BusinessBankingPage() {
                 key={i}
                 {...fadeInUp}
                 transition={{ delay: i * 0.2 }}
-                className="group relative h-[600px] rounded-[3rem] overflow-hidden border border-white/5 shadow-2xl"
+                className="group relative h-[600px] rounded-[3rem] overflow-hidden border border-slate-200 shadow-2xl bg-white"
               >
                 <img
                   src={feature.image}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   alt={feature.title}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
                 <div className="absolute bottom-0 p-12 space-y-6">
-                  <div className={cn("h-14 w-14 rounded-2xl flex items-center justify-center border border-white/10 backdrop-blur-md shadow-2xl transition-transform group-hover:scale-110", feature.bg, feature.color)}>
+                  <div className={cn("h-14 w-14 rounded-2xl flex items-center justify-center border border-white/20 backdrop-blur-md shadow-2xl transition-transform group-hover:scale-110", feature.bg, feature.color)}>
                     <feature.icon className="w-7 h-7" />
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-3xl font-black text-white tracking-tighter">{feature.title}</h3>
-                    <p className="text-slate-400 font-medium leading-relaxed max-w-sm">{feature.description}</p>
+                    <p className="text-slate-300 font-medium leading-relaxed max-w-sm">{feature.description}</p>
                   </div>
-                  <Button variant="ghost" className="text-indigo-500 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
+                  <Button variant="ghost" className="text-indigo-400 font-black p-0 h-auto hover:bg-transparent group-hover:translate-x-2 transition-transform">
                     Deploy Solution <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
@@ -171,11 +170,11 @@ export default function BusinessBankingPage() {
       </section>
 
       {/* Corporate Features */}
-      <section className="py-32 relative">
+      <section className="py-32 relative bg-white">
         <div className="max-w-7xl mx-auto px-6 text-center space-y-16">
           <div className="space-y-4">
-            <h2 className="text-4xl font-black text-white tracking-tighter lowercase">Platform <span className="text-slate-500 italic">Capabilities</span></h2>
-            <div className="w-20 h-1 bg-indigo-500 mx-auto rounded-full" />
+            <h2 className="text-4xl font-black text-slate-900 tracking-tighter lowercase">Platform <span className="text-slate-400 italic">Capabilities</span></h2>
+            <div className="w-20 h-1 bg-indigo-600 mx-auto rounded-full" />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {metrics.map((m, i) => (
@@ -183,12 +182,12 @@ export default function BusinessBankingPage() {
                 key={i}
                 {...fadeInUp}
                 transition={{ delay: i * 0.1 }}
-                className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all group text-left"
+                className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-indigo-100 transition-all group text-left"
               >
-                <div className="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 mb-8 border border-indigo-500/20 group-hover:scale-110 transition-transform shadow-lg shadow-indigo-500/10">
+                <div className="h-12 w-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-8 border border-indigo-100 group-hover:scale-110 transition-transform shadow-sm">
                   <m.icon className="w-6 h-6" />
                 </div>
-                <h4 className="text-xl font-black text-white lowercase tracking-tighter mb-2">{m.title}</h4>
+                <h4 className="text-xl font-black text-slate-900 lowercase tracking-tighter mb-2">{m.title}</h4>
                 <p className="text-sm text-slate-500 font-medium leading-relaxed">{m.desc}</p>
               </motion.div>
             ))}
@@ -196,23 +195,22 @@ export default function BusinessBankingPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-32 relative overflow-hidden bg-gradient-to-b from-transparent to-[#0f172a]">
+      <section className="py-32 relative overflow-hidden bg-slate-50">
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center space-y-12">
           <motion.div {...fadeInUp} className="space-y-4">
-            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter">
-              Ready to <span className="text-indigo-500">Accelerate?</span>
+            <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase relative z-10">
+              Ready to <span className="text-indigo-600 italic">Accelerate?</span>
             </h2>
-            <p className="text-xl text-slate-400 font-medium max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 font-medium max-w-2xl mx-auto relative z-10">
               Onboard your venture to the First State ecosystem and experience the future of commercial banking.
             </p>
           </motion.div>
 
-          <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="flex justify-center flex-wrap gap-6">
-            <Button size="lg" className="bg-indigo-500 text-[#020617] hover:bg-indigo-400 font-black px-12 h-16 rounded-2xl shadow-xl shadow-indigo-500/20 text-lg uppercase tracking-tight" asChild>
+          <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="flex justify-center flex-wrap gap-6 relative z-10">
+            <Button size="lg" className="bg-indigo-600 text-white hover:bg-indigo-700 font-black px-12 h-16 rounded-2xl shadow-xl shadow-indigo-600/20 text-lg uppercase tracking-tight" asChild>
               <Link href="/register">Get Started</Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white/10 bg-white/5 hover:bg-white/10 font-black px-12 h-16 rounded-2xl text-lg uppercase tracking-tight" asChild>
+            <Button size="lg" variant="outline" className="text-slate-900 border-slate-200 bg-white hover:bg-slate-50 font-black px-12 h-16 rounded-2xl text-lg uppercase tracking-tight shadow-sm" asChild>
               <Link href="/contact">Schedule Demo</Link>
             </Button>
           </motion.div>

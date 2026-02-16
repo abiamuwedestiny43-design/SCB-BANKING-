@@ -20,7 +20,7 @@ export function generateTxRef(): string {
 }
 
 export function formatCurrency(amount: number, currency = "USD"): string {
-  const symbols = {
+  const symbols: Record<string, string> = {
     USD: "$",
     GBP: "£",
     NGN: "₦",

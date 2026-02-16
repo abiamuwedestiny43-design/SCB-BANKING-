@@ -2,7 +2,7 @@ import mongoose, { type Document, Schema } from "mongoose"
 
 export interface INotification extends Document {
   origin?: mongoose.Types.ObjectId
-  model?: string
+  originModel?: string
   userId: mongoose.Types.ObjectId
   period: Date
   message: string
@@ -14,7 +14,7 @@ export interface INotification extends Document {
 
 const NotificationSchema = new Schema<INotification>({
   origin: { type: Schema.Types.ObjectId },
-  model: String,
+  originModel: String,
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
   period: { type: Date, default: Date.now },
   message: { type: String, required: true },

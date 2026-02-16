@@ -60,7 +60,7 @@ export function withAuditLog(handler: (request: NextRequest) => Promise<NextResp
       })
 
       return response
-    } catch (error) {
+    } catch (error: any) {
       logAuditEvent({
         userId,
         action,

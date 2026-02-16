@@ -10,14 +10,14 @@ export async function GET(request: NextRequest) {
   try {
     await dbConnect()
     const user = await getCurrentUser()
-    
+
     if (!user || !user.roles.includes('super-admin')) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const { searchParams } = new URL(request.url)
     const status = searchParams.get('status')
-    
+
     const query: any = {}
     if (status && status !== 'all') {
       query.status = status
@@ -39,7 +39,7 @@ export async function PATCH(request: NextRequest) {
   try {
     await dbConnect()
     const user = await getCurrentUser()
-    
+
     if (!user || !user.roles.includes('super-admin')) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
@@ -58,13 +58,13 @@ export async function PATCH(request: NextRequest) {
     const previousStatus = loan.status
     loan.status = status
     loan.approvedBy = user._id
-    
+
     if (status === 'approved') {
       loan.approvedDate = new Date()
       loan.dueDate = new Date()
       loan.dueDate.setMonth(loan.dueDate.getMonth() + loan.duration)
     }
-    
+
     if (status === 'rejected' && rejectionReason) {
       loan.rejectionReason = rejectionReason
     }
@@ -74,8 +74,8 @@ export async function PATCH(request: NextRequest) {
     // Send email notification if status changed
     if (previousStatus !== status) {
       await sendLoanStatusUpdateEmail(
-        loan.userId.email,
-        loan.userId.bankInfo.bio.firstname,
+        (loan.userId as any).email,
+        (loan.userId as any).bankInfo.bio.firstname,
         loan.loanType,
         loan.amount,
         loan.currency,
@@ -84,9 +84,9 @@ export async function PATCH(request: NextRequest) {
       )
     }
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       message: "Loan status updated successfully",
-      loan 
+      loan
     })
   } catch (error) {
     console.error("Error updating loan status:", error)

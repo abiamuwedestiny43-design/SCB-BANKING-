@@ -1,4 +1,4 @@
-import { ChevronDown, Shield, TrendingUp, Home, CreditCard, Clock, ArrowRight, Building, Globe, Zap, Lock, BarChart3, Star, Users, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, Shield, TrendingUp, Home, CreditCard, Clock, ArrowRight, Building, Globe, Zap, Lock, BarChart3, Star, Users, CheckCircle2, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import LiveMarketRates from './LiveMarketRates';
@@ -7,19 +7,17 @@ const HomePages: React.FC = () => {
   return (
     <div className="bg-white text-slate-900 overflow-hidden font-sans">
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-36 pb-20">
-        {/* Animated Background Elements */}
+      <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-36 pb-20 bg-white">
+        {/* Minimal Orbital Structure */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-indigo-100/60 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-indigo-50/80 rounded-full blur-[120px] animate-pulse delay-700"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-200 rounded-full animate-[spin_60s_linear_infinite]"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-200 rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-100 rounded-full opacity-40"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-100 rounded-full opacity-40"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="text-center lg:text-left space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs font-black tracking-widest uppercase animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-indigo-600 text-xs font-black tracking-widest uppercase shadow-sm">
                 <Zap className="w-3 h-3 fill-current" /> First State Bank
               </div>
               <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter text-slate-900">
@@ -33,7 +31,7 @@ const HomePages: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-2">
                 <Link href="/register">
-                  <button className="w-full sm:w-auto bg-indigo-500 hover:bg-indigo-400 text-[#020617] px-8 py-4 rounded-xl text-lg font-black transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.4)] flex items-center justify-center gap-2 group">
+                  <button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl text-lg font-black transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.4)] flex items-center justify-center gap-2 group">
                     Open Account <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
@@ -67,13 +65,13 @@ const HomePages: React.FC = () => {
 
             <div className="relative group perspective-1000">
               <div className="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-indigo-600 rounded-[2.5rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl transition-transform duration-700 hover:scale-[1.02] bg-[#0f172a]">
+              <div className="relative rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl transition-transform duration-700 hover:scale-[1.02] bg-white">
                 <Image
                   src="/business-banking-hero.jpg"
                   alt="First State Bank - Professional Banking Services"
                   width={800}
                   height={600}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
@@ -112,7 +110,7 @@ const HomePages: React.FC = () => {
       </section>
 
       {/* Trust Banner */}
-      <section className="py-12 border-y border-slate-200 bg-slate-50">
+      <section className="py-12 border-y border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 overflow-hidden">
           <p className="text-center text-[10px] font-black tracking-[0.4em] uppercase text-slate-400 mb-8 opacity-60">Powering Leading Enterprises</p>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60 hover:opacity-100 transition-all duration-700">
@@ -129,10 +127,10 @@ const HomePages: React.FC = () => {
       <LiveMarketRates />
 
       {/* Features Grid */}
-      <section className="py-32 relative bg-slate-50">
+      <section className="py-32 relative bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 space-y-4">
-            <span className="text-indigo-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full bg-indigo-100 border border-indigo-200">Why First State Bank</span>
+            <span className="text-indigo-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm">Why First State Bank</span>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900">The Standard of Excellence</h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-lg">We combine heritage with cutting-edge technology to deliver a banking experience that is second to none.</p>
           </div>
@@ -144,7 +142,7 @@ const HomePages: React.FC = () => {
               { icon: Globe, title: 'Global Access', desc: 'Manage your finances from anywhere in the world with our award-winning mobile and web platforms.' }
             ].map((feature, i) => (
               <div key={i} className="group p-8 rounded-[2rem] bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="h-14 w-14 rounded-2xl bg-indigo-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-indigo-200">
+                <div className="h-14 w-14 rounded-2xl bg-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-slate-200 shadow-sm">
                   <feature.icon className="w-7 h-7 text-indigo-600" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
@@ -156,8 +154,7 @@ const HomePages: React.FC = () => {
       </section>
 
       {/* Investment Highlight */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <section className="py-32 relative overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="order-2 lg:order-1 relative">
@@ -211,7 +208,7 @@ const HomePages: React.FC = () => {
       </section>
 
       {/* Services Showcase */}
-      <section className="py-32 bg-slate-50 relative border-y border-slate-200">
+      <section className="py-32 bg-white relative border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
             <div>
@@ -233,7 +230,7 @@ const HomePages: React.FC = () => {
               { icon: TrendingUp, title: 'Wealth', link: '/services/investment', desc: 'Strategic investment planning and management.', bgClass: 'bg-purple-500/10', iconClass: 'text-purple-400' }
             ].map((service, index) => (
               <div key={index} className="group relative p-8 rounded-[2rem] bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-xl transition-all duration-300">
-                <div className={`h-14 w-14 rounded-xl ${service.bgClass} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border ${service.iconClass.replace('text-', 'border-')}`}>
+                <div className={`h-14 w-14 rounded-xl bg-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-slate-200 shadow-sm ${service.iconClass}`}>
                   <service.icon className={`w-7 h-7 ${service.iconClass}`} />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">{service.title}</h3>
@@ -247,15 +244,104 @@ const HomePages: React.FC = () => {
         </div>
       </section>
 
+      {/* NEW: Chat Support Apps Section */}
+      <section className="py-32 bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-600/20 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-20 space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-indigo-600 text-[10px] font-black tracking-widest uppercase shadow-sm">
+              <Lock className="w-3 h-3" /> Secure Communication Hub
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-900 italic uppercase">
+              Free Apps for <br />
+              <span className="not-italic text-indigo-600 uppercase">Live Bank Chat</span>
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-lg font-medium leading-relaxed">
+              Experience immediate, secure banking services through our curated selection of 24/7 AI-powered and encrypted communication channels.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "YES ROBOT",
+                bank: "YES Bank",
+                desc: "24/7 AI-powered chat assistant for immediate, secure banking services.",
+                icon: Zap,
+                tag: "AI POWERED"
+              },
+              {
+                name: "tawk.to",
+                bank: "Global Connect",
+                desc: "A fully featured, free live chat app, often used for premium customer service.",
+                icon: MessageCircle,
+                tag: "FREE ACCESS"
+              },
+              {
+                name: "LiveChat",
+                bank: "Financial Tech",
+                desc: "Robust platform designed for financial services, prioritizing security with encryption.",
+                icon: Shield,
+                tag: "ENCRYPTED"
+              },
+              {
+                name: "Signal",
+                bank: "Private Network",
+                desc: "State-of-the-art encryption for private, secure communication channels.",
+                icon: Lock,
+                tag: "SECURE"
+              },
+              {
+                name: "LiveAgent",
+                bank: "Omnichannel",
+                desc: "Offers a comprehensive live chat plan for end-to-end customer support.",
+                icon: Users,
+                tag: "ELITE"
+              }
+            ].map((app, i) => (
+              <div key={i} className="group p-10 rounded-[3rem] bg-white border border-slate-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="flex justify-between items-start mb-8">
+                  <div className="h-16 w-16 rounded-2xl bg-indigo-50 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                    <app.icon className="w-8 h-8 text-indigo-600 group-hover:text-white" />
+                  </div>
+                  <span className="text-[10px] font-black tracking-[0.2em] text-slate-400 group-hover:text-indigo-600 transition-colors uppercase">{app.tag}</span>
+                </div>
+                <h4 className="text-2xl font-black text-slate-900 mb-2 italic uppercase tracking-tight">{app.name}</h4>
+                <p className="text-xs font-bold text-indigo-600/60 mb-4 uppercase tracking-widest">{app.bank}</p>
+                <p className="text-slate-500 text-sm font-medium leading-relaxed italic">"{app.desc}"</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Recommendation Advisory */}
+          <div className="mt-20 p-8 md:p-12 rounded-[3.5rem] bg-white border border-slate-200 text-center shadow-lg relative overflow-hidden group">
+            <div className="absolute inset-0 bg-indigo-50/50 translate-y-full group-hover:translate-y-0 transition-transform duration-700"></div>
+            <div className="relative z-10 space-y-6">
+              <div className="h-16 w-16 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-6">
+                <Shield className="w-8 h-8 text-indigo-600" />
+              </div>
+              <h3 className="text-2xl font-black text-slate-900 uppercase italic">Expert Recommendation</h3>
+              <p className="text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed">
+                For the best experience, using the <span className="text-indigo-600 font-bold">official app of your specific bank</span> is recommended to ensure security and direct access to personal account information.
+              </p>
+              <Link href="/register">
+                <button className="mt-4 px-10 py-5 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-xl shadow-indigo-600/20">
+                  Get Started Securely
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Security Section */}
       <section className="py-32 relative bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[3rem] bg-gradient-to-b from-slate-50 to-white p-8 md:p-16 border border-slate-200 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-100/50 rounded-full blur-[100px] pointer-events-none"></div>
+          <div className="rounded-[3rem] bg-white p-8 md:p-16 border border-slate-200 overflow-hidden relative shadow-sm">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
               <div className="space-y-8">
-                <div className="inline-block p-3 rounded-xl bg-indigo-100 border border-indigo-200">
+                <div className="inline-block p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
                   <Lock className="w-8 h-8 text-indigo-600" />
                 </div>
                 <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1] text-slate-900">
@@ -293,7 +379,7 @@ const HomePages: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 pb-32 bg-slate-50">
+      <section className="py-20 pb-32 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-900">Ready to Switch?</h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">

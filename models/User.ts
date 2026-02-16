@@ -14,11 +14,6 @@ export interface IUser extends Document {
       pin: string
     }
     bio: {
-      address: any
-      city: any
-      state: any
-      country: any
-      zipcode: any
       firstname: string
       lastname: string
       phone: string
@@ -56,6 +51,11 @@ export interface IUser extends Document {
     canLocalTransfer: boolean
     canInternationalTransfer: boolean
     kyc?: string
+    verificationMeta?: {
+      verifiedBy?: string
+      verifiedAt?: Date
+      notes?: string
+    }
   }
   avatar?: string
   profileImage?: string
@@ -123,6 +123,11 @@ const UserSchema = new Schema<IUser>({
     canLocalTransfer: { type: Boolean, default: true },
     canInternationalTransfer: { type: Boolean, default: true },
     kyc: String,
+    verificationMeta: {
+      verifiedBy: String,
+      verifiedAt: Date,
+      notes: String,
+    },
   },
   avatar: String,
   profileImage: String,

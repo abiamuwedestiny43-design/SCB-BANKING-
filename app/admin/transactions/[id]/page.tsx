@@ -87,8 +87,8 @@ async function TransactionContent({ id }: { id: string }) {
         success: "bg-indigo-500/10 text-indigo-500 border-indigo-500/20",
         pending: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
         failed: "bg-red-500/10 text-red-500 border-red-500/20",
-        cancelled: "bg-slate-500/10 text-slate-500 border-slate-500/20",
-    }[tx.txStatus] || "bg-slate-500/10 text-slate-500"
+        cancelled: "bg-white0/10 text-slate-500 border-slate-500/20",
+    }[tx.txStatus] || "bg-white0/10 text-slate-500"
 
     const user = tx.userId as any
 

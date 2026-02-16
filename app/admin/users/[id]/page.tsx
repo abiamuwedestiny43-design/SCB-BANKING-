@@ -30,11 +30,11 @@ async function getUserDetails(id: string) {
     bankNumber: user.bankNumber,
     userCode: user.usercode,
     phone: user.bankInfo.bio.phone,
-    address: user.bankInfo.bio.address,
-    city: user.bankInfo.bio.city,
-    state: user.bankInfo.bio.state,
-    country: user.bankInfo.bio.country,
-    zipcode: user.bankInfo.bio.zipcode,
+    address: user.bankInfo.address.location,
+    city: user.bankInfo.address.city,
+    state: user.bankInfo.address.state,
+    country: user.bankInfo.address.country,
+    zipcode: user.bankInfo.address.zipcode,
     currency: user.bankInfo.system.currency,
     balance: user.bankBalance.get(user.bankInfo.system.currency) || 0,
     verified: user.bankAccount.verified,
@@ -193,7 +193,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                   {user.transfers.map((transfer) => (
                     <tr key={transfer.id} className="hover:bg-white/[0.02] transition-colors group">
                       <td className="px-10 py-4">
-                        <Badge className={`uppercase text-[9px] font-black px-2 py-0.5 rounded-lg ${transfer.txStatus === 'success' ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20Shadow' : 'bg-red-500/10 text-red-500 border-red-500/20Shadow'}`}>
+                        <Badge className={`uppercase text-[9px] font-black px-2 py-0.5 rounded-lg ${transfer.txStatus === 'success' ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' : 'bg-red-500/10 text-red-500 border-red-500/20'}`}>
                           {transfer.txStatus}
                         </Badge>
                       </td>
