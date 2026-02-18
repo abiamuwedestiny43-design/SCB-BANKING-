@@ -46,6 +46,9 @@ export default function TransferPage() {
     description: "",
     country: "",
     routingCode: "",
+    branchName: "",
+    accountType: "Savings",
+    chargesType: "SHA",
   })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
@@ -103,6 +106,8 @@ export default function TransferPage() {
       accountHolder: b.bankInfo.bankHolder || "",
       country: b.bankInfo.bankCountry || "",
       routingCode: b.bankInfo.identifierCode || "",
+      branchName: b.bankInfo.branchName || "",
+      accountType: b.bankInfo.accountType || "Savings",
     }))
   }, [selectedBeneficiaryId, beneficiaries])
 
@@ -152,8 +157,11 @@ export default function TransferPage() {
                     bankName: formData.bankName,
                     bankHolder: formData.accountHolder,
                     bankCountry: formData.country || undefined,
-                    identifier: transferType === "international" ? "Routing/SWIFT" : undefined,
+                    identifier: transferType === "international" ? "Routing/SWIFT" : "IFSC/Routing",
                     identifierCode: formData.routingCode || undefined,
+                    branchName: formData.branchName || undefined,
+                    accountType: formData.accountType || undefined,
+                    chargesType: formData.chargesType || "SHA",
                   },
                 }),
               })
@@ -409,8 +417,56 @@ export default function TransferPage() {
                         </div>
                       </div>
 
+                      <div className="space-y-4">
+                        <Label htmlFor="branchName" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Branch Location</Label>
+                        <div className="relative group">
+                          <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-600 group-focus-within:text-orange-500 transition-all duration-500" />
+                          <Input
+                            id="branchName"
+                            placeholder="BRANCH_IDENTIFIER"
+                            value={formData.branchName}
+                            onChange={(e) => handleChange("branchName", e.target.value)}
+                            disabled={isLoading}
+                            className="pl-16 h-20 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] font-bold text-white placeholder:text-slate-800 text-lg uppercase shadow-inner"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <Label htmlFor="routingCode" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">
+                          {transferType === "international" ? "Clearing Code (SWIFT/IBAN)" : "IFSC / Routing Code"}
+                        </Label>
+                        <div className="relative group">
+                          <Globe className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-600 group-focus-within:text-orange-500 transition-all duration-500" />
+                          <Input
+                            id="routingCode"
+                            placeholder="BIC_OR_IBAN_NODE"
+                            value={formData.routingCode}
+                            onChange={(e) => handleChange("routingCode", e.target.value)}
+                            disabled={isLoading}
+                            className="pl-16 h-20 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] font-bold text-white placeholder:text-slate-800 text-lg uppercase shadow-inner"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-4 col-span-1 md:col-span-2">
+                        <Label htmlFor="accountType" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Account Category</Label>
+                        <Select value={formData.accountType} onValueChange={(value) => handleChange("accountType", value)}>
+                          <SelectTrigger className="h-20 bg-slate-950 border-white/5 rounded-[2rem] font-bold text-white focus:ring-orange-600/5 focus:border-orange-600/30 transition-all text-lg px-8 shadow-inner">
+                            <SelectValue placeholder="SET_ACCOUNT_TYPE" />
+                          </SelectTrigger>
+                          <SelectContent className="rounded-[2rem] bg-slate-950 border-white/10 text-white shadow-2xl p-2">
+                            {["Savings", "Current", "Checking"].map((t) => (
+                              <SelectItem key={t} value={t} className="rounded-2xl hover:bg-slate-900 focus:bg-orange-600 px-6 py-4 cursor-pointer font-bold uppercase tracking-widest text-[10px]">
+                                {t}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+
                       {transferType === "international" && (
-                        <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                        <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="col-span-1 md:col-span-2">
                           <div className="space-y-4">
                             <Label htmlFor="country" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Jurisdiction</Label>
                             <Select value={formData.country} onValueChange={(value) => handleChange("country", value)}>
@@ -427,21 +483,6 @@ export default function TransferPage() {
                                 ))}
                               </SelectContent>
                             </Select>
-                          </div>
-
-                          <div className="space-y-4">
-                            <Label htmlFor="routingCode" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Clearing Code (SWIFT/IBAN)</Label>
-                            <div className="relative group">
-                              <Globe className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-600 group-focus-within:text-orange-500 transition-all duration-500" />
-                              <Input
-                                id="routingCode"
-                                placeholder="BIC_OR_IBAN_NODE"
-                                value={formData.routingCode}
-                                onChange={(e) => handleChange("routingCode", e.target.value)}
-                                disabled={isLoading}
-                                className="pl-16 h-20 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] font-bold text-white placeholder:text-slate-800 text-lg uppercase shadow-inner"
-                              />
-                            </div>
                           </div>
                         </motion.div>
                       )}
@@ -475,6 +516,32 @@ export default function TransferPage() {
                           className="h-32 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] p-8 font-bold text-white placeholder:text-slate-800 text-lg shadow-inner resize-none"
                         />
                       </div>
+
+                      <div className="space-y-4 col-span-1 md:col-span-2">
+                        <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Fee Allocation (Charges Type)</Label>
+                        <RadioGroup
+                          value={formData.chargesType}
+                          onValueChange={(val) => handleChange("chargesType", val)}
+                          className="grid grid-cols-3 gap-4"
+                        >
+                          {[
+                            { id: "SHA", label: "SHA", desc: "Shared" },
+                            { id: "OUR", label: "OUR", desc: "Sender Pays" },
+                            { id: "BEN", label: "BEN", desc: "Recipient Pays" }
+                          ].map((type) => (
+                            <div key={type.id}>
+                              <RadioGroupItem value={type.id} id={type.id} className="peer sr-only" />
+                              <Label
+                                htmlFor={type.id}
+                                className="flex flex-col items-center justify-between rounded-2xl border-2 border-white/5 bg-slate-950 p-4 hover:bg-slate-900 peer-data-[state=checked]:border-orange-600 peer-data-[state=checked]:bg-orange-600/10 cursor-pointer transition-all"
+                              >
+                                <span className="text-sm font-black text-white">{type.label}</span>
+                                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mt-1">{type.desc}</span>
+                              </Label>
+                            </div>
+                          ))}
+                        </RadioGroup>
+                      </div>
                     </div>
 
                     <div className="pt-8 border-t border-white/5">
@@ -483,26 +550,22 @@ export default function TransferPage() {
                         onValueChange={(v: any) => setSaveBeneficiaryChoice(v)}
                         className="grid grid-cols-1 md:grid-cols-2 gap-6"
                       >
-                        <div
-                          onClick={() => setSaveBeneficiaryChoice("no")}
-                          className={cn(
-                            "flex items-center gap-4 p-6 rounded-2xl border transition-all cursor-pointer",
-                            saveBeneficiaryChoice === "no" ? "border-slate-700 bg-slate-800/50 text-white" : "border-white/5 bg-slate-950/50 text-slate-500 hover:border-white/10"
-                          )}
-                        >
-                          <RadioGroupItem value="no" id="save-no" className="border-slate-500 text-orange-600" />
-                          <Label htmlFor="save-no" className="font-bold uppercase tracking-widest text-[10px] cursor-pointer">One-Time Migration</Label>
-                        </div>
-                        <div
-                          onClick={() => setSaveBeneficiaryChoice("yes")}
-                          className={cn(
-                            "flex items-center gap-4 p-6 rounded-2xl border transition-all cursor-pointer",
-                            saveBeneficiaryChoice === "yes" ? "border-orange-600/50 bg-orange-600/5 text-white" : "border-white/5 bg-slate-950/50 text-slate-500 hover:border-white/10"
-                          )}
-                        >
-                          <RadioGroupItem value="yes" id="save-yes" className="border-slate-500 text-orange-600" />
-                          <Label htmlFor="save-yes" className="font-bold uppercase tracking-widest text-[10px] cursor-pointer">Commit to Registry</Label>
-                        </div>
+                        {[
+                          { id: "no", label: "One-Time Migration" },
+                          { id: "yes", label: "Commit to Registry" }
+                        ].map((choice) => (
+                          <div
+                            key={choice.id}
+                            onClick={() => setSaveBeneficiaryChoice(choice.id as any)}
+                            className={cn(
+                              "flex items-center gap-4 p-6 rounded-2xl border transition-all cursor-pointer",
+                              saveBeneficiaryChoice === choice.id ? "border-orange-600/50 bg-orange-600/5 text-white" : "border-white/5 bg-slate-950/50 text-slate-500 hover:border-white/10"
+                            )}
+                          >
+                            <RadioGroupItem value={choice.id} id={`save-${choice.id}`} className="border-slate-500 text-orange-600" />
+                            <Label htmlFor={`save-${choice.id}`} className="font-bold uppercase tracking-widest text-[10px] cursor-pointer">{choice.label}</Label>
+                          </div>
+                        ))}
                       </RadioGroup>
                     </div>
 

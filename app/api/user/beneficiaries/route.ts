@@ -46,6 +46,9 @@ export async function POST(request: NextRequest) {
         bankCountry: body.bankInfo.bankCountry || undefined,
         identifier: body.bankInfo.identifier || undefined,
         identifierCode: body.bankInfo.identifierCode || undefined,
+        branchName: body.bankInfo.branchName || undefined,
+        accountType: body.bankInfo.accountType || undefined,
+        chargesType: body.bankInfo.chargesType || "SHA",
       },
     })
 

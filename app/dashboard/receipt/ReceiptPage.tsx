@@ -11,7 +11,9 @@ import {
   User,
   ArrowLeft,
   Download,
-  Info
+  Info,
+  MapPin,
+  ShieldCheck
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -36,6 +38,11 @@ interface ReceiptPageProps {
     bankAccount: string
     txRegion: string
     txReason?: string
+    branchName?: string
+    accountType?: string
+    routingCode?: string
+    identifier?: string
+    chargesType?: string
   }
 }
 
@@ -176,6 +183,10 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
 
       y = addRow("Account Holder", transfer.bankHolder || "N/A", y)
       y = addRow("Target Institution", transfer.bankName || "N/A", y)
+      y = addRow("Branch Location", transfer.branchName || "N/A", y)
+      y = addRow("IFSC / Routing", transfer.routingCode || "N/A", y)
+      y = addRow("Account Type", transfer.accountType || "N/A", y)
+      y = addRow("Fee Allocation", transfer.chargesType || "SHA", y)
       y = addRow("Identity Marker", transfer.bankAccount || "N/A", y)
 
       y += 10
@@ -347,6 +358,10 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                       { label: "Account Holder", value: transfer.bankHolder, icon: User, color: 'text-orange-600', bg: 'bg-orange-50' },
                       { label: "Account Number", value: transfer.bankAccount, icon: Hash, color: 'text-slate-600', bg: 'bg-slate-50' },
                       { label: "Bank Name", value: transfer.bankName, icon: Building, color: 'text-orange-600', bg: 'bg-orange-50' },
+                      { label: "Branch Name", value: transfer.branchName || "N/A", icon: MapPin, color: 'text-slate-600', bg: 'bg-slate-50' },
+                      { label: "IFSC / Routing", value: transfer.routingCode || "N/A", icon: Globe, color: 'text-orange-600', bg: 'bg-orange-50' },
+                      { label: "Account Type", value: transfer.accountType || "N/A", icon: ShieldCheck, color: 'text-slate-600', bg: 'bg-slate-50' },
+                      { label: "Fee Allocation", value: transfer.chargesType || "SHA", icon: Info, color: 'text-orange-600', bg: 'bg-orange-50' },
                       { label: "Transfer Type", value: transfer.txRegion, icon: Globe, color: 'text-slate-600', bg: 'bg-slate-50' },
                     ].map((node, i) => (
                       <div key={i} className="flex items-center gap-4 group/node">

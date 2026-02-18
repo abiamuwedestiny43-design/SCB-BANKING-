@@ -54,12 +54,6 @@ export async function POST(request: NextRequest) {
       initialBalance,
       usercode,
       securityPin,
-      accountHolderName,
-      accountNumber,
-      bankName,
-      branchName,
-      routingCode,
-      accountType,
     } = body
 
     if (!email || !password || !firstname || !lastname || !phone || !usercode || !securityPin) {
@@ -96,14 +90,6 @@ export async function POST(request: NextRequest) {
         system: { currency: currency || "USD", account: "" },
       },
       bankAccount: { verified: verified || false, canTransfer: canTransfer || false },
-      bankDetails: {
-        accountHolderName: accountHolderName || "",
-        accountNumber: accountNumber || "",
-        bankName: bankName || "",
-        branchName: branchName || "",
-        routingCode: routingCode || "",
-        accountType: accountType || "",
-      },
       bankBalance: new Map([[currency || "USD", initialBalance || 0]]),
     })
 

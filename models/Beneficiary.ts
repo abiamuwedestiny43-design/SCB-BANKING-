@@ -10,6 +10,9 @@ export interface IBeneficiary extends Document {
     bankCountry?: string
     identifier?: string
     identifierCode?: string
+    branchName?: string
+    accountType?: string
+    chargesType?: string
   }
 }
 
@@ -23,6 +26,9 @@ const BeneficiarySchema = new Schema<IBeneficiary>({
     bankCountry: String,
     identifier: String,
     identifierCode: String,
+    branchName: String,
+    accountType: String,
+    chargesType: { type: String, enum: ["OUR", "SHA", "BEN"], default: "SHA" },
   },
 })
 

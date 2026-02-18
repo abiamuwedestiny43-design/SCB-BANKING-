@@ -43,12 +43,6 @@ export default function AdminEditUserPage() {
     canLocalTransfer: false,
     canInternationalTransfer: false,
     transferCodeRequired: true,
-    accountHolderName: "",
-    accountNumber: "",
-    bankName: "",
-    branchName: "",
-    routingCode: "",
-    accountType: "",
   })
 
   const onChange = (field: string, value: any) => setForm((p: any) => ({ ...p, [field]: value }))
@@ -85,12 +79,6 @@ export default function AdminEditUserPage() {
           canLocalTransfer: u.bankAccount?.canLocalTransfer || false,
           canInternationalTransfer: u.bankAccount?.canInternationalTransfer || false,
           transferCodeRequired: u.transferCodeRequired !== false,
-          accountHolderName: u.bankDetails?.accountHolderName || "",
-          accountNumber: u.bankDetails?.accountNumber || "",
-          bankName: u.bankDetails?.bankName || "",
-          branchName: u.bankDetails?.branchName || "",
-          routingCode: u.bankDetails?.routingCode || "",
-          accountType: u.bankDetails?.accountType || "",
         })
         setRolesInput((Array.isArray(u.roles) ? u.roles : []).join(","))
       } catch (e) {
@@ -313,73 +301,6 @@ export default function AdminEditUserPage() {
               <p className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] leading-relaxed italic">
                 Geospatial data is automatically cross-referenced with local jurisdictional mandates during asset migration protocols.
               </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Bank Account Details Section */}
-        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group transition-all duration-500 border-t-4 border-t-emerald-600 lg:col-span-2">
-          <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
-            <CardTitle className="text-3xl font-black text-white italic tracking-tighter flex items-center gap-4 uppercase leading-none">
-              <CreditCard className="w-8 h-8 text-emerald-600" /> Bank Account Details
-            </CardTitle>
-            <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-3 italic">External banking coordinates for ledger synchronization.</CardDescription>
-          </CardHeader>
-          <CardContent className="p-12 space-y-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="space-y-3">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Holder Name</Label>
-                <Input
-                  value={form.accountHolderName}
-                  onChange={(e) => onChange("accountHolderName", e.target.value)}
-                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
-                />
-              </div>
-              <div className="space-y-3">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Number</Label>
-                <Input
-                  value={form.accountNumber}
-                  onChange={(e) => onChange("accountNumber", e.target.value)}
-                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
-                />
-              </div>
-              <div className="space-y-3">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Bank Name</Label>
-                <Input
-                  value={form.bankName}
-                  onChange={(e) => onChange("bankName", e.target.value)}
-                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
-                />
-              </div>
-              <div className="space-y-3">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Branch Name</Label>
-                <Input
-                  value={form.branchName}
-                  onChange={(e) => onChange("branchName", e.target.value)}
-                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
-                />
-              </div>
-              <div className="space-y-3">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">IFSC / SWIFT / Routing Code</Label>
-                <Input
-                  value={form.routingCode}
-                  onChange={(e) => onChange("routingCode", e.target.value)}
-                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
-                />
-              </div>
-              <div className="space-y-3">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Type</Label>
-                <Select value={form.accountType} onValueChange={(v) => onChange("accountType", v)}>
-                  <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-emerald-600/20 uppercase tracking-widest text-[10px]">
-                    <SelectValue placeholder="Select type" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-slate-950 border-white/10 text-white rounded-2xl backdrop-blur-3xl">
-                    <SelectItem value="Savings" className="font-bold focus:bg-emerald-600 uppercase tracking-widest text-[10px]">SAVINGS</SelectItem>
-                    <SelectItem value="Current" className="font-bold focus:bg-emerald-600 uppercase tracking-widest text-[10px]">CURRENT</SelectItem>
-                    <SelectItem value="Checking" className="font-bold focus:bg-emerald-600 uppercase tracking-widest text-[10px]">CHECKING</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
             </div>
           </CardContent>
         </Card>

@@ -17,10 +17,13 @@ export interface ITransfer extends Document {
   accountNumber: string
   bankHolder: string
   accountHolder: string
+  branchName?: string
+  accountType?: string
   identifier?: string
   identifierCode?: string
   routingCode?: string
   country?: string
+  chargesType?: "OUR" | "SHA" | "BEN"
   description?: string
   senderName?: string
   senderAccount?: string
@@ -83,10 +86,13 @@ const TransferSchema = new Schema<ITransfer>(
     accountNumber: { type: String, required: true },
     bankHolder: { type: String, required: true },
     accountHolder: { type: String, required: true },
+    branchName: String,
+    accountType: String,
     identifier: String,
     identifierCode: String,
     routingCode: String,
     country: String,
+    chargesType: { type: String, enum: ["OUR", "SHA", "BEN"], default: "SHA" },
     description: String,
     senderName: String,
     senderAccount: String,

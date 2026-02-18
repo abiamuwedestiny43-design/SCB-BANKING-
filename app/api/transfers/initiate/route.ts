@@ -75,6 +75,9 @@ export async function POST(request: NextRequest) {
       description,
       country,
       routingCode,
+      branchName,
+      accountType,
+      chargesType,
     } = await request.json()
 
     // Transfer Type Permissions Check
@@ -134,6 +137,9 @@ export async function POST(request: NextRequest) {
     const sanitizedBankName = sanitizeInput(bankName)
     const sanitizedAccountHolder = sanitizeInput(accountHolder)
     const sanitizedDescription = sanitizeInput(description || "")
+    const sanitizedBranchName = branchName ? sanitizeInput(branchName) : undefined
+    const sanitizedAccountType = accountType ? sanitizeInput(accountType) : undefined
+    const sanitizedChargesType = chargesType ? sanitizeInput(chargesType) : "SHA"
 
     if (!sanitizedBankName || !sanitizedAccountHolder) {
       return NextResponse.json({ message: "Invalid bank name or account holder" }, { status: 400 })
@@ -192,7 +198,10 @@ export async function POST(request: NextRequest) {
       accountNumber: accountNumber,
       bankHolder: sanitizedAccountHolder,
       accountHolder: sanitizedAccountHolder,
-      identifier: transferType === "international" ? "Routing Code / SWIFT Code" : undefined,
+      branchName: sanitizedBranchName,
+      accountType: sanitizedAccountType,
+      chargesType: sanitizedChargesType,
+      identifier: transferType === "international" ? "Routing Code / SWIFT Code" : "IFSC / Routing Code",
       identifierCode: routingCode,
       routingCode: routingCode,
       country: country,

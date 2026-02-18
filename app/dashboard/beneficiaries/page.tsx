@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { Users, Plus, Trash2, Globe, Landmark, Fingerprint, ChevronRight, ChevronLeft, ShieldCheck } from "lucide-react"
+import { Users, Plus, Trash2, Globe, Landmark, Fingerprint, ChevronRight, ChevronLeft, ShieldCheck, MapPin } from "lucide-react"
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
@@ -33,6 +33,8 @@ export default function BeneficiariesPage() {
   const [bankCountry, setBankCountry] = useState("")
   const [identifier, setIdentifier] = useState("")
   const [identifierCode, setIdentifierCode] = useState("")
+  const [branchName, setBranchName] = useState("")
+  const [accountType, setAccountType] = useState("Savings")
   const [error, setError] = useState("")
   const [saving, setSaving] = useState(false)
 
@@ -52,7 +54,15 @@ export default function BeneficiariesPage() {
         body: JSON.stringify({
           bankRegion,
           bankAccount,
-          bankInfo: { bankName, bankHolder, bankCountry, identifier, identifierCode },
+          bankInfo: {
+            bankName,
+            bankHolder,
+            bankCountry,
+            identifier: bankRegion === "international" ? identifier : "IFSC/Routing",
+            identifierCode,
+            branchName,
+            accountType
+          },
         }),
       })
       const data = await res.json()
@@ -67,6 +77,8 @@ export default function BeneficiariesPage() {
       setBankCountry("")
       setIdentifier("")
       setIdentifierCode("")
+      setBranchName("")
+      setAccountType("Savings")
       mutate()
     } finally {
       setSaving(false)
@@ -188,21 +200,55 @@ export default function BeneficiariesPage() {
                     </div>
                   </div>
 
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Branch Name</Label>
+                    <div className="relative group">
+                      <MapPin className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-600 group-focus-within:text-orange-600 transition-colors" />
+                      <Input
+                        placeholder="BRANCH_IDENTIFIER"
+                        value={branchName}
+                        onChange={(e) => setBranchName(e.target.value)}
+                        className="pl-14 h-16 bg-slate-900 border-white/10 focus:bg-slate-800 focus:border-orange-600/50 focus:ring-orange-600/10 text-white font-black transition-all rounded-2xl uppercase tracking-widest text-xs placeholder:text-slate-700"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">
+                      {bankRegion === "international" ? "SWIFT / Routing" : "IFSC / Routing Code"}
+                    </Label>
+                    <div className="relative group">
+                      <Globe className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-600 group-focus-within:text-orange-600 transition-colors" />
+                      <Input
+                        placeholder="IDENTIFIER_CODE"
+                        value={identifierCode}
+                        onChange={(e) => setIdentifierCode(e.target.value)}
+                        className="pl-14 h-16 bg-slate-900 border-white/10 focus:bg-slate-800 focus:border-orange-600/50 focus:ring-orange-600/10 text-white font-black transition-all rounded-2xl uppercase tracking-widest text-xs placeholder:text-slate-700"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Account Category</Label>
+                    <Select value={accountType} onValueChange={setAccountType}>
+                      <SelectTrigger className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black focus:ring-orange-500/20 transition-all uppercase tracking-widest text-[10px]">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="bg-slate-900 border-white/10 text-white rounded-2xl">
+                        {["Savings", "Current", "Checking"].map((t) => (
+                          <SelectItem key={t} value={t} className="font-black uppercase tracking-widest text-[10px] focus:bg-orange-600 focus:text-white">
+                            {t}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
                   {bankRegion === "international" && (
                     <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="grid grid-cols-1 gap-8 pt-8 border-t border-white/5">
                       <div className="space-y-3">
                         <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Jurisdiction</Label>
-                        <Input value={bankCountry} onChange={(e) => setBankCountry(e.target.value)} className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-xs" />
-                      </div>
-                      <div className="grid grid-cols-2 gap-6">
-                        <div className="space-y-3">
-                          <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">System</Label>
-                          <Input placeholder="SWIFT" value={identifier} onChange={(e) => setIdentifier(e.target.value)} className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-xs" />
-                        </div>
-                        <div className="space-y-3">
-                          <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Logic_Code</Label>
-                          <Input placeholder="000XXX" value={identifierCode} onChange={(e) => setIdentifierCode(e.target.value)} className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-xs" />
-                        </div>
+                        <Input placeholder="UNITED_STATES" value={bankCountry} onChange={(e) => setBankCountry(e.target.value)} className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-xs" />
                       </div>
                     </motion.div>
                   )}
@@ -265,8 +311,20 @@ export default function BeneficiariesPage() {
                               </p>
                               <div className="h-4 w-[1px] bg-slate-100" />
                               <p className="text-[10px] text-orange-600 font-black tracking-[0.2em] uppercase">
-                                {b.bankAccount.slice(0, 4)}••••{b.bankAccount.slice(-4)}
+                                {b.bankAccount}
                               </p>
+                              {b.bankInfo.branchName && (
+                                <>
+                                  <div className="h-4 w-[1px] bg-slate-100" />
+                                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">{b.bankInfo.branchName}</p>
+                                </>
+                              )}
+                              {b.bankInfo.accountType && (
+                                <>
+                                  <div className="h-4 w-[1px] bg-slate-100" />
+                                  <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.2em]">{b.bankInfo.accountType}</p>
+                                </>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -279,7 +337,7 @@ export default function BeneficiariesPage() {
                             {b.bankRegion.toUpperCase()}
                           </div>
                           <Button variant="ghost" className="h-14 w-14 rounded-2xl border border-slate-50 bg-slate-50 text-slate-400 hover:text-orange-600 hover:bg-white hover:shadow-xl transition-all group/btn" asChild>
-                            <Link href={`/dashboard/transfer?accountNumber=${encodeURIComponent(b.bankAccount)}&bankName=${encodeURIComponent(b.bankInfo.bankName)}&accountHolder=${encodeURIComponent(b.bankInfo.bankHolder)}`}>
+                            <Link href={`/dashboard/transfer?accountNumber=${encodeURIComponent(b.bankAccount)}&bankName=${encodeURIComponent(b.bankInfo.bankName)}&accountHolder=${encodeURIComponent(b.bankInfo.bankHolder)}&branchName=${encodeURIComponent(b.bankInfo.branchName || "")}&accountType=${encodeURIComponent(b.bankInfo.accountType || "Savings")}&routingCode=${encodeURIComponent(b.bankInfo.identifierCode || "")}&country=${encodeURIComponent(b.bankInfo.bankCountry || "")}`}>
                               <ChevronRight className="h-6 w-6 group-hover/btn:translate-x-1 transition-transform" />
                             </Link>
                           </Button>

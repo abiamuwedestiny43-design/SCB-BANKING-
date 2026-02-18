@@ -1,4 +1,3 @@
-// app/dashboard/transactions/page.tsx
 import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "lucide-react"
 import Link from "next/link"
@@ -22,7 +21,8 @@ async function getTransactionsData(userId: string, page: number = 1, limit: numb
     matchStage.$or = [
       { txRef: { $regex: filters.search, $options: "i" } },
       { description: { $regex: filters.search, $options: "i" } },
-      { "accountHolder": { $regex: filters.search, $options: "i" } }
+      { accountHolder: { $regex: filters.search, $options: "i" } },
+      { bankName: { $regex: filters.search, $options: "i" } }
     ]
   }
 
@@ -60,7 +60,7 @@ async function getTransactionsData(userId: string, page: number = 1, limit: numb
     const total = result.metadata[0]?.total || 0
 
     const transactions = transfers.map((transfer: any) => {
-      const txType = transfer.meta?.txType || 'debit'
+      const txType = transfer.meta?.txType || transfer.txType || 'debit'
       return {
         _id: transfer._id.toString(),
         txRef: transfer.txRef,
@@ -70,7 +70,15 @@ async function getTransactionsData(userId: string, page: number = 1, limit: numb
         createdAt: transfer.completedAt || transfer.txDate || transfer.createdAt || new Date(),
         status: transfer.txStatus,
         recipient: txType === 'credit' ? (transfer.senderName || transfer.accountHolder) : transfer.accountHolder,
-        description: transfer.description,
+        bankName: transfer.bankName,
+        branchName: transfer.branchName,
+        bankAccount: transfer.bankAccount || transfer.accountNumber,
+        accountType: transfer.accountType,
+        routingCode: transfer.routingCode,
+        identifierCode: transfer.identifierCode,
+        chargesType: transfer.chargesType,
+        description: transfer.description || transfer.txReason,
+        btcWallet: transfer.btcWallet || null,
       }
     })
 
@@ -105,12 +113,13 @@ export default async function TransactionsPage({
   )
 
   return (
-    <div className="min-h-screen bg-white w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="min-h-screen bg-white w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden font-sans">
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-orange-600/5 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="relative z-10">
+        <h1 className="text-xl font-bold mb-4">Transaction History</h1>
         <TransactionsList
           initialTransactions={transactions}
           total={total}

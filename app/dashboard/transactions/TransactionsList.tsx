@@ -38,6 +38,13 @@ interface Transaction {
   createdAt: Date
   status: string
   recipient?: string
+  bankName?: string
+  branchName?: string
+  bankAccount?: string
+  accountType?: string
+  routingCode?: string
+  identifierCode?: string
+  chargesType?: string
   description?: string
 }
 
@@ -297,12 +304,17 @@ export default function TransactionsList({
                             <p className="text-xl font-black text-slate-900 group-hover:text-orange-600 transition-colors truncate">
                               {transaction.txType === "credit" ? "Credit" : "Debit"}
                               <span className="font-bold text-slate-400 ml-3 italic">
-                                {transaction.recipient ? `• ${transaction.recipient}` : ""}
+                                {transaction.recipient ? `• ${transaction.bankName ? transaction.bankName + " // " : ""}${transaction.recipient}` : ""}
                               </span>
                             </p>
                             <span className={cn("text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border", status.color)}>
                               {transaction.status}
                             </span>
+                            {transaction.chargesType && (
+                              <span className="text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border border-orange-200 bg-orange-50 text-orange-600 italic">
+                                {transaction.chargesType}
+                              </span>
+                            )}
                           </div>
                           <div className="flex flex-wrap items-center gap-4 text-slate-400 font-bold text-[10px] uppercase tracking-widest">
                             <span className="flex items-center gap-1.5 bg-slate-100 px-2.5 py-1 rounded text-slate-600 border border-slate-200">

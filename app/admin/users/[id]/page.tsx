@@ -45,7 +45,6 @@ async function getUserDetails(id: string) {
     profileImage: user.profileImage,
     roles: user.roles,
     registerTime: user.registerTime,
-    bankDetails: user.bankDetails || {},
     transfers: transfers.map((t) => ({
       id: t._id.toString(),
       amount: t.amount,
@@ -188,33 +187,6 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                         <item.icon className="w-3.5 h-3.5 text-blue-600" /> {item.label}
                       </p>
                       <p className="text-lg font-black text-white group-hover/field:text-blue-500 transition-colors uppercase leading-tight italic tracking-tighter">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-12">
-                <div className="flex items-center gap-4 p-4 bg-emerald-600/10 rounded-2xl w-fit border border-emerald-600/20">
-                  <CreditCard className="w-5 h-5 text-emerald-600 animate-pulse" />
-                  <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Bank Account Details</h3>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  {[
-                    { label: "Account Holder", value: user.bankDetails?.accountHolderName, icon: UserIcon },
-                    { label: "Account Number", value: user.bankDetails?.accountNumber, icon: CreditCard, mono: true },
-                    { label: "Institution", value: user.bankDetails?.bankName, icon: Globe },
-                    { label: "Branch Node", value: user.bankDetails?.branchName, icon: MapPin },
-                    { label: "Routing Code", value: user.bankDetails?.routingCode, icon: Zap, mono: true },
-                    { label: "Account Flux", value: user.bankDetails?.accountType, icon: Activity },
-                  ].map((item, i) => (
-                    <div key={i} className="group/field">
-                      <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-3 flex items-center gap-2">
-                        <item.icon className="w-3.5 h-3.5 text-emerald-600" /> {item.label}
-                      </p>
-                      <p className={cn("text-lg font-black text-white group-hover/field:text-emerald-500 transition-colors uppercase italic tracking-tighter", item.mono && 'font-mono text-emerald-500 tracking-widest')}>
-                        {item.value || "UNDEFINED"}
-                      </p>
                     </div>
                   ))}
                 </div>

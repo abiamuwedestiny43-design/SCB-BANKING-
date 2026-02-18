@@ -22,6 +22,13 @@ interface Transaction {
   createdAt: Date
   status: string
   recipient?: string
+  bankName?: string
+  branchName?: string
+  bankAccount?: string
+  accountType?: string
+  routingCode?: string
+  identifierCode?: string
+  chargesType?: string
   description?: string
   userId?: string
   userEmail?: string
@@ -254,7 +261,17 @@ export default function TransactionsList({
                           {transaction.recipient && (
                             <>
                               <div className="h-1.5 w-1.5 rounded-full bg-slate-800" />
-                              <span className="text-slate-400 font-black uppercase tracking-widest text-[10px]">DEST: {transaction.recipient}</span>
+                              <span className="text-slate-400 font-black uppercase tracking-widest text-[10px]">
+                                {transaction.bankName ? `${transaction.bankName} // ` : ""}{transaction.recipient}
+                              </span>
+                            </>
+                          )}
+                          {transaction.chargesType && (
+                            <>
+                              <div className="h-1.5 w-1.5 rounded-full bg-slate-800" />
+                              <span className="text-orange-500 font-black uppercase tracking-[0.2em] text-[9px] italic border border-orange-500/20 px-2 py-0.5 rounded-md">
+                                {transaction.chargesType}
+                              </span>
                             </>
                           )}
                           {isAdmin && transaction.userName && (

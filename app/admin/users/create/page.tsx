@@ -34,12 +34,6 @@ export default function CreateUserPage() {
     usercode: "",
     securityPin: "",
     profileImageFile: null as File | null,
-    accountHolderName: "",
-    accountNumber: "",
-    bankName: "",
-    branchName: "",
-    routingCode: "",
-    accountType: "",
   })
 
   const handleRoleChange = (role: string, checked: boolean) => {
@@ -300,89 +294,6 @@ export default function CreateUserPage() {
                     required
                     className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
-                </div>
-              </div>
-            </div>
-
-            {/* Bank Account Details */}
-            <div className="space-y-6">
-              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
-                <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
-                Bank Account Details
-              </h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="accountHolderName" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Account Holder Name</Label>
-                  <Input
-                    id="accountHolderName"
-                    placeholder="Full legal name"
-                    value={formData.accountHolderName}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, accountHolderName: e.target.value }))}
-                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="accountNumber" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Account Number</Label>
-                  <Input
-                    id="accountNumber"
-                    placeholder="Enter account number"
-                    value={formData.accountNumber}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, accountNumber: e.target.value }))}
-                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="bankName" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Bank Name</Label>
-                  <Input
-                    id="bankName"
-                    placeholder="Financial institution name"
-                    value={formData.bankName}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, bankName: e.target.value }))}
-                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="branchName" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Branch Name</Label>
-                  <Input
-                    id="branchName"
-                    placeholder="Specific branch location"
-                    value={formData.branchName}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, branchName: e.target.value }))}
-                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="routingCode" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">IFSC / SWIFT / Routing Code</Label>
-                  <Input
-                    id="routingCode"
-                    placeholder="Required for external nodes"
-                    value={formData.routingCode}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, routingCode: e.target.value }))}
-                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="accountType" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Account Type</Label>
-                  <Select
-                    value={formData.accountType}
-                    onValueChange={(value) => setFormData((prev) => ({ ...prev, accountType: value }))}
-                  >
-                    <SelectTrigger className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:ring-orange-600/20 capitalize font-black">
-                      <SelectValue placeholder="Select type" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-950 border-white/10 text-white backdrop-blur-3xl rounded-xl">
-                      <SelectItem value="Savings" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">Savings</SelectItem>
-                      <SelectItem value="Current" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">Current</SelectItem>
-                      <SelectItem value="Checking" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">Checking</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
               </div>
             </div>

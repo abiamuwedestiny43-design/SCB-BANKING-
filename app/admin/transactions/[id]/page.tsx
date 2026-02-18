@@ -23,7 +23,8 @@ import {
     Cpu,
     Radio,
     Terminal,
-    Fingerprint
+    Fingerprint,
+    MapPin
 } from "lucide-react"
 import Link from "next/link"
 import dbConnect from "@/lib/database"
@@ -189,12 +190,23 @@ async function TransactionContent({ id }: { id: string }) {
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-2 italic">Regional Logic</p>
-                                        <div className="flex items-center gap-4">
-                                            <Globe className="w-4 h-4 text-blue-500" />
-                                            <p className="text-sm font-black text-white uppercase tracking-tighter italic">{tx.txRegion} / {tx.bankCountry || tx.country || "Global Hub"}</p>
+                                    <div className="grid grid-cols-2 gap-8">
+                                        <div>
+                                            <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-2 italic">Regional Logic</p>
+                                            <div className="flex items-center gap-4">
+                                                <Globe className="w-4 h-4 text-blue-500" />
+                                                <p className="text-sm font-black text-white uppercase tracking-tighter italic">{tx.txRegion} / {tx.bankCountry || tx.country || "Global Hub"}</p>
+                                            </div>
                                         </div>
+                                        {tx.chargesType && (
+                                            <div>
+                                                <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-2 italic">Fee Allocation</p>
+                                                <div className="flex items-center gap-3">
+                                                    <Zap className="w-4 h-4 text-orange-600" />
+                                                    <p className="text-sm font-black text-white uppercase tracking-tighter italic">{tx.chargesType} MODE</p>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -216,16 +228,35 @@ async function TransactionContent({ id }: { id: string }) {
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-2 italic">Node Account ID</p>
-                                        <p className="text-2xl font-black text-orange-600 font-mono tracking-[0.2em]">{tx.bankAccount}</p>
+                                    <div className="grid grid-cols-2 gap-8">
+                                        <div>
+                                            <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-2 italic">Node Account ID</p>
+                                            <p className="text-2xl font-black text-orange-600 font-mono tracking-[0.2em]">{tx.bankAccount}</p>
+                                        </div>
+                                        {tx.accountType && (
+                                            <div>
+                                                <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-2 italic">Account Category</p>
+                                                <p className="text-xl font-black text-white italic uppercase">{tx.accountType}</p>
+                                            </div>
+                                        )}
                                     </div>
 
+                                    {tx.branchName && (
+                                        <div>
+                                            <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-2 italic">Branch Identifier</p>
+                                            <div className="flex items-center gap-4">
+                                                <MapPin className="w-4 h-4 text-orange-500" />
+                                                <p className="text-sm font-black text-white uppercase tracking-tighter italic">{tx.branchName}</p>
+                                            </div>
+                                        </div>
+                                    )}
+
                                     <div className="space-y-5">
-                                        <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest italic">Routing Sequences</p>
+                                        <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest italic">Routing Sequences (IFSC / SWIFT / IBAN)</p>
                                         <div className="flex flex-wrap gap-4">
                                             {[tx.routingCode, tx.identifierCode || tx.identifier].filter(Boolean).map((code, idx) => (
-                                                <div key={idx} className="px-6 py-3.5 rounded-2xl bg-black border border-white/5 text-white font-mono text-[10px] font-black tracking-[0.2em] shadow-3xl uppercase italic">
+                                                <div key={idx} className="px-6 py-3.5 rounded-2xl bg-black border border-white/5 text-white font-mono text-[10px] font-black tracking-[0.2em] shadow-3xl uppercase italic flex items-center gap-3">
+                                                    <Fingerprint className="w-3.5 h-3.5 text-orange-500" />
                                                     {code}
                                                 </div>
                                             ))}

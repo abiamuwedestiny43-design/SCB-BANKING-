@@ -62,12 +62,6 @@ export default function SettingsClient({ user }: SettingsPageProps) {
         state: "",
         country: "",
         zipcode: "",
-        accountHolderName: "",
-        accountNumber: "",
-        bankName: "",
-        branchName: "",
-        routingCode: "",
-        accountType: "",
     })
 
     // hydrate profile
@@ -90,12 +84,6 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                 state: user?.bankInfo?.address?.state || "",
                 country: user?.bankInfo?.address?.country || "",
                 zipcode: user?.bankInfo?.address?.zipcode || "",
-                accountHolderName: user?.bankDetails?.accountHolderName || "",
-                accountNumber: user?.bankDetails?.accountNumber || "",
-                bankName: user?.bankDetails?.bankName || "",
-                branchName: user?.bankDetails?.branchName || "",
-                routingCode: user?.bankDetails?.routingCode || "",
-                accountType: user?.bankDetails?.accountType || "",
             })
         }
     }, [user])
@@ -252,7 +240,6 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                 { id: "profile", label: "Identity Node", icon: User },
                                 { id: "password", label: "Security Keys", icon: Lock },
                                 { id: "notifications", label: "Alert Matrix", icon: Bell },
-                                { id: "banking", label: "Bank Coordinates", icon: CreditCard },
                                 { id: "preferences", label: "Logic Flow", icon: Settings },
                             ].map((item) => (
                                 <button
@@ -530,61 +517,6 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                                 <Button className="w-full bg-slate-900 hover:bg-black text-white font-black h-20 rounded-[2rem] shadow-2xl text-xs uppercase tracking-[0.4em] transition-all hover:scale-[1.02]">
                                                     Commit Matrix Configuration
                                                 </Button>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            )}
-
-                            {activeTab === "banking" && (
-                                <motion.div
-                                    key="banking"
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -20 }}
-                                    className="space-y-12"
-                                >
-                                    <Card className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass border-t-8 border-t-emerald-600">
-                                        <CardHeader className="p-16 border-b border-slate-50 relative overflow-hidden">
-                                            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/[0.03] rounded-full -mr-32 -mt-32 blur-[100px] pointer-events-none"></div>
-                                            <div className="flex items-center gap-8 relative z-10">
-                                                <div className="h-20 w-20 bg-emerald-50 rounded-[2rem] shadow-xl flex items-center justify-center text-emerald-600 border border-emerald-100">
-                                                    <CreditCard className="h-10 w-10" />
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Bank <span className="text-emerald-600">Coordinates</span></h3>
-                                                    <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">External node parameters for institutional asset synchronization.</p>
-                                                </div>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent className="p-16">
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                                                {[
-                                                    { label: "Account Holder", value: profileData.accountHolderName, icon: User },
-                                                    { label: "Account Number", value: profileData.accountNumber, icon: CreditCard },
-                                                    { label: "Bank Institution", value: profileData.bankName, icon: Globe },
-                                                    { label: "Branch Node", value: profileData.branchName, icon: MapPin },
-                                                    { label: "Routing / SWIFT", value: profileData.routingCode, icon: Zap },
-                                                    { label: "Account Flux (Type)", value: profileData.accountType, icon: Activity },
-                                                ].map((item, i) => (
-                                                    <div key={i} className="space-y-4 p-8 rounded-[2rem] bg-slate-50 border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-500">
-                                                        <Label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1 flex items-center gap-2">
-                                                            <item.icon className="h-3 w-3 text-emerald-600" /> {item.label}
-                                                        </Label>
-                                                        <p className="text-lg font-black text-slate-900 uppercase tracking-tight italic pl-1">
-                                                            {item.value || "NOT CONFIGURED"}
-                                                        </p>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <div className="mt-12 p-8 rounded-[2.5rem] bg-emerald-50 border border-emerald-100 flex items-center gap-6">
-                                                <div className="h-14 w-14 rounded-2xl bg-white flex items-center justify-center text-emerald-600 shadow-sm">
-                                                    <ShieldCheck className="w-7 h-7" />
-                                                </div>
-                                                <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest leading-relaxed italic">
-                                                    These coordinates are verified by institutional auditors. Contact technical support to update institutional link parameters.
-                                                </p>
                                             </div>
                                         </CardContent>
                                     </Card>

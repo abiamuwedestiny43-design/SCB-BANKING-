@@ -56,7 +56,14 @@ async function getAllTransactionsData(page: number = 1, limit: number = 10, filt
       createdAt: transfer.completedAt || transfer.txDate || new Date(),
       status: transfer.txStatus,
       recipient: transfer.accountHolder,
-      description: transfer.description,
+      bankName: transfer.bankName,
+      branchName: transfer.branchName,
+      bankAccount: transfer.bankAccount,
+      accountType: transfer.accountType,
+      routingCode: transfer.routingCode,
+      identifierCode: transfer.identifierCode,
+      chargesType: transfer.chargesType || "SHA",
+      description: transfer.description || transfer.txReason,
       userId: (transfer.userId as any)?._id?.toString(),
       userName: (transfer.userId as any)?.bankInfo?.bio
         ? `${(transfer.userId as any).bankInfo.bio.firstname} ${(transfer.userId as any).bankInfo.bio.lastname}`

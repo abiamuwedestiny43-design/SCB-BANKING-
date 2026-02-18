@@ -1,4 +1,3 @@
-// app/dashboard/settings/page.tsx
 import { getCurrentUser } from "@/lib/auth"
 import { toPlainObject } from "@/lib/serialization"
 import SettingsClient from "./SettingsClient"
