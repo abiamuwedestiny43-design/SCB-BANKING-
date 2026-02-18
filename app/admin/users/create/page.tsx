@@ -34,6 +34,12 @@ export default function CreateUserPage() {
     usercode: "",
     securityPin: "",
     profileImageFile: null as File | null,
+    accountHolderName: "",
+    accountNumber: "",
+    bankName: "",
+    branchName: "",
+    routingCode: "",
+    accountType: "",
   })
 
   const handleRoleChange = (role: string, checked: boolean) => {
@@ -67,9 +73,9 @@ export default function CreateUserPage() {
   }
 
   return (
-    <div className="p-4 md:p-10 space-y-10 relative min-h-screen bg-slate-50/50">
+    <div className="p-4 md:p-10 space-y-10 relative min-h-screen bg-black selection:bg-orange-500/30">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
 
       {/* Header */}
       <div className="flex flex-col gap-4 relative z-10">
@@ -77,58 +83,60 @@ export default function CreateUserPage() {
           variant="ghost"
           size="icon"
           asChild
-          className="w-fit rounded-xl hover:bg-white border border-slate-200 text-slate-950 hover:text-black transition-all shadow-sm"
+          className="w-fit h-12 w-12 rounded-xl bg-slate-900 border border-white/5 text-white hover:bg-white hover:text-black transition-all shadow-2xl group"
         >
           <Link href="/admin/users">
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
           </Link>
         </Button>
 
-        <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-widest">
+        <div className="space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-white/5 text-orange-500 text-[10px] font-black uppercase tracking-widest shadow-xl">
             <UserPlus className="w-3 h-3" /> Account Creation
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter">
-            Create New <span className="text-slate-500 italic font-medium">Account</span>
+          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">
+            Create New <span className="text-orange-600 italic font-medium">Account</span>
           </h1>
-          <p className="text-slate-900 font-bold max-w-md uppercase text-xs tracking-widest">Open a new user account with full banking access and privileges.</p>
+          <p className="text-slate-500 font-bold max-w-md uppercase text-[10px] tracking-widest leading-relaxed">Open a new user account with full banking access and privileges on the Sovereign network.</p>
         </div>
       </div>
 
-      <Card className="max-w-4xl bg-white border-slate-200 shadow-2xl rounded-[3rem] relative z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 h-32 w-32 bg-orange-500/5 rounded-full blur-3xl"></div>
+      <Card className="max-w-4xl bg-slate-900/40 border-white/5 shadow-3xl rounded-[3rem] relative z-10 overflow-hidden glass-dark">
+        <div className="absolute top-0 right-0 h-32 w-32 bg-orange-600/5 rounded-full blur-3xl"></div>
 
-        <CardHeader className="p-8 border-b border-slate-100 bg-slate-50/50">
-          <CardTitle className="text-2xl font-black text-black italic tracking-tight uppercase">Account Details</CardTitle>
-          <CardDescription className="text-slate-900 font-black uppercase tracking-widest text-[10px] mt-1">
+        <CardHeader className="p-8 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+          <CardTitle className="text-2xl font-black text-white italic tracking-tight uppercase">Account Details</CardTitle>
+          <CardDescription className="text-slate-500 font-black uppercase tracking-widest text-[10px] mt-2">
             Complete all required fields to register the new user account
           </CardDescription>
         </CardHeader>
 
         <CardContent className="p-8">
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-12">
             {/* Account Credentials */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-black text-black uppercase tracking-tight flex items-center gap-2 italic">
-                <div className="w-1.5 h-6 bg-orange-600 rounded-full"></div>
+            <div className="space-y-6">
+              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+                <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
                 Account Credentials
               </h3>
 
-              <div className="space-y-2">
-                <Label htmlFor="profileImage" className="text-black font-black uppercase tracking-widest text-[10px]">Profile Picture</Label>
-                <input
-                  id="profileImage"
-                  type="file"
-                  accept="image/*"
-                  title="Upload profile picture"
-                  onChange={(e) => setFormData((prev) => ({ ...prev, profileImageFile: e.target.files?.[0] || null }))}
-                  className="block w-full text-sm text-slate-900 font-bold file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:text-xs file:font-black file:uppercase file:tracking-widest file:bg-orange-600 file:text-white hover:file:bg-orange-700 file:transition-all file:cursor-pointer"
-                />
+              <div className="space-y-3">
+                <Label htmlFor="profileImage" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Profile Picture</Label>
+                <div className="p-1 bg-black/40 border border-white/5 rounded-2xl">
+                  <input
+                    id="profileImage"
+                    type="file"
+                    accept="image/*"
+                    title="Upload profile picture"
+                    onChange={(e) => setFormData((prev) => ({ ...prev, profileImageFile: e.target.files?.[0] || null }))}
+                    className="block w-full text-xs text-slate-500 font-bold file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:text-[10px] file:font-black file:uppercase file:tracking-widest file:bg-slate-900 file:text-white hover:file:bg-orange-600 file:transition-all file:cursor-pointer file:shadow-xl"
+                  />
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-black font-black uppercase tracking-widest text-[10px]">Email Address</Label>
+                  <Label htmlFor="email" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Email Address</Label>
                   <Input
                     id="email"
                     type="email"
@@ -136,11 +144,11 @@ export default function CreateUserPage() {
                     value={formData.email}
                     onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-black font-black uppercase tracking-widest text-[10px]">Password</Label>
+                  <Label htmlFor="password" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Password</Label>
                   <Input
                     id="password"
                     type="password"
@@ -148,25 +156,25 @@ export default function CreateUserPage() {
                     value={formData.password}
                     onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="usercode" className="text-black font-black uppercase tracking-widest text-[10px]">User Access Code</Label>
+                  <Label htmlFor="usercode" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">User Access Code</Label>
                   <Input
                     id="usercode"
                     placeholder="Enter access code"
                     value={formData.usercode}
                     onChange={(e) => setFormData((prev) => ({ ...prev, usercode: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="securityPin" className="text-black font-black uppercase tracking-widest text-[10px]">Security PIN</Label>
+                  <Label htmlFor="securityPin" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Security PIN</Label>
                   <Input
                     id="securityPin"
                     type="password"
@@ -175,159 +183,242 @@ export default function CreateUserPage() {
                     value={formData.securityPin}
                     onChange={(e) => setFormData((prev) => ({ ...prev, securityPin: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
               </div>
             </div>
 
             {/* Personal Information */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-black text-black uppercase tracking-tight flex items-center gap-2 italic">
-                <div className="w-1.5 h-6 bg-orange-600 rounded-full"></div>
+            <div className="space-y-6">
+              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+                <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
                 Personal Information
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="firstname" className="text-black font-black uppercase tracking-widest text-[10px]">First Name</Label>
+                  <Label htmlFor="firstname" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">First Name</Label>
                   <Input
                     id="firstname"
                     placeholder="John"
                     value={formData.firstname}
                     onChange={(e) => setFormData((prev) => ({ ...prev, firstname: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastname" className="text-black font-black uppercase tracking-widest text-[10px]">Last Name</Label>
+                  <Label htmlFor="lastname" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Last Name</Label>
                   <Input
                     id="lastname"
                     placeholder="Doe"
                     value={formData.lastname}
                     onChange={(e) => setFormData((prev) => ({ ...prev, lastname: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone" className="text-black font-black uppercase tracking-widest text-[10px]">Phone Number</Label>
+                <Label htmlFor="phone" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Phone Number</Label>
                 <Input
                   id="phone"
                   placeholder="+1 (555) 000-0000"
                   value={formData.phone}
                   onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
                   required
-                  className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                  className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                 />
               </div>
             </div>
 
             {/* Address Information */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-black text-black uppercase tracking-tight flex items-center gap-2 italic">
-                <div className="w-1.5 h-6 bg-orange-600 rounded-full"></div>
+            <div className="space-y-6">
+              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+                <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
                 Address Information
               </h3>
 
               <div className="space-y-2">
-                <Label htmlFor="address" className="text-black font-black uppercase tracking-widest text-[10px]">Street Address</Label>
+                <Label htmlFor="address" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Street Address</Label>
                 <Input
                   id="address"
                   placeholder="123 Financial District"
                   value={formData.address}
                   onChange={(e) => setFormData((prev) => ({ ...prev, address: e.target.value }))}
                   required
-                  className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                  className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="city" className="text-black font-black uppercase tracking-widest text-[10px]">City</Label>
+                  <Label htmlFor="city" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">City</Label>
                   <Input
                     id="city"
                     placeholder="New York"
                     value={formData.city}
                     onChange={(e) => setFormData((prev) => ({ ...prev, city: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="state" className="text-black font-black uppercase tracking-widest text-[10px]">State / Province</Label>
+                  <Label htmlFor="state" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">State / Province</Label>
                   <Input
                     id="state"
                     placeholder="NY"
                     value={formData.state}
                     onChange={(e) => setFormData((prev) => ({ ...prev, state: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="country" className="text-black font-black uppercase tracking-widest text-[10px]">Country</Label>
+                  <Label htmlFor="country" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Country</Label>
                   <Input
                     id="country"
                     placeholder="USA"
                     value={formData.country}
                     onChange={(e) => setFormData((prev) => ({ ...prev, country: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="zipcode" className="text-black font-black uppercase tracking-widest text-[10px]">Postal / Zip Code</Label>
+                  <Label htmlFor="zipcode" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Postal / Zip Code</Label>
                   <Input
                     id="zipcode"
                     placeholder="10001"
                     value={formData.zipcode}
                     onChange={(e) => setFormData((prev) => ({ ...prev, zipcode: e.target.value }))}
                     required
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
               </div>
             </div>
 
+            {/* Bank Account Details */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+                <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
+                Bank Account Details
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="accountHolderName" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Account Holder Name</Label>
+                  <Input
+                    id="accountHolderName"
+                    placeholder="Full legal name"
+                    value={formData.accountHolderName}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, accountHolderName: e.target.value }))}
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="accountNumber" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Account Number</Label>
+                  <Input
+                    id="accountNumber"
+                    placeholder="Enter account number"
+                    value={formData.accountNumber}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, accountNumber: e.target.value }))}
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="bankName" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Bank Name</Label>
+                  <Input
+                    id="bankName"
+                    placeholder="Financial institution name"
+                    value={formData.bankName}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, bankName: e.target.value }))}
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="branchName" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Branch Name</Label>
+                  <Input
+                    id="branchName"
+                    placeholder="Specific branch location"
+                    value={formData.branchName}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, branchName: e.target.value }))}
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="routingCode" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">IFSC / SWIFT / Routing Code</Label>
+                  <Input
+                    id="routingCode"
+                    placeholder="Required for external nodes"
+                    value={formData.routingCode}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, routingCode: e.target.value }))}
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="accountType" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Account Type</Label>
+                  <Select
+                    value={formData.accountType}
+                    onValueChange={(value) => setFormData((prev) => ({ ...prev, accountType: value }))}
+                  >
+                    <SelectTrigger className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:ring-orange-600/20 capitalize font-black">
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-950 border-white/10 text-white backdrop-blur-3xl rounded-xl">
+                      <SelectItem value="Savings" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">Savings</SelectItem>
+                      <SelectItem value="Current" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">Current</SelectItem>
+                      <SelectItem value="Checking" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">Checking</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </div>
+
             {/* Account Configuration */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-black text-black uppercase tracking-tight flex items-center gap-2 italic">
-                <div className="w-1.5 h-6 bg-orange-600 rounded-full"></div>
+            <div className="space-y-6">
+              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+                <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
                 Account Configuration
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="currency" className="text-black font-black uppercase tracking-widest text-[10px]">Primary Currency</Label>
+                  <Label htmlFor="currency" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Primary Currency</Label>
                   <Select
                     value={formData.currency}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, currency: value }))}
                   >
-                    <SelectTrigger className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black">
+                    <SelectTrigger className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:ring-orange-600/20 capitalize font-black">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-white border-slate-200 rounded-xl">
-                      <SelectItem value="USD" className="text-black hover:bg-slate-50 font-medium">USD — US Dollar</SelectItem>
-                      <SelectItem value="EUR" className="text-black hover:bg-slate-50 font-medium">EUR — Euro</SelectItem>
-                      <SelectItem value="GBP" className="text-black hover:bg-slate-50 font-medium">GBP — British Pound</SelectItem>
-                      <SelectItem value="JPY" className="text-black hover:bg-slate-50 font-medium">JPY — Japanese Yen</SelectItem>
-                      <SelectItem value="INR" className="text-black hover:bg-slate-50 font-medium">INR — Indian Rupees</SelectItem>
-                      <SelectItem value="CHF" className="text-black hover:bg-slate-50 font-medium">CHF — Swiss Franc</SelectItem>
-                      <SelectItem value="CAD" className="text-black hover:bg-slate-50 font-medium">CAD — Canadian Dollar</SelectItem>
-                      <SelectItem value="AUD" className="text-black hover:bg-slate-50 font-medium">AUD — Australian Dollar</SelectItem>
-                      <SelectItem value="SGD" className="text-black hover:bg-slate-50 font-medium">SGD — Singapore Dollar</SelectItem>
+                    <SelectContent className="bg-slate-950 border-white/10 text-white backdrop-blur-3xl rounded-xl">
+                      <SelectItem value="USD" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">USD — US Dollar</SelectItem>
+                      <SelectItem value="EUR" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">EUR — Euro</SelectItem>
+                      <SelectItem value="GBP" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">GBP — British Pound</SelectItem>
+                      <SelectItem value="JPY" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">JPY — Japanese Yen</SelectItem>
+                      <SelectItem value="INR" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">INR — Indian Rupees</SelectItem>
+                      <SelectItem value="CHF" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">CHF — Swiss Franc</SelectItem>
+                      <SelectItem value="CAD" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">CAD — Canadian Dollar</SelectItem>
+                      <SelectItem value="AUD" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">AUD — Australian Dollar</SelectItem>
+                      <SelectItem value="SGD" className="focus:bg-orange-600 font-black uppercase tracking-widest text-[10px]">SGD — Singapore Dollar</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="initialBalance" className="text-black font-black uppercase tracking-widest text-[10px]">Starting Balance</Label>
+                  <Label htmlFor="initialBalance" className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Starting Balance</Label>
                   <Input
                     id="initialBalance"
                     type="number"
@@ -338,24 +429,24 @@ export default function CreateUserPage() {
                     onChange={(e) =>
                       setFormData((prev) => ({ ...prev, initialBalance: Number.parseFloat(e.target.value) || 0 }))
                     }
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black focus:border-orange-600 transition-all font-black"
+                    className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800"
                   />
                 </div>
               </div>
 
               {/* Access Levels */}
-              <div className="space-y-3">
-                <Label className="text-black font-black uppercase tracking-widest text-[10px]">Access Levels</Label>
+              <div className="space-y-4">
+                <Label className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Access Levels</Label>
                 <div className="flex flex-wrap gap-4">
                   {["member", "administrator", "super-admin"].map((role) => (
-                    <div key={role} className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-orange-500/30 transition-all">
+                    <div key={role} className="flex items-center space-x-3 bg-black/40 px-6 py-4 rounded-2xl border border-white/5 hover:border-orange-600/30 transition-all group/role">
                       <Checkbox
                         id={role}
                         checked={formData.roles.includes(role)}
                         onCheckedChange={(checked) => handleRoleChange(role, checked as boolean)}
-                        className="border-slate-300 data-[state=checked]:bg-orange-600 data-[state=checked]:border-orange-600"
+                        className="h-5 w-5 border-white/20 data-[state=checked]:bg-orange-600 data-[state=checked]:border-orange-600"
                       />
-                      <Label htmlFor={role} className="capitalize text-black font-black cursor-pointer text-sm">
+                      <Label htmlFor={role} className="capitalize text-slate-400 group-hover/role:text-white font-black cursor-pointer text-xs uppercase tracking-widest transition-colors">
                         {role.replace("-", " ")}
                       </Label>
                     </div>
@@ -364,39 +455,39 @@ export default function CreateUserPage() {
               </div>
 
               {/* Account Permissions */}
-              <div className="space-y-3">
-                <Label className="text-black font-black uppercase tracking-widest text-[10px]">Account Permissions</Label>
+              <div className="space-y-4">
+                <Label className="text-slate-400 font-black uppercase tracking-widest text-[10px] ml-1">Account Permissions</Label>
                 <div className="flex flex-wrap gap-4">
-                  <div className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-orange-500/30 transition-all">
+                  <div className="flex items-center space-x-3 bg-black/40 px-6 py-4 rounded-2xl border border-white/5 hover:border-orange-600/30 transition-all group/perm">
                     <Checkbox
                       id="verified"
                       checked={formData.verified}
                       onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, verified: checked as boolean }))}
-                      className="border-slate-300 data-[state=checked]:bg-orange-600 data-[state=checked]:border-orange-600"
+                      className="h-5 w-5 border-white/20 data-[state=checked]:bg-orange-600 data-[state=checked]:border-orange-600"
                     />
-                    <Label htmlFor="verified" className="text-black font-black cursor-pointer text-sm">Account Verified</Label>
+                    <Label htmlFor="verified" className="text-slate-400 group-hover/perm:text-white font-black cursor-pointer text-xs uppercase tracking-widest transition-colors">Account Verified</Label>
                   </div>
-                  <div className="flex items-center space-x-2 bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-orange-500/30 transition-all">
+                  <div className="flex items-center space-x-3 bg-black/40 px-6 py-4 rounded-2xl border border-white/5 hover:border-orange-600/30 transition-all group/perm">
                     <Checkbox
                       id="canTransfer"
                       checked={formData.canTransfer}
                       onCheckedChange={(checked) =>
                         setFormData((prev) => ({ ...prev, canTransfer: checked as boolean }))
                       }
-                      className="border-slate-300 data-[state=checked]:bg-orange-600 data-[state=checked]:border-orange-600"
+                      className="h-5 w-5 border-white/20 data-[state=checked]:bg-orange-600 data-[state=checked]:border-orange-600"
                     />
-                    <Label htmlFor="canTransfer" className="text-black font-black cursor-pointer text-sm">Transfer Enabled</Label>
+                    <Label htmlFor="canTransfer" className="text-slate-400 group-hover/perm:text-white font-black cursor-pointer text-xs uppercase tracking-widest transition-colors">Transfer Enabled</Label>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-slate-100">
+            <div className="flex flex-col sm:flex-row gap-6 pt-10 border-t border-white/5">
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="bg-orange-600 hover:bg-orange-700 text-white font-black h-14 px-10 rounded-2xl shadow-xl shadow-orange-600/20 transition-all uppercase tracking-widest text-xs"
+                className="bg-orange-600 hover:bg-white hover:text-black text-white font-black h-16 px-12 rounded-2xl shadow-3xl shadow-orange-600/20 transition-all uppercase tracking-[0.2em] text-xs flex-1 sm:flex-none border-none"
               >
                 {isLoading ? "Synchronizing..." : "Create Account"}
               </Button>
@@ -404,7 +495,7 @@ export default function CreateUserPage() {
                 type="button"
                 variant="outline"
                 asChild
-                className="h-14 px-10 rounded-2xl bg-white hover:bg-slate-50 text-black font-black border border-slate-200 transition-all uppercase tracking-widest text-xs shadow-sm"
+                className="h-16 px-12 rounded-2xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white font-black border border-white/5 transition-all uppercase tracking-[0.2em] text-xs shadow-2xl"
               >
                 <Link href="/admin/users">Cancel Operation</Link>
               </Button>

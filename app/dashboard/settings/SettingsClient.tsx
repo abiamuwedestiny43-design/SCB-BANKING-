@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Badge } from "@/components/ui/badge"
 import {
     CheckCircle,
     AlertCircle,
@@ -25,7 +26,11 @@ import {
     Globe,
     Settings,
     Bell,
-    CreditCard
+    CreditCard,
+    ArrowRight,
+    Activity,
+    Smartphone,
+    Zap
 } from "lucide-react"
 import type { IUser } from "@/models/User"
 import { cn } from "@/lib/utils"
@@ -57,6 +62,12 @@ export default function SettingsClient({ user }: SettingsPageProps) {
         state: "",
         country: "",
         zipcode: "",
+        accountHolderName: "",
+        accountNumber: "",
+        bankName: "",
+        branchName: "",
+        routingCode: "",
+        accountType: "",
     })
 
     // hydrate profile
@@ -79,6 +90,12 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                 state: user?.bankInfo?.address?.state || "",
                 country: user?.bankInfo?.address?.country || "",
                 zipcode: user?.bankInfo?.address?.zipcode || "",
+                accountHolderName: user?.bankDetails?.accountHolderName || "",
+                accountNumber: user?.bankDetails?.accountNumber || "",
+                bankName: user?.bankDetails?.bankName || "",
+                branchName: user?.bankDetails?.branchName || "",
+                routingCode: user?.bankDetails?.routingCode || "",
+                accountType: user?.bankDetails?.accountType || "",
             })
         }
     }, [user])
@@ -167,122 +184,148 @@ export default function SettingsClient({ user }: SettingsPageProps) {
     }
 
     return (
-        <div className="min-h-screen bg-white w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
-            {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="min-h-screen bg-slate-50/20 w-full p-6 md:p-12 pt-24 md:pt-32 relative overflow-hidden selection:bg-orange-500/20">
+            {/* High-Tech Background Decor */}
+            <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-500/[0.02] rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
 
-            <div className="max-w-6xl mx-auto space-y-10 relative z-10">
+            <div className="max-w-7xl mx-auto space-y-12 relative z-10">
 
-                {/* Header Section */}
-                <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-200">
-                    <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-orange-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-50 border border-orange-100 w-fit rounded-full">
-                            <Settings className="h-3 w-3" />
-                            Account Settings
+                {/* Industrial Header Section */}
+                <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
+                            <Settings className="w-3.5 h-3.5 text-orange-500 animate-spin-slow" /> IDENTITY ARCHITECTURE
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
-                            User <span className="text-slate-400 italic">Profile</span>
+                        <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-none uppercase">
+                            USER <span className="text-orange-600 italic">GATEWAY</span>
                         </h1>
-                        <p className="text-slate-600 font-medium">Manage your personal information and security settings.</p>
+                        <p className="text-slate-500 font-bold max-w-lg text-lg">Modulate identity parameters, encryption sequences, and global security protocols.</p>
                     </div>
-                    <div className="flex items-center gap-4">
-                        <div className="hidden md:block text-right">
-                            <p className="text-sm font-black text-slate-900 tracking-tight uppercase">{profileData.firstname} {profileData.lastname}</p>
-                            <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-black">Verified Member</p>
+
+                    <div className="p-6 bg-white/50 backdrop-blur-xl rounded-[2.5rem] border border-white shadow-xl glass flex items-center gap-6">
+                        <div className="flex flex-col items-end">
+                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Account Sync</p>
+                            <div className="flex items-center gap-2">
+                                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                                <p className="text-sm font-black text-slate-900 uppercase">System Linked</p>
+                            </div>
                         </div>
-                        <div className="h-16 w-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-orange-600 text-2xl font-black shadow-sm relative group cursor-pointer overflow-hidden">
+                        <div className="h-10 w-[1px] bg-slate-200"></div>
+                        <div className="h-14 w-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-orange-600 shadow-sm overflow-hidden relative group">
                             {user?.profileImage ? (
-                                <img src={user.profileImage} alt="Profile" className="h-full w-full object-cover transition-opacity" />
+                                <img src={user.profileImage} alt="Profile" className="h-full w-full object-cover transition-transform group-hover:scale-110" />
                             ) : (
-                                <span className="uppercase">{profileData.firstname?.[0]}{profileData.lastname?.[0]}</span>
+                                <span className="font-black text-xl uppercase italic">{profileData.firstname?.[0]}{profileData.lastname?.[0]}</span>
                             )}
-                            <div className="absolute inset-0 bg-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
                     </div>
                 </motion.div>
 
                 {message && (
-                    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                         <Alert className={cn(
-                            "border-none shadow-xl bg-white rounded-2xl p-6",
-                            message.type === "success" ? "border-l-4 border-orange-600" : "border-l-4 border-red-600"
+                            "border-none shadow-2xl rounded-[2.5rem] p-8 glass animate-in slide-in-from-top-4 duration-500",
+                            message.type === "success" ? "bg-emerald-50/50 text-emerald-700" : "bg-red-50/50 text-red-700"
                         )}>
-                            {message.type === "success" ? <CheckCircle className="h-6 w-6 text-orange-600" /> : <AlertCircle className="h-6 w-6 text-red-600" />}
-                            <AlertDescription className={cn(
-                                "font-black uppercase text-lg ml-3",
-                                message.type === "success" ? "text-orange-600" : "text-red-600"
-                            )}>
-                                {message.text}
-                            </AlertDescription>
+                            <div className="flex items-center gap-4">
+                                {message.type === "success" ? (
+                                    <div className="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center"><CheckCircle className="h-6 w-6" /></div>
+                                ) : (
+                                    <div className="h-10 w-10 rounded-xl bg-red-100 flex items-center justify-center"><AlertCircle className="h-6 w-6" /></div>
+                                )}
+                                <AlertDescription className="font-black uppercase tracking-[0.1em] text-sm">
+                                    <span className="opacity-50 mr-2">PROTOCOL STATUS:</span> {message.text}
+                                </AlertDescription>
+                            </div>
                         </Alert>
                     </motion.div>
                 )}
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-                    {/* Navigation Sidebar */}
+                    {/* Industrial Sidebar Nav */}
                     <motion.div {...fadeInUp} className="lg:col-span-3">
-                        <Card className="border border-slate-200 shadow-sm bg-white sticky top-32 rounded-[2.5rem] overflow-hidden">
-                            <CardContent className="p-3">
-                                <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-hide">
-                                    {[
-                                        { id: "profile", label: "Profile", icon: User },
-                                        { id: "password", label: "Security", icon: Lock },
-                                        { id: "preferences", label: "Preferences", icon: Settings },
-                                        { id: "notifications", label: "Notifications", icon: Bell },
-                                        { id: "billing", label: "Billing", icon: CreditCard },
-                                    ].map((item) => (
-                                        <button
-                                            key={item.id}
-                                            onClick={() => setActiveTab(item.id)}
-                                            className={cn(
-                                                "flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-500 whitespace-nowrap group",
-                                                activeTab === item.id
-                                                    ? "bg-orange-600 text-white shadow-xl shadow-orange-600/20 font-black"
-                                                    : "text-slate-500 hover:bg-white hover:text-orange-600 font-bold"
-                                            )}
-                                        >
-                                            <item.icon className={cn("h-4 w-4 transition-transform group-hover:scale-110", activeTab === item.id ? "text-white" : "text-slate-400")} />
-                                            <span className="text-sm uppercase tracking-tighter">{item.label}</span>
-                                        </button>
-                                    ))}
-                                </nav>
-                            </CardContent>
+                        <Card className="border-none bg-white/50 backdrop-blur-2xl shadow-2xl rounded-[3rem] overflow-hidden glass p-4 space-y-2">
+                            <p className="px-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-4 mt-2">Matrix Hub</p>
+                            {[
+                                { id: "profile", label: "Identity Node", icon: User },
+                                { id: "password", label: "Security Keys", icon: Lock },
+                                { id: "notifications", label: "Alert Matrix", icon: Bell },
+                                { id: "banking", label: "Bank Coordinates", icon: CreditCard },
+                                { id: "preferences", label: "Logic Flow", icon: Settings },
+                            ].map((item) => (
+                                <button
+                                    key={item.id}
+                                    onClick={() => setActiveTab(item.id)}
+                                    className={cn(
+                                        "w-full flex items-center gap-4 px-6 py-5 rounded-[1.8rem] transition-all duration-500 group relative overflow-hidden",
+                                        activeTab === item.id
+                                            ? "bg-slate-900 text-white shadow-2xl font-black"
+                                            : "text-slate-500 hover:bg-white hover:text-orange-600 font-bold"
+                                    )}
+                                >
+                                    <item.icon className={cn("h-5 w-5 transition-all duration-500", activeTab === item.id ? "text-orange-500 scale-110" : "text-slate-400 group-hover:text-orange-500")} />
+                                    <span className="text-xs uppercase tracking-[0.15em]">{item.label}</span>
+                                    {activeTab === item.id && (
+                                        <motion.div layoutId="nav-glow" className="absolute right-4 w-1.5 h-1.5 rounded-full bg-orange-500 shadow-[0_0_10px_#f97316]"></motion.div>
+                                    )}
+                                </button>
+                            ))}
+                        </Card>
+
+                        {/* Node Health Card */}
+                        <Card className="mt-8 border-none bg-slate-900 text-white rounded-[3rem] p-8 glass-dark overflow-hidden relative group">
+                            <div className="absolute -right-10 -bottom-10 h-40 w-40 bg-orange-600/10 rounded-full blur-3xl group-hover:bg-orange-600/20 transition-all duration-700"></div>
+                            <div className="relative z-10 space-y-6">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-8 w-8 rounded-lg bg-orange-600/20 flex items-center justify-center text-orange-500"><ShieldCheck className="w-4 h-4" /></div>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-orange-500">Node Integrity</p>
+                                </div>
+                                <div className="space-y-1">
+                                    <h4 className="text-2xl font-black tracking-tighter uppercase italic">98.4<span className="text-white/30">%</span></h4>
+                                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Global trust score</p>
+                                </div>
+                                <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div className="h-full bg-orange-600 w-[98.4%] rounded-full shadow-[0_0_10px_#f97316]"></div>
+                                </div>
+                            </div>
                         </Card>
                     </motion.div>
 
-                    {/* Main Content Area */}
-                    <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-9 space-y-10">
+                    {/* Content Matrix Area */}
+                    <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-9 space-y-12">
 
                         <AnimatePresence mode="wait">
                             {activeTab === "profile" && (
                                 <motion.div
                                     key="profile"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    className="space-y-8"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    className="space-y-12"
                                 >
-                                    <Card className="border border-slate-200 shadow-xl overflow-hidden bg-white rounded-[3rem]">
-                                        <div className="relative">
-                                            <div className="h-40 bg-gradient-to-r from-slate-900 to-orange-900 relative overflow-hidden group">
-                                                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
-                                                {/* Decorative Label */}
-                                                <div className="absolute top-8 right-8 text-right hidden md:block">
-                                                    <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.4em] leading-none mb-1">Account System</p>
-                                                    <p className="text-white/20 font-black text-2xl tracking-tighter opacity-30 italic leading-none uppercase">active_state</p>
-                                                </div>
+                                    <Card className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass border-t-8 border-t-orange-600">
+                                        <div className="relative h-48 bg-slate-900 overflow-hidden">
+                                            <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+                                            <div className="absolute inset-0 bg-gradient-to-br from-orange-950/50 to-slate-900"></div>
+                                            <div className="absolute top-10 right-10 text-right opacity-20">
+                                                <p className="text-[12px] font-black text-white uppercase tracking-[0.5em]">IDENTITY_CORE</p>
+                                                <p className="text-4xl font-black text-white italic tracking-tighter leading-none mt-2">ACTIVE_STATE</p>
                                             </div>
-                                            <div className="absolute -bottom-16 left-12 p-1.5 rounded-[2.5rem] bg-white border border-slate-200 shadow-2xl z-10">
-                                                <div className="h-32 w-32 rounded-[2rem] bg-white flex items-center justify-center relative overflow-hidden group/avatar cursor-pointer">
+
+                                            <div className="absolute -bottom-16 left-16 p-2 rounded-[3rem] bg-white border border-slate-100 shadow-2xl z-10 glass">
+                                                <div className="h-36 w-36 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex items-center justify-center relative overflow-hidden group/avatar cursor-pointer">
                                                     {user?.profileImage ? (
                                                         <img src={user.profileImage} alt="Profile" className="h-full w-full object-cover group-hover/avatar:scale-110 transition-transform duration-700" />
                                                     ) : (
-                                                        <User className="h-12 w-12 text-slate-300" />
+                                                        <User className="h-16 w-16 text-slate-300" />
                                                     )}
-                                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/avatar:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-                                                        <Camera className="text-white h-8 w-8" />
+                                                    <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover/avatar:opacity-100 transition-all flex items-center justify-center backdrop-blur-md">
+                                                        <div className="flex flex-col items-center gap-2">
+                                                            <Camera className="text-orange-500 h-8 w-8" />
+                                                            <span className="text-[10px] font-black text-white uppercase tracking-widest">Update</span>
+                                                        </div>
                                                     </div>
                                                     <input
                                                         type="file"
@@ -306,51 +349,55 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                             </div>
                                         </div>
 
-                                        <CardHeader className="pt-24 px-10">
-                                            <div className="flex justify-between items-center">
-                                                <div className="space-y-1">
-                                                    <CardTitle className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Personal <span className="text-slate-400 italic">Information</span></CardTitle>
-                                                    <CardDescription className="text-slate-500 font-bold">Update your personal identity details and contact information.</CardDescription>
-                                                </div>
+                                        <CardHeader className="pt-28 px-16">
+                                            <div className="space-y-2">
+                                                <h3 className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic">Identity <span className="text-orange-600">Parameters</span></h3>
+                                                <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Configure subject identity metadata and contact clearance nodes.</p>
                                             </div>
                                         </CardHeader>
 
-                                        <CardContent className="p-10 pt-6">
-                                            <form onSubmit={handleProfileUpdate} className="space-y-10">
-
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                                        <CardContent className="px-16 pb-16 pt-8">
+                                            <form onSubmit={handleProfileUpdate} className="space-y-12">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                                                     {[
                                                         { label: "Given Name", key: "firstname", icon: User },
                                                         { label: "Family Name", key: "lastname", icon: User },
                                                         { label: "Primary Email", key: "email", icon: Mail, type: "email" },
-                                                        { label: "Phone Number", key: "phone", icon: Phone },
-                                                        { label: "Date of Birth", key: "birthdate", icon: Calendar, type: "date" },
-                                                        { label: "Residential Address", key: "location", icon: MapPin },
-                                                        { label: "City", key: "city", icon: Globe },
-                                                        { label: "Zip Code", key: "zipcode", icon: MapPin },
+                                                        { label: "Phone Node", key: "phone", icon: Phone },
+                                                        { label: "Life Cycle Hub (Birth)", key: "birthdate", icon: Calendar, type: "date" },
+                                                        { label: "Residential Node", key: "location", icon: MapPin },
+                                                        { label: "Geo Hub (City)", key: "city", icon: Globe },
+                                                        { label: "Zip Clearance", key: "zipcode", icon: MapPin },
                                                     ].map((field) => (
-                                                        <div key={field.key} className="space-y-3">
-                                                            <Label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{field.label}</Label>
+                                                        <div key={field.key} className="space-y-4">
+                                                            <Label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1 flex items-center gap-2">
+                                                                <div className="h-1 w-4 bg-orange-600/20 rounded-full"></div>
+                                                                {field.label}
+                                                            </Label>
                                                             <div className="relative group">
-                                                                <field.icon className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-orange-600 transition-colors" />
+                                                                <field.icon className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-300 group-focus-within:text-orange-600 transition-all group-focus-within:scale-110" />
                                                                 <Input
                                                                     type={field.type || "text"}
                                                                     value={(profileData as any)[field.key]}
                                                                     onChange={(e) => setProfileData({ ...profileData, [field.key]: e.target.value })}
-                                                                    className="pl-12 h-14 bg-white border-slate-200 focus:bg-white focus:border-orange-600 focus:ring-orange-600/10 text-slate-900 font-bold transition-all rounded-2xl shadow-inner placeholder:text-slate-300"
+                                                                    className="pl-16 h-16 bg-slate-50 border-slate-100 rounded-[1.5rem] text-slate-900 font-black focus:bg-white focus:border-orange-600 focus:ring-orange-600/5 transition-all shadow-inner text-sm tracking-tight"
                                                                 />
                                                             </div>
                                                         </div>
                                                     ))}
                                                 </div>
 
-                                                <div className="flex justify-end pt-6">
+                                                <div className="flex justify-end pt-8">
                                                     <Button
                                                         type="submit"
                                                         disabled={isLoading}
-                                                        className="bg-orange-600 hover:bg-orange-700 text-white font-black px-12 h-14 rounded-2xl shadow-xl shadow-orange-600/10 transition-all hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-tight"
+                                                        className="bg-slate-900 hover:bg-orange-600 text-white font-black px-16 h-18 rounded-[2rem] shadow-2xl transition-all hover:scale-105 active:scale-95 text-xs uppercase tracking-[0.3em] group"
                                                     >
-                                                        {isLoading ? "Saving..." : "Commit Changes"}
+                                                        {isLoading ? "Executing..." : (
+                                                            <>
+                                                                Commit Logic Trace <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                                                            </>
+                                                        )}
                                                     </Button>
                                                 </div>
                                             </form>
@@ -362,59 +409,62 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                             {activeTab === "password" && (
                                 <motion.div
                                     key="password"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
                                 >
-                                    <Card className="border border-slate-200 shadow-xl overflow-hidden bg-white rounded-[3rem]">
-                                        <CardHeader className="bg-white p-12 border-b border-slate-100 relative overflow-hidden">
-                                            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/[0.03] rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none"></div>
-                                            <div className="flex items-center gap-6 relative z-10">
-                                                <div className="p-5 bg-white border border-slate-200 rounded-3xl shadow-sm flex items-center justify-center text-orange-600">
-                                                    <Lock className="h-8 w-8" />
+                                    <Card className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass border-t-8 border-t-slate-900">
+                                        <CardHeader className="p-16 border-b border-slate-50 relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 w-96 h-96 bg-orange-600/[0.03] rounded-full -mr-32 -mt-32 blur-[100px] pointer-events-none"></div>
+                                            <div className="flex items-center gap-8 relative z-10">
+                                                <div className="h-20 w-20 bg-slate-900 rounded-[2rem] shadow-2xl flex items-center justify-center text-orange-500">
+                                                    <Lock className="h-10 w-10 animate-pulse" />
                                                 </div>
-                                                <div className="space-y-1">
-                                                    <CardTitle className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Security <span className="text-slate-400 italic">Settings</span></CardTitle>
-                                                    <CardDescription className="text-slate-500 font-bold">Update your access credentials to safeguard your financial profile.</CardDescription>
+                                                <div className="space-y-2">
+                                                    <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Security <span className="text-orange-600">Sequences</span></h3>
+                                                    <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Update cryptographic access keys to protect your financial ledger.</p>
                                                 </div>
                                             </div>
                                         </CardHeader>
-                                        <CardContent className="p-12">
-                                            <form onSubmit={handlePasswordChange} className="max-w-md space-y-8">
-                                                <div className="space-y-3">
-                                                    <Label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Current Key</Label>
+                                        <CardContent className="p-16">
+                                            <form onSubmit={handlePasswordChange} className="max-w-xl space-y-10">
+                                                <div className="space-y-4">
+                                                    <Label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">Current Protocol Key</Label>
                                                     <Input
                                                         type="password"
                                                         value={passwordData.currentPassword}
                                                         onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
-                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-orange-600 focus:ring-orange-600/10 transition-all"
+                                                        className="h-16 bg-slate-50 border-slate-100 rounded-[1.5rem] text-slate-900 font-black focus:border-orange-600 transition-all text-lg"
                                                     />
                                                 </div>
-                                                <div className="space-y-3">
-                                                    <Label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">New Sequence</Label>
+                                                <div className="space-y-4">
+                                                    <Label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">New Cryptographic Sequence</Label>
                                                     <Input
                                                         type="password"
                                                         value={passwordData.newPassword}
                                                         onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
-                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-orange-600 focus:ring-orange-600/10 transition-all"
+                                                        className="h-16 bg-slate-50 border-slate-100 rounded-[1.5rem] text-slate-900 font-black focus:border-orange-600 transition-all text-lg"
                                                     />
-                                                    <p className="text-[10px] text-slate-400 font-black uppercase tracking-tight ml-1">Complexity Rule: Enhanced cryptographic requirements apply.</p>
+                                                    <div className="flex items-center gap-3 px-4 py-2 bg-orange-50 rounded-xl border border-orange-100">
+                                                        <ShieldCheck className="h-4 w-4 text-orange-600" />
+                                                        <p className="text-[9px] text-orange-700 font-black uppercase tracking-tight">Security Rule: High-entropy string required for node access.</p>
+                                                    </div>
                                                 </div>
-                                                <div className="space-y-3">
-                                                    <Label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Confirm Sequence</Label>
+                                                <div className="space-y-4">
+                                                    <Label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">Confirm Sequence Sync</Label>
                                                     <Input
                                                         type="password"
                                                         value={passwordData.confirmPassword}
                                                         onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
-                                                        className="h-14 bg-white border-slate-200 rounded-2xl text-slate-900 font-bold focus:border-orange-600 focus:ring-orange-600/10 transition-all"
+                                                        className="h-16 bg-slate-50 border-slate-100 rounded-[1.5rem] text-slate-900 font-black focus:border-orange-600 transition-all text-lg"
                                                     />
                                                 </div>
                                                 <Button
                                                     type="submit"
                                                     disabled={isLoading}
-                                                    className="w-full bg-slate-900 hover:bg-black text-white font-black h-16 rounded-2xl shadow-xl shadow-black/10 text-lg uppercase tracking-tight transition-all hover:scale-[1.02]"
+                                                    className="w-full bg-slate-900 hover:bg-orange-600 text-white font-black h-20 rounded-[2rem] shadow-2xl text-xs uppercase tracking-[0.4em] transition-all hover:scale-[1.03] active:scale-95"
                                                 >
-                                                    {isLoading ? "Updating..." : "Update Credentials"}
+                                                    {isLoading ? "Synchronizing..." : "Execute Sequence Update"}
                                                 </Button>
                                             </form>
                                         </CardContent>
@@ -425,55 +475,116 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                             {activeTab === "notifications" && (
                                 <motion.div
                                     key="notifications"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    className="space-y-12"
                                 >
-                                    <Card className="border border-slate-200 shadow-xl overflow-hidden bg-white rounded-[3rem]">
-                                        <CardHeader className="bg-white p-12 border-b border-slate-100 relative overflow-hidden">
-                                            <div className="absolute bottom-0 right-0 w-64 h-64 bg-orange-600/[0.03] rounded-full -mr-32 -mb-32 blur-3xl pointer-events-none"></div>
-                                            <div className="flex items-center gap-6 relative z-10">
-                                                <div className="p-5 bg-white border border-slate-200 rounded-3xl shadow-sm flex items-center justify-center text-orange-600">
-                                                    <Bell className="h-8 w-8" />
+                                    <Card className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass border-t-8 border-t-blue-600">
+                                        <CardHeader className="p-16 border-b border-slate-50 relative overflow-hidden">
+                                            <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-600/[0.03] rounded-full -mr-32 -mb-32 blur-[80px] pointer-events-none"></div>
+                                            <div className="flex items-center gap-8 relative z-10">
+                                                <div className="h-20 w-20 bg-blue-50 rounded-[2rem] shadow-xl flex items-center justify-center text-blue-600 border border-blue-100">
+                                                    <Bell className="h-10 w-10" />
                                                 </div>
-                                                <div className="space-y-1">
-                                                    <CardTitle className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Alert <span className="text-slate-400 italic">Protocols</span></CardTitle>
-                                                    <CardDescription className="text-slate-500 font-bold">Configure how you receive real-time financial updates.</CardDescription>
+                                                <div className="space-y-2">
+                                                    <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Alert <span className="text-blue-600">Matrix</span></h3>
+                                                    <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Configure real-time telemetry protocols for your account activity.</p>
                                                 </div>
                                             </div>
                                         </CardHeader>
-                                        <CardContent className="p-12 space-y-6">
+                                        <CardContent className="p-16 space-y-8">
                                             {[
-                                                { title: "Email Notifications", desc: "Receive automated ledgers and transaction reports.", icon: Mail, enabled: true },
-                                                { title: "Security Alerts", desc: "Real-time alerts for system security auditing.", icon: ShieldAlert, enabled: true },
-                                                { title: "Financial Forecasts", desc: "Periodic analysis regarding market movements.", icon: Settings, enabled: false },
-                                                { title: "Mobile Push", desc: "Direct alerts to your registered devices.", icon: Phone, enabled: true },
+                                                { title: "Protocol Ledgers (Email)", desc: "Receive automated ledger exports and logic reports.", icon: Mail, enabled: true, color: "orange" },
+                                                { title: "Security Breach Alerts", desc: "Instant telemetry for unauthorized access attempts.", icon: ShieldAlert, enabled: true, color: "red" },
+                                                { title: "Market Volatility Signal", desc: "Analysis for currency exchange and asset shifts.", icon: Activity, enabled: false, color: "blue" },
+                                                { title: "Device Sync (Push)", desc: "Direct logic pings to your authorized handheld nodes.", icon: Smartphone, enabled: true, color: "emerald" },
                                             ].map((item, i) => (
-                                                <div key={i} className="flex items-center justify-between p-6 rounded-[2rem] bg-white border border-slate-100 group hover:bg-orange-50 hover:border-orange-200 transition-all duration-500">
-                                                    <div className="flex items-center gap-5">
-                                                        <div className="h-12 w-12 rounded-2xl bg-white flex items-center justify-center text-slate-400 group-hover:text-orange-600 border border-slate-200 shadow-sm transition-colors">
-                                                            <item.icon className="h-5 w-5" />
+                                                <div key={i} className="flex items-center justify-between p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 group hover:bg-white hover:shadow-2xl transition-all duration-500">
+                                                    <div className="flex items-center gap-6">
+                                                        <div className={cn(
+                                                            "h-14 w-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform",
+                                                            item.enabled ? `text-${item.color}-600` : "text-slate-300"
+                                                        )}>
+                                                            <item.icon className="h-6 w-6" />
                                                         </div>
-                                                        <div className="space-y-0.5">
-                                                            <p className="font-black text-slate-900 text-lg tracking-tight uppercase">{item.title}</p>
-                                                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{item.desc}</p>
+                                                        <div className="space-y-1">
+                                                            <p className="font-black text-slate-900 text-xl tracking-tight uppercase italic">{item.title}</p>
+                                                            <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">{item.desc}</p>
                                                         </div>
                                                     </div>
                                                     <div className={cn(
-                                                        "h-8 w-14 rounded-full relative cursor-pointer transition-all duration-500 p-1 flex items-center shadow-inner",
-                                                        item.enabled ? "bg-orange-600" : "bg-slate-200"
+                                                        "h-10 w-18 rounded-full relative cursor-pointer transition-all duration-500 p-1.5 flex items-center shadow-inner",
+                                                        item.enabled ? "bg-slate-900" : "bg-slate-200"
                                                     )}>
                                                         <div className={cn(
-                                                            "h-6 w-6 rounded-full transition-all duration-500 shadow-md flex items-center justify-center",
-                                                            item.enabled ? "translate-x-6 bg-white" : "translate-x-0 bg-white"
-                                                        )} />
+                                                            "h-7 w-7 rounded-full shadow-2xl transition-all duration-500 flex items-center justify-center",
+                                                            item.enabled ? "translate-x-8 bg-orange-500" : "translate-x-0 bg-white"
+                                                        )}>
+                                                            {item.enabled && <Zap className="h-3 w-3 text-white fill-white" />}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             ))}
-                                            <div className="pt-8">
-                                                <Button className="w-full bg-slate-900 hover:bg-black text-white font-black h-16 rounded-2xl transition-all uppercase tracking-widest text-xs">
-                                                    Commit Protocol Config
+                                            <div className="pt-10">
+                                                <Button className="w-full bg-slate-900 hover:bg-black text-white font-black h-20 rounded-[2rem] shadow-2xl text-xs uppercase tracking-[0.4em] transition-all hover:scale-[1.02]">
+                                                    Commit Matrix Configuration
                                                 </Button>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </motion.div>
+                            )}
+
+                            {activeTab === "banking" && (
+                                <motion.div
+                                    key="banking"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    className="space-y-12"
+                                >
+                                    <Card className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass border-t-8 border-t-emerald-600">
+                                        <CardHeader className="p-16 border-b border-slate-50 relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/[0.03] rounded-full -mr-32 -mt-32 blur-[100px] pointer-events-none"></div>
+                                            <div className="flex items-center gap-8 relative z-10">
+                                                <div className="h-20 w-20 bg-emerald-50 rounded-[2rem] shadow-xl flex items-center justify-center text-emerald-600 border border-emerald-100">
+                                                    <CreditCard className="h-10 w-10" />
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Bank <span className="text-emerald-600">Coordinates</span></h3>
+                                                    <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">External node parameters for institutional asset synchronization.</p>
+                                                </div>
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent className="p-16">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                                                {[
+                                                    { label: "Account Holder", value: profileData.accountHolderName, icon: User },
+                                                    { label: "Account Number", value: profileData.accountNumber, icon: CreditCard },
+                                                    { label: "Bank Institution", value: profileData.bankName, icon: Globe },
+                                                    { label: "Branch Node", value: profileData.branchName, icon: MapPin },
+                                                    { label: "Routing / SWIFT", value: profileData.routingCode, icon: Zap },
+                                                    { label: "Account Flux (Type)", value: profileData.accountType, icon: Activity },
+                                                ].map((item, i) => (
+                                                    <div key={i} className="space-y-4 p-8 rounded-[2rem] bg-slate-50 border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-500">
+                                                        <Label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1 flex items-center gap-2">
+                                                            <item.icon className="h-3 w-3 text-emerald-600" /> {item.label}
+                                                        </Label>
+                                                        <p className="text-lg font-black text-slate-900 uppercase tracking-tight italic pl-1">
+                                                            {item.value || "NOT CONFIGURED"}
+                                                        </p>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            <div className="mt-12 p-8 rounded-[2.5rem] bg-emerald-50 border border-emerald-100 flex items-center gap-6">
+                                                <div className="h-14 w-14 rounded-2xl bg-white flex items-center justify-center text-emerald-600 shadow-sm">
+                                                    <ShieldCheck className="w-7 h-7" />
+                                                </div>
+                                                <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest leading-relaxed italic">
+                                                    These coordinates are verified by institutional auditors. Contact technical support to update institutional link parameters.
+                                                </p>
                                             </div>
                                         </CardContent>
                                     </Card>
@@ -481,82 +592,67 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                             )}
                         </AnimatePresence>
 
-                        {/* Account Security Cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <Card className="border border-slate-200 shadow-xl bg-white overflow-hidden rounded-[2.5rem] group hover:bg-white transition-all">
-                                <CardHeader className="pb-4 px-8 pt-8">
-                                    <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-3 text-slate-400 group-hover:text-orange-600 transition-colors">
-                                        <div className="h-8 w-8 bg-orange-50 rounded-xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform">
-                                            <ShieldCheck className="h-4 w-4" />
+                        {/* Secondary System Status Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <Card className="border-none bg-white shadow-2xl rounded-[3.5rem] p-10 relative overflow-hidden glass group">
+                                <div className="absolute -right-8 -top-8 w-40 h-40 bg-orange-600/5 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                                <div className="space-y-6 relative z-10">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-10 w-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600"><ShieldCheck className="w-5 h-5" /></div>
+                                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Node Clearance</p>
                                         </div>
-                                        Verification Audit
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent className="px-8 pb-8">
-                                    <div className="p-6 rounded-3xl bg-white flex items-center justify-between border border-slate-100 relative overflow-hidden">
-                                        <div className="relative z-10 flex items-center gap-4">
-                                            <div className={cn(
-                                                "p-3 rounded-2xl flex items-center justify-center shadow-sm",
-                                                user?.bankAccount?.verified ? "bg-orange-600 text-white" : "bg-yellow-500 text-white"
-                                            )}>
-                                                {user?.bankAccount?.verified ? <CheckCircle className="h-5 w-5" /> : <AlertCircle className="h-5 w-5" />}
-                                            </div>
-                                            <span className="font-black text-slate-900 text-lg uppercase tracking-tighter">Identity State</span>
-                                        </div>
-                                        <span className={cn(
-                                            "relative z-10 px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest border shadow-sm",
-                                            user?.bankAccount?.verified
-                                                ? "bg-orange-50 text-orange-600 border-orange-100"
-                                                : "bg-yellow-50 text-yellow-600 border-yellow-100"
+                                        <Badge className={cn(
+                                            "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl",
+                                            user?.bankAccount?.verified ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-yellow-50 text-yellow-600 border-yellow-100"
                                         )}>
-                                            {user?.bankAccount?.verified ? "Verified" : "Pending Audit"}
-                                        </span>
-                                        {/* Background Trace */}
-                                        <div className="absolute right-0 bottom-0 opacity-[0.03] pointer-events-none transform translate-x-10 translate-y-10">
-                                            <ShieldCheck className="h-24 w-24 text-orange-600" />
-                                        </div>
+                                            {user?.bankAccount?.verified ? "Authorized" : "Pending Audit"}
+                                        </Badge>
                                     </div>
-                                </CardContent>
+                                    <div className="space-y-2">
+                                        <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tighter italic">Verification <span className="text-slate-400">State</span></h4>
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-relaxed">Identity verification level for advanced asset movement.</p>
+                                    </div>
+                                </div>
                             </Card>
 
-                            <Card className="border border-slate-200 shadow-xl bg-white overflow-hidden rounded-[2.5rem] group hover:bg-white transition-all">
-                                <CardHeader className="pb-4 px-8 pt-8">
-                                    <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-3 text-slate-400 group-hover:text-red-600 transition-colors">
-                                        <div className="h-8 w-8 bg-red-50 rounded-xl flex items-center justify-center border border-red-100 group-hover:scale-110 transition-transform">
-                                            <ShieldAlert className="h-4 w-4" />
+                            <Card className="border-none bg-white shadow-2xl rounded-[3.5rem] p-10 relative overflow-hidden glass group">
+                                <div className="absolute -right-8 -top-8 w-40 h-40 bg-red-600/5 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                                <div className="space-y-6 relative z-10">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-10 w-10 rounded-xl bg-red-50 flex items-center justify-center text-red-600"><ShieldAlert className="w-5 h-5" /></div>
+                                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Migration Rights</p>
                                         </div>
-                                        Execution Rights
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent className="px-8 pb-8">
-                                    <div className="p-6 rounded-3xl bg-white flex items-center justify-between border border-slate-100 relative overflow-hidden">
-                                        <div className="relative z-10 flex items-center gap-4">
-                                            <div className={cn(
-                                                "p-3 rounded-2xl flex items-center justify-center shadow-sm",
-                                                user?.bankAccount?.canTransfer ? "bg-orange-600 text-white" : "bg-red-600 text-white"
-                                            )}>
-                                                {user?.bankAccount?.canTransfer ? <CheckCircle className="h-5 w-5" /> : <ShieldAlert className="h-5 w-5" />}
-                                            </div>
-                                            <span className="font-black text-slate-900 text-lg uppercase tracking-tighter">Transfer Rights</span>
-                                        </div>
-                                        <span className={cn(
-                                            "relative z-10 px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest border shadow-sm",
-                                            user?.bankAccount?.canTransfer
-                                                ? "bg-orange-50 text-orange-600 border-orange-100"
-                                                : "bg-red-50 text-red-600 border-red-100"
+                                        <Badge className={cn(
+                                            "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl",
+                                            user?.bankAccount?.canTransfer ? "bg-orange-50 text-orange-600 border-orange-100" : "bg-red-50 text-red-600 border-red-100"
                                         )}>
-                                            {user?.bankAccount?.canTransfer ? "Authorized" : "Restricted"}
-                                        </span>
-                                        {/* Background Trace */}
-                                        <div className="absolute right-0 bottom-0 opacity-[0.03] pointer-events-none transform translate-x-10 translate-y-10">
-                                            <ShieldAlert className="h-24 w-24 text-red-600" />
-                                        </div>
+                                            {user?.bankAccount?.canTransfer ? "Full Access" : "Restricted"}
+                                        </Badge>
                                     </div>
-                                </CardContent>
+                                    <div className="space-y-2">
+                                        <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tighter italic">Transfer <span className="text-slate-400">Gate</span></h4>
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-relaxed">Permission level for intra-node and external asset migration.</p>
+                                    </div>
+                                </div>
                             </Card>
                         </div>
                     </motion.div>
                 </div>
+            </div>
+
+            <div className="hidden">
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                        .animate-spin-slow {
+                            animation: spin 8s linear infinite;
+                        }
+                        @keyframes spin {
+                            from { transform: rotate(0deg); }
+                            to { transform: rotate(360deg); }
+                        }
+                    ` }} />
             </div>
         </div>
     )

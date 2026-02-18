@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { Users, Plus, Trash2, Globe, Landmark, Fingerprint, ChevronRight, ShieldCheck } from "lucide-react"
+import { Users, Plus, Trash2, Globe, Landmark, Fingerprint, ChevronRight, ChevronLeft, ShieldCheck } from "lucide-react"
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
@@ -86,114 +86,122 @@ export default function BeneficiariesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#020617] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="min-h-screen bg-black w-full p-6 md:p-12 pt-24 md:pt-32 relative overflow-hidden selection:bg-orange-500/20">
+      {/* High-Tech Background Decor */}
+      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-500/[0.05] rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/[0.05] rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-6xl mx-auto space-y-10 relative z-10">
+      <div className="max-w-7xl mx-auto space-y-12 relative z-10">
 
-        {/* Header Section */}
-        <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/5">
-          <div className="space-y-2 text-center md:text-left">
-            <div className="flex items-center gap-2 text-orange-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 w-fit rounded-full mx-auto md:mx-0">
-              <Users className="h-3 w-3" />
-              Registry Management
+        {/* Industrial Header Section */}
+        <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl border border-white/5">
+              <Users className="w-3.5 h-3.5 text-orange-500" /> REGISTRY MANAGEMENT
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter lowercase">
-              Transfer <span className="text-slate-500 italic">Beneficiaries</span>
+            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+              TRANSFER <span className="text-orange-600 italic">BENEFICIARIES</span>
             </h1>
-            <p className="text-slate-400 font-medium text-lg">Manage authorized recipient details for quick transfers.</p>
+            <p className="text-slate-400 font-bold max-w-lg text-lg">Manage authorized recipient details for quick liquidity migration sequences.</p>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <Button asChild variant="ghost" className="h-14 px-8 rounded-2xl bg-slate-900 border border-white/10 font-black text-[10px] uppercase tracking-widest text-white flex items-center gap-3 hover:bg-slate-800 transition-all shadow-sm">
+              <Link href="/dashboard">
+                <ChevronLeft className="h-4 w-4" /> NODE_DASHBOARD
+              </Link>
+            </Button>
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
           {/* Add Form */}
           <motion.div {...fadeInUp} className="lg:col-span-12 xl:col-span-5">
-            <Card className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md rounded-[2.5rem] overflow-hidden">
-              <CardHeader className="p-8 border-b border-white/5 bg-orange-500/5">
-                <CardTitle className="text-2xl font-black text-white lowercase tracking-tighter">Add <span className="text-slate-500 italic">Receiver</span></CardTitle>
-                <CardDescription className="text-slate-500 font-medium">Register a new recipient in the system.</CardDescription>
+            <Card className="border border-white/5 shadow-2xl bg-slate-900/40 rounded-[3rem] overflow-hidden glass-dark">
+              <CardHeader className="p-10 border-b border-white/5 bg-slate-900 text-white">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-orange-600 text-[9px] font-black uppercase tracking-widest mb-4">
+                  <Plus className="w-3 h-3" /> INITIALIZE_NODE
+                </div>
+                <CardTitle className="text-3xl font-black uppercase tracking-tighter italic">Register <span className="text-orange-500">Receiver</span></CardTitle>
+                <CardDescription className="text-slate-400 font-bold text-xs uppercase tracking-widest">Enrollment sequence for new authorized entities.</CardDescription>
               </CardHeader>
-              <CardContent className="p-8 space-y-8">
+              <CardContent className="p-10 space-y-8">
                 {error && (
                   <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-                    <Alert className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6">
-                      <AlertDescription className="text-red-400 font-black lowercase text-lg">{error}</AlertDescription>
+                    <Alert className="bg-red-900/20 border-red-900/50 rounded-2xl p-6">
+                      <AlertDescription className="text-red-400 font-black uppercase text-sm italic">{error}</AlertDescription>
                     </Alert>
                   </motion.div>
                 )}
 
-
-
-                <div className="grid grid-cols-1 gap-6">
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Operational Region</Label>
+                <div className="grid grid-cols-1 gap-8">
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Protocol Region</Label>
                     <Select value={bankRegion} onValueChange={(v: any) => setBankRegion(v)}>
-                      <SelectTrigger className="h-14 bg-white/[0.02] border-white/5 rounded-2xl text-white font-bold focus:border-orange-500/50 transition-all">
+                      <SelectTrigger className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black focus:ring-orange-500/20 transition-all uppercase tracking-widest text-[10px]">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#020617] border-white/10 text-white rounded-2xl">
-                        <SelectItem value="local" className="focus:bg-orange-500 focus:text-[#020617] disabled:opacity-30">Local Network</SelectItem>
-                        <SelectItem value="international" className="focus:bg-orange-500 focus:text-[#020617] disabled:opacity-30">Cross-Border Relay</SelectItem>
+                      <SelectContent className="bg-slate-900 border-white/10 text-white rounded-2xl">
+                        <SelectItem value="local" className="font-black uppercase tracking-widest text-[10px] focus:bg-orange-600 focus:text-white">Local Network</SelectItem>
+                        <SelectItem value="international" className="font-black uppercase tracking-widest text-[10px] focus:bg-orange-600 focus:text-white">Cross-Border Relay</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Bank Name</Label>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Assigned Provider</Label>
                     <div className="relative group">
-                      <Landmark className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-orange-500 transition-colors" />
+                      <Landmark className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-600 group-focus-within:text-orange-600 transition-colors" />
                       <Input
-                        placeholder="node_provider_name"
+                        placeholder="NODE_PROVIDER_ID"
                         value={bankName}
                         onChange={(e) => setBankName(e.target.value)}
-                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-orange-500/50 focus:ring-orange-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
+                        className="pl-14 h-16 bg-slate-900 border-white/10 focus:bg-slate-800 focus:border-orange-600/50 focus:ring-orange-600/10 text-white font-black transition-all rounded-2xl uppercase tracking-widest text-xs placeholder:text-slate-700"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Holder</Label>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Authorized Holder</Label>
                     <div className="relative group">
-                      <Landmark className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-orange-500 transition-colors" />
+                      <Fingerprint className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-600 group-focus-within:text-orange-600 transition-colors" />
                       <Input
-                        placeholder="authorized_entity_name"
+                        placeholder="ENTITY_LEGAL_NAME"
                         value={bankHolder}
                         onChange={(e) => setBankHolder(e.target.value)}
-                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-orange-500/50 focus:ring-orange-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
+                        className="pl-14 h-16 bg-slate-900 border-white/10 focus:bg-slate-800 focus:border-orange-600/50 focus:ring-orange-600/10 text-white font-black transition-all rounded-2xl uppercase tracking-widest text-xs placeholder:text-slate-700"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Number / IBAN</Label>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Sequence Reference</Label>
                     <div className="relative group">
-                      <Fingerprint className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-orange-500 transition-colors" />
+                      <ShieldCheck className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-600 group-focus-within:text-orange-600 transition-colors" />
                       <Input
-                        placeholder="sequence_code_alpha"
+                        placeholder="ACCOUNT_OR_IBAN"
                         value={bankAccount}
                         onChange={(e) => setBankAccount(e.target.value)}
-                        className="pl-12 h-14 bg-white/[0.02] border-white/5 focus:bg-white/[0.04] focus:border-orange-500/50 focus:ring-orange-500/20 text-white font-bold transition-all rounded-2xl lowercase placeholder:text-slate-800"
+                        className="pl-14 h-16 bg-slate-900 border-white/10 focus:bg-slate-800 focus:border-orange-600/50 focus:ring-orange-600/10 text-white font-black transition-all rounded-2xl uppercase tracking-widest text-xs placeholder:text-slate-700"
                       />
                     </div>
                   </div>
 
                   {bankRegion === "international" && (
-                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="grid grid-cols-1 gap-6 pt-4 border-t border-white/5">
-                      <div className="space-y-2">
-                        <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Jurisdiction</Label>
-                        <Input value={bankCountry} onChange={(e) => setBankCountry(e.target.value)} className="h-14 bg-white/[0.02] border-white/5 rounded-2xl text-white font-bold lowercase" />
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="grid grid-cols-1 gap-8 pt-8 border-t border-white/5">
+                      <div className="space-y-3">
+                        <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Jurisdiction</Label>
+                        <Input value={bankCountry} onChange={(e) => setBankCountry(e.target.value)} className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-xs" />
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Type</Label>
-                          <Input placeholder="SWIFT" value={identifier} onChange={(e) => setIdentifier(e.target.value)} className="h-14 bg-white/[0.02] border-white/5 rounded-2xl text-white font-bold" />
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="space-y-3">
+                          <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">System</Label>
+                          <Input placeholder="SWIFT" value={identifier} onChange={(e) => setIdentifier(e.target.value)} className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-xs" />
                         </div>
-                        <div className="space-y-2">
-                          <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Code</Label>
-                          <Input placeholder="000XXX" value={identifierCode} onChange={(e) => setIdentifierCode(e.target.value)} className="h-14 bg-white/[0.02] border-white/5 rounded-2xl text-white font-bold" />
+                        <div className="space-y-3">
+                          <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-1">Logic_Code</Label>
+                          <Input placeholder="000XXX" value={identifierCode} onChange={(e) => setIdentifierCode(e.target.value)} className="h-16 bg-slate-900 border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-xs" />
                         </div>
                       </div>
                     </motion.div>
@@ -203,29 +211,31 @@ export default function BeneficiariesPage() {
                 <Button
                   onClick={addBeneficiary}
                   disabled={saving}
-                  className="w-full bg-orange-500 hover:bg-orange-400 text-[#020617] font-black h-16 rounded-2xl shadow-xl shadow-orange-500/20 uppercase tracking-tighter text-lg transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
+                  className="w-full bg-slate-900 hover:bg-orange-600 text-white font-black h-20 rounded-[2rem] shadow-2xl uppercase tracking-[0.3em] text-xs transition-all hover:scale-105 active:scale-95 disabled:opacity-50 group/btn border-none"
                 >
-                  {saving ? "Saving..." : "Add Beneficiary"}
+                  {saving ? "TRANSMITTING..." : "COMMIT_REGISTRY"} <Plus className="ml-4 h-5 w-5 group-hover/btn:rotate-90 transition-transform" />
                 </Button>
               </CardContent>
             </Card>
           </motion.div>
 
           {/* List Display */}
-          <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-12 xl:col-span-7 space-y-6">
-            <div className="flex items-center justify-between px-4 pb-2">
-              <h2 className="text-2xl font-black text-white lowercase tracking-tighter">Active <span className="text-slate-500 italic">Beneficiaries</span></h2>
-              <div className="px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-black uppercase tracking-widest">
-                {isLoading ? "Loading..." : `${beneficiaries.length} Recipients`}
+          <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-12 xl:col-span-7 space-y-8">
+            <div className="flex items-center justify-between px-6">
+              <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tighter italic">Active <span className="text-orange-600">Registry</span></h2>
+              <div className="px-5 py-2 rounded-full bg-slate-900 text-white text-[9px] font-black uppercase tracking-[0.4em] shadow-xl">
+                {isLoading ? "SCANNING..." : `${beneficiaries.length} IDENTIFIED`}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-6">
               <AnimatePresence mode="popLayout">
                 {beneficiaries.length === 0 ? (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-12 text-center rounded-[2.5rem] border border-dashed border-white/10 bg-white/[0.02]">
-                    <Users className="h-12 w-12 text-slate-800 mx-auto mb-4" />
-                    <p className="text-slate-600 font-bold uppercase tracking-widest text-xs">No beneficiaries found.</p>
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center rounded-[3rem] border-none bg-white shadow-2xl glass flex flex-col items-center justify-center space-y-6">
+                    <div className="h-20 w-20 rounded-3xl bg-slate-50 flex items-center justify-center text-slate-200">
+                      <Users className="h-10 w-10" />
+                    </div>
+                    <p className="text-slate-400 font-black uppercase tracking-[0.3em] text-[10px]">No authorized entities found in registry.</p>
                   </motion.div>
                 ) : (
                   beneficiaries.map((b: any, index: number) => (
@@ -236,46 +246,45 @@ export default function BeneficiariesPage() {
                       transition={{ delay: index * 0.05 }}
                       className="group relative"
                     >
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                      <div className="relative p-6 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-500 group-hover:bg-white/[0.05]">
-                        <div className="flex items-center gap-5 w-full md:w-auto">
-                          <div className="h-14 w-14 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center text-orange-500 shadow-2xl overflow-hidden relative">
-                            <Landmark className="h-6 w-6 relative z-10" />
-                            <div className="absolute inset-0 bg-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="relative p-8 rounded-[2.5rem] bg-white shadow-2xl border-none flex flex-col md:flex-row items-center justify-between gap-8 transition-all duration-500 hover:scale-[1.02] glass overflow-hidden">
+                        <div className="flex items-center gap-6 w-full md:w-auto">
+                          <div className="h-16 w-16 rounded-2xl bg-slate-900 flex items-center justify-center text-orange-500 shadow-xl overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
+                            <Landmark className="h-7 w-7 relative z-10" />
+                            <div className="absolute inset-0 bg-orange-600 opacity-0 group-hover:opacity-10 transition-opacity"></div>
                           </div>
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-2">
-                              <p className="font-black text-white text-lg tracking-tight lowercase">
+                          <div className="space-y-1.5">
+                            <div className="flex items-center gap-3">
+                              <p className="font-black text-slate-900 text-xl tracking-tighter uppercase italic">
                                 {b.bankInfo.bankHolder}
                               </p>
-                              <ShieldCheck className="h-3 w-3 text-orange-500/50" />
+                              <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                             </div>
-                            <div className="flex items-center gap-3">
-                              <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest">
+                            <div className="flex flex-wrap items-center gap-4">
+                              <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest italic">
                                 {b.bankInfo.bankName}
                               </p>
-                              <span className="h-1 w-1 rounded-full bg-slate-800"></span>
-                              <p className="text-[10px] text-orange-500/70 font-black tracking-[0.2em] uppercase">
+                              <div className="h-4 w-[1px] bg-slate-100" />
+                              <p className="text-[10px] text-orange-600 font-black tracking-[0.2em] uppercase">
                                 {b.bankAccount.slice(0, 4)}••••{b.bankAccount.slice(-4)}
                               </p>
                             </div>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-3 w-full md:w-auto justify-end">
+                        <div className="flex items-center gap-4 w-full md:w-auto justify-end">
                           <div className={cn(
-                            "px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border",
-                            b.bankRegion === 'local' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-purple-500/10 text-purple-400 border-purple-500/20'
+                            "px-4 py-1.5 rounded-xl text-[8px] font-black uppercase tracking-[0.3em] border shadow-sm",
+                            b.bankRegion === 'local' ? 'bg-blue-50 text-blue-600 border-blue-100' : 'bg-purple-50 text-purple-600 border-purple-100'
                           )}>
-                            {b.bankRegion}
+                            {b.bankRegion.toUpperCase()}
                           </div>
-                          <Button variant="ghost" className="h-12 w-12 rounded-xl border border-white/5 bg-white/5 text-slate-500 hover:text-white hover:bg-white/10 transition-all group/btn" asChild>
+                          <Button variant="ghost" className="h-14 w-14 rounded-2xl border border-slate-50 bg-slate-50 text-slate-400 hover:text-orange-600 hover:bg-white hover:shadow-xl transition-all group/btn" asChild>
                             <Link href={`/dashboard/transfer?accountNumber=${encodeURIComponent(b.bankAccount)}&bankName=${encodeURIComponent(b.bankInfo.bankName)}&accountHolder=${encodeURIComponent(b.bankInfo.bankHolder)}`}>
-                              <ChevronRight className="h-5 w-5 group-hover/btn:translate-x-1 transition-transform" />
+                              <ChevronRight className="h-6 w-6 group-hover/btn:translate-x-1 transition-transform" />
                             </Link>
                           </Button>
-                          <Button variant="ghost" className="h-12 w-12 rounded-xl border border-red-500/10 bg-red-500/5 text-red-500/50 hover:text-red-500 hover:bg-red-500/10 transition-all" onClick={() => removeBeneficiary(b._id)}>
-                            <Trash2 className="h-4 w-4" />
+                          <Button variant="ghost" className="h-14 w-14 rounded-2xl border border-slate-50 bg-slate-50 text-slate-300 hover:text-red-600 hover:bg-red-50 hover:border-red-100 transition-all" onClick={() => removeBeneficiary(b._id)}>
+                            <Trash2 className="h-5 w-5" />
                           </Button>
                         </div>
                       </div>
@@ -288,6 +297,11 @@ export default function BeneficiariesPage() {
 
         </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+                .glass { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); }
+            `}} />
     </div>
   )
 }

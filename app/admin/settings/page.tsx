@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
 import { Input } from "@/components/ui/input"
-import { Settings, ShieldCheck, Zap, Globe, Lock, Cpu, Database } from "lucide-react"
+import { Settings, ShieldCheck, Zap, Globe, Lock, Cpu, Database, Activity, RefreshCw, Key, Layers, Radio } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export default function AdminSettingsPage() {
   const [loading, setLoading] = useState(true)
@@ -126,263 +127,277 @@ export default function AdminSettingsPage() {
 
   if (loading) {
     return (
-      <div className="p-10 text-orange-700 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
-        <Cpu className="w-5 h-5 animate-spin" />
-        Accessing System Variables...
+      <div className="p-12 min-h-screen bg-black flex flex-col items-center justify-center gap-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-orange-600/[0.03] animate-pulse"></div>
+        <div className="relative">
+          <Cpu className="w-16 h-16 text-orange-600 animate-spin relative z-10" />
+          <div className="absolute inset-0 bg-orange-600/20 blur-xl animate-pulse"></div>
+        </div>
+        <p className="text-[10px] font-black text-slate-500 tracking-[0.6em] animate-pulse uppercase relative z-10">Modulating System Variables...</p>
       </div>
     )
   }
 
   return (
-    <div className="p-4 md:p-10 space-y-10 relative max-w-5xl bg-white min-h-screen">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+    <div className="p-6 md:p-12 space-y-12 relative min-h-screen bg-black selection:bg-orange-500/30">
+      {/* High-Tech Background Decor */}
+      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-500/[0.05] rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/[0.05] rounded-full blur-[100px] pointer-events-none"></div>
 
-      {/* Header */}
-      <div className="space-y-2 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-[10px] font-black uppercase tracking-widest">
-          <Settings className="w-3 h-3" /> System Architecture
+      {/* Industrial Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
+        <div className="space-y-4">
+          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
+            <Radio className="w-3.5 h-3.5 text-orange-500 animate-pulse" /> Architecture Config
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+            GLOBAL <span className="text-orange-600 italic">SYSTEM</span>
+          </h1>
+          <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight leading-none mb-1">Fine-tuning of core infrastructure parameters and operational security protocols.</p>
         </div>
-        <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter uppercase">
-          Global <span className="text-slate-500 italic">Settings</span>
-        </h1>
-        <p className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">Fine-tuning of core infrastructure and security parameters.</p>
+
+        <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
+          <div className="flex flex-col items-end">
+            <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">Node Status</p>
+            <p className="text-sm font-black text-white uppercase tracking-widest">Operational</p>
+          </div>
+          <div className="h-10 w-[1px] bg-white/5"></div>
+          <div className="h-12 w-12 rounded-xl bg-black border border-white/5 flex items-center justify-center text-orange-500 shadow-xl">
+            <Activity className="w-6 h-6 animate-pulse" />
+          </div>
+        </div>
       </div>
 
       {error && (
-        <Alert className="bg-red-50 border-red-200 text-red-600 rounded-2xl relative z-10">
-          <AlertDescription className="font-bold flex items-center gap-2">
-            <Lock className="w-4 h-4" /> {error}
+        <Alert className="bg-red-500/10 border-red-500/20 text-red-500 rounded-[2rem] p-6 relative z-10 shadow-3xl animate-in slide-in-from-top-4 duration-500">
+          <AlertDescription className="font-black uppercase tracking-[0.2em] text-[10px] flex items-center gap-4">
+            <Lock className="w-5 h-5" /> Protocol Conflict: {error}
           </AlertDescription>
         </Alert>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 relative z-10">
-        <div className="lg:col-span-2 space-y-8">
-          <Card className="bg-white border-slate-200 shadow-xl rounded-[3rem] overflow-hidden">
-            <CardHeader className="p-8 border-b border-slate-100 bg-slate-50/50">
-              <CardTitle className="text-2xl font-black text-black italic tracking-tight uppercase">Transfer Protocols</CardTitle>
-              <CardDescription className="text-slate-900 font-black uppercase tracking-widest text-[10px] mt-1">Control the global flow of assets across the FIRST STATE BANK framework.</CardDescription>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
+        <div className="lg:col-span-2 space-y-12">
+          {/* Main Protocol Card */}
+          <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark">
+            <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+              <div className="flex items-center gap-6">
+                <div className="h-14 w-14 rounded-2xl bg-black border border-white/5 flex items-center justify-center text-white shadow-3xl">
+                  <Database className="w-7 h-7" />
+                </div>
+                <div>
+                  <CardTitle className="text-3xl font-black text-white tracking-tighter uppercase italic">Transfer Matrix</CardTitle>
+                  <CardDescription className="text-slate-500 font-black uppercase text-[9px] tracking-[0.3em] mt-3">Control the universal flow of assets across the Sovereign network.</CardDescription>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent className="p-8 space-y-12">
-              {/* Global Transfers */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 rounded-[2rem] bg-white border border-slate-100 group hover:border-orange-300 hover:bg-orange-50/30 transition-all shadow-sm">
-                <div className="space-y-1">
-                  <Label className="text-lg font-black text-black flex items-center gap-2 italic">
-                    <Globe className="w-4 h-4 text-orange-700" /> UNIFIED TRANSFERS
-                  </Label>
-                  <p className="text-sm text-slate-900 font-black">Disable ALL asset migrations (Local & International) cluster-wide.</p>
-                </div>
-                <div className="flex items-center gap-6">
-                  <Switch
-                    checked={globalEnabled}
-                    onCheckedChange={setGlobalEnabled}
-                    className="data-[state=checked]:bg-orange-600"
-                    disabled={saving}
-                  />
-                  <Button
-                    onClick={handleSaveGlobal}
-                    disabled={saving}
-                    className="bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 rounded-xl border border-slate-200 h-10 text-xs shadow-sm"
-                  >
-                    {saving ? "..." : "SYNC"}
-                  </Button>
+            <CardContent className="p-12 space-y-12">
+              {/* Global Transfers Switch */}
+              <div className="group p-8 rounded-[3rem] bg-black/40 border border-white/5 hover:bg-orange-600/5 hover:border-orange-600/20 transition-all duration-500 relative overflow-hidden shadow-inner">
+                <div className="absolute top-0 right-0 h-40 w-40 bg-orange-600/5 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
+                  <div className="space-y-4">
+                    <Label className="text-xl font-black text-white flex items-center gap-3 italic tracking-tight uppercase">
+                      <Globe className="w-5 h-5 text-orange-600" /> Unified Registry
+                    </Label>
+                    <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed">Kill-switch for ALL asset migrations (Local & Intl) cluster-wide.</p>
+                  </div>
+                  <div className="flex items-center gap-8">
+                    <Switch
+                      checked={globalEnabled}
+                      onCheckedChange={setGlobalEnabled}
+                      className="data-[state=checked]:bg-orange-600 scale-125 border-white/10"
+                      disabled={saving}
+                    />
+                    <Button
+                      onClick={handleSaveGlobal}
+                      disabled={saving}
+                      className="bg-slate-900 border border-white/5 hover:bg-white hover:text-black text-white font-black px-8 rounded-2xl h-14 text-[10px] uppercase tracking-[0.3em] shadow-3xl"
+                    >
+                      {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : "SYNC UNIT"}
+                    </Button>
+                  </div>
                 </div>
               </div>
 
-              {/* Local Transfers */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 rounded-[2rem] bg-white border border-slate-100 group hover:border-blue-300 hover:bg-blue-50/30 transition-all shadow-sm">
-                <div className="space-y-1">
-                  <Label className="text-lg font-black text-black flex items-center gap-2 italic">
-                    <Database className="w-4 h-4 text-blue-700" /> INTRASYSTEM ASSETS
-                  </Label>
-                  <p className="text-sm text-slate-900 font-black">Restrict migrations within the internal FIRST STATE BANK node network.</p>
-                </div>
-                <div className="flex items-center gap-6">
-                  <Switch
-                    checked={localEnabled}
-                    onCheckedChange={setLocalEnabled}
-                    className="data-[state=checked]:bg-blue-600"
-                    disabled={saving}
-                  />
-                  <Button
-                    onClick={handleSaveLocal}
-                    disabled={saving}
-                    className="bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 rounded-xl border border-slate-200 h-10 text-xs shadow-sm"
-                  >
-                    {saving ? "..." : "SYNC"}
-                  </Button>
+              {/* Local Transfers Switch */}
+              <div className="group p-8 rounded-[3rem] bg-black/40 border border-white/5 hover:bg-blue-600/5 hover:border-blue-600/20 transition-all duration-500 relative overflow-hidden shadow-inner">
+                <div className="absolute top-0 right-0 h-40 w-40 bg-blue-600/5 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
+                  <div className="space-y-4">
+                    <Label className="text-xl font-black text-white flex items-center gap-3 italic tracking-tight uppercase">
+                      <Layers className="w-5 h-5 text-blue-500" /> Intrasystem Bridge
+                    </Label>
+                    <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed">Restrict asset movement within the internal First State Node network.</p>
+                  </div>
+                  <div className="flex items-center gap-8">
+                    <Switch
+                      checked={localEnabled}
+                      onCheckedChange={setLocalEnabled}
+                      className="data-[state=checked]:bg-blue-600 scale-125 border-white/10"
+                      disabled={saving}
+                    />
+                    <Button
+                      onClick={handleSaveLocal}
+                      disabled={saving}
+                      className="bg-slate-900 border border-white/5 hover:bg-white hover:text-black text-white font-black px-8 rounded-2xl h-14 text-[10px] uppercase tracking-[0.3em] shadow-3xl"
+                    >
+                      {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : "SYNC BRIDGE"}
+                    </Button>
+                  </div>
                 </div>
               </div>
 
-              <Separator className="bg-slate-100" />
+              <div className="h-px bg-white/5" />
 
-              {/* Bulk Override */}
-              <div className="space-y-8">
-                <div className="space-y-1">
-                  <Label className="text-xl font-black text-black italic uppercase tracking-tighter">BULK PERMISSION OVERRIDE</Label>
-                  <p className="text-sm text-slate-900 font-black">Atomic permission updates for the entire user registry. Use with caution.</p>
+              {/* Bulk Override Section */}
+              <div className="space-y-10">
+                <div className="space-y-4">
+                  <Label className="text-2xl font-black text-white italic tracking-tighter uppercase leading-none flex items-center gap-4">
+                    <Zap className="w-6 h-6 text-orange-600 animate-pulse" /> Bulk Override Sequences
+                  </Label>
+                  <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed max-w-xl">
+                    Atomic permission synchronization for the entire user directory. <span className="text-red-500 italic">WARNING: HIGH ENTROPY ACTION.</span>
+                  </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* Unified */}
-                  <div className="space-y-3 p-5 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Unified Protocol</p>
-                    <div className="flex flex-col gap-2">
-                      <Button
-                        onClick={() => bulkSetUsersTransfer(true, "all")}
-                        disabled={bulkBusy}
-                        className="w-full bg-orange-600 text-white font-black hover:bg-orange-700 transition-all uppercase tracking-widest text-[9px] h-10 shadow-md"
-                      >
-                        Enable All
-                      </Button>
-                      <Button
-                        onClick={() => bulkSetUsersTransfer(false, "all")}
-                        disabled={bulkBusy}
-                        className="w-full bg-white border border-red-200 text-red-600 font-black hover:bg-red-50 transition-all uppercase tracking-widest text-[9px] h-10 shadow-sm"
-                      >
-                        Revoke All
-                      </Button>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {[
+                    { label: "Unified Protocol", type: "all", color: "orange", icon: ShieldCheck },
+                    { label: "Local Registry", type: "blue", color: "blue", icon: Database },
+                    { label: "Intl Clearance", type: "international", color: "orange", icon: Globe },
+                  ].map((btn, i) => (
+                    <div key={i} className="space-y-6 p-8 rounded-[2.5rem] bg-black/40 border border-white/5 shadow-inner group hover:border-white/20 transition-all">
+                      <div className="flex items-center gap-3">
+                        <btn.icon className={cn("w-4 h-4", btn.color === 'orange' ? "text-orange-600" : "text-blue-500")} />
+                        <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em]">{btn.label}</p>
+                      </div>
+                      <div className="flex flex-col gap-4">
+                        <Button
+                          onClick={() => bulkSetUsersTransfer(true, btn.type as any)}
+                          disabled={bulkBusy}
+                          className={cn(
+                            "w-full text-white font-black hover:bg-white hover:text-black transition-all uppercase tracking-widest text-[9px] h-14 rounded-xl shadow-3xl border-none",
+                            btn.color === 'orange' ? "bg-orange-600" : "bg-blue-600"
+                          )}
+                        >
+                          Enable Set
+                        </Button>
+                        <Button
+                          onClick={() => bulkSetUsersTransfer(false, btn.type as any)}
+                          disabled={bulkBusy}
+                          className="w-full bg-slate-900 border border-white/5 text-red-500 font-black hover:bg-red-500 hover:text-white transition-all uppercase tracking-widest text-[9px] h-14 rounded-xl shadow-3xl"
+                        >
+                          Revoke Set
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Local */}
-                  <div className="space-y-3 p-5 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Local Details</p>
-                    <div className="flex flex-col gap-2">
-                      <Button
-                        onClick={() => bulkSetUsersTransfer(true, "local")}
-                        disabled={bulkBusy}
-                        className="w-full bg-blue-600 text-white font-black hover:bg-blue-700 transition-all uppercase tracking-widest text-[9px] h-10 shadow-md"
-                      >
-                        Enable Local
-                      </Button>
-                      <Button
-                        onClick={() => bulkSetUsersTransfer(false, "local")}
-                        disabled={bulkBusy}
-                        className="w-full bg-white border border-red-200 text-red-600 font-black hover:bg-red-50 transition-all uppercase tracking-widest text-[9px] h-10 shadow-sm"
-                      >
-                        Revoke Local
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* International */}
-                  <div className="space-y-3 p-5 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Intl Protocols</p>
-                    <div className="flex flex-col gap-2">
-                      <Button
-                        onClick={() => bulkSetUsersTransfer(true, "international")}
-                        disabled={bulkBusy}
-                        className="w-full bg-orange-600 text-white font-black hover:bg-orange-700 transition-all uppercase tracking-widest text-[9px] h-10 shadow-md"
-                      >
-                        Enable Intl
-                      </Button>
-                      <Button
-                        onClick={() => bulkSetUsersTransfer(false, "international")}
-                        disabled={bulkBusy}
-                        className="w-full bg-white border border-red-200 text-red-600 font-black hover:bg-red-50 transition-all uppercase tracking-widest text-[9px] h-10 shadow-sm"
-                      >
-                        Revoke Intl
-                      </Button>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Side Panel */}
-        <div className="space-y-8">
-          <Card className="bg-white border-slate-200 shadow-xl rounded-[2.5rem] p-8 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/[0.03] rounded-full blur-3xl"></div>
-            <h3 className="text-xl font-black text-black mb-6 flex items-center gap-3 italic uppercase">
-              <ShieldCheck className="w-5 h-5 text-orange-600" /> INDIVIDUAL OVERRIDE
-            </h3>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 leading-relaxed">
-              Target specific identity Details for precise protocol modulation.
-            </p>
-
-            <div className="space-y-6">
-              <div className="relative">
-                <Input
-                  placeholder="Identity Node (Email/ID)"
-                  value={singleUserId}
-                  onChange={(e) => setSingleUserId(e.target.value)}
-                  className="bg-slate-50 border-slate-200 rounded-xl h-12 text-slate-900 font-mono text-xs focus:border-orange-500 transition-all placeholder:text-slate-400"
-                />
-                <Button
-                  size="sm"
-                  onClick={async () => {
-                    if (!singleUserId) return
-                    setSingleBusy(true)
-                    setError(null)
-                    try {
-                      const res = await fetch(`/api/admin/users/permissions?identifier=${encodeURIComponent(singleUserId)}`)
-                      const data = await res.json()
-                      if (!res.ok) {
-                        setError(data?.message || "Node signature not found.")
-                        setFoundUser(null)
-                      } else {
-                        setFoundUser(data)
-                      }
-                    } catch {
-                      setError("Network interrupt during node lookup.")
-                    } finally {
-                      setSingleBusy(false)
-                    }
-                  }}
-                  className="absolute right-1 top-1 h-10 px-4 rounded-lg bg-orange-600 text-white font-black text-[10px] uppercase tracking-widest hover:bg-orange-700 shadow-md"
-                >
-                  {singleBusy ? "..." : "FETCH"}
-                </Button>
+        {/* Side Control Units */}
+        <div className="space-y-12">
+          {/* Individual Target Controller */}
+          <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[3.5rem] p-10 overflow-hidden relative glass-dark">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-600/10 rounded-full blur-3xl"></div>
+            <div className="space-y-8 relative z-10">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter leading-none flex items-center gap-3">
+                  <Key className="w-6 h-6 text-orange-600 rotate-12" /> Node Override
+                </h3>
+                <p className="text-[9px] font-black text-slate-600 uppercase tracking-[0.4em] leading-relaxed">
+                  Target precise identity nodes for protocol modulation.
+                </p>
               </div>
 
-              {foundUser && (
-                <div className="p-5 rounded-2xl bg-orange-50 border border-orange-100 space-y-5 animate-in fade-in slide-in-from-top-4 duration-300 shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white border border-orange-100 flex items-center justify-center text-orange-600 font-black text-xs uppercase shadow-sm">
-                      {foundUser.name[0]}
-                    </div>
-                    <div>
-                      <p className="text-xs font-black text-black uppercase tracking-tight">{foundUser.name}</p>
-                      <p className="text-[9px] text-slate-500 italic truncate max-w-[150px]">{foundUser.email}</p>
-                    </div>
-                  </div>
-
-                  <Separator className="bg-orange-100" />
-
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Local Transfer</span>
-                      <Switch
-                        checked={foundUser.canLocalTransfer}
-                        onCheckedChange={(val) => toggleUserPerm("local", val)}
-                        className="data-[state=checked]:bg-blue-600 scale-75"
-                      />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Intl Transfer</span>
-                      <Switch
-                        checked={foundUser.canInternationalTransfer}
-                        onCheckedChange={(val) => toggleUserPerm("international", val)}
-                        className="data-[state=checked]:bg-orange-600 scale-75"
-                      />
-                    </div>
-                  </div>
+              <div className="space-y-6">
+                <div className="relative group">
+                  <Input
+                    placeholder="Entity Identifier (Email/ID)"
+                    value={singleUserId}
+                    onChange={(e) => setSingleUserId(e.target.value)}
+                    className="bg-black/60 border-white/5 rounded-2xl h-18 text-white font-black uppercase text-xs tracking-widest focus:border-orange-600 transition-all placeholder:text-slate-800 shadow-inner px-6"
+                  />
+                  <Button
+                    size="sm"
+                    onClick={async () => {
+                      if (!singleUserId) return
+                      setSingleBusy(true)
+                      setError(null)
+                      try {
+                        const res = await fetch(`/api/admin/users/permissions?identifier=${encodeURIComponent(singleUserId)}`)
+                        const data = await res.json()
+                        if (!res.ok) {
+                          setError(data?.message || "Node signature not found.")
+                          setFoundUser(null)
+                        } else {
+                          setFoundUser(data)
+                        }
+                      } catch {
+                        setError("Network interrupt during node lookup.")
+                      } finally {
+                        setSingleBusy(false)
+                      }
+                    }}
+                    className="absolute right-2 top-2 h-14 px-6 rounded-xl bg-orange-600 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black shadow-3xl transition-all border-none"
+                  >
+                    {singleBusy ? <RefreshCw className="w-4 h-4 animate-spin" /> : "QUERY"}
+                  </Button>
                 </div>
-              )}
+
+                {foundUser && (
+                  <div className="p-8 rounded-[3rem] bg-black/40 border border-white/5 space-y-10 animate-in fade-in slide-in-from-top-6 duration-700 shadow-inner group">
+                    <div className="flex items-center gap-6">
+                      <div className="w-16 h-16 rounded-[1.5rem] bg-slate-900 border border-white/10 flex items-center justify-center text-orange-600 font-black text-2xl uppercase shadow-2xl group-hover:scale-110 transition-transform italic">
+                        {foundUser.name[0]}
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-sm font-black text-white uppercase tracking-widest italic">{foundUser.name}</p>
+                        <p className="text-[10px] text-slate-600 font-black truncate max-w-[160px] uppercase tracking-tighter">{foundUser.email}</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-6">
+                      <div className="flex items-center justify-between p-6 bg-slate-900/60 rounded-2xl border border-white/5 shadow-2xl">
+                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Local Matrix</span>
+                        <Switch
+                          checked={foundUser.canLocalTransfer}
+                          onCheckedChange={(val) => toggleUserPerm("local", val)}
+                          className="data-[state=checked]:bg-blue-600 border-white/10"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between p-6 bg-slate-900/60 rounded-2xl border border-white/5 shadow-2xl">
+                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Intl Matrix</span>
+                        <Switch
+                          checked={foundUser.canInternationalTransfer}
+                          onCheckedChange={(val) => toggleUserPerm("international", val)}
+                          className="data-[state=checked]:bg-orange-600 border-white/10"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </Card>
 
-          <Card className="bg-white border-slate-200 rounded-[2.5rem] p-8 shadow-xl relative overflow-hidden group">
-            <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-orange-500/[0.03] rounded-full blur-[100px] group-hover:bg-orange-500/[0.05] transition-all"></div>
-            <div className="relative z-10 space-y-4">
-              <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest leading-none">Global Master Key</p>
-              <h3 className="text-xl font-black text-black italic tracking-tight uppercase">System Integrity</h3>
-              <p className="text-xs text-slate-500 font-medium leading-relaxed">
-                Changes made in this module propagate instantly through our global server architecture. Proceed with highest caution.
+          {/* System Security Advisory */}
+          <Card className="bg-slate-950 border border-white/10 rounded-[3.5rem] p-10 shadow-3xl relative overflow-hidden group glass-dark">
+            <div className="absolute top-[-20%] left-[-20%] w-[100%] h-[100%] bg-orange-600/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-orange-600/10 transition-all duration-1000"></div>
+            <div className="relative z-10 space-y-8">
+              <div className="h-14 w-14 rounded-2xl bg-orange-600/20 flex items-center justify-center text-orange-500 mb-2 shadow-2xl border border-orange-600/20">
+                <ShieldCheck className="w-7 h-7 animate-pulse" />
+              </div>
+              <div className="space-y-4">
+                <p className="text-[10px] font-black text-orange-500 uppercase tracking-[0.6em]">Propagating Node</p>
+                <h3 className="text-3xl font-black text-white italic tracking-tighter uppercase leading-none">Security <span className="text-white/30">Advisory</span></h3>
+              </div>
+              <p className="text-xs text-orange-100/30 font-bold leading-relaxed italic border-l-2 border-orange-600/30 pl-4">
+                "System architecture changes propagate instantly through the global Sovereign server cluster. Authorized administrative clearance is required for all modulation sequences."
               </p>
             </div>
           </Card>

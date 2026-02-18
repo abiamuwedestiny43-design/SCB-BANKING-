@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { AlertCircle, CheckCircle, XCircle, Clock, Search, Eye, Banknote, ShieldCheck, Zap } from "lucide-react"
+import { AlertCircle, CheckCircle, XCircle, Clock, Search, Eye, Banknote, ShieldCheck, Zap, Activity, RefreshCw, Cpu, Layers, Radio, Terminal } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Textarea } from "@/components/ui/textarea"
+import { cn } from "@/lib/utils"
 
 interface LoanWithUser {
   _id: string
@@ -110,94 +110,113 @@ export default function AdminLoansPage() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'approved': return <CheckCircle className="h-3 w-3" />
-      case 'pending': return <Clock className="h-3 w-3" />
-      case 'rejected': return <XCircle className="h-3 w-3" />
-      case 'active': return <CheckCircle className="h-3 w-3" />
-      default: return <AlertCircle className="h-3 w-3" />
+      case 'approved': return <CheckCircle className="h-4 w-4" />
+      case 'pending': return <Clock className="h-4 w-4" />
+      case 'rejected': return <XCircle className="h-4 w-4" />
+      case 'active': return <CheckCircle className="h-4 w-4" />
+      default: return <AlertCircle className="h-4 w-4" />
     }
   }
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'approved': return 'text-orange-400 bg-orange-500/10 border-orange-500/20'
-      case 'pending': return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20'
-      case 'rejected': return 'text-red-400 bg-red-500/10 border-red-500/20'
-      case 'active': return 'text-blue-400 bg-blue-500/10 border-blue-500/20'
-      case 'completed': return 'text-slate-400 bg-white/5 border-white/10'
-      default: return 'text-slate-400 bg-white/5 border-white/10'
+      case 'approved': return 'text-orange-600 bg-orange-50 border-orange-100'
+      case 'pending': return 'text-yellow-600 bg-yellow-50 border-yellow-100'
+      case 'rejected': return 'text-red-600 bg-red-50 border-red-100'
+      case 'active': return 'text-emerald-600 bg-emerald-50 border-emerald-100'
+      case 'completed': return 'text-slate-400 bg-slate-50 border-slate-200'
+      default: return 'text-slate-400 bg-slate-50 border-slate-200'
     }
   }
 
   if (loading) {
     return (
-      <div className="p-10 text-orange-700 font-black animate-pulse flex items-center gap-3 uppercase tracking-widest">
-        <div className="w-5 h-5 border-2 border-orange-700 border-t-transparent rounded-full animate-spin"></div>
-        CALIBRATING LOAN SERVICES...
+      <div className="p-12 min-h-screen bg-black flex flex-col items-center justify-center gap-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-orange-600/[0.03] animate-pulse"></div>
+        <Cpu className="w-16 h-16 text-orange-600 animate-spin relative z-10" />
+        <p className="text-[10px] font-black text-slate-500 tracking-[0.6em] animate-pulse uppercase relative z-10">Syncing Loan Protocols...</p>
       </div>
     )
   }
 
   return (
-    <div className="p-4 md:p-10 space-y-10 relative">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+    <div className="p-6 md:p-12 space-y-12 relative min-h-screen bg-black selection:bg-orange-500/30">
+      {/* High-Tech Background Decor */}
+      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-600/[0.05] rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-600/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
-      {/* Header */}
-      <div className="space-y-2 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-widest">
-          <Banknote className="w-3 h-3" /> Asset Distribution
+      {/* Industrial Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
+        <div className="space-y-4">
+          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
+            <Banknote className="w-3.5 h-3.5 text-orange-500" /> Asset Distribution
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+            CREDIT <span className="text-orange-600 italic">MATRIX</span>
+          </h1>
+          <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight">Authorized vetting and execution of institutional credit frameworks across the Sovereign node.</p>
         </div>
-        <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter">
-          Loan <span className="text-slate-500 italic">Services</span>
-        </h1>
-        <p className="text-slate-900 font-bold max-w-md uppercase text-[10px] tracking-widest mt-1">Authorized vetting and execution of institutional credit frameworks.</p>
+
+        <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
+          <div className="flex flex-col items-end">
+            <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">Exposure Sync</p>
+            <p className="text-sm font-black text-emerald-500 uppercase tracking-widest italic">Synchronized</p>
+          </div>
+          <div className="h-10 w-[1px] bg-white/5"></div>
+          <div className="h-12 w-12 rounded-xl bg-black border border-white/5 flex items-center justify-center text-orange-500 shadow-xl">
+            <Activity className="w-6 h-6 animate-pulse" />
+          </div>
+        </div>
       </div>
 
-      {/* Filters */}
-      <Card className="bg-white border-slate-200 rounded-[2.5rem] p-8 relative z-10 overflow-hidden shadow-sm">
-        <div className="absolute top-0 right-0 h-32 w-32 bg-orange-50 rounded-full blur-3xl"></div>
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-orange-500/50" />
+      {/* Execution Logic / Filters */}
+      <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[3.5rem] p-10 relative z-10 overflow-hidden glass-dark">
+        <div className="absolute top-0 right-0 h-40 w-40 bg-orange-600/5 rounded-full blur-3xl opacity-50"></div>
+        <div className="flex flex-col md:flex-row gap-8 relative z-10">
+          <div className="relative flex-1 group">
+            <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 h-6 w-6 text-slate-500 group-focus-within:text-orange-600 transition-colors" />
             <Input
-              placeholder="Query by applicant, account number, or loan type..."
+              placeholder="Query by applicant identity, account hash, or protocol type..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-12 bg-white border-slate-200 rounded-2xl h-14 text-black focus:border-orange-700 transition-all font-black placeholder:text-slate-500"
+              className="pl-16 bg-black/60 border-white/5 rounded-[2rem] h-18 text-white focus:border-orange-600 focus:ring-orange-600/10 transition-all font-black placeholder:text-slate-800 text-lg shadow-inner uppercase tracking-tight"
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="h-14 w-full md:w-[220px] bg-white border-slate-200 rounded-2xl text-black font-black uppercase text-xs tracking-widest">
-              <SelectValue placeholder="Loan Status" />
+            <SelectTrigger className="h-18 w-full md:w-[280px] bg-black/60 border-white/5 rounded-[2rem] text-white font-black uppercase text-xs tracking-[0.4em] shadow-inner hover:border-orange-600 transition-all px-8">
+              <div className="flex items-center gap-3">
+                <Layers className="w-5 h-5 text-orange-600" />
+                <SelectValue placeholder="Protocol State" />
+              </div>
             </SelectTrigger>
-            <SelectContent className="bg-white border-slate-200 text-black backdrop-blur-xl">
-              <SelectItem value="all">All Loans</SelectItem>
-              <SelectItem value="pending">Review Required</SelectItem>
-              <SelectItem value="approved">Approved</SelectItem>
-              <SelectItem value="active">Active</SelectItem>
-              <SelectItem value="rejected">Denied</SelectItem>
-              <SelectItem value="completed">Paid Off</SelectItem>
+            <SelectContent className="bg-slate-900 border-white/5 rounded-3xl p-3 glass-dark">
+              <SelectItem value="all" className="rounded-xl font-bold uppercase text-[10px] tracking-widest py-4 focus:bg-white focus:text-black">Global Registry</SelectItem>
+              <SelectItem value="pending" className="rounded-xl font-bold uppercase text-[10px] tracking-widest py-4 text-yellow-500 focus:bg-yellow-500 focus:text-black">Review Required</SelectItem>
+              <SelectItem value="approved" className="rounded-xl font-bold uppercase text-[10px] tracking-widest py-4 text-orange-500 focus:bg-orange-500 focus:text-black">Authorized Nodes</SelectItem>
+              <SelectItem value="active" className="rounded-xl font-bold uppercase text-[10px] tracking-widest py-4 text-emerald-500 focus:bg-emerald-500 focus:text-black">Active Sequences</SelectItem>
+              <SelectItem value="rejected" className="rounded-xl font-bold uppercase text-[10px] tracking-widest py-4 text-red-500 focus:bg-red-500 focus:text-black">Denied protocols</SelectItem>
+              <SelectItem value="completed" className="rounded-xl font-bold uppercase text-[10px] tracking-widest py-4 text-slate-500 focus:bg-slate-500 focus:text-black">Terminated Assets</SelectItem>
             </SelectContent>
           </Select>
         </div>
       </Card>
 
-      {/* Loans Table */}
-      <Card className="bg-white border-slate-200 rounded-[3rem] overflow-hidden relative z-10 shadow-xl">
-        <CardHeader className="p-8 border-b border-slate-100 bg-white/50">
-          <div className="flex justify-between items-center">
+      {/* Registry Matrix */}
+      <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden relative z-10 glass-dark">
+        <CardHeader className="p-12 border-b border-white/5 bg-black/40 backdrop-blur-xl">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
-              <CardTitle className="text-2xl font-black text-black italic tracking-tight">Active Applications</CardTitle>
-              <CardDescription className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-2">{filteredLoans.length} loan protocols detected in current cycle.</CardDescription>
+              <CardTitle className="text-3xl font-black text-white tracking-tighter uppercase leading-none italic">Asset Applications</CardTitle>
+              <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-4 flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse"></div>
+                {filteredLoans.length} Protocols Detected in Current Cycle
+              </CardDescription>
             </div>
-            <div className="hidden md:flex gap-4">
-              <div className="text-right">
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Exposure</p>
-                <p className="text-lg font-black text-black">
-                  ${loans.filter(l => l.status === 'active' || l.status === 'approved').reduce((acc, curr) => acc + curr.amount, 0).toLocaleString()}
-                </p>
-              </div>
+            <div className="p-8 bg-black border border-white/5 rounded-[2.5rem] flex flex-col items-end min-w-[260px] shadow-2xl">
+              <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-3">Aggregate Exposure</p>
+              <p className="text-4xl font-black text-white tracking-tighter italic">
+                ${loans.filter(l => l.status === 'active' || l.status === 'approved').reduce((acc, curr) => acc + curr.amount, 0).toLocaleString()}
+              </p>
             </div>
           </div>
         </CardHeader>
@@ -205,67 +224,73 @@ export default function AdminLoansPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-100 bg-white/50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700">
-                  <th className="px-8 py-6">Applicant</th>
-                  <th className="px-8 py-6">Loan Details</th>
-                  <th className="px-8 py-6">Capital</th>
-                  <th className="px-8 py-6">Status</th>
-                  <th className="px-8 py-6 text-right">Actions</th>
+                <tr className="border-b border-white/5 bg-black/40 text-[9px] font-black uppercase tracking-[0.4em] text-slate-600">
+                  <th className="px-12 py-8">Applicant Entity</th>
+                  <th className="px-12 py-8">Credit Framework</th>
+                  <th className="px-12 py-8">Capital Assets</th>
+                  <th className="px-12 py-8">Protocol State</th>
+                  <th className="px-12 py-8 text-right">Commands</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
                 {filteredLoans.map((loan) => (
-                  <tr key={loan._id} className="group hover:bg-white/[0.02] transition-colors">
-                    <td className="px-8 py-6">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 font-black text-xs uppercase tracking-tighter">
+                  <tr key={loan._id} className="group hover:bg-orange-600/5 transition-all duration-500">
+                    <td className="px-12 py-10">
+                      <div className="flex items-center gap-6">
+                        <div className="w-18 h-18 rounded-[2rem] bg-black border-2 border-white/5 flex items-center justify-center text-white font-black text-2xl overflow-hidden shadow-3xl group-hover:scale-110 group-hover:border-orange-600/50 transition-all duration-500 italic">
                           {loan.userId.bankInfo.bio.firstname[0]}
                         </div>
-                        <div>
-                          <p className="text-sm font-black text-black uppercase tracking-tight">{loan.userId.bankInfo.bio.firstname} {loan.userId.bankInfo.bio.lastname}</p>
-                          <p className="text-[10px] font-black text-slate-500 tracking-widest mt-1 opacity-60 truncate max-w-[150px]">{loan.userId.email}</p>
+                        <div className="space-y-2">
+                          <p className="text-xl font-black text-white uppercase tracking-tighter group-hover:text-orange-600 transition-colors italic">{loan.userId.bankInfo.bio.firstname} {loan.userId.bankInfo.bio.lastname}</p>
+                          <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest italic truncate max-w-[200px]">{loan.userId.email}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-8 py-6">
-                      <div className="space-y-1">
-                        <p className="text-sm font-bold text-white uppercase tracking-tight">{loan.loanType} Framework</p>
-                        <p className="text-[10px] text-slate-500 font-medium line-clamp-1 italic">"{loan.purpose}"</p>
+                    <td className="px-12 py-10">
+                      <div className="space-y-3">
+                        <p className="text-[9px] font-black text-orange-600 uppercase tracking-[0.3em] border border-orange-600/20 w-fit px-3 py-1.5 rounded-xl bg-orange-600/5 shadow-xl italic leading-none">{loan.loanType} Framework</p>
+                        <p className="text-[11px] text-slate-500 font-black uppercase tracking-tight line-clamp-1 italic max-w-[240px]">"{loan.purpose}"</p>
                       </div>
                     </td>
-                    <td className="px-8 py-6">
-                      <div className="text-lg font-black text-black tracking-tighter">${loan.amount.toLocaleString()}</div>
-                      <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest">{loan.duration} MOS @ {loan.interestRate}%</div>
+                    <td className="px-12 py-10">
+                      <div className="text-3xl font-black text-white tracking-tighter group-hover:scale-110 origin-left transition-transform duration-500 italic">${loan.amount.toLocaleString()}</div>
+                      <div className="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] mt-2 italic">{loan.duration} MOS @ <span className="text-orange-600">{loan.interestRate}% APR</span></div>
                     </td>
-                    <td className="px-8 py-6">
-                      <Badge className={`px-3 py-1.5 rounded-xl border flex w-fit items-center gap-2 text-[10px] font-black uppercase tracking-widest ${getStatusColor(loan.status)}Shadow ${getStatusColor(loan.status)}`}>
+                    <td className="px-12 py-10">
+                      <Badge className={cn("px-5 py-2 rounded-xl border-none flex w-fit items-center gap-3 text-[9px] font-black uppercase tracking-[0.3em] shadow-3xl transform group-hover:scale-110 transition-all duration-500 italic",
+                        loan.status === 'approved' && "bg-orange-600/10 text-orange-500",
+                        loan.status === 'pending' && "bg-yellow-500/10 text-yellow-500",
+                        loan.status === 'rejected' && "bg-red-500/10 text-red-500",
+                        loan.status === 'active' && "bg-emerald-500/10 text-emerald-500",
+                        loan.status === 'completed' && "bg-slate-800 text-slate-500"
+                      )}>
                         {getStatusIcon(loan.status)}
                         {loan.status}
                       </Badge>
                     </td>
-                    <td className="px-8 py-6">
-                      <div className="flex justify-end gap-2">
+                    <td className="px-12 py-10">
+                      <div className="flex justify-end gap-4 group-hover:-translate-x-4 transition-transform duration-500">
                         {loan.status === 'pending' && (
                           <>
                             <Button
                               size="sm"
                               onClick={() => updateLoanStatus(loan._id, 'approved')}
-                              className="h-10 px-6 rounded-xl bg-orange-500 text-[#020617] font-black text-[10px] uppercase tracking-widest hover:bg-orange-400 transition-all shadow-lg shadow-orange-500/10"
+                              className="h-14 px-8 rounded-2xl bg-orange-600 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-3xl border-none"
                             >
-                              Approve
+                              Authorize
                             </Button>
                             <Button
                               size="sm"
                               variant="ghost"
                               onClick={() => handleReject(loan)}
-                              className="h-10 px-6 rounded-xl text-red-500 font-bold text-[10px] uppercase tracking-widest hover:bg-red-500/10"
+                              className="h-14 px-8 rounded-2xl text-red-500 hover:bg-red-600 hover:text-white font-black text-[10px] uppercase tracking-widest border border-red-500/20 transition-all"
                             >
                               Deny
                             </Button>
                           </>
                         )}
-                        <Button size="sm" variant="ghost" className="h-10 w-10 p-0 text-slate-500 hover:text-white hover:bg-white/5 rounded-xl">
-                          <Eye className="h-4 w-4" />
+                        <Button size="sm" variant="ghost" className="h-14 w-14 rounded-2xl bg-black border border-white/5 text-slate-600 hover:text-orange-600 hover:bg-white/5 hover:shadow-3xl transition-all duration-500 group/btn shadow-inner">
+                          <Eye className="h-6 w-6 group-hover/btn:scale-125 transition-transform" />
                         </Button>
                       </div>
                     </td>
@@ -275,9 +300,11 @@ export default function AdminLoansPage() {
             </table>
 
             {filteredLoans.length === 0 && (
-              <div className="text-center py-20 space-y-4">
-                <Search className="h-16 w-16 text-slate-500/20 mx-auto" />
-                <p className="text-slate-500 font-medium italic">No loan applications found.</p>
+              <div className="flex flex-col items-center justify-center py-48 gap-10 opacity-30">
+                <div className="w-24 h-24 rounded-[3rem] bg-black border border-white/5 flex items-center justify-center shadow-inner">
+                  <Banknote className="h-12 w-12 text-slate-700" />
+                </div>
+                <p className="text-[10px] font-black uppercase tracking-[0.6em] text-slate-700 italic">No Asset Sequences Found</p>
               </div>
             )}
           </div>
@@ -286,42 +313,55 @@ export default function AdminLoansPage() {
 
       {/* Rejection Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="bg-white border-slate-200 rounded-[2.5rem] p-10 max-w-lg shadow-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-black text-slate-950 tracking-tight">Decline Application</DialogTitle>
-            <DialogDescription className="text-slate-700 font-medium">
-              Please provide a reason for rejecting this loan application. This will be sent to the user.
+        <DialogContent className="bg-slate-900 border-white/5 rounded-[4rem] p-12 max-w-xl shadow-3xl overflow-hidden glass-dark text-white">
+          <div className="absolute top-0 left-0 w-full h-[8px] bg-red-600 animate-pulse"></div>
+          <DialogHeader className="space-y-6">
+            <DialogTitle className="text-4xl font-black text-white tracking-tighter uppercase italic leading-none">Decline Application</DialogTitle>
+            <DialogDescription className="text-slate-500 font-black uppercase text-[10px] tracking-[0.3em] leading-relaxed italic">
+              Authorized administrative justification for declination of asset distribution protocol.
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-6 pt-6">
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
-              <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Target Account</p>
-              <p className="text-sm font-bold text-white uppercase tracking-tight">
-                {selectedLoan?.userId.bankInfo.bio.firstname} {selectedLoan?.userId.bankInfo.bio.lastname}
-              </p>
-              <p className="text-[10px] font-black text-red-500 mt-2 uppercase tracking-widest">
-                ${selectedLoan?.amount.toLocaleString()} • {selectedLoan?.loanType} LOAN
-              </p>
+          <div className="space-y-10 pt-10">
+            <div className="p-10 rounded-[3rem] bg-black border border-white/5 text-white shadow-3xl relative overflow-hidden group">
+              <div className="absolute -right-8 -top-8 p-12 opacity-5 scale-150 rotate-12 group-hover:rotate-0 transition-transform duration-1000">
+                <ShieldCheck className="w-32 h-32 text-orange-600" />
+              </div>
+              <div className="relative z-10 space-y-6">
+                <div>
+                  <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-2 leading-none">Target Entity</p>
+                  <p className="text-2xl font-black uppercase tracking-tighter italic">
+                    {selectedLoan?.userId.bankInfo.bio.firstname} {selectedLoan?.userId.bankInfo.bio.lastname}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-2 leading-none">Asset Value</p>
+                  <p className="text-3xl font-black tracking-tighter italic font-mono">
+                    ${selectedLoan?.amount.toLocaleString()} <span className="text-xs text-slate-600 not-italic">• {selectedLoan?.loanType} FRAMEWORK</span>
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Rejection Justification *</label>
+            <div className="space-y-5">
+              <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.4em] flex items-center gap-3 italic">
+                <Terminal className="w-4 h-4 text-orange-600" /> Rejection Justification *
+              </label>
               <Textarea
-                placeholder="Declare the protocol violation or reason for denial..."
+                placeholder="Declare the protocol violation or reason for denial sequence..."
                 value={rejectionReason}
                 onChange={(e) => setRejectionReason(e.target.value)}
                 rows={4}
-                className="bg-white/5 border-white/10 rounded-2xl p-4 text-white focus:border-red-500 transition-all resize-none"
+                className="bg-black/60 border-white/5 rounded-[2rem] p-8 text-white focus:border-red-600 transition-all resize-none font-black placeholder:text-slate-800 shadow-inner uppercase text-sm tracking-tight"
               />
             </div>
           </div>
-          <DialogFooter className="pt-8">
-            <Button variant="ghost" onClick={() => setIsDialogOpen(false)} className="rounded-xl text-slate-400 font-bold hover:bg-white/5">
-              Cancel
+          <DialogFooter className="pt-12 gap-6">
+            <Button variant="ghost" onClick={() => setIsDialogOpen(false)} className="h-16 px-10 rounded-2xl text-slate-600 font-black uppercase tracking-widest text-[10px] hover:bg-white/5 transition-all italic">
+              Abort
             </Button>
             <Button
               onClick={() => selectedLoan && updateLoanStatus(selectedLoan._id, 'rejected', rejectionReason)}
               disabled={!rejectionReason.trim()}
-              className="bg-red-500 hover:bg-red-400 text-white font-black px-8 h-12 rounded-xl shadow-xl shadow-red-500/20 uppercase tracking-widest text-[10px]"
+              className="bg-red-600 hover:bg-white hover:text-black text-white font-black px-12 h-16 rounded-2xl shadow-3xl uppercase tracking-widest text-[10px] transition-all duration-500 border-none"
             >
               Confirm Denial
             </Button>

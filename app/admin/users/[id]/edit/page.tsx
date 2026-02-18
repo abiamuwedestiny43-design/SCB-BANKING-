@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { useToast } from "@/hooks/use-toast"
-import { ArrowLeft, Save, User as UserIcon, ShieldCheck, Globe, CreditCard, Mail, Phone, MapPin, Fingerprint, Zap, ShieldAlert } from "lucide-react"
+import { ArrowLeft, Save, User as UserIcon, ShieldCheck, Globe, CreditCard, Mail, Phone, MapPin, Fingerprint, Zap, ShieldAlert, Cpu, RefreshCw, Activity } from "lucide-react"
 import Link from "next/link"
 
 export default function AdminEditUserPage() {
@@ -43,6 +43,12 @@ export default function AdminEditUserPage() {
     canLocalTransfer: false,
     canInternationalTransfer: false,
     transferCodeRequired: true,
+    accountHolderName: "",
+    accountNumber: "",
+    bankName: "",
+    branchName: "",
+    routingCode: "",
+    accountType: "",
   })
 
   const onChange = (field: string, value: any) => setForm((p: any) => ({ ...p, [field]: value }))
@@ -79,6 +85,12 @@ export default function AdminEditUserPage() {
           canLocalTransfer: u.bankAccount?.canLocalTransfer || false,
           canInternationalTransfer: u.bankAccount?.canInternationalTransfer || false,
           transferCodeRequired: u.transferCodeRequired !== false,
+          accountHolderName: u.bankDetails?.accountHolderName || "",
+          accountNumber: u.bankDetails?.accountNumber || "",
+          bankName: u.bankDetails?.bankName || "",
+          branchName: u.bankDetails?.branchName || "",
+          routingCode: u.bankDetails?.routingCode || "",
+          accountType: u.bankDetails?.accountType || "",
         })
         setRolesInput((Array.isArray(u.roles) ? u.roles : []).join(","))
       } catch (e) {
@@ -123,147 +135,133 @@ export default function AdminEditUserPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#020617] flex items-center justify-center">
-        <div className="text-orange-500 font-black animate-pulse tracking-[0.3em] uppercase">LOADING USER...</div>
+      <div className="p-12 min-h-screen bg-black flex flex-col items-center justify-center gap-6">
+        <Cpu className="w-16 h-16 text-orange-600 animate-spin" />
+        <p className="text-[10px] font-black text-slate-500 tracking-[0.5em] animate-pulse uppercase">Retrieving Node Parameters...</p>
       </div>
     )
   }
 
   return (
-    <div className="p-4 md:p-10 space-y-10 relative bg-[#020617] min-h-screen pt-20">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="p-6 md:p-12 space-y-12 relative min-h-screen bg-black selection:bg-orange-500/30">
+      {/* High-Tech Background Decor */}
+      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-600/[0.05] rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-600/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
-        <div className="flex items-center gap-6">
-          <Button variant="ghost" onClick={() => router.back()} className="h-14 w-14 rounded-2xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/5 transition-all p-0">
+      {/* Industrial Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
+        <div className="flex items-center gap-8">
+          <Button
+            variant="ghost"
+            onClick={() => router.back()}
+            className="h-16 w-16 rounded-[2rem] bg-slate-900 border border-white/5 text-slate-500 hover:text-white hover:bg-white/10 shadow-2xl transition-all p-0 flex items-center justify-center hover:scale-105 active:scale-95"
+          >
             <ArrowLeft className="h-6 w-6" />
           </Button>
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-black uppercase tracking-widest">
-              <Fingerprint className="w-3 h-3" /> Edit Profile
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
+              <Fingerprint className="w-3.5 h-3.5 text-orange-600" /> Identity Logic Trace
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">
-              Update <span className="text-slate-500 italic">User Details</span>
+            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase italic">
+              MODIFY <span className="text-orange-600 uppercase">ENTITY</span>
             </h1>
           </div>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 p-4 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-2xl glass-dark">
           <Button
             onClick={onSave}
             disabled={saving}
-            className="h-12 px-8 rounded-xl bg-orange-500 hover:bg-orange-400 text-black font-black shadow-lg shadow-orange-500/20 transition-all uppercase tracking-widest text-xs"
+            className="h-14 px-10 rounded-2xl bg-white text-black hover:bg-orange-600 hover:text-white font-black uppercase tracking-widest text-[10px] transition-all shadow-xl hover:scale-105 active:scale-95 group border-none"
           >
             {saving ? (
-              <Zap className="h-4 w-4 mr-2 animate-spin" />
+              <RefreshCw className="h-4 w-4 mr-3 animate-spin" />
             ) : (
-              <Save className="h-4 w-4 mr-2" />
+              <Save className="h-4 w-4 mr-3 group-hover:rotate-12 transition-transform" />
             )}
-            {saving ? "Saving..." : "Save Changes"}
+            {saving ? "Synchronizing..." : "Execute Sync"}
           </Button>
         </div>
       </div>
 
       {error && (
-        <Alert className="bg-red-500/10 border-red-500/20 text-red-500 relative z-10 rounded-2xl">
-          <ShieldAlert className="h-4 w-4" />
-          <AlertDescription className="font-bold uppercase text-[10px] tracking-widest">{error}</AlertDescription>
+        <Alert className="bg-red-500/10 border-red-500/20 text-red-500 relative z-10 rounded-[2rem] p-6 shadow-2xl animate-in slide-in-from-top-4 duration-500 glass-dark">
+          <ShieldAlert className="h-5 w-5" />
+          <AlertDescription className="font-black uppercase tracking-widest text-xs ml-3">Protocol Conflict: {error}</AlertDescription>
         </Alert>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
         {/* Core Profile Card */}
-        <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden backdrop-blur-md">
-          <CardHeader className="p-10 border-b border-white/5 bg-white/[0.01]">
-            <CardTitle className="text-2xl font-black text-white italic tracking-tight flex items-center gap-3">
-              <UserIcon className="w-6 h-6 text-orange-500" /> Personal Information
+        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group transition-all duration-500 border-t-4 border-t-orange-600">
+          <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+            <CardTitle className="text-3xl font-black text-white italic tracking-tighter flex items-center gap-4 uppercase leading-none">
+              <UserIcon className="w-8 h-8 text-orange-600" /> Personal Matrix
             </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">Core profile details for the user.</CardDescription>
+            <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-3 italic">Identity anchor points and biographical sequencing.</CardDescription>
           </CardHeader>
-          <CardContent className="p-10 space-y-8">
+          <CardContent className="p-12 space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Email Address</Label>
-                <Input
-                  value={form.email}
-                  onChange={(e) => onChange("email", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Forename</Label>
-                <Input
-                  value={form.firstname}
-                  onChange={(e) => onChange("firstname", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Surname</Label>
-                <Input
-                  value={form.lastname}
-                  onChange={(e) => onChange("lastname", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Phone Number</Label>
-                <Input
-                  value={form.phone}
-                  onChange={(e) => onChange("phone", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Date of Birth</Label>
-                <Input
-                  type="date"
-                  value={form.birthdate}
-                  onChange={(e) => onChange("birthdate", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500 [color-scheme:dark]"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Gender</Label>
+              {[
+                { label: "Entity Mailbox", field: "email", icon: Mail },
+                { label: "Forename Identity", field: "firstname", icon: UserIcon },
+                { label: "Surname Identity", field: "lastname", icon: UserIcon },
+                { label: "Comms Channel", field: "phone", icon: Phone },
+                { label: "Birth Epoch", field: "birthdate", type: "date", icon: Zap },
+              ].map((item: any) => (
+                <div key={item.field} className="space-y-3">
+                  <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2">
+                    <item.icon className="w-3 h-3 text-orange-600" /> {item.label}
+                  </Label>
+                  <Input
+                    type={item.type || "text"}
+                    value={form[item.field]}
+                    onChange={(e) => onChange(item.field, e.target.value)}
+                    className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-orange-600 transition-all shadow-inner [color-scheme:dark] placeholder:text-slate-800"
+                  />
+                </div>
+              ))}
+
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2">
+                  <Fingerprint className="w-3 h-3 text-orange-600" /> Gender Vector
+                </Label>
                 <Select value={form.gender} onValueChange={(v) => onChange("gender", v)}>
-                  <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:ring-orange-500">
+                  <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-orange-600/20 uppercase tracking-widest text-[10px]">
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#020617] border-white/10 text-white">
-                    <SelectItem value="Not set">Not set</SelectItem>
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                    <SelectItem value="others">Others</SelectItem>
+                  <SelectContent className="bg-slate-950 border-white/10 text-white rounded-2xl backdrop-blur-3xl">
+                    <SelectItem value="Not set" className="font-bold focus:bg-orange-600 uppercase tracking-widest text-[10px]">NOT SET</SelectItem>
+                    <SelectItem value="male" className="font-bold focus:bg-orange-600 uppercase tracking-widest text-[10px]">MALE</SelectItem>
+                    <SelectItem value="female" className="font-bold focus:bg-orange-600 uppercase tracking-widest text-[10px]">FEMALE</SelectItem>
+                    <SelectItem value="others" className="font-bold focus:bg-orange-600 uppercase tracking-widest text-[10px]">OTHERS</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Religion</Label>
+
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2">
+                  <Globe className="w-3 h-3 text-orange-600" /> Belief Protocol
+                </Label>
                 <Input
                   value={form.religion}
                   onChange={(e) => onChange("religion", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
+                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-orange-600 transition-all shadow-inner placeholder:text-slate-800"
                 />
               </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Currency</Label>
+
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2">
+                  <CreditCard className="w-3 h-3 text-orange-600" /> Operational Currency
+                </Label>
                 <Select value={form.currency} onValueChange={(v) => onChange("currency", v)}>
-                  <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:ring-orange-500">
+                  <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-orange-600/20 uppercase tracking-widest text-[10px]">
                     <SelectValue placeholder="Currency" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#020617] border-white/10 text-white">
-                    <SelectItem value="USD">USD — US Dollar</SelectItem>
-                    <SelectItem value="EUR">EUR — Euro</SelectItem>
-                    <SelectItem value="GBP">GBP — British Pound</SelectItem>
-                    <SelectItem value="JPY">JPY — Japanese Yen</SelectItem>
-                    <SelectItem value="INR">INR — Indian Rupees</SelectItem>
-                    <SelectItem value="CHF">CHF — Swiss Franc</SelectItem>
-                    <SelectItem value="CAD">CAD — Canadian Dollar</SelectItem>
-                    <SelectItem value="AUD">AUD — Australian Dollar</SelectItem>
-                    <SelectItem value="SGD">SGD — Singapore Dollar</SelectItem>
+                  <SelectContent className="bg-slate-950 border-white/10 text-white rounded-2xl backdrop-blur-3xl">
+                    {["USD", "EUR", "GBP", "JPY", "INR", "CHF", "CAD", "AUD", "SGD"].map(c => (
+                      <SelectItem key={c} value={c} className="font-bold focus:bg-orange-600 uppercase tracking-widest text-[10px]">{c}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -272,179 +270,242 @@ export default function AdminEditUserPage() {
         </Card>
 
         {/* Geolocation Hub */}
-        <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden backdrop-blur-md">
-          <CardHeader className="p-10 border-b border-white/5 bg-white/[0.01]">
-            <CardTitle className="text-2xl font-black text-white italic tracking-tight flex items-center gap-3">
-              <Globe className="w-6 h-6 text-blue-400" /> Address Details
+        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group transition-all duration-500 border-t-4 border-t-blue-600">
+          <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+            <CardTitle className="text-3xl font-black text-white italic tracking-tighter flex items-center gap-4 uppercase leading-none">
+              <Globe className="w-8 h-8 text-blue-600" /> Physical Node
             </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">Physical address information.</CardDescription>
+            <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-3 italic">Geospatial positioning for regulatory compliance.</CardDescription>
           </CardHeader>
-          <CardContent className="p-10 space-y-8">
-            <div className="space-y-2">
-              <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Address</Label>
+          <CardContent className="p-12 space-y-10">
+            <div className="space-y-3">
+              <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2">
+                <MapPin className="w-3 h-3 text-blue-600" /> Residential Logic
+              </Label>
               <Input
                 value={form.location}
                 onChange={(e) => onChange("location", e.target.value)}
-                className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
+                className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-blue-600 transition-all shadow-inner placeholder:text-slate-800"
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">City</Label>
+              {[
+                { label: "City Vector", field: "city" },
+                { label: "State / Province", field: "state" },
+                { label: "Sovereign Region", field: "country" },
+                { label: "Zone Code", field: "zipcode" },
+              ].map(item => (
+                <div key={item.field} className="space-y-3">
+                  <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">{item.label}</Label>
+                  <Input
+                    value={form[item.field]}
+                    onChange={(e) => onChange(item.field, e.target.value)}
+                    className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-blue-600 transition-all shadow-inner placeholder:text-slate-800"
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 p-8 rounded-[2.5rem] bg-blue-600/10 border border-blue-600/20 flex items-center gap-6 glass-dark">
+              <div className="h-14 w-14 rounded-2xl bg-black border border-white/5 flex items-center justify-center text-blue-600 shadow-2xl">
+                <Activity className="w-7 h-7" />
+              </div>
+              <p className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] leading-relaxed italic">
+                Geospatial data is automatically cross-referenced with local jurisdictional mandates during asset migration protocols.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Bank Account Details Section */}
+        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group transition-all duration-500 border-t-4 border-t-emerald-600 lg:col-span-2">
+          <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+            <CardTitle className="text-3xl font-black text-white italic tracking-tighter flex items-center gap-4 uppercase leading-none">
+              <CreditCard className="w-8 h-8 text-emerald-600" /> Bank Account Details
+            </CardTitle>
+            <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-3 italic">External banking coordinates for ledger synchronization.</CardDescription>
+          </CardHeader>
+          <CardContent className="p-12 space-y-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Holder Name</Label>
                 <Input
-                  value={form.city}
-                  onChange={(e) => onChange("city", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
+                  value={form.accountHolderName}
+                  onChange={(e) => onChange("accountHolderName", e.target.value)}
+                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
                 />
               </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">State / Province</Label>
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Number</Label>
                 <Input
-                  value={form.state}
-                  onChange={(e) => onChange("state", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
+                  value={form.accountNumber}
+                  onChange={(e) => onChange("accountNumber", e.target.value)}
+                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
                 />
               </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Country</Label>
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Bank Name</Label>
                 <Input
-                  value={form.country}
-                  onChange={(e) => onChange("country", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
+                  value={form.bankName}
+                  onChange={(e) => onChange("bankName", e.target.value)}
+                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
                 />
               </div>
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Zipcode</Label>
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Branch Name</Label>
                 <Input
-                  value={form.zipcode}
-                  onChange={(e) => onChange("zipcode", e.target.value)}
-                  className="bg-white/5 border-white/10 rounded-2xl h-12 text-white focus:border-orange-500"
+                  value={form.branchName}
+                  onChange={(e) => onChange("branchName", e.target.value)}
+                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
                 />
+              </div>
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">IFSC / SWIFT / Routing Code</Label>
+                <Input
+                  value={form.routingCode}
+                  onChange={(e) => onChange("routingCode", e.target.value)}
+                  className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:border-emerald-600 transition-all shadow-inner placeholder:text-slate-800"
+                />
+              </div>
+              <div className="space-y-3">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Type</Label>
+                <Select value={form.accountType} onValueChange={(v) => onChange("accountType", v)}>
+                  <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-emerald-600/20 uppercase tracking-widest text-[10px]">
+                    <SelectValue placeholder="Select type" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-950 border-white/10 text-white rounded-2xl backdrop-blur-3xl">
+                    <SelectItem value="Savings" className="font-bold focus:bg-emerald-600 uppercase tracking-widest text-[10px]">SAVINGS</SelectItem>
+                    <SelectItem value="Current" className="font-bold focus:bg-emerald-600 uppercase tracking-widest text-[10px]">CURRENT</SelectItem>
+                    <SelectItem value="Checking" className="font-bold focus:bg-emerald-600 uppercase tracking-widest text-[10px]">CHECKING</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Security & System Protocol */}
-        <Card className="bg-white/[0.03] border-white/5 rounded-[3rem] overflow-hidden lg:col-span-2 backdrop-blur-md">
-          <CardHeader className="p-10 border-b border-white/5 bg-white/[0.01]">
-            <CardTitle className="text-2xl font-black text-white italic tracking-tight flex items-center gap-3">
-              <ShieldCheck className="w-6 h-6 text-orange-500" /> Account Settings
-            </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">Access permissions, security filters, and system-level overrides.</CardDescription>
+        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4.5rem] overflow-hidden lg:col-span-2 glass-dark border-t-8 border-t-slate-800">
+          <CardHeader className="p-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+            <div className="flex items-center gap-6">
+              <div className="h-16 w-16 rounded-[1.5rem] bg-black border border-white/5 flex items-center justify-center text-orange-600 shadow-3xl">
+                <ShieldCheck className="w-8 h-8" />
+              </div>
+              <div>
+                <CardTitle className="text-4xl font-black text-white italic tracking-tighter uppercase leading-none">Access Permissions</CardTitle>
+                <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-3 italic">High-level overrides for account clearance and security filters.</CardDescription>
+              </div>
+            </div>
           </CardHeader>
-          <CardContent className="p-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              <div className="space-y-6">
-                <h3 className="text-xs font-black text-orange-500 uppercase tracking-widest mb-4">Account Status</h3>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Verified</Label>
+          <CardContent className="p-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+              <div className="space-y-10">
+                <h3 className="text-[10px] font-black text-orange-600 uppercase tracking-[0.4em] mb-4 border-b border-orange-600/20 pb-2 italic">Status Matrix</h3>
+                <div className="space-y-8">
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Vetted Protocol</Label>
                     <Select value={form.verified ? "true" : "false"} onValueChange={(v) => onChange("verified", v === "true")}>
-                      <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
+                      <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-orange-600/20">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#020617] border-white/10 text-white">
-                        <SelectItem value="true">YES (VERIFIED)</SelectItem>
-                        <SelectItem value="false">NO (UNVERIFIED)</SelectItem>
+                      <SelectContent className="bg-slate-950 border-white/10 text-white rounded-xl backdrop-blur-3xl">
+                        <SelectItem value="true" className="font-black focus:bg-orange-600 uppercase tracking-widest text-[10px]">YES (VERIFIED)</SelectItem>
+                        <SelectItem value="false" className="font-black focus:bg-orange-600 uppercase tracking-widest text-[10px]">NO (UNVERIFIED)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Transfer Access</Label>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Asset Discharge</Label>
                     <Select
                       value={form.canTransfer ? "true" : "false"}
                       onValueChange={(v) => onChange("canTransfer", v === "true")}
                     >
-                      <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
+                      <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-orange-600/20">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#020617] border-white/10 text-white">
-                        <SelectItem value="true">ENABLED</SelectItem>
-                        <SelectItem value="false">LOCKED</SelectItem>
+                      <SelectContent className="bg-slate-950 border-white/10 text-white rounded-xl backdrop-blur-3xl">
+                        <SelectItem value="true" className="font-black focus:bg-orange-600 uppercase tracking-widest text-[10px]">ENABLED</SelectItem>
+                        <SelectItem value="false" className="font-black focus:bg-orange-600 uppercase tracking-widest text-[10px]">LOCKED</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <h3 className="text-xs font-black text-blue-400 uppercase tracking-widest mb-4">Transfer Permissions</h3>
-                <div className="space-y-4">
-                  <div className="space-y-1">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Local Transfers</Label>
+              <div className="space-y-10">
+                <h3 className="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em] mb-4 border-b border-blue-500/20 pb-2 italic">Migration Clearance</h3>
+                <div className="space-y-8">
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Intrasystem Bridge</Label>
                     <Select
                       value={form.canLocalTransfer ? "true" : "false"}
                       onValueChange={(v) => onChange("canLocalTransfer", v === "true")}
                     >
-                      <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
+                      <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-blue-600/20">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#020617] border-white/10 text-white">
-                        <SelectItem value="true">ALLOWED</SelectItem>
-                        <SelectItem value="false">RESTRICTED</SelectItem>
+                      <SelectContent className="bg-slate-950 border-white/10 text-white rounded-xl backdrop-blur-3xl">
+                        <SelectItem value="true" className="font-black focus:bg-blue-600 uppercase tracking-widest text-[10px]">ALLOWED</SelectItem>
+                        <SelectItem value="false" className="font-black focus:bg-blue-600 uppercase tracking-widest text-[10px]">RESTRICTED</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-1">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">International Transfers</Label>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Global Gateway</Label>
                     <Select
                       value={form.canInternationalTransfer ? "true" : "false"}
                       onValueChange={(v) => onChange("canInternationalTransfer", v === "true")}
                     >
-                      <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
+                      <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-blue-600/20">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#020617] border-white/10 text-white">
-                        <SelectItem value="true">ALLOWED</SelectItem>
-                        <SelectItem value="false">RESTRICTED</SelectItem>
+                      <SelectContent className="bg-slate-950 border-white/10 text-white rounded-xl backdrop-blur-3xl">
+                        <SelectItem value="true" className="font-black focus:bg-blue-600 uppercase tracking-widest text-[10px]">ALLOWED</SelectItem>
+                        <SelectItem value="false" className="font-black focus:bg-blue-600 uppercase tracking-widest text-[10px]">RESTRICTED</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                  <p className="text-[9px] font-black text-blue-500/50 uppercase tracking-widest pt-2 flex items-center gap-2 italic">
-                    <ShieldCheck className="w-3 h-3" /> Managed by Administrator
-                  </p>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <h3 className="text-xs font-black text-purple-400 uppercase tracking-widest mb-4">Security Settings</h3>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Email OTP</Label>
+              <div className="space-y-10">
+                <h3 className="text-[10px] font-black text-purple-600 uppercase tracking-[0.4em] mb-4 border-b border-purple-500/20 pb-2 italic">Auth Sequences</h3>
+                <div className="space-y-8">
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Email OTP Flux</Label>
                     <Select value={form.otpEmail ? "true" : "false"} onValueChange={(v) => onChange("otpEmail", v === "true")}>
-                      <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
+                      <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-purple-600/20">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#020617] border-white/10 text-white">
-                        <SelectItem value="true">ACTIVE</SelectItem>
-                        <SelectItem value="false">BYPASS</SelectItem>
+                      <SelectContent className="bg-slate-950 border-white/10 text-white rounded-xl backdrop-blur-3xl">
+                        <SelectItem value="true" className="font-black focus:bg-purple-600 uppercase tracking-widest text-[10px]">ACTIVE</SelectItem>
+                        <SelectItem value="false" className="font-black focus:bg-purple-600 uppercase tracking-widest text-[10px]">BYPASS</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Transfer Codes</Label>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Transfer Logic Hash</Label>
                     <Select
                       value={form.transferCodeRequired ? "true" : "false"}
                       onValueChange={(v) => onChange("transferCodeRequired", v === "true")}
                     >
-                      <SelectTrigger className="bg-white/5 border-white/10 rounded-2xl h-12 text-white">
+                      <SelectTrigger className="bg-black/40 border-white/5 rounded-2xl h-14 text-white font-black focus:ring-purple-600/20">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#020617] border-white/10 text-white">
-                        <SelectItem value="true">ENFORCED</SelectItem>
-                        <SelectItem value="false">DISABLED</SelectItem>
+                      <SelectContent className="bg-slate-950 border-white/10 text-white rounded-xl backdrop-blur-3xl">
+                        <SelectItem value="true" className="font-black focus:bg-purple-600 uppercase tracking-widest text-[10px]">ENFORCED</SelectItem>
+                        <SelectItem value="false" className="font-black focus:bg-purple-600 uppercase tracking-widest text-[10px]">DISABLED</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
               </div>
 
-              <div className="md:col-span-3 pt-6 border-t border-white/5">
-                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">User Roles (Permissions)</Label>
-                <div className="flex flex-wrap gap-8 mt-4 bg-black/20 p-6 rounded-[2rem] border border-white/5">
+              <div className="md:col-span-3 pt-12 border-t border-white/5">
+                <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 italic">Role Initialization</Label>
+                <div className="flex flex-wrap gap-8 mt-6 bg-black/40 p-10 rounded-[3rem] border border-white/5 shadow-inner glass-dark">
                   {["member", "administrator", "super-admin"].map((role) => (
-                    <div key={role} className="flex items-center space-x-3 cursor-pointer group">
+                    <div key={role} className="flex items-center space-x-4 cursor-pointer group/role">
                       <div className="relative">
                         <input
                           type="checkbox"
@@ -461,13 +522,13 @@ export default function AdminEditUserPage() {
                             onChange("roles", newRoles)
                             setRolesInput(newRoles.join(", "))
                           }}
-                          className="peer appearance-none h-6 w-6 rounded-lg bg-white/5 border border-white/20 checked:bg-orange-500 checked:border-orange-500 transition-all cursor-pointer"
+                          className="peer appearance-none h-8 w-8 rounded-xl bg-black border border-white/20 checked:bg-orange-600 checked:border-orange-600 transition-all cursor-pointer shadow-3xl"
                         />
-                        <div className="absolute inset-0 flex items-center justify-center text-black font-black text-[10px] pointer-events-none opacity-0 peer-checked:opacity-100">
+                        <div className="absolute inset-0 flex items-center justify-center text-white font-black text-xs pointer-events-none opacity-0 peer-checked:opacity-100">
                           ✓
                         </div>
                       </div>
-                      <Label htmlFor={`role-${role}`} className="capitalize font-black text-xs text-slate-400 group-hover:text-white transition-colors cursor-pointer tracking-widest">
+                      <Label htmlFor={`role-${role}`} className="capitalize font-black text-xs text-slate-500 group-hover/role:text-white transition-colors cursor-pointer tracking-[0.2em] uppercase italic">
                         {role.replace("-", " ")}
                       </Label>
                     </div>
@@ -479,17 +540,17 @@ export default function AdminEditUserPage() {
         </Card>
       </div>
 
-      <div className="flex items-center justify-center pt-10 relative z-10">
-        <div className="flex gap-6 p-2 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl">
-          <Button onClick={() => router.back()} variant="ghost" className="h-14 px-10 rounded-2xl text-slate-400 hover:text-white hover:bg-white/5 font-black uppercase tracking-widest text-[10px]">
-            Cancel
+      <div className="flex items-center justify-center pt-20 relative z-10 pb-20">
+        <div className="flex gap-6 p-3 rounded-[2.5rem] bg-slate-900/50 border border-white/5 shadow-3xl backdrop-blur-3xl glass-dark">
+          <Button onClick={() => router.back()} variant="ghost" className="h-16 px-12 rounded-[1.5rem] text-slate-500 hover:text-white hover:bg-white/5 font-black uppercase tracking-widest text-[10px] transition-all">
+            Abandon Changes
           </Button>
           <Button
             onClick={onSave}
             disabled={saving}
-            className="h-14 px-16 rounded-2xl bg-orange-500 hover:bg-orange-400 text-black font-black shadow-2xl shadow-orange-500/30 transition-all uppercase tracking-[0.2em] text-xs"
+            className="h-16 px-24 rounded-[1.5rem] bg-orange-600 hover:bg-white hover:text-black text-white font-black shadow-orange-600/20 shadow-2xl transition-all uppercase tracking-[0.3em] text-xs hover:scale-105 active:scale-95 border-none"
           >
-            {saving ? "SAVING..." : "SAVE CHANGES"}
+            {saving ? "EXECUTING SYNC..." : "COMMIT UPDATE"}
           </Button>
         </div>
       </div>

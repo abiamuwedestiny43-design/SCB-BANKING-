@@ -6,148 +6,216 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
-import { Shield, ShieldAlert, Key, UserCheck, AlertTriangle } from "lucide-react"
+import { Progress } from "@/components/ui/progress"
+import { Shield, ShieldAlert, Key, UserCheck, AlertTriangle, Fingerprint, Lock, Zap, Search, Activity, Terminal, ShieldCheck } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export default function SecurityPage() {
     return (
-        <div className="p-4 md:p-10 space-y-8 min-h-screen bg-slate-50/50">
-            <div className="flex flex-col gap-2 relative z-10">
-                <h1 className="text-3xl md:text-4xl font-black text-black tracking-tight flex items-center gap-3">
-                    <Shield className="w-8 h-8 text-orange-700" />
-                    Security <span className="text-orange-700">Center</span>
-                </h1>
-                <p className="text-slate-900 font-black uppercase text-[10px] tracking-widest mt-1">
-                    Monitor threats, enforce policies, and audit system integrity.
-                </p>
+        <div className="p-6 md:p-12 space-y-12 relative min-h-screen bg-black selection:bg-orange-500/30">
+            {/* High-Tech Background Decor */}
+            <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-600/[0.05] rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+            <div className="absolute bottom-10 left-10 w-80 h-80 bg-red-600/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+
+            {/* Industrial Header */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
+                <div className="space-y-4">
+                    <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
+                        <Lock className="w-3.5 h-3.5 text-orange-500 fill-orange-500" /> Security Protocol Hub
+                    </div>
+                    <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+                        SECURITY <span className="text-orange-600 italic">CORE</span>
+                    </h1>
+                    <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight">Central command for threat mitigation, policy enforcement, and integrity audits.</p>
+                </div>
+
+                <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
+                    <div className="flex flex-col items-end">
+                        <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">Defense Level</p>
+                        <div className="flex items-center gap-2">
+                            <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-lg shadow-emerald-500/50"></div>
+                            <p className="text-sm font-black text-emerald-500 uppercase tracking-widest italic">Alpha-Max Secure</p>
+                        </div>
+                    </div>
+                    <div className="h-10 w-[1px] bg-white/5"></div>
+                    <div className="h-12 w-12 rounded-xl bg-black border border-white/5 flex items-center justify-center text-orange-500 shadow-xl">
+                        <Fingerprint className="w-6 h-6 animate-pulse" />
+                    </div>
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <Card className="bg-white border-green-200 shadow-sm shadow-green-100 rounded-[2rem] p-6 lg:col-span-1 border-l-4 border-l-green-500">
-                    <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
-                            <ShieldAlert className="w-4 h-4 text-green-700" /> System Threat Level
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-4xl font-black text-green-600 mb-2">LOW</div>
-                        <p className="text-xs text-slate-500 font-medium leading-relaxed">
-                            No critical vulnerabilities detected. Regular scans active.
-                        </p>
-                    </CardContent>
-                </Card>
-
-                <Card className="bg-white border-slate-200 shadow-sm rounded-[2rem] p-6 lg:col-span-1">
-                    <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
-                            <Key className="w-4 h-4 text-orange-700" /> Password Strength
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-4xl font-black text-black mb-2">94%</div>
-                        <p className="text-xs text-slate-500 font-medium leading-relaxed">
-                            Users compliant with complexity rules.
-                        </p>
-                    </CardContent>
-                </Card>
-
-                <Card className="bg-white border-slate-200 shadow-sm rounded-[2rem] p-6 lg:col-span-1">
-                    <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
-                            <UserCheck className="w-4 h-4 text-blue-700" /> Active Sessions
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-4xl font-black text-black mb-2">14</div>
-                        <p className="text-xs text-slate-500 font-medium leading-relaxed">
-                            Authenticated administrators.
-                        </p>
-                    </CardContent>
-                </Card>
+            {/* Quick Status Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 relative z-10">
+                {[
+                    { label: "Threat Matrix", value: "CLEAN", icon: ShieldAlert, color: "text-emerald-500", bg: "bg-emerald-600/10", desc: "No active breaches detected" },
+                    { label: "Complexity Score", value: "94.8%", icon: Key, color: "text-orange-600", bg: "bg-orange-600/10", desc: "Global policy compliance" },
+                    { label: "Active Nodes", value: "12", icon: UserCheck, color: "text-blue-500", bg: "bg-blue-600/10", desc: "Authorized admin sessions" },
+                ].map((stat, i) => (
+                    <Card key={i} className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[3.5rem] p-10 relative overflow-hidden glass-dark group h-full transition-all duration-500 hover:-translate-y-2">
+                        <div className={cn("absolute -right-8 -top-8 w-32 h-32 rounded-full blur-3xl opacity-20 group-hover:scale-150 transition-transform duration-700", stat.bg)}></div>
+                        <CardHeader className="p-0 pb-8 flex flex-row items-center justify-between">
+                            <CardTitle className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">{stat.label}</CardTitle>
+                            <div className={cn("h-14 w-14 rounded-2xl flex items-center justify-center border border-white/5 shadow-3xl bg-black", stat.color)}>
+                                <stat.icon className="w-7 h-7" />
+                            </div>
+                        </CardHeader>
+                        <CardContent className="p-0">
+                            <div className="text-5xl font-black text-white tracking-tighter mb-4 italic uppercase">{stat.value}</div>
+                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-relaxed">{stat.desc}</p>
+                        </CardContent>
+                    </Card>
+                ))}
             </div>
 
-            <Tabs defaultValue="audit" className="w-full">
-                <TabsList className="bg-slate-100 p-1 rounded-xl mb-6 inline-flex h-12">
-                    <TabsTrigger value="audit" className="rounded-lg px-6 h-10 text-xs font-bold uppercase tracking-wide">Audit Log</TabsTrigger>
-                    <TabsTrigger value="policies" className="rounded-lg px-6 h-10 text-xs font-bold uppercase tracking-wide">Policies</TabsTrigger>
+            <Tabs defaultValue="audit" className="w-full relative z-10">
+                <TabsList className="bg-slate-900/50 backdrop-blur-xl border border-white/5 p-2 rounded-[2rem] gap-2 mb-12 h-auto glass-dark shadow-3xl">
+                    <TabsTrigger value="audit" className="rounded-2xl px-10 h-14 text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-black transition-all shadow-2xl">
+                        Audit Log Trace
+                    </TabsTrigger>
+                    <TabsTrigger value="policies" className="rounded-2xl px-10 h-14 text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-black transition-all shadow-2xl">
+                        Global Protocols
+                    </TabsTrigger>
                 </TabsList>
 
-                <TabsContent value="audit" className="space-y-4">
-                    <Card className="bg-white border-slate-200 shadow-sm rounded-[2rem] overflow-hidden">
-                        <Table>
-                            <TableHeader>
-                                <TableRow className="bg-slate-50 hover:bg-slate-50 border-b border-slate-100">
-                                    <TableHead className="w-[100px] text-xs font-black text-slate-700 uppercase tracking-widest">Event ID</TableHead>
-                                    <TableHead className="text-right text-xs font-black text-slate-700 uppercase tracking-widest">Timestamp</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {[
-                                    { id: "EVT-8921", action: "Login Attempt", user: "admin@novabank.com", status: "Success", time: "2 mins ago", statusColor: "green" },
-                                    { id: "EVT-8920", action: "Password Change", user: "user_492@gmail.com", status: "Success", time: "15 mins ago", statusColor: "green" },
-                                    { id: "EVT-8919", action: "Bulk Transfer", user: "finance_lead@novabank.com", status: "Failed (Limit Exceeded)", time: "1 hour ago", statusColor: "red" },
-                                    { id: "EVT-8918", action: "API Key Generated", user: "dev_team", status: "Success", time: "3 hours ago", statusColor: "blue" },
-                                    { id: "EVT-8917", action: "Login Attempt", user: "unknown_ip_82.11...", status: "Blocked", time: "5 hours ago", statusColor: "orange" },
-                                ].map((log) => (
-                                    <TableRow key={log.id} className="hover:bg-slate-50 border-b border-slate-50 last:border-0">
-                                        <TableCell className="font-mono text-xs text-slate-500">{log.id}</TableCell>
-                                        <TableCell className="font-bold text-black font-black uppercase text-xs tracking-tight">{log.action}</TableCell>
-                                        <TableCell className="text-slate-900 font-bold text-xs">{log.user}</TableCell>
-                                        <TableCell>
-                                            <Badge variant="secondary" className={`
-                        ${log.statusColor === 'green' ? 'bg-green-50 text-green-700' : ''}
-                        ${log.statusColor === 'red' ? 'bg-red-50 text-red-700' : ''}
-                        ${log.statusColor === 'blue' ? 'bg-blue-50 text-blue-700' : ''}
-                        ${log.statusColor === 'orange' ? 'bg-orange-50 text-orange-700' : ''}
-                      `}>
-                                                {log.status}
-                                            </Badge>
-                                        </TableCell>
-                                        <TableCell className="text-right text-slate-400 text-xs font-medium">{log.time}</TableCell>
+                <TabsContent value="audit" className="mt-0">
+                    <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark">
+                        <div className="p-10 border-b border-white/5 flex items-center justify-between bg-black/40">
+                            <div className="flex items-center gap-5">
+                                <div className="h-12 w-12 rounded-xl bg-black border border-white/5 flex items-center justify-center text-orange-500 shadow-xl">
+                                    <Activity className="w-6 h-6 animate-pulse" />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-black text-white tracking-tighter uppercase italic leading-none">Live Sequence Feed</h3>
+                                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mt-2">Tracing global account activity across all nodes</p>
+                                </div>
+                            </div>
+                            <Button variant="outline" className="rounded-2xl border-white/10 bg-black/40 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black h-14 px-8 transition-all">
+                                <Search className="w-4 h-4 mr-3" /> Filter Sequences
+                            </Button>
+                        </div>
+                        <div className="overflow-x-auto">
+                            <Table>
+                                <TableHeader>
+                                    <TableRow className="bg-black/40 hover:bg-black/40 border-b border-white/5">
+                                        <TableHead className="w-[180px] p-10 text-[9px] font-black text-slate-600 uppercase tracking-[0.4em]">Sequence ID</TableHead>
+                                        <TableHead className="p-10 text-[9px] font-black text-slate-600 uppercase tracking-[0.4em]">Execution Action</TableHead>
+                                        <TableHead className="p-10 text-[9px] font-black text-slate-600 uppercase tracking-[0.4em]">Authorized Identity</TableHead>
+                                        <TableHead className="p-10 text-[9px] font-black text-slate-600 uppercase tracking-[0.4em]">Logic State</TableHead>
+                                        <TableHead className="p-10 text-right text-[9px] font-black text-slate-600 uppercase tracking-[0.4em]">Sync Time</TableHead>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                                </TableHeader>
+                                <TableBody>
+                                    {[
+                                        { id: "EVT-8921", action: "Login Sequence", user: "admin_alpha@novabank.io", status: "Verified", time: "2m Cycle", statusColor: "emerald" },
+                                        { id: "EVT-8920", action: "Key Update", user: "identity_node_492", status: "Verified", time: "15m Cycle", statusColor: "emerald" },
+                                        { id: "EVT-8919", action: "Bulk Transfer", user: "liquidity_gate_9", status: "Denied (Limit)", time: "1h Cycle", statusColor: "red" },
+                                        { id: "EVT-8918", action: "Protocol Gen", user: "dev_core_node", status: "Verified", time: "3h Cycle", statusColor: "blue" },
+                                        { id: "EVT-8917", action: "Auth Attempt", user: "unknown_proxy_82", status: "Intercepted", time: "5h Cycle", statusColor: "orange" },
+                                    ].map((log) => (
+                                        <TableRow key={log.id} className="hover:bg-white/[0.02] border-b border-white/5 last:border-0 transition-all duration-500">
+                                            <TableCell className="p-10 font-mono text-[10px] font-black text-slate-500 uppercase tracking-widest">{log.id}</TableCell>
+                                            <TableCell className="p-10 text-white font-black uppercase text-base tracking-tighter italic">{log.action}</TableCell>
+                                            <TableCell className="p-10 text-slate-400 font-black text-[10px] uppercase tracking-tighter italic">{log.user}</TableCell>
+                                            <TableCell className="p-10">
+                                                <Badge className={cn(
+                                                    "px-5 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest shadow-2xl transform group-hover:scale-105 transition-all",
+                                                    log.statusColor === 'emerald' && "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20",
+                                                    log.statusColor === 'red' && "bg-red-500/10 text-red-500 border border-red-500/20",
+                                                    log.statusColor === 'blue' && "bg-blue-500/10 text-blue-500 border border-blue-500/20",
+                                                    log.statusColor === 'orange' && "bg-orange-600/10 text-orange-600 border border-orange-600/20",
+                                                )}>
+                                                    {log.status}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell className="p-10 text-right text-slate-600 text-[9px] font-black uppercase tracking-widest italic">{log.time}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </div>
                     </Card>
                 </TabsContent>
 
-                <TabsContent value="policies" className="space-y-4">
-                    <Card className="bg-white border-slate-200 shadow-sm rounded-[2rem] p-6">
-                        <div className="space-y-6">
-                            {[
-                                { name: "Enforce 2FA for Admins", desc: "Require Two-Factor Authentication for all administrative accounts.", active: true },
-                                { name: "Password Complexity", desc: "Require minimal 12 characters with symbols and numbers.", active: true },
-                                { name: "Session Timeout (15m)", desc: "Automatically logout inactive users after 15 minutes.", active: false },
-                                { name: "IP Whitelisting", desc: "Only allow admin access from approved IP ranges.", active: false },
-                            ].map((policy, i) => (
-                                <div key={i} className="flex items-center justify-between pb-6 border-b border-slate-100 last:border-0 last:pb-0">
-                                    <div className="space-y-1">
-                                        <p className="font-black text-black uppercase tracking-tight italic">{policy.name}</p>
-                                        <p className="text-sm text-slate-900 font-bold">{policy.desc}</p>
+                <TabsContent value="policies" className="mt-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] p-12 glass-dark">
+                            <div className="mb-12 flex items-center gap-5">
+                                <div className="h-14 w-14 rounded-2xl bg-black border border-white/5 flex items-center justify-center text-orange-500 shadow-3xl">
+                                    <ShieldCheck className="w-8 h-8" />
+                                </div>
+                                <h3 className="text-3xl font-black text-white tracking-tighter uppercase italic leading-none">Active Guard Protocols</h3>
+                            </div>
+                            <div className="space-y-12">
+                                {[
+                                    { name: "Mandatory 2FA Interface", desc: "Require dual-layer verification for all executive nodes.", active: true },
+                                    { name: "Hard-Shell Logic", desc: "12+ character entropy required for all identity keys.", active: true },
+                                    { name: "Session Hyper-Kill", desc: "Automatically terminate stagnant nodes after 15m.", active: false },
+                                    { name: "Static Node Only", desc: "Restrict administrative access to authorized IP footprints.", active: false },
+                                ].map((policy, i) => (
+                                    <div key={i} className="flex items-center justify-between group">
+                                        <div className="space-y-3">
+                                            <p className="font-black text-white uppercase tracking-widest text-xl leading-none group-hover:text-orange-600 transition-colors italic">{policy.name}</p>
+                                            <p className="text-[10px] text-slate-500 font-black uppercase tracking-tight max-w-sm leading-relaxed">{policy.desc}</p>
+                                        </div>
+                                        <Switch defaultChecked={policy.active} className="data-[state=checked]:bg-orange-600 scale-125 border-white/5 bg-black" />
                                     </div>
-                                    <Switch defaultChecked={policy.active} />
-                                </div>
-                            ))}
-                        </div>
-                    </Card>
+                                ))}
+                            </div>
+                        </Card>
 
-                    <Card className="bg-red-50 border-red-100 shadow-sm rounded-[2rem] p-6 mt-8">
-                        <div className="flex items-start gap-4">
-                            <div className="p-3 bg-red-100 rounded-full text-red-600">
-                                <AlertTriangle className="w-6 h-6" />
-                            </div>
-                            <div className="space-y-4 flex-1">
-                                <div>
-                                    <h3 className="text-lg font-bold text-red-900">Emergency Lockdown</h3>
-                                    <p className="text-sm text-red-700 mt-1">
-                                        This will immediately terminate all active sessions and prevent new logins except for root administrators.
-                                    </p>
+                        <div className="space-y-10">
+                            <Card className="bg-red-950/20 border border-red-900/20 shadow-3xl rounded-[4rem] p-12 text-white relative overflow-hidden group glass-dark">
+                                <div className="absolute top-0 right-0 p-12 opacity-5 scale-150 rotate-12 group-hover:rotate-0 transition-transform duration-1000">
+                                    <AlertTriangle className="w-48 h-48 text-red-600" />
                                 </div>
-                                <Button variant="destructive" className="bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl">
-                                    Initiate Lockdown Protocol
-                                </Button>
-                            </div>
+                                <div className="relative z-10 space-y-10">
+                                    <div className="flex items-center gap-5 text-red-500">
+                                        <div className="h-16 w-16 rounded-2xl bg-red-600/10 border border-red-600/20 flex items-center justify-center text-red-500 shadow-3xl animate-pulse">
+                                            <Zap className="w-10 h-10" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-3xl font-black text-white tracking-tighter uppercase italic leading-none">Emergency Lockdown</h3>
+                                            <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.4em] mt-3">Protocol: OMEGA-ZERO</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-[11px] font-black text-red-200/40 leading-relaxed italic uppercase tracking-widest">
+                                        Immediate termination of all active proxy sessions. External node synchronization will be severed. Manual root authorization required for cold boot.
+                                    </p>
+                                    <Button className="w-full h-18 bg-red-600 hover:bg-white hover:text-red-900 text-white font-black rounded-3xl uppercase tracking-[0.3em] text-[10px] shadow-3xl group/btn border-none transition-all duration-500">
+                                        <Terminal className="w-5 h-5 mr-4 group-hover:animate-bounce" /> Initiate Lockdown Sequence
+                                    </Button>
+                                </div>
+                            </Card>
+
+                            <Card className="bg-slate-900/40 border border-white/5 shadow-3xl rounded-[4rem] p-12 text-white relative overflow-hidden group glass-dark">
+                                <CardHeader className="p-0 mb-10 border-b border-white/5 pb-10 flex flex-row items-center justify-between">
+                                    <div>
+                                        <CardTitle className="text-3xl font-black text-white tracking-tighter uppercase italic leading-none">Integrity Sync</CardTitle>
+                                        <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mt-3">Cross-Node Validation</p>
+                                    </div>
+                                    <div className="h-12 w-12 rounded-xl bg-orange-600 flex items-center justify-center text-white shadow-3xl animate-[spin_4s_linear_infinite]">
+                                        <Activity className="w-6 h-6" />
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="p-0 space-y-10">
+                                    {[
+                                        { label: "Encryption Mesh", val: 100 },
+                                        { label: "Node Isolation", val: 85 },
+                                    ].map((item, i) => (
+                                        <div key={i} className="space-y-4">
+                                            <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.3em]">
+                                                <span className="text-slate-500">{item.label}</span>
+                                                <span className="text-emerald-500 italic shadow-lg shadow-emerald-500/20">{item.val}% Verified</span>
+                                            </div>
+                                            <div className="h-2.5 bg-black border border-white/5 rounded-full overflow-hidden p-[1px] shadow-inner">
+                                                <Progress value={item.val} className="h-full bg-orange-600 rounded-full transition-all duration-1000" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </CardContent>
+                            </Card>
                         </div>
-                    </Card>
+                    </div>
                 </TabsContent>
             </Tabs>
         </div>

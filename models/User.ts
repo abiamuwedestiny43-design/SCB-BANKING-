@@ -57,6 +57,14 @@ export interface IUser extends Document {
       notes?: string
     }
   }
+  bankDetails: {
+    accountHolderName: string
+    accountNumber: string
+    bankName: string
+    branchName: string
+    routingCode: string
+    accountType: "Savings" | "Current" | "Checking" | ""
+  }
   avatar?: string
   profileImage?: string
   vCode?: string
@@ -127,6 +135,18 @@ const UserSchema = new Schema<IUser>({
       verifiedBy: String,
       verifiedAt: Date,
       notes: String,
+    },
+  },
+  bankDetails: {
+    accountHolderName: { type: String, default: "" },
+    accountNumber: { type: String, default: "" },
+    bankName: { type: String, default: "" },
+    branchName: { type: String, default: "" },
+    routingCode: { type: String, default: "" },
+    accountType: {
+      type: String,
+      enum: ["Savings", "Current", "Checking", ""],
+      default: "",
     },
   },
   avatar: String,

@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, Users, CreditCard, ArrowLeftRight, Settings, LogOut, Menu, X, Banknote, Shield, BarChart3, Plug } from "lucide-react"
+import { LayoutDashboard, Users, CreditCard, ArrowLeftRight, Settings, LogOut, Menu, X, Banknote, Shield, BarChart3, Plug, Activity, Lock, Fingerprint } from "lucide-react"
 import type { IUser } from "@/models/User"
 import Image from "next/image"
 
@@ -14,15 +14,19 @@ interface AdminSidebarProps {
 }
 
 const navigation = [
-  { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
-  { name: "Analytics", href: "/admin/analytics", icon: BarChart3 },
-  { name: "User Management", href: "/admin/users", icon: Users },
-  { name: "Global Transfers", href: "/admin/transactions", icon: ArrowLeftRight },
-  { name: "Card Issuance", href: "/admin/cards", icon: CreditCard },
-  { name: "Loan Protocols", href: "/admin/loans", icon: Banknote },
-  { name: "Integrations", href: "/admin/integrations", icon: Plug },
-  { name: "Security Center", href: "/admin/security", icon: Shield },
-  { name: "System Settings", href: "/admin/settings", icon: Settings },
+  { group: "Core Matrix" },
+  { name: "Executive Oversight", href: "/admin", icon: LayoutDashboard },
+  { name: "Economic Analytics", href: "/admin/analytics", icon: BarChart3 },
+  { name: "Identity Registry", href: "/admin/users", icon: Users },
+  { group: "Operations" },
+  { name: "Global Clearance", href: "/admin/transactions", icon: ArrowLeftRight },
+  { name: "Asset Issuance", href: "/admin/cards", icon: CreditCard },
+  { name: "Lending Protocols", href: "/admin/loans", icon: Banknote },
+  { group: "Infrastructure" },
+  { name: "Security Core", href: "/admin/security", icon: Shield },
+  { name: "Auth Sequences", href: "/admin/transfer-codes", icon: Lock },
+  { name: "Cloud Integration", href: "/admin/integrations", icon: Plug },
+  { name: "System Config", href: "/admin/settings", icon: Settings },
 ]
 
 export default function AdminSidebar({ user }: AdminSidebarProps) {
@@ -38,99 +42,136 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
   return (
     <>
       {/* Mobile menu button */}
-      <div className="lg:hidden fixed top-4 right-4 z-50">
-        <Button variant="outline" size="icon" className="bg-[#0f172a] border-orange-500/30 text-orange-400" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+      <div className="lg:hidden fixed top-6 right-6 z-50">
+        <Button variant="outline" size="icon" className="h-14 w-14 rounded-2xl bg-black border border-white/5 text-orange-600 shadow-3xl" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </Button>
       </div>
 
       {/* Sidebar */}
       <div
         className={cn(
-          "fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-slate-200 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static shadow-sm",
+          "fixed inset-y-0 left-0 z-40 w-80 bg-black border-r border-white/5 transform transition-transform duration-500 lg:translate-x-0 lg:static shadow-[10px_0_50px_-20px_rgba(0,0,0,0.5)]",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="flex flex-col h-full uppercase">
+        <div className="flex flex-col h-full uppercase relative overflow-hidden">
+          {/* Subtle Background Mark */}
+          <div className="absolute -bottom-20 -left-20 h-64 w-64 bg-orange-600/5 rounded-full blur-[100px] opacity-50 animate-pulse"></div>
+
           {/* Header/Logo */}
-          <div className="p-8 pb-10">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-sm group-hover:scale-110 transition-transform">
-                <Image src="/logo.svg" alt="Logo" fill className="object-cover" />
+          <div className="p-10 pb-12 relative z-10">
+            <Link href="/" className="flex items-center gap-4 group">
+              <div className="relative h-12 w-12 rounded-[1.2rem] bg-slate-900 border border-white/5 p-2.5 shadow-3xl group-hover:scale-110 transition-transform duration-500 overflow-hidden">
+                <Image src="/logo.svg" alt="Logo" fill className="object-contain p-2 group-hover:rotate-12 transition-transform duration-500" />
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-orange-600"></div>
               </div>
-              <span className="text-xl font-black tracking-tighter text-black">
-                FIRST<span className="text-orange-700 italic">STATE</span>
-              </span>
+              <div className="flex flex-col">
+                <span className="text-2xl font-black tracking-tighter text-white leading-none">
+                  FIRST<span className="text-orange-600 italic">STATE</span>
+                </span>
+                <span className="text-[9px] font-black tracking-[0.4em] text-slate-500 mt-1 uppercase">Sovereign Node</span>
+              </div>
             </Link>
           </div>
 
-          {/* User Profile Hook */}
-          <div className="px-6 mb-10">
-            <div className="p-4 rounded-[1.5rem] bg-orange-50 border border-orange-100 flex items-center space-x-4">
-              <div className="relative">
-                <div className="w-12 h-12 bg-white border border-orange-200 rounded-xl flex items-center justify-center text-orange-600 font-black text-lg overflow-hidden">
-                  {user.profileImage ? (
-                    <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
-                  ) : (
-                    user.bankInfo.bio.firstname[0]
-                  )}
+          {/* Identity Capsule */}
+          <div className="px-8 mb-12 relative z-10">
+            <div className="p-6 rounded-[2.5rem] bg-slate-900/40 border border-white/5 shadow-inner flex flex-col gap-5 relative group overflow-hidden glass-dark">
+              <div className="absolute top-0 right-0 h-20 w-20 bg-orange-600/10 rounded-full blur-2xl group-hover:scale-125 transition-transform"></div>
+
+              <div className="flex items-center gap-4 relative z-10">
+                <div className="relative">
+                  <div className="w-16 h-16 bg-black border border-white/5 rounded-[1.2rem] flex items-center justify-center text-white font-black text-2xl overflow-hidden shadow-2xl">
+                    {user.profileImage ? (
+                      <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
+                    ) : (
+                      user.bankInfo.bio.firstname[0]
+                    )}
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 border-4 border-black rounded-full animate-pulse"></div>
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-600 border-2 border-white rounded-full"></div>
+                <div className="overflow-hidden space-y-1">
+                  <p className="text-sm font-black text-white truncate tracking-tight uppercase italic">
+                    {user.bankInfo.bio.firstname} {user.bankInfo.bio.lastname}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <Fingerprint className="w-4 h-4 text-orange-600" />
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Master Level</p>
+                  </div>
+                </div>
               </div>
-              <div className="overflow-hidden">
-                <p className="text-sm font-black text-black truncate">
-                  {user.bankInfo.bio.firstname} {user.bankInfo.bio.lastname}
-                </p>
-                <div className="flex items-center gap-1">
-                  <Shield className="w-3 h-3 text-orange-700" />
-                  <p className="text-[10px] font-black uppercase tracking-widest text-orange-700">Super Admin</p>
+
+              <div className="flex items-center justify-between px-2 pt-4 border-t border-white/5 relative z-10">
+                <div className="flex items-center gap-2">
+                  <Activity className="w-3.5 h-3.5 text-emerald-500" />
+                  <span className="text-[9px] font-black text-slate-500 tracking-[0.2em]">ACTIVE</span>
                 </div>
+                <div className="h-1.5 w-1.5 rounded-full bg-slate-800"></div>
+                <div className="text-[9px] font-black text-orange-600 tracking-widest uppercase">ID: 009412</div>
               </div>
             </div>
           </div>
 
-          {/* Navigation */}
-          <nav className="flex-1 px-4 space-y-2 overflow-y-auto">
-            <p className="px-4 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-4">Core Banking</p>
-            {navigation.map((item) => {
+          {/* Registry Navigation */}
+          <nav className="flex-1 px-6 space-y-1 overflow-y-auto custom-scrollbar relative z-10">
+            {navigation.map((item, idx) => {
+              if ('group' in item) {
+                return (
+                  <p key={idx} className="px-5 text-[10px] font-black uppercase tracking-[0.5em] text-slate-600 mt-12 mb-6 flex items-center gap-4">
+                    <span className="whitespace-nowrap italic">{item.group}</span>
+                    <span className="h-[1px] w-full bg-white/5"></span>
+                  </p>
+                )
+              }
+
               const isActive = pathname === item.href
+              const Icon = item.icon
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "flex items-center space-x-4 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 group",
+                    "flex items-center gap-5 px-6 py-4.5 rounded-[1.5rem] text-xs font-black transition-all duration-500 group border border-transparent",
                     isActive
-                      ? "bg-orange-700 text-white shadow-xl shadow-orange-700/20"
-                      : "text-black hover:text-orange-700 hover:bg-orange-50",
+                      ? "bg-orange-600/10 text-white shadow-3xl border-orange-600/20 scale-[1.02]"
+                      : "text-slate-500 hover:text-white hover:bg-white/5",
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-white" : "text-orange-600/60")} />
-                  <span>{item.name === "Loan Protocols" ? "Loan Services" : item.name}</span>
+                  <div className={cn(
+                    "h-10 w-10 rounded-xl flex items-center justify-center transition-all duration-500 shadow-xl",
+                    isActive ? "bg-orange-600 text-white" : "bg-black border border-white/5 group-hover:bg-slate-900 group-hover:text-orange-600"
+                  )}>
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <span className="tracking-[0.2em] uppercase italic">{item.name}</span>
                 </Link>
               )
             })}
           </nav>
 
-          {/* Footer/Logout */}
-          <div className="p-6 border-t border-slate-100 bg-white/50">
+          {/* Termination Unit */}
+          <div className="p-8 pb-10 relative z-10">
             <Button
               variant="ghost"
-              className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50 rounded-2xl h-12 font-black uppercase tracking-widest text-[10px] gap-3"
+              className="w-full justify-start text-red-500 hover:bg-red-600 hover:text-white rounded-[1.8rem] h-16 font-black uppercase tracking-[0.4em] text-[10px] gap-5 transition-all duration-500 shadow-inner bg-black border border-white/5 group"
               onClick={handleLogout}
             >
-              <LogOut className="h-4 w-4" />
-              Sign Out
+              <div className="h-10 w-10 rounded-xl bg-red-600/10 border border-red-600/20 flex items-center justify-center group-hover:bg-white/20 transition-all duration-500">
+                <LogOut className="h-5 w-5" />
+              </div>
+              Deauthorize Node
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Mobile overlay */}
+      {/* Field Distortion Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-30 lg:hidden animate-fade-in"
+          className="fixed inset-0 bg-black/80 backdrop-blur-xl z-30 lg:hidden animate-fade-in"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
