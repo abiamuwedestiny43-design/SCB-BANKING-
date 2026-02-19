@@ -109,8 +109,8 @@ export default async function TransactionsPage({
   return (
     <div className="min-h-screen bg-white w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-Black & white -500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-Black & white -500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="relative z-10">
         <h1 className="text-xl font-bold mb-4">Transaction History</h1>
