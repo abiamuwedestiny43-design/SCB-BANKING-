@@ -35,10 +35,10 @@ export default function CardsClient({ cards }: CardsClientProps) {
                         <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl border border-white/5">
                             <CreditCard className="w-3.5 h-3.5 text-orange-500" /> SECURE ASSET REGISTRY
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+                        <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none uppercase">
                             MY <span className="text-orange-600 italic">CARDS</span>
                         </h1>
-                        <p className="text-slate-400 font-bold max-w-lg text-lg">Manage your liquidity nodes and cryptographic payment sequences.</p>
+                        <p className="text-slate-400 font-bold max-w-lg text-base">Manage your liquidity nodes and cryptographic payment sequences.</p>
                     </div>
 
                     <div className="flex items-center gap-4">
@@ -63,7 +63,7 @@ export default function CardsClient({ cards }: CardsClientProps) {
                         { label: "Global Access", title: "Worldwide", icon: Globe, color: "text-purple-500", bg: "bg-purple-600/10" },
                     ].map((item, i) => (
                         <motion.div key={i} {...fadeInUp} transition={{ delay: 0.1 * i }}>
-                            <UICard className="border-none shadow-2xl bg-slate-900/40 p-8 rounded-[3rem] group hover:scale-105 transition-all duration-500 glass-dark flex items-center gap-6 overflow-hidden relative border border-white/5">
+                            <UICard className="border-none shadow-2xl bg-slate-900/40 p-6 md:p-8 rounded-[2.5rem] md:rounded-[3rem] group hover:scale-105 transition-all duration-500 glass-dark flex items-center gap-6 overflow-hidden relative border border-white/5">
                                 <div className={cn("absolute -right-4 -top-4 w-24 h-24 rounded-full blur-2xl opacity-10 group-hover:scale-150 transition-transform duration-700", item.bg)}></div>
                                 <div className={cn("h-16 w-16 rounded-2xl flex items-center justify-center shadow-inner border border-white/10 relative z-10", item.color)}>
                                     <item.icon className="h-8 w-8 transition-transform group-hover:rotate-12" />
@@ -80,14 +80,14 @@ export default function CardsClient({ cards }: CardsClientProps) {
                 {/* Asset Matrix */}
                 {activeCards.length === 0 ? (
                     <motion.div {...fadeInUp} transition={{ delay: 0.4 }}>
-                        <UICard className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass">
+                        <UICard className="border-none bg-white shadow-2xl rounded-[2.5rem] md:rounded-[4rem] overflow-hidden glass">
                             <CardContent className="flex flex-col items-center justify-center py-32 text-center space-y-10">
                                 <div className="h-32 w-32 bg-slate-50 border border-slate-100 rounded-[3.5rem] flex items-center justify-center shadow-inner text-slate-200 group relative transition-all duration-700 hover:scale-110">
                                     <CreditCard className="h-14 w-14" />
                                     <div className="absolute inset-0 bg-orange-600/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 </div>
                                 <div className="space-y-4">
-                                    <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter italic">No active nodes <span className="text-slate-300">detected</span></h3>
+                                    <h3 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter italic">No active nodes <span className="text-slate-300">detected</span></h3>
                                     <p className="text-slate-400 font-bold max-w-md mx-auto text-sm uppercase tracking-[0.2em]">Initialize a premium cryptographic asset node to enable global liquidity sequences.</p>
                                 </div>
                                 <Button asChild className="h-20 px-12 bg-slate-900 hover:bg-orange-600 text-white rounded-[2rem] shadow-2xl font-black text-xs uppercase tracking-[0.3em] transition-all hover:scale-105 active:scale-95 group/btn">

@@ -13,10 +13,10 @@ const AboutPage: React.FC = () => {
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">
             About HB Bank
           </h1>
-          <p className="text-lg md:text-xl leading-relaxed">
+          <p className="text-base md:text-lg leading-relaxed">
             For over five decades, HB Bank has been more than just a financial
             institution — we have been a trusted partner in helping individuals,
             families, and businesses grow and secure their futures. Our story
@@ -43,10 +43,10 @@ const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="animate-slide-in-left">
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">
                 Our Mission
               </h2>
-              <p className="text-lg text-slate-600 mb-6">
+              <p className="text-base text-slate-600 mb-6">
                 Our mission is to empower individuals and businesses by providing
                 exceptional financial solutions rooted in integrity, innovation,
                 and customer-centricity. We believe banking should not just be
@@ -64,10 +64,10 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
             <div className="animate-slide-in-right">
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">
                 Our Vision
               </h2>
-              <p className="text-lg text-slate-600 mb-6">
+              <p className="text-base text-slate-600 mb-6">
                 We envision a future where banking is seamless, accessible to all,
                 and a force for social and environmental good. Our aim is to lead
                 in sustainable finance, digital innovation, and community enrichment,

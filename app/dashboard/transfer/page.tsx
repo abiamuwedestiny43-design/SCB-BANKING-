@@ -261,11 +261,11 @@ export default function TransferPage() {
               </span>
               Identity Secured Gateway
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]">
+            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9]">
               FUNDING <span className="text-orange-600 italic">CLEARANCE</span>
             </h1>
           </div>
-          <p className="text-slate-400 font-bold max-w-2xl mx-auto text-lg leading-relaxed uppercase tracking-tight">
+          <p className="text-slate-400 font-bold max-w-2xl mx-auto text-base leading-relaxed uppercase tracking-tight">
             Authorized portal for high-fidelity cross-border settlement and real-time ledger synchronization.
           </p>
         </motion.div>
@@ -280,12 +280,12 @@ export default function TransferPage() {
           >
             <Card className="border-none bg-transparent shadow-none overflow-visible">
               <CardHeader className="p-0 pb-10">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 bg-slate-900/40 p-10 rounded-[3rem] border border-white/5 glass-dark">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 bg-slate-900/40 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/5 glass-dark">
                   <div className="space-y-2">
                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 flex items-center gap-2">
                       <Zap className="w-3 h-3 fill-orange-500" /> Clearance Protocol
                     </p>
-                    <CardTitle className="text-3xl font-black text-white tracking-tighter uppercase">Transfer <span className="text-slate-400 italic">Parameters</span></CardTitle>
+                    <CardTitle className="text-2xl md:text-3xl font-black text-white tracking-tighter uppercase">Transfer <span className="text-slate-400 italic">Parameters</span></CardTitle>
                   </div>
                   <div className="flex bg-slate-950 p-1.5 rounded-[2rem] border border-white/5 shadow-inner shrink-0">
                     <button
@@ -314,7 +314,7 @@ export default function TransferPage() {
 
               <CardContent className="p-0">
                 <form onSubmit={handleSubmit} className="space-y-12">
-                  <div className="bg-slate-900/40 p-10 rounded-[3rem] border border-white/5 glass-dark space-y-12">
+                  <div className="bg-slate-900/40 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/5 glass-dark space-y-12">
                     {error && (
                       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                         <Alert className="bg-red-900/20 border-red-900/50 rounded-2xl p-6">
@@ -500,7 +500,7 @@ export default function TransferPage() {
                             onChange={(e) => handleChange("amount", e.target.value)}
                             required
                             disabled={isLoading}
-                            className="pl-16 h-28 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/10 shadow-xl shadow-orange-950 transition-all rounded-[2.5rem] text-5xl font-black text-white tracking-tighter"
+                            className="pl-16 h-28 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/10 shadow-xl shadow-orange-950 transition-all rounded-[2.5rem] text-4xl md:text-5xl font-black text-white tracking-tighter"
                           />
                         </div>
                       </div>

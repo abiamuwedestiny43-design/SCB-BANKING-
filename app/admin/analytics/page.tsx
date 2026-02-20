@@ -59,10 +59,10 @@ export default async function AnalyticsPage() {
                     <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
                         <BarChart3 className="w-3.5 h-3.5 text-orange-500" /> Intelligence Console
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+                    <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none uppercase">
                         SYSTEM <span className="text-orange-600 italic">ANALYTICS</span>
                     </h1>
-                    <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight">Real-time telemetry and deep-layer data intelligence from the Sovereign node.</p>
+                    <p className="text-slate-500 font-bold max-w-lg text-base uppercase tracking-tight">Real-time telemetry and deep-layer data intelligence from the Sovereign node.</p>
                 </div>
 
                 <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
@@ -90,7 +90,7 @@ export default async function AnalyticsPage() {
                     { label: "Total Transfers", value: data.totalTransfers, change: "+5.2%", icon: Activity, color: "text-blue-500", bg: "bg-blue-600/10" },
                     { label: "Total Volume", value: `$${data.volume.toLocaleString()}`, change: "+8.9%", icon: DollarSign, color: "text-emerald-500", bg: "bg-emerald-600/10" },
                 ].map((stat, i) => (
-                    <Card key={i} className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[3.5rem] p-10 relative overflow-hidden glass-dark group transition-all duration-500 hover:-translate-y-2">
+                    <Card key={i} className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-10 relative overflow-hidden glass-dark group transition-all duration-500 hover:-translate-y-2">
                         <div className={cn("absolute -right-8 -top-8 w-32 h-32 rounded-full blur-3xl opacity-20 group-hover:scale-150 transition-transform duration-700", stat.bg)}></div>
                         <CardHeader className="flex flex-row items-center justify-between pb-8 p-0">
                             <CardTitle className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">{stat.label}</CardTitle>
@@ -99,7 +99,7 @@ export default async function AnalyticsPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="p-0">
-                            <div className="text-5xl font-black text-white tracking-tighter mb-6 italic">{stat.value}</div>
+                            <div className="text-4xl font-black text-white tracking-tighter mb-6 italic">{stat.value}</div>
                             <div className="flex items-center gap-3 text-emerald-500 text-[10px] font-black bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full w-fit uppercase tracking-widest shadow-2xl">
                                 <TrendingUp className="w-3.5 h-3.5" /> {stat.change} <span className="text-slate-600 ml-1">v. previous cycle</span>
                             </div>

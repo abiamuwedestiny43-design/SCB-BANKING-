@@ -13,10 +13,10 @@ const ContactPage: React.FC = () => {
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-slide-up">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6 animate-slide-up">
             Get in Touch
           </h1>
-          <p className="text-lg md:text-xl leading-relaxed animate-slide-up delay-200">
+          <p className="text-base md:text-lg leading-relaxed animate-slide-up delay-200">
             At First State Bank, your questions and concerns are our priority. Whether you’re seeking advice on loans, mortgages, or general banking services, our dedicated team is here to provide personalized support. Reach out to us and experience responsive, friendly, and professional assistance tailored to your needs.
             <br /><br />
             Contact us today and let us guide you through our services, help you navigate your finances, or quickly resolve any issues you may have. With multiple channels of communication and convenient branch locations, staying connected with First State Bank has never been easier.
@@ -152,7 +152,7 @@ const ContactPage: React.FC = () => {
       {/* Branch Locations */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-16">Branch Locations</h2>
+          <h2 className="text-2xl font-bold text-center text-slate-900 mb-16">Branch Locations</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {

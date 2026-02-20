@@ -150,7 +150,7 @@ export default function AdminEditUserPage() {
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
               <Fingerprint className="w-3.5 h-3.5 text-orange-600" /> Identity Logic Trace
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase italic">
+            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none uppercase italic">
               MODIFY <span className="text-orange-600 uppercase">ENTITY</span>
             </h1>
           </div>
@@ -182,13 +182,13 @@ export default function AdminEditUserPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
         {/* Core Profile Card */}
         <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group transition-all duration-500 border-t-4 border-t-orange-600">
-          <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+          <CardHeader className="p-8 md:p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
             <CardTitle className="text-3xl font-black text-white italic tracking-tighter flex items-center gap-4 uppercase leading-none">
               <UserIcon className="w-8 h-8 text-orange-600" /> Personal Matrix
             </CardTitle>
             <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-3 italic">Identity anchor points and biographical sequencing.</CardDescription>
           </CardHeader>
-          <CardContent className="p-12 space-y-10">
+          <CardContent className="p-8 md:p-12 space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 { label: "Entity Mailbox", field: "email", icon: Mail },
@@ -259,13 +259,13 @@ export default function AdminEditUserPage() {
 
         {/* Geolocation Hub */}
         <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group transition-all duration-500 border-t-4 border-t-blue-600">
-          <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+          <CardHeader className="p-8 md:p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
             <CardTitle className="text-3xl font-black text-white italic tracking-tighter flex items-center gap-4 uppercase leading-none">
               <Globe className="w-8 h-8 text-blue-600" /> Physical Node
             </CardTitle>
             <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-3 italic">Geospatial positioning for regulatory compliance.</CardDescription>
           </CardHeader>
-          <CardContent className="p-12 space-y-10">
+          <CardContent className="p-8 md:p-12 space-y-10">
             <div className="space-y-3">
               <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2">
                 <MapPin className="w-3 h-3 text-blue-600" /> Residential Logic
@@ -307,18 +307,18 @@ export default function AdminEditUserPage() {
 
         {/* Security & System Protocol */}
         <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4.5rem] overflow-hidden lg:col-span-2 glass-dark border-t-8 border-t-slate-800">
-          <CardHeader className="p-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+          <CardHeader className="p-8 md:p-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
             <div className="flex items-center gap-6">
               <div className="h-16 w-16 rounded-[1.5rem] bg-black border border-white/5 flex items-center justify-center text-orange-600 shadow-3xl">
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <div>
-                <CardTitle className="text-4xl font-black text-white italic tracking-tighter uppercase leading-none">Access Permissions</CardTitle>
+                <CardTitle className="text-3xl md:text-4xl font-black text-white italic tracking-tighter uppercase leading-none">Access Permissions</CardTitle>
                 <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-3 italic">High-level overrides for account clearance and security filters.</CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent className="p-16">
+          <CardContent className="p-8 md:p-16">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
               <div className="space-y-10">
                 <h3 className="text-[10px] font-black text-orange-600 uppercase tracking-[0.4em] mb-4 border-b border-orange-600/20 pb-2 italic">Status Matrix</h3>

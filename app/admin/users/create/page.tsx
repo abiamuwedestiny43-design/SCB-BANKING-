@@ -88,7 +88,7 @@ export default function CreateUserPage() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-white/5 text-orange-500 text-[10px] font-black uppercase tracking-widest shadow-xl">
             <UserPlus className="w-3 h-3" /> Account Creation
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">
+          <h1 className="text-3xl md:text-4xl font-black text-white tracking-tighter uppercase">
             Create New <span className="text-orange-600 italic font-medium">Account</span>
           </h1>
           <p className="text-slate-500 font-bold max-w-md uppercase text-[10px] tracking-widest leading-relaxed">Open a new user account with full banking access and privileges on the Sovereign network.</p>
@@ -98,18 +98,18 @@ export default function CreateUserPage() {
       <Card className="max-w-4xl bg-slate-900/40 border-white/5 shadow-3xl rounded-[3rem] relative z-10 overflow-hidden glass-dark">
         <div className="absolute top-0 right-0 h-32 w-32 bg-orange-600/5 rounded-full blur-3xl"></div>
 
-        <CardHeader className="p-8 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
-          <CardTitle className="text-2xl font-black text-white italic tracking-tight uppercase">Account Details</CardTitle>
+        <CardHeader className="p-6 md:p-8 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
+          <CardTitle className="text-xl md:text-2xl font-black text-white italic tracking-tight uppercase">Account Details</CardTitle>
           <CardDescription className="text-slate-500 font-black uppercase tracking-widest text-[10px] mt-2">
             Complete all required fields to register the new user account
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="p-8">
+        <CardContent className="p-6 md:p-8">
           <form onSubmit={handleSubmit} className="space-y-12">
             {/* Account Credentials */}
             <div className="space-y-6">
-              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+              <h3 className="text-base md:text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
                 <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
                 Account Credentials
               </h3>
@@ -185,7 +185,7 @@ export default function CreateUserPage() {
 
             {/* Personal Information */}
             <div className="space-y-6">
-              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+              <h3 className="text-base md:text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
                 <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
                 Personal Information
               </h3>
@@ -230,7 +230,7 @@ export default function CreateUserPage() {
 
             {/* Address Information */}
             <div className="space-y-6">
-              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+              <h3 className="text-base md:text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
                 <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
                 Address Information
               </h3>
@@ -300,7 +300,7 @@ export default function CreateUserPage() {
 
             {/* Account Configuration */}
             <div className="space-y-6">
-              <h3 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
+              <h3 className="text-base md:text-lg font-black text-white uppercase tracking-tight flex items-center gap-2 italic">
                 <div className="w-1.5 h-6 bg-orange-600 rounded-full shadow-lg shadow-orange-600/50"></div>
                 Account Configuration
               </h3>

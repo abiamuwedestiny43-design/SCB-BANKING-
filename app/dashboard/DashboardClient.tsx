@@ -99,10 +99,10 @@ export default function DashboardClient({
                         <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl border border-white/5">
                             <ShieldCheck className="w-3.5 h-3.5 text-orange-500" /> SECURE NODE SESSION
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+                        <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none uppercase">
                             HELLO, <span className="text-orange-600 italic">{firstName}</span>
                         </h1>
-                        <p className="text-slate-400 font-bold max-w-lg text-lg">Your financial ecosystem synchronized via Sovereign protocols.</p>
+                        <p className="text-slate-400 font-bold max-w-lg text-base">Your financial ecosystem synchronized via Sovereign protocols.</p>
                     </div>
 
                     <div className="p-6 bg-slate-900/40 backdrop-blur-xl rounded-[2.5rem] border border-white/10 shadow-xl glass-dark flex items-center gap-6">
@@ -179,14 +179,14 @@ export default function DashboardClient({
                             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
                             <div className="absolute -top-24 -right-24 h-96 w-96 bg-orange-600/10 rounded-full blur-[100px] group-hover:bg-orange-600/20 transition-all duration-700"></div>
 
-                            <CardHeader className="relative z-10 p-12 md:p-16">
+                            <CardHeader className="relative z-10 p-8 md:p-16">
                                 <div className="flex justify-between items-start mb-12">
                                     <div className="space-y-4">
                                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
                                             <div className="h-2 w-2 rounded-full bg-orange-500 animate-pulse"></div>
                                             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-400">Ledger Balance</p>
                                         </div>
-                                        <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-none italic">
+                                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none italic">
                                             {formatCurrency(balance, currency)}
                                         </h2>
                                     </div>
@@ -211,7 +211,7 @@ export default function DashboardClient({
                                 </div>
                             </CardHeader>
 
-                            <CardContent className="px-12 md:px-16 pb-16 relative z-10">
+                            <CardContent className="px-8 md:px-16 pb-12 md:pb-16 relative z-10">
                                 <div className="flex flex-wrap gap-6">
                                     <Button asChild className="bg-orange-600 hover:bg-orange-500 text-white font-black px-12 h-20 rounded-[2rem] shadow-[0_0_50px_rgba(234,88,12,0.3)] transition-all hover:scale-105 active:scale-95 text-xs uppercase tracking-[0.3em] group/btn border-none">
                                         <Link href="/dashboard/transfer" className="flex items-center gap-4">
@@ -230,7 +230,7 @@ export default function DashboardClient({
 
                     {/* Secondary Analytics Pulse */}
                     <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-4 space-y-8">
-                        <Card className="border-none bg-white shadow-2xl rounded-[3.5rem] p-10 relative overflow-hidden glass group h-full">
+                        <Card className="border-none bg-white shadow-2xl rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-10 relative overflow-hidden glass group h-full">
                             <div className="absolute -right-8 -top-8 w-40 h-40 bg-orange-600/5 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
                             <div className="space-y-10 relative z-10 h-full flex flex-col justify-between">
                                 <div className="space-y-6">
@@ -242,7 +242,7 @@ export default function DashboardClient({
                                         </div>
                                     </div>
                                     <div className="space-y-2">
-                                        <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter italic">Identity <span className="text-slate-400 italic">Parameters</span></h3>
+                                        <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter italic">Identity <span className="text-slate-400 italic">Parameters</span></h3>
                                         <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
                                             <div className="h-full bg-orange-600 w-[98.4%] rounded-full shadow-[0_0_10px_#f97316]"></div>
                                         </div>
@@ -253,14 +253,14 @@ export default function DashboardClient({
                                     <div className="p-6 rounded-[2rem] bg-slate-50 border border-slate-100 flex items-center justify-between group/status">
                                         <div className="space-y-0.5">
                                             <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">Status</p>
-                                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight italic">{user.bankAccount?.verified ? "Verified" : "Pending"}</p>
+                                            <p className="text-base font-black text-slate-900 uppercase tracking-tight italic">{user.bankAccount?.verified ? "Verified" : "Pending"}</p>
                                         </div>
                                         <ShieldCheck className={cn("h-8 w-8 transition-all duration-500", user.bankAccount?.verified ? "text-emerald-500" : "text-yellow-500")} />
                                     </div>
                                     <div className="p-6 rounded-[2rem] bg-slate-50 border border-slate-100 flex items-center justify-between group/status">
                                         <div className="space-y-0.5">
                                             <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">Access</p>
-                                            <p className="text-lg font-black text-slate-900 uppercase tracking-tight italic">{user.bankAccount?.canTransfer ? "Operational" : "Restricted"}</p>
+                                            <p className="text-base font-black text-slate-900 uppercase tracking-tight italic">{user.bankAccount?.canTransfer ? "Operational" : "Restricted"}</p>
                                         </div>
                                         <ArrowRightLeft className={cn("h-8 w-8 transition-all duration-500", user.bankAccount?.canTransfer ? "text-orange-500" : "text-red-500")} />
                                     </div>

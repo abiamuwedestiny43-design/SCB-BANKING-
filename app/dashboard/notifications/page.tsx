@@ -65,7 +65,7 @@ export default function NotificationsPage() {
               <Bell className="h-3 w-3" />
               Event Stream
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter lowercase">
+            <h1 className="text-3xl md:text-4xl font-black text-white tracking-tighter lowercase">
               Activity <span className="text-slate-500 italic">Relays</span>
             </h1>
             <p className="text-slate-400 font-medium">Monitor your system logs and institutional transmissions.</p>
@@ -134,7 +134,7 @@ export default function NotificationsPage() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: idx * 0.05 }}
                           className={cn(
-                            "p-8 md:p-10 flex items-start gap-8 transition-all hover:bg-white/[0.02] relative group",
+                            "p-6 md:p-10 flex items-start gap-6 md:gap-8 transition-all hover:bg-white/[0.02] relative group",
                             !n.viewed && "bg-orange-500/[0.03]"
                           )}
                         >
@@ -183,7 +183,7 @@ export default function NotificationsPage() {
                             </div>
 
                             <div className="relative">
-                              <p className="text-white font-bold text-lg leading-relaxed lowercase tracking-tight max-w-2xl">
+                              <p className="text-white font-bold text-base leading-relaxed lowercase tracking-tight max-w-2xl">
                                 {n.message}
                               </p>
                               <div className="absolute -bottom-1 right-0 opacity-10 blur-xl bg-orange-500 h-8 w-32 group-hover:opacity-20 transition-opacity"></div>

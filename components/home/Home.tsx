@@ -20,23 +20,23 @@ const HomePages: React.FC = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-orange-600 text-xs font-black tracking-widest uppercase shadow-sm">
                 <Zap className="w-3 h-3 fill-current" /> First State Bank
               </div>
-              <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter text-slate-900">
+              <h1 className="text-4xl md:text-6xl font-black leading-[1.1] tracking-tighter text-slate-900">
                 Banking for the <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700">
                   Modern Era.
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+              <p className="text-base md:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
                 Experience the convergence of traditional security and digital innovation. First State Bank empowers your financial journey with precision and care.
               </p>
               <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-2">
                 <Link href="/register">
-                  <button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl text-lg font-black transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.4)] flex items-center justify-center gap-2 group">
+                  <button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl text-base font-black transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.4)] flex items-center justify-center gap-2 group">
                     Open Account <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
                 <Link href="/about">
-                  <button className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-900 px-8 py-4 rounded-xl text-lg font-bold border border-slate-300 transition-all hover:border-orange-500 flex items-center justify-center gap-2">
+                  <button className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-900 px-8 py-4 rounded-xl text-base font-bold border border-slate-300 transition-all hover:border-orange-500 flex items-center justify-center gap-2">
                     Our Story
                   </button>
                 </Link>

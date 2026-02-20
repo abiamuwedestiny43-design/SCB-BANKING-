@@ -185,10 +185,10 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                         <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
                             <Settings className="w-3.5 h-3.5 text-orange-500 animate-spin-slow" /> IDENTITY ARCHITECTURE
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-none uppercase">
+                        <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none uppercase">
                             USER <span className="text-orange-600 italic">GATEWAY</span>
                         </h1>
-                        <p className="text-slate-500 font-bold max-w-lg text-lg">Modulate identity parameters, encryption sequences, and global security protocols.</p>
+                        <p className="text-slate-500 font-bold max-w-lg text-base">Modulate identity parameters, encryption sequences, and global security protocols.</p>
                     </div>
 
                     <div className="p-6 bg-white/50 backdrop-blur-xl rounded-[2.5rem] border border-white shadow-xl glass flex items-center gap-6">
@@ -292,13 +292,13 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="space-y-12"
                                 >
-                                    <Card className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass border-t-8 border-t-orange-600">
+                                    <Card className="border-none bg-white shadow-2xl rounded-[2.5rem] md:rounded-[4rem] overflow-hidden glass border-t-8 border-t-orange-600">
                                         <div className="relative h-48 bg-slate-900 overflow-hidden">
                                             <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
                                             <div className="absolute inset-0 bg-gradient-to-br from-orange-950/50 to-slate-900"></div>
                                             <div className="absolute top-10 right-10 text-right opacity-20">
                                                 <p className="text-[12px] font-black text-white uppercase tracking-[0.5em]">IDENTITY_CORE</p>
-                                                <p className="text-4xl font-black text-white italic tracking-tighter leading-none mt-2">ACTIVE_STATE</p>
+                                                <p className="text-2xl md:text-4xl font-black text-white italic tracking-tighter leading-none mt-2">ACTIVE_STATE</p>
                                             </div>
 
                                             <div className="absolute -bottom-16 left-16 p-2 rounded-[3rem] bg-white border border-slate-100 shadow-2xl z-10 glass">
@@ -336,14 +336,14 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                             </div>
                                         </div>
 
-                                        <CardHeader className="pt-28 px-16">
+                                        <CardHeader className="pt-24 md:pt-28 px-8 md:px-16">
                                             <div className="space-y-2">
-                                                <h3 className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic">Identity <span className="text-orange-600">Parameters</span></h3>
+                                                <h3 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase italic">Identity <span className="text-orange-600">Parameters</span></h3>
                                                 <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Configure subject identity metadata and contact clearance nodes.</p>
                                             </div>
                                         </CardHeader>
 
-                                        <CardContent className="px-16 pb-16 pt-8">
+                                        <CardContent className="px-8 md:px-16 pb-12 md:pb-16 pt-8">
                                             <form onSubmit={handleProfileUpdate} className="space-y-12">
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                                                     {[
@@ -400,20 +400,20 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -20 }}
                                 >
-                                    <Card className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass border-t-8 border-t-slate-900">
-                                        <CardHeader className="p-16 border-b border-slate-50 relative overflow-hidden">
+                                    <Card className="border-none bg-white shadow-2xl rounded-[2.5rem] md:rounded-[4rem] overflow-hidden glass border-t-8 border-t-slate-900">
+                                        <CardHeader className="p-8 md:p-16 border-b border-slate-50 relative overflow-hidden">
                                             <div className="absolute top-0 right-0 w-96 h-96 bg-orange-600/[0.03] rounded-full -mr-32 -mt-32 blur-[100px] pointer-events-none"></div>
                                             <div className="flex items-center gap-8 relative z-10">
                                                 <div className="h-20 w-20 bg-slate-900 rounded-[2rem] shadow-2xl flex items-center justify-center text-orange-500">
                                                     <Lock className="h-10 w-10 animate-pulse" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Security <span className="text-orange-600">Sequences</span></h3>
+                                                    <h3 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Security <span className="text-orange-600">Sequences</span></h3>
                                                     <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Update cryptographic access keys to protect your financial ledger.</p>
                                                 </div>
                                             </div>
                                         </CardHeader>
-                                        <CardContent className="p-16">
+                                        <CardContent className="p-8 md:p-16">
                                             <form onSubmit={handlePasswordChange} className="max-w-xl space-y-10">
                                                 <div className="space-y-4">
                                                     <Label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">Current Protocol Key</Label>
@@ -467,20 +467,20 @@ export default function SettingsClient({ user }: SettingsPageProps) {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="space-y-12"
                                 >
-                                    <Card className="border-none bg-white shadow-2xl rounded-[4rem] overflow-hidden glass border-t-8 border-t-blue-600">
-                                        <CardHeader className="p-16 border-b border-slate-50 relative overflow-hidden">
+                                    <Card className="border-none bg-white shadow-2xl rounded-[2.5rem] md:rounded-[4rem] overflow-hidden glass border-t-8 border-t-blue-600">
+                                        <CardHeader className="p-8 md:p-16 border-b border-slate-50 relative overflow-hidden">
                                             <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-600/[0.03] rounded-full -mr-32 -mb-32 blur-[80px] pointer-events-none"></div>
                                             <div className="flex items-center gap-8 relative z-10">
                                                 <div className="h-20 w-20 bg-blue-50 rounded-[2rem] shadow-xl flex items-center justify-center text-blue-600 border border-blue-100">
                                                     <Bell className="h-10 w-10" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Alert <span className="text-blue-600">Matrix</span></h3>
+                                                    <h3 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Alert <span className="text-blue-600">Matrix</span></h3>
                                                     <p className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Configure real-time telemetry protocols for your account activity.</p>
                                                 </div>
                                             </div>
                                         </CardHeader>
-                                        <CardContent className="p-16 space-y-8">
+                                        <CardContent className="p-8 md:p-16 space-y-8">
                                             {[
                                                 { title: "Protocol Ledgers (Email)", desc: "Receive automated ledger exports and logic reports.", icon: Mail, enabled: true, color: "orange" },
                                                 { title: "Security Breach Alerts", desc: "Instant telemetry for unauthorized access attempts.", icon: ShieldAlert, enabled: true, color: "red" },

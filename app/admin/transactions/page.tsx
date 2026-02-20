@@ -157,10 +157,10 @@ export default async function AdminTransactionsPage({
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
               <Activity className="w-3.5 h-3.5 text-orange-500" /> Remittance Matrix
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none uppercase">
               GLOBAL <span className="text-orange-600 italic">LOG</span>
             </h1>
-            <p className="text-slate-400 font-bold max-w-lg text-lg uppercase tracking-tight">Synchronized audit trail of all asset movements across Sovereign nodes.</p>
+            <p className="text-slate-400 font-bold max-w-lg text-base uppercase tracking-tight">Synchronized audit trail of all asset movements across Sovereign nodes.</p>
           </div>
 
           <div className="flex items-center gap-4">
@@ -183,13 +183,13 @@ export default async function AdminTransactionsPage({
             { label: "Clearing Queue", value: pendingCount, icon: Clock, color: "text-slate-400", bg: "bg-slate-900", border: "border-white/5" },
             { label: "Failed Protocol", value: failedCount, icon: Lock, color: "text-red-500", bg: "bg-red-500/10", border: "border-red-500/20" },
           ].map((stat, i) => (
-            <Card key={i} className={`bg-slate-900/40 border ${stat.border} rounded-[3rem] p-8 group hover:border-orange-500/40 transition-all duration-700 relative overflow-hidden shadow-2xl glass-dark`}>
+            <Card key={i} className={`bg-slate-900/40 border ${stat.border} rounded-[2.5rem] md:rounded-[3.0rem] p-6 md:p-8 group hover:border-orange-500/40 transition-all duration-700 relative overflow-hidden shadow-2xl glass-dark`}>
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-15 transition-opacity duration-700">
                 <stat.icon className={`w-24 h-24 ${stat.color}`} />
               </div>
               <div className="relative z-10 space-y-4">
                 <p className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-500 group-hover:text-white transition-colors">{stat.label}</p>
-                <div className={`text-5xl font-black ${stat.color} tracking-tighter transition-all duration-500 group-hover:scale-1 w-fit origin-left`}>{stat.value}</div>
+                <div className={`text-4xl font-black ${stat.color} tracking-tighter transition-all duration-500 group-hover:scale-1 w-fit origin-left`}>{stat.value}</div>
                 <div className="h-1.5 w-full bg-black rounded-full overflow-hidden p-0.5">
                   <div className={cn("h-full rounded-full transition-all duration-1000", stat.color.replace('text-', 'bg-'), "w-2/3 shadow-[0_0_15px_rgba(234,88,12,0.3)]")}></div>
                 </div>

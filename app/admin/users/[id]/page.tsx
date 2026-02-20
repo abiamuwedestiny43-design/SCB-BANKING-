@@ -76,7 +76,7 @@ export default async function UserDetailsPage({ params }: { params: { id: string
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
               <Fingerprint className="w-3.5 h-3.5 text-orange-500" /> Identity Logic Trace
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
+            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none uppercase">
               NODE <span className="text-orange-600 italic">PROFILE</span>
             </h1>
           </div>
@@ -115,8 +115,8 @@ async function UserDetailsContent({ userId }: { userId: string }) {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
       {/* Primary Data Hub */}
       <div className="lg:col-span-8 space-y-12">
-        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group transition-all duration-500">
-          <CardHeader className="p-12 md:p-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl relative overflow-hidden">
+        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[2.5rem] md:rounded-[4rem] overflow-hidden glass-dark group transition-all duration-500">
+          <CardHeader className="p-8 md:p-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-5 scale-150 rotate-12">
               <Fingerprint className="w-48 h-48 text-white" />
             </div>
@@ -130,7 +130,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                   )}
                 </div>
                 <div>
-                  <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter italic">{user.name}</h2>
+                  <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter italic">{user.name}</h2>
                   <div className="flex gap-3 mt-6">
                     {user.roles.map((role) => (
                       <Badge key={role} className="bg-orange-600 text-white border-none px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-xl">
@@ -146,7 +146,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
               </div>
             </div>
           </CardHeader>
-          <CardContent className="p-12 md:p-16">
+          <CardContent className="p-8 md:p-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
               <div className="space-y-12">
                 <div className="flex items-center gap-4 p-4 bg-orange-600/10 rounded-2xl w-fit border border-orange-600/20">
@@ -165,7 +165,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                       <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-3 flex items-center gap-2">
                         <item.icon className="w-3.5 h-3.5 text-orange-600" /> {item.label}
                       </p>
-                      <p className={cn("text-lg font-black text-white group-hover/field:text-orange-500 transition-colors uppercase italic tracking-tighter", item.mono && 'font-mono text-orange-500 tracking-widest')}>{item.value}</p>
+                      <p className={cn("text-base md:text-lg font-black text-white group-hover/field:text-orange-500 transition-colors uppercase italic tracking-tighter", item.mono && 'font-mono text-orange-500 tracking-widest')}>{item.value}</p>
                     </div>
                   ))}
                 </div>
@@ -186,7 +186,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                       <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-3 flex items-center gap-2">
                         <item.icon className="w-3.5 h-3.5 text-blue-600" /> {item.label}
                       </p>
-                      <p className="text-lg font-black text-white group-hover/field:text-blue-500 transition-colors uppercase leading-tight italic tracking-tighter">{item.value}</p>
+                      <p className="text-base md:text-lg font-black text-white group-hover/field:text-blue-500 transition-colors uppercase leading-tight italic tracking-tighter">{item.value}</p>
                     </div>
                   ))}
                 </div>
@@ -196,10 +196,10 @@ async function UserDetailsContent({ userId }: { userId: string }) {
         </Card>
 
         {/* Neural Activity Log */}
-        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark">
-          <CardHeader className="p-12 md:p-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl flex flex-row items-center justify-between">
+        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[2.5rem] md:rounded-[4rem] overflow-hidden glass-dark">
+          <CardHeader className="p-8 md:p-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl flex flex-row items-center justify-between">
             <div>
-              <CardTitle className="text-3xl font-black text-white italic tracking-tighter flex items-center gap-4 uppercase">
+              <CardTitle className="text-2xl md:text-3xl font-black text-white italic tracking-tighter flex items-center gap-4 uppercase">
                 <Activity className="w-8 h-8 text-blue-500 animate-pulse" /> Live Pulse Feed
               </CardTitle>
               <CardDescription className="text-slate-500 font-black text-[10px] uppercase tracking-[0.3em] mt-3 italic">Historical node synchronization logs</CardDescription>
@@ -214,15 +214,15 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-black/40 text-[10px] font-black text-slate-600 uppercase tracking-[0.2em] border-b border-white/5">
-                      <th className="px-12 py-8">State</th>
-                      <th className="px-12 py-8">Logic Trace</th>
-                      <th className="px-12 py-8 text-right">Value Flux</th>
+                      <th className="px-6 md:px-12 py-6 md:py-8">State</th>
+                      <th className="px-6 md:px-12 py-6 md:py-8">Logic Trace</th>
+                      <th className="px-6 md:px-12 py-6 md:py-8 text-right">Value Flux</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
                     {user.transfers.map((transfer) => (
                       <tr key={transfer.id} className="hover:bg-orange-600/5 transition-all group">
-                        <td className="px-12 py-8">
+                        <td className="px-6 md:px-12 py-6 md:py-8">
                           <Badge className={cn(
                             "px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl border-none",
                             transfer.txStatus === 'success' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'
@@ -230,11 +230,11 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                             {transfer.txStatus === 'success' ? 'Synchronized' : transfer.txStatus}
                           </Badge>
                         </td>
-                        <td className="px-12 py-8">
+                        <td className="px-6 md:px-12 py-6 md:py-8">
                           <p className="text-base font-black text-white uppercase tracking-tighter italic group-hover:text-orange-500 transition-colors">{transfer.txReason}</p>
                           <p className="text-[10px] font-mono font-black text-slate-700 tracking-widest mt-1 uppercase">REF_{transfer.txRef}</p>
                         </td>
-                        <td className="px-12 py-8 text-right">
+                        <td className="px-6 md:px-12 py-6 md:py-8 text-right">
                           <p className="text-xl font-black text-white tracking-tighter italic group-hover:scale-110 origin-right transition-transform">{formatCurrency(transfer.amount, transfer.currency)}</p>
                           <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mt-1 italic">{new Date(transfer.createdAt).toLocaleDateString()}</p>
                         </td>
@@ -257,12 +257,12 @@ async function UserDetailsContent({ userId }: { userId: string }) {
 
       {/* Side Integrity Panel */}
       <div className="lg:col-span-4 space-y-12">
-        <Card className="bg-slate-900 border-none rounded-[4rem] p-12 overflow-hidden relative shadow-3xl text-white group glass-dark">
+        <Card className="bg-slate-900 border-none rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-12 overflow-hidden relative shadow-3xl text-white group glass-dark">
           <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600 opacity-10 rounded-full blur-[100px] group-hover:opacity-20 transition-opacity"></div>
           <div className="relative z-10 space-y-12">
             <div className="space-y-4">
               <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em] leading-none">Net Liquidity Sum</p>
-              <p className="text-5xl md:text-6xl font-black text-white tracking-tighter italic">
+              <p className="text-4xl md:text-6xl font-black text-white tracking-tighter italic">
                 {formatCurrency(user.balance, user.currency)}
               </p>
             </div>
@@ -281,7 +281,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                   { label: "Local Sync", status: user.canLocalTransfer, type: 'status' },
                   { label: "Global Sync", status: user.canInternationalTransfer, type: 'status' },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-6 rounded-[2rem] bg-black/40 border border-white/5 hover:bg-orange-600/10 transition-all border-white/5 group/state">
+                  <div key={idx} className="flex items-center justify-between p-4 md:p-6 rounded-[2rem] bg-black/40 border border-white/5 hover:bg-orange-600/10 transition-all border-white/5 group/state">
                     <span className="text-[10px] font-black text-slate-400 group-hover/state:text-white uppercase tracking-widest transition-colors">{item.label}</span>
                     <Badge className={cn(
                       "px-4 py-1.5 rounded-lg text-[9px] font-black shadow-xl border-none",
@@ -304,7 +304,7 @@ async function UserDetailsContent({ userId }: { userId: string }) {
         </Card>
 
         {/* Security Matrix Advisory */}
-        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[3.5rem] p-12 glass-dark overflow-hidden relative">
+        <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-12 glass-dark overflow-hidden relative">
           <div className="absolute top-0 right-0 h-40 w-40 bg-orange-600/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
           <div className="mb-8 flex items-center gap-4">
             <div className="h-10 w-10 rounded-xl bg-slate-950 border border-white/5 flex items-center justify-center text-orange-500 shadow-2xl">
