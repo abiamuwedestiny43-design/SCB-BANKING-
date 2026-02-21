@@ -59,35 +59,34 @@ async function getUserDetails(id: string) {
 
 export default async function UserDetailsPage({ params }: { params: { id: string } }) {
   return (
-    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-8 lg:p-12 pt-20 md:pt-28 space-y-6">
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-8 lg:p-12 pt-20 md:pt-28 space-y-6 pb-20">
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <Button variant="outline" size="icon" asChild className="h-10 w-10 rounded-xl border-slate-200 hover:border-orange-500 hover:text-orange-600 transition-all">
-            <Link href="/admin/users">
-              <ArrowLeft className="h-5 w-5" />
-            </Link>
-          </Button>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-3 md:gap-4">
+          <Link href="/admin/users" className="h-9 w-9 md:h-10 md:w-10 rounded-xl border border-slate-200 hover:border-orange-500 hover:text-orange-600 transition-all flex items-center justify-center flex-shrink-0 bg-white">
+            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+          </Link>
           <div className="space-y-0.5">
-            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">
               Customer <span className="text-orange-600">Profile</span>
             </h1>
-            <p className="text-sm text-slate-400 font-bold uppercase tracking-widest opacity-60">Full account details and activity</p>
+            <p className="text-[10px] sm:text-xs md:text-sm text-slate-400 font-bold uppercase tracking-widest opacity-60">Full account details and activity</p>
           </div>
         </div>
-        <div className="flex gap-3">
-          <Button asChild variant="outline" className="h-10 px-5 rounded-xl border-slate-200 font-black uppercase tracking-widest text-xs hover:border-orange-500 hover:text-orange-600 transition-all gap-2">
-            <Link href={`/admin/users/${params.id}/edit`}>
-              <Edit className="h-4 w-4" /> Edit Customer
-            </Link>
-          </Button>
+        <div className="flex gap-2 md:gap-3">
+          <Link
+            href={`/admin/users/${params.id}/edit`}
+            className="h-9 md:h-10 px-3 md:px-5 rounded-xl border border-slate-200 font-black uppercase tracking-widest text-[10px] md:text-xs hover:border-orange-500 hover:text-orange-600 transition-all flex items-center gap-2 bg-white text-slate-700"
+          >
+            <Edit className="h-3.5 w-3.5 md:h-4 md:w-4" /> <span className="hidden sm:inline">Edit</span>
+          </Link>
           <UserActions userId={params.id} />
         </div>
       </div>
 
       <Suspense fallback={
-        <div className="flex flex-col items-center justify-center p-16 gap-4 bg-white border border-slate-100 rounded-2xl shadow-sm">
+        <div className="flex flex-col items-center justify-center p-12 md:p-16 gap-4 bg-white border border-slate-100 rounded-2xl shadow-sm">
           <Activity className="w-8 h-8 text-orange-600 animate-spin" />
           <p className="text-xs font-black text-slate-400 tracking-widest uppercase">Loading customer details...</p>
         </div>
@@ -110,37 +109,37 @@ async function UserDetailsContent({ userId }: { userId: string }) {
 
         {/* Profile Card */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-          <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center gap-6">
-            <div className="relative">
-              <div className="w-20 h-20 rounded-2xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-slate-900 text-2xl font-black overflow-hidden">
+          <div className="p-4 md:p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6">
+            <div className="relative flex-shrink-0">
+              <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-slate-900 text-xl md:text-2xl font-black overflow-hidden">
                 {user.profileImage ? (
                   <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
                 ) : (
                   user.name[0]
                 )}
               </div>
-              <div className={cn("absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-white", user.verified ? "bg-emerald-500" : "bg-red-500")}></div>
+              <div className={cn("absolute -bottom-1 -right-1 h-4 w-4 md:h-5 md:w-5 rounded-full border-2 border-white", user.verified ? "bg-emerald-500" : "bg-red-500")}></div>
             </div>
-            <div className="flex-1">
-              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter">{user.name}</h2>
-              <div className="flex flex-wrap gap-2 mt-2">
+            <div className="flex-1 min-w-0">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tighter truncate">{user.name}</h2>
+              <div className="flex flex-wrap gap-1.5 md:gap-2 mt-1.5 md:mt-2">
                 {user.roles.map((role) => (
-                  <Badge key={role} className="bg-orange-50 text-orange-700 border border-orange-200 text-xs font-black uppercase tracking-widest px-3 py-1">
+                  <Badge key={role} className="bg-orange-50 text-orange-700 border border-orange-200 text-[9px] md:text-xs font-black uppercase tracking-widest px-2 md:px-3 py-0.5 md:py-1">
                     {role}
                   </Badge>
                 ))}
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Member Since</p>
-              <p className="text-lg font-black text-slate-900 italic tracking-tighter">{new Date(user.registerTime).toLocaleDateString()}</p>
+            <div className="text-left sm:text-right flex-shrink-0">
+              <p className="text-[9px] md:text-xs font-black text-slate-400 uppercase tracking-widest">Member Since</p>
+              <p className="text-base md:text-lg font-black text-slate-900 italic tracking-tighter">{new Date(user.registerTime).toLocaleDateString()}</p>
             </div>
           </div>
 
-          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Account Info */}
-            <div className="space-y-5">
-              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+            <div className="space-y-4 md:space-y-5">
+              <h3 className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
                 <CreditCard className="w-3.5 h-3.5 text-orange-600" /> Account Information
               </h3>
               {[
@@ -150,17 +149,17 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                 { label: "Currency", value: user.currency, icon: Globe },
               ].map((item, i) => (
                 <div key={i}>
-                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1.5">
+                  <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1.5">
                     <item.icon className="w-3 h-3" /> {item.label}
                   </p>
-                  <p className={cn("text-sm font-black text-slate-900", item.mono && "font-mono text-orange-600")}>{item.value}</p>
+                  <p className={cn("text-xs md:text-sm font-black text-slate-900 break-all", item.mono && "font-mono text-orange-600")}>{item.value}</p>
                 </div>
               ))}
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-5">
-              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+            <div className="space-y-4 md:space-y-5">
+              <h3 className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-blue-600" /> Contact Details
               </h3>
               {[
@@ -168,10 +167,10 @@ async function UserDetailsContent({ userId }: { userId: string }) {
                 { label: "Address", value: `${user.address}, ${user.city}, ${user.state} ${user.zipcode}, ${user.country}`, icon: MapPin },
               ].map((item, i) => (
                 <div key={i}>
-                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1.5">
+                  <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1.5">
                     <item.icon className="w-3 h-3" /> {item.label}
                   </p>
-                  <p className="text-sm font-black text-slate-900 leading-snug">{item.value}</p>
+                  <p className="text-xs md:text-sm font-black text-slate-900 leading-snug">{item.value}</p>
                 </div>
               ))}
             </div>
@@ -180,45 +179,46 @@ async function UserDetailsContent({ userId }: { userId: string }) {
 
         {/* Transaction History */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-          <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+          <div className="p-4 md:p-6 border-b border-slate-100 flex items-center justify-between">
             <div>
-              <h3 className="text-xl font-black text-slate-900 tracking-tighter italic">Recent Transactions</h3>
-              <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Last 10 bank transfers</p>
+              <h3 className="text-base md:text-xl font-black text-slate-900 tracking-tighter italic">Recent Transactions</h3>
+              <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Last 10 bank transfers</p>
             </div>
-            <div className="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center">
-              <Activity className="w-5 h-5 text-slate-500" />
+            <div className="h-8 w-8 md:h-10 md:w-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <Activity className="w-4 h-4 md:w-5 md:h-5 text-slate-500" />
             </div>
           </div>
           {user.transfers.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-slate-50 text-xs font-black text-slate-500 uppercase tracking-widest border-b border-slate-100">
-                    <th className="px-6 py-4">Status</th>
-                    <th className="px-6 py-4">Description</th>
-                    <th className="px-6 py-4 text-right">Amount</th>
+                  <tr className="bg-slate-50 text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest border-b border-slate-100">
+                    <th className="px-4 md:px-6 py-3 md:py-4">Status</th>
+                    <th className="px-4 md:px-6 py-3 md:py-4 hidden sm:table-cell">Description</th>
+                    <th className="px-4 md:px-6 py-3 md:py-4 text-right">Amount</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {user.transfers.map((transfer) => (
                     <tr key={transfer.id} className="hover:bg-slate-50 transition-colors">
-                      <td className="px-6 py-4">
+                      <td className="px-4 md:px-6 py-3 md:py-4">
                         <Badge className={cn(
-                          "px-3 py-1 rounded-xl text-xs font-black uppercase tracking-widest border",
+                          "px-2 md:px-3 py-0.5 md:py-1 rounded-lg md:rounded-xl text-[9px] md:text-xs font-black uppercase tracking-widest border",
                           transfer.txStatus === 'success'
                             ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                             : 'bg-red-50 text-red-700 border-red-200'
                         )}>
                           {transfer.txStatus === 'success' ? 'Completed' : transfer.txStatus}
                         </Badge>
+                        <p className="text-[10px] font-black text-slate-700 mt-1 sm:hidden truncate max-w-[140px]">{transfer.txReason}</p>
                       </td>
-                      <td className="px-6 py-4">
-                        <p className="text-sm font-black text-slate-900">{transfer.txReason}</p>
-                        <p className="text-xs font-mono text-slate-400 mt-0.5">{transfer.txRef}</p>
+                      <td className="px-4 md:px-6 py-3 md:py-4 hidden sm:table-cell">
+                        <p className="text-xs md:text-sm font-black text-slate-900 truncate max-w-[200px]">{transfer.txReason}</p>
+                        <p className="text-[10px] md:text-xs font-mono text-slate-400 mt-0.5 truncate max-w-[150px]">{transfer.txRef}</p>
                       </td>
-                      <td className="px-6 py-4 text-right">
-                        <p className="text-base font-black text-slate-900 italic tracking-tighter">{formatCurrency(transfer.amount, transfer.currency)}</p>
-                        <p className="text-xs text-slate-400 font-bold mt-0.5">{new Date(transfer.createdAt).toLocaleDateString()}</p>
+                      <td className="px-4 md:px-6 py-3 md:py-4 text-right">
+                        <p className="text-sm md:text-base font-black text-slate-900 italic tracking-tighter">{formatCurrency(transfer.amount, transfer.currency)}</p>
+                        <p className="text-[10px] md:text-xs text-slate-400 font-bold mt-0.5">{new Date(transfer.createdAt).toLocaleDateString()}</p>
                       </td>
                     </tr>
                   ))}
@@ -226,11 +226,11 @@ async function UserDetailsContent({ userId }: { userId: string }) {
               </table>
             </div>
           ) : (
-            <div className="p-16 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
-                <Activity className="w-8 h-8 text-slate-300" />
+            <div className="p-10 md:p-16 text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-3 md:mb-4">
+                <Activity className="w-6 h-6 md:w-8 md:h-8 text-slate-300" />
               </div>
-              <p className="text-sm font-black text-slate-400 uppercase tracking-widest italic">No transactions found</p>
+              <p className="text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest italic">No transactions found</p>
             </div>
           )}
         </div>
@@ -240,20 +240,20 @@ async function UserDetailsContent({ userId }: { userId: string }) {
       <div className="lg:col-span-4 space-y-6">
 
         {/* Balance Card */}
-        <div className="bg-white rounded-2xl shadow-sm border-2 border-orange-200 p-6">
-          <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Account Balance</p>
-          <p className="text-4xl font-black text-slate-900 tracking-tighter italic">
+        <div className="bg-white rounded-2xl shadow-sm border-2 border-orange-200 p-4 md:p-6">
+          <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Account Balance</p>
+          <p className="text-2xl md:text-4xl font-black text-slate-900 tracking-tighter italic">
             {formatCurrency(user.balance, user.currency)}
           </p>
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">{user.currency} Account</p>
+          <p className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">{user.currency} Account</p>
         </div>
 
         {/* Account Status */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
-          <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-4 flex items-center gap-2">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6">
+          <h3 className="text-xs md:text-sm font-black text-slate-900 uppercase tracking-widest mb-3 md:mb-4 flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-orange-600" /> Account Status
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-2 md:space-y-3">
             {[
               { label: "Identity Verified", status: user.verified },
               { label: "Transfers Enabled", status: user.canTransfer },
@@ -261,12 +261,12 @@ async function UserDetailsContent({ userId }: { userId: string }) {
               { label: "International Transfers", status: user.canInternationalTransfer },
             ].map((item, idx) => (
               <div key={idx} className={cn(
-                "flex items-center justify-between p-3 rounded-xl border transition-colors",
+                "flex items-center justify-between p-2.5 md:p-3 rounded-lg md:rounded-xl border transition-colors",
                 item.status ? "bg-emerald-50 border-emerald-200" : "bg-red-50 border-red-200"
               )}>
-                <span className="text-xs font-black text-slate-700 uppercase tracking-widest">{item.label}</span>
+                <span className="text-[10px] md:text-xs font-black text-slate-700 uppercase tracking-widest">{item.label}</span>
                 <Badge className={cn(
-                  "px-2.5 py-1 rounded-lg text-xs font-black border-none",
+                  "px-2 md:px-2.5 py-0.5 md:py-1 rounded-lg text-[9px] md:text-xs font-black border-none",
                   item.status ? "bg-emerald-600 text-white" : "bg-red-500 text-white"
                 )}>
                   {item.status ? "Active" : "Disabled"}
@@ -275,11 +275,11 @@ async function UserDetailsContent({ userId }: { userId: string }) {
             ))}
           </div>
 
-          <Separator className="my-4" />
+          <Separator className="my-3 md:my-4" />
 
           <div className="flex items-center gap-2 text-slate-400">
-            <Clock className="w-4 h-4" />
-            <span className="text-xs font-bold uppercase tracking-widest">Customer since {new Date(user.registerTime).getFullYear()}</span>
+            <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 flex-shrink-0" />
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest">Customer since {new Date(user.registerTime).getFullYear()}</span>
           </div>
         </div>
 

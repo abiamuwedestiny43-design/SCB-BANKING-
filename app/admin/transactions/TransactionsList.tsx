@@ -1,369 +1,319 @@
-// app/admin/transactions/TransactionsList.tsx
 "use client"
 
-import type React from "react"
-import { useState, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowUpRight, ArrowDownLeft, Search, Filter, ChevronLeft, ChevronRight, Download, Activity, User as UserIcon, Calendar, Hash } from "lucide-react"
-import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useState, useMemo } from "react"
 import { formatCurrency } from "@/lib/utils/banking"
+import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
+import {
+  Search,
+  ArrowUpRight,
+  ArrowDownLeft,
+  Filter,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  CheckCircle,
+  XCircle,
+  Activity,
+  User,
+  CreditCard,
+  Calendar,
+  Zap,
+  Download,
+  Printer
+} from "lucide-react"
+import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 interface Transaction {
   _id: string
-  txRef: string
-  txType: "debit" | "credit"
   amount: number
-  currency: string
-  createdAt: Date
-  status: string
-  recipient?: string
-  bankName?: string
-  branchName?: string
-  bankAccount?: string
-  accountType?: string
-  routingCode?: string
-  identifierCode?: string
-  chargesType?: string
-  description?: string
-  userId?: string
-  userEmail?: string
+  txType: "credit" | "debit"
+  txStatus: string
+  txReason: string
+  txRef: string
+  createdAt: string
   userName?: string
-}
-
-interface UserSummary {
-  id: string
-  name: string
-  email: string
+  recipient?: string
+  currency: string
+  bankAccount?: string
+  senderAccount?: string
 }
 
 interface TransactionsListProps {
   initialTransactions: Transaction[]
-  total: number
-  currentPage: number
-  totalPages: number
-  currentFilters: {
-    status: string
-    type: string
-    search: string
-    user?: string
-  }
-  users?: UserSummary[]
-  isAdmin?: boolean
+  users: any[]
 }
 
-export default function TransactionsList({
-  initialTransactions,
-  total,
-  currentPage,
-  totalPages,
-  currentFilters,
-  users = [],
-  isAdmin = false
-}: TransactionsListProps) {
-  const [transactions, setTransactions] = useState<Transaction[]>(initialTransactions)
-  const [filters, setFilters] = useState(currentFilters)
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
-  const searchParams = useSearchParams()
+export default function TransactionsList({ initialTransactions, users }: TransactionsListProps) {
+  const [searchTerm, setSearchTerm] = useState("")
+  const [typeFilter, setTypeFilter] = useState("all")
+  const [statusFilter, setStatusFilter] = useState("all")
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 8
 
-  useEffect(() => {
-    setTransactions(initialTransactions)
-  }, [initialTransactions])
+  const filteredTransactions = useMemo(() => {
+    return initialTransactions.filter((tx) => {
+      const searchStr = `${tx.userName || ""} ${tx.recipient || ""} ${tx.txRef} ${tx.txReason}`.toLowerCase()
+      const matchesSearch = searchStr.includes(searchTerm.toLowerCase())
+      const matchesType = typeFilter === "all" || tx.txType === typeFilter
+      const matchesStatus = statusFilter === "all" || tx.txStatus === statusFilter
+      return matchesSearch && matchesType && matchesStatus
+    })
+  }, [initialTransactions, searchTerm, typeFilter, statusFilter])
 
-  const handleFilterChange = (key: string, value: string) => {
-    const newFilters = { ...filters, [key]: value }
-    setFilters(newFilters)
-    updateURL(newFilters, 1)
-  }
+  const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage)
+  const paginatedTransactions = filteredTransactions.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  )
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    updateURL(filters, 1)
-  }
-
-  const handlePageChange = (newPage: number) => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      updateURL(filters, newPage)
-    }
-  }
-
-  const updateURL = (newFilters: any, page: number) => {
-    const params = new URLSearchParams(searchParams.toString())
-
-    if (newFilters.status !== "all") params.set("status", newFilters.status)
-    else params.delete("status")
-
-    if (newFilters.type !== "all") params.set("type", newFilters.type)
-    else params.delete("type")
-
-    if (newFilters.search) params.set("search", newFilters.search)
-    else params.delete("search")
-
-    if (isAdmin && newFilters.user && newFilters.user !== "all") {
-      params.set("user", newFilters.user)
-    } else if (isAdmin) {
-      params.delete("user")
-    }
-
-    if (page > 1) params.set("page", page.toString())
-    else params.delete("page")
-
-    const path = isAdmin ? "/admin/transactions" : "/dashboard/transactions"
-    router.push(`${path}?${params.toString()}`)
-  }
-
-  const getStatusBadge = (status: string) => {
-    switch (status) {
+  const getStatusStyles = (status: string) => {
+    switch (status?.toLowerCase()) {
       case "success":
-        return <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/30 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-sm">SUCCESS</Badge>
+      case "completed":
+        return "bg-emerald-50 text-emerald-700 border-emerald-200"
       case "pending":
-        return <Badge className="bg-orange-500/10 text-orange-500 border-orange-500/30 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-sm">PENDING</Badge>
+      case "processing":
+        return "bg-yellow-50 text-yellow-700 border-yellow-200"
       case "failed":
-        return <Badge className="bg-red-500/10 text-red-500 border-red-500/30 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 shadow-sm">FAILED</Badge>
-      case "cancelled":
-        return <Badge className="bg-slate-800 text-slate-500 border-white/5 text-[9px] font-black uppercase tracking-widest px-2 py-0.5">CANCELLED</Badge>
+      case "rejected":
+        return "bg-red-50 text-red-700 border-red-200"
       default:
-        return <Badge className="bg-slate-800 text-slate-400 border-white/5 text-[9px] font-black uppercase tracking-widest px-2 py-0.5">{status.toUpperCase()}</Badge>
+        return "bg-slate-50 text-slate-500 border-slate-200"
     }
   }
 
   return (
-    <div className="space-y-8">
-      {/* Filters Hub */}
-      <Card className="bg-slate-900/60 border-white/5 rounded-[2.5rem] p-8 shadow-2xl glass-dark">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
-          {isAdmin && (
-            <div className="lg:col-span-3 space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2 italic">Client Identity</label>
-              <Select value={filters.user || "all"} onValueChange={(value) => handleFilterChange("user", value)}>
-                <SelectTrigger className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:ring-orange-500/20 capitalize font-black">
-                  <SelectValue placeholder="All Clients" />
-                </SelectTrigger>
-                <SelectContent className="bg-slate-950 border-white/10 text-white backdrop-blur-xl rounded-xl">
-                  <SelectItem value="all" className="font-black uppercase tracking-widest text-[10px]">All Accounts</SelectItem>
-                  {users.map(user => (
-                    <SelectItem key={user.id} value={user.id} className="focus:bg-orange-600 focus:text-white font-black uppercase tracking-widest text-[10px]">
-                      {user.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+    <div className="space-y-6">
+      {/* Search and Filters */}
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
+        <div className="flex flex-col lg:flex-row gap-4">
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Input
+              placeholder="Search by name, reference, or description..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 bg-slate-50 border-slate-200 rounded-xl h-12 text-slate-900 focus:border-orange-500 transition-all font-medium placeholder:text-slate-400"
+            />
+          </div>
+          <div className="flex flex-wrap gap-2 lg:gap-3">
+            <div className="flex bg-slate-100 p-1 rounded-xl">
+              <button
+                onClick={() => setTypeFilter("all")}
+                className={cn(
+                  "px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all",
+                  typeFilter === "all" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                )}
+              >
+                All
+              </button>
+              <button
+                onClick={() => setTypeFilter("credit")}
+                className={cn(
+                  "px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all",
+                  typeFilter === "credit" ? "bg-white text-emerald-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                )}
+              >
+                Credits
+              </button>
+              <button
+                onClick={() => setTypeFilter("debit")}
+                className={cn(
+                  "px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all",
+                  typeFilter === "debit" ? "bg-white text-red-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                )}
+              >
+                Debits
+              </button>
             </div>
-          )}
 
-          <div className="lg:col-span-2 space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2 italic">Status</label>
-            <Select value={filters.status} onValueChange={(value) => handleFilterChange("status", value)}>
-              <SelectTrigger className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:ring-orange-500/20 capitalize font-black">
-                <SelectValue placeholder="All Statuses" />
-              </SelectTrigger>
-              <SelectContent className="bg-slate-950 border-white/10 text-white backdrop-blur-xl rounded-xl">
-                <SelectItem value="all" className="font-black uppercase tracking-widest text-[10px]">All Statuses</SelectItem>
-                <SelectItem value="pending" className="font-black uppercase tracking-widest text-[10px]">Pending</SelectItem>
-                <SelectItem value="success" className="font-black uppercase tracking-widest text-[10px]">Completed</SelectItem>
-                <SelectItem value="failed" className="font-black uppercase tracking-widest text-[10px]">Failed</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="lg:col-span-2 space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2 italic">Protocol Type</label>
-            <Select value={filters.type} onValueChange={(value) => handleFilterChange("type", value)}>
-              <SelectTrigger className="bg-black/40 border-white/5 rounded-xl h-12 text-white focus:ring-orange-500/20 capitalize font-black">
-                <SelectValue placeholder="All Types" />
-              </SelectTrigger>
-              <SelectContent className="bg-slate-950 border-white/10 text-white backdrop-blur-xl rounded-xl">
-                <SelectItem value="all" className="font-black uppercase tracking-widest text-[10px]">All Transactions</SelectItem>
-                <SelectItem value="debit" className="font-black uppercase tracking-widest text-[10px]">Debit</SelectItem>
-                <SelectItem value="credit" className="font-black uppercase tracking-widest text-[10px]">Credit</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className={`${isAdmin ? "lg:col-span-5" : "lg:col-span-8"} space-y-2`}>
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2 italic">Search Records</label>
-            <form onSubmit={handleSearch} className="flex gap-3">
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-orange-600/50" />
-                <Input
-                  placeholder="Reference, name, or transaction details..."
-                  value={filters.search}
-                  onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
-                  className="pl-12 bg-black/40 border-white/5 rounded-xl h-12 text-white focus:border-orange-600 transition-all font-black placeholder:text-slate-800 shadow-inner"
-                />
-              </div>
-              <Button type="submit" className="h-12 px-8 rounded-xl bg-orange-600 text-white font-black hover:bg-orange-500 shadow-xl shadow-orange-600/20 uppercase tracking-widest text-[10px] border-none">
-                Query
-              </Button>
-            </form>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              title="Filter by status"
+              className="bg-slate-50 border border-slate-200 rounded-xl px-4 h-11 text-[10px] font-black uppercase tracking-widest text-slate-600 outline-none focus:border-orange-500 transition-all cursor-pointer"
+            >
+              <option value="all">All Status</option>
+              <option value="success">Success</option>
+              <option value="pending">Pending</option>
+              <option value="failed">Failed</option>
+            </select>
           </div>
         </div>
-      </Card>
+      </div>
 
-      {/* Results Deck */}
-      <div className="space-y-4">
-        {transactions.length === 0 ? (
-          <div className="py-24 text-center space-y-6 bg-slate-900/40 border border-white/5 border-dashed rounded-[3rem] glass-dark">
-            <Activity className="w-16 h-16 text-slate-800 mx-auto" />
-            <p className="text-slate-500 font-black uppercase tracking-[0.3em] text-[10px] italic">No sequence matches current filter parameters</p>
-            <Button
-              variant="link"
-              className="text-orange-600 font-black uppercase tracking-[0.2em] text-[10px] hover:text-orange-500 transition-colors"
-              onClick={() => {
-                const clearFilters = { status: "all", type: "all", search: "" }
-                if (isAdmin) (clearFilters as any).user = "all"
-                setFilters(clearFilters as any)
-                updateURL(clearFilters, 1)
-              }}
-            >
-              Reset Logic Matrix
-            </Button>
+      {/* Ledger Container */}
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+        <div className="p-4 md:p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 className="text-lg md:text-xl font-black text-slate-900 tracking-tighter italic uppercase">Master Settlement Ledger</h2>
+            <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest mt-1">Live feed of global financial sequences</p>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-6">
-            {transactions.map((transaction) => (
-              <Link
-                key={transaction._id}
-                href={isAdmin ? `/admin/transactions/${transaction._id}` : `/dashboard/receipt/${transaction.txRef}`}
-                className="group block"
-              >
-                <div className="p-8 rounded-[3rem] bg-slate-900/40 border border-white/5 group-hover:border-orange-600/50 group-hover:shadow-3xl transition-all duration-500 relative overflow-hidden glass-dark">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-600/5 group-hover:bg-orange-600/10 rounded-full blur-3xl -mr-16 -mt-16 transition-colors duration-500"></div>
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
-                    <div className="flex items-center gap-8">
-                      {/* Icon Cluster */}
-                      <div className={`w-16 h-16 rounded-[1.5rem] flex items-center justify-center shrink-0 border transition-all duration-500 group-hover:scale-110 shadow-sm ${transaction.txType === "credit"
-                        ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-500"
-                        : "bg-orange-600 text-white shadow-xl shadow-orange-600/20 border-orange-500"
-                        }`}>
-                        {transaction.txType === "credit" ? (
-                          <ArrowDownLeft className="h-7 w-7" />
-                        ) : (
-                          <ArrowUpRight className="h-7 w-7" />
-                        )}
-                      </div>
+          <div className="flex gap-2">
+            <button className="h-9 px-4 rounded-xl border border-slate-200 text-slate-400 hover:text-slate-900 font-black uppercase tracking-widest text-[9px] transition-all flex items-center gap-2 bg-white">
+              <Download className="h-3.5 w-3.5" /> <span className="hidden sm:inline">Export</span>
+            </button>
+            <button className="h-9 px-4 rounded-xl border border-slate-200 text-slate-400 hover:text-slate-900 font-black uppercase tracking-widest text-[9px] transition-all flex items-center gap-2 bg-white">
+              <Printer className="h-3.5 w-3.5" /> <span className="hidden sm:inline">Print Batch</span>
+            </button>
+          </div>
+        </div>
 
-                      {/* Info Cluster */}
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-4">
-                          <p className="font-black text-white uppercase tracking-tighter text-xl italic group-hover:text-orange-500 transition-colors">
-                            {transaction.txType === "credit" ? "Remittance Inflow" : "Logic Discharge"}
-                          </p>
-                          {getStatusBadge(transaction.status)}
-                        </div>
-                        <div className="flex flex-wrap items-center gap-4">
-                          <span className="text-slate-500 font-mono tracking-widest text-[11px] font-black uppercase">REF_{transaction.txRef.toUpperCase()}</span>
-                          {transaction.recipient && (
-                            <>
-                              <div className="h-1.5 w-1.5 rounded-full bg-slate-800" />
-                              <span className="text-slate-400 font-black uppercase tracking-widest text-[10px]">
-                                {transaction.bankName ? `${transaction.bankName} // ` : ""}{transaction.recipient}
-                              </span>
-                            </>
-                          )}
-                          {transaction.chargesType && (
-                            <>
-                              <div className="h-1.5 w-1.5 rounded-full bg-slate-800" />
-                              <span className="text-orange-500 font-black uppercase tracking-[0.2em] text-[9px] italic border border-orange-500/20 px-2 py-0.5 rounded-md">
-                                {transaction.chargesType}
-                              </span>
-                            </>
-                          )}
-                          {isAdmin && transaction.userName && (
-                            <>
-                              <div className="h-1.5 w-1.5 rounded-full bg-slate-800" />
-                              <p className="text-orange-600 font-black uppercase tracking-widest text-[10px] items-center gap-2 flex">
-                                <UserIcon className="w-3 h-3" /> {transaction.userName}
-                              </p>
-                            </>
-                          )}
-                        </div>
-                      </div>
+        {/* Mobile List View */}
+        <div className="block md:hidden divide-y divide-slate-100">
+          {paginatedTransactions.length > 0 ? (
+            paginatedTransactions.map((tx) => (
+              <div key={tx._id} className="p-4 space-y-3 hover:bg-slate-50/50 transition-all">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={cn(
+                      "h-10 w-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm",
+                      tx.txType === 'credit' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'
+                    )}>
+                      {tx.txType === 'credit' ? <ArrowDownLeft className="h-5 w-5" /> : <ArrowUpRight className="h-5 w-5" />}
                     </div>
-
-                    {/* Value Cluster */}
-                    <div className="flex items-center md:items-end flex-row md:flex-col justify-between md:justify-center gap-1 bg-black/40 md:bg-transparent p-4 md:p-0 rounded-2xl border border-white/5 md:border-none shadow-inner md:shadow-none">
-                      <p className={`text-3xl font-black tracking-tighter italic ${transaction.txType === "credit" ? "text-emerald-500" : "text-white"
-                        }`}>
-                        {transaction.txType === "credit" ? "+" : "-"}{formatCurrency(transaction.amount, transaction.currency)}
+                    <div>
+                      <p className="text-sm font-black text-slate-900 uppercase truncate max-w-[150px]">
+                        {tx.userName || tx.recipient || "Global Ledger"}
                       </p>
-                      <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest italic">
-                        <Calendar className="w-3 h-3" />
-                        {new Date(transaction.createdAt).toLocaleDateString()}
-                      </div>
+                      <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest truncate max-w-[150px]">{tx.txReason || "Asset Sequence"}</p>
                     </div>
                   </div>
-
-                  {/* Decorative background number/ID */}
-                  <div className="absolute right-[2%] bottom-[-10%] text-9xl font-black text-white/[0.02] pointer-events-none select-none italic group-hover:text-orange-600/[0.05] transition-colors duration-500">
-                    {transaction.txRef.slice(-4)}
+                  <div className="text-right">
+                    <p className={cn(
+                      "text-base font-black tracking-tighter italic truncate",
+                      tx.txType === 'credit' ? 'text-emerald-600' : 'text-slate-900'
+                    )}>
+                      {tx.txType === 'credit' ? '+' : '-'}{formatCurrency(tx.amount, tx.currency)}
+                    </p>
+                    <div className={cn(
+                      "inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[8px] font-black uppercase tracking-widest border mt-1",
+                      getStatusStyles(tx.txStatus)
+                    )}>
+                      {tx.txStatus}
+                    </div>
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
-        )}
-
-        {/* Audit Pagination */}
-        {totalPages > 1 && (
-          <div className="flex flex-col md:flex-row items-center justify-between mt-12 gap-8 p-10 rounded-[3.5rem] bg-slate-900/40 border border-white/5 glass-dark">
-            <div className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] italic">
-              Showing <span className="text-white">{(currentPage - 1) * 10 + 1}</span> — <span className="text-white">{Math.min(currentPage * 10, total)}</span> of <span className="text-white">{total}</span> Records
-            </div>
-
-            <div className="flex items-center gap-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="h-12 px-6 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-slate-950 text-white font-black uppercase tracking-widest text-[10px] disabled:opacity-20 transition-all shadow-2xl"
-              >
-                <ChevronLeft className="h-4 w-4 mr-2" /> Previous
-              </Button>
-
-              <div className="flex items-center gap-2">
-                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                  let pageNum
-                  if (totalPages <= 5) pageNum = i + 1
-                  else if (currentPage <= 3) pageNum = i + 1
-                  else if (currentPage >= totalPages - 2) pageNum = totalPages - 4 + i
-                  else pageNum = currentPage - 2 + i
-
-                  return (
-                    <Button
-                      key={pageNum}
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => handlePageChange(pageNum)}
-                      className={`w-12 h-12 rounded-2xl font-black text-[10px] transition-all ${currentPage === pageNum
-                        ? "bg-white text-slate-950 shadow-2xl"
-                        : "bg-black border border-white/10 text-slate-500 hover:text-white shadow-sm"
-                        }`}
-                    >
-                      {pageNum}
-                    </Button>
-                  )
-                })}
+                <div className="flex items-center justify-between text-[9px] font-bold text-slate-400 uppercase tracking-widest pt-1">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
+                    {new Date(tx.createdAt).toLocaleDateString()}
+                  </div>
+                  <div className="font-mono text-slate-300">
+                    {tx.txRef.slice(0, 8)}...
+                  </div>
+                </div>
               </div>
-
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="h-12 px-6 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-slate-950 text-white font-black uppercase tracking-widest text-[10px] disabled:opacity-20 transition-all shadow-2xl"
-              >
-                Next <ChevronRight className="h-4 w-4 ml-2" />
-              </Button>
+            ))
+          ) : (
+            <div className="p-16 text-center">
+              <Activity className="h-8 w-8 text-slate-200 mx-auto mb-2" />
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">No matching sequences in ledger</p>
             </div>
+          )}
+        </div>
+
+        {/* Desktop Table View */}
+        <div className="hidden md:block overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-slate-100 bg-slate-50 text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-500">
+                <th className="px-6 py-4">Participant</th>
+                <th className="px-6 py-4 hidden lg:table-cell">Asset Sequence</th>
+                <th className="px-6 py-4">Capital Flow</th>
+                <th className="px-6 py-4 hidden sm:table-cell">Status</th>
+                <th className="px-6 py-4 text-right">Reference</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {paginatedTransactions.map((tx) => (
+                <tr key={tx._id} className="hover:bg-slate-50 transition-colors group">
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <div className={cn(
+                        "h-10 w-10 md:h-11 md:w-11 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 transition-all group-hover:scale-110",
+                        tx.txType === 'credit' ? 'bg-emerald-50 text-emerald-600 shadow-emerald-100 shadow-lg' : 'bg-red-50 text-red-600 shadow-red-100 shadow-lg'
+                      )}>
+                        {tx.txType === 'credit' ? <ArrowDownLeft className="h-5 w-5" /> : <ArrowUpRight className="h-5 w-5" />}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-sm md:text-base font-black text-slate-900 uppercase tracking-tight group-hover:text-orange-600 transition-colors truncate">
+                          {tx.userName || tx.recipient || "External Node"}
+                        </p>
+                        <p className="text-[10px] md:text-xs text-slate-400 truncate max-w-[180px] font-bold uppercase tracking-widest">{new Date(tx.createdAt).toLocaleDateString()} @ {new Date(tx.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 hidden lg:table-cell">
+                    <div className="space-y-1">
+                      <p className="text-xs md:text-sm font-black text-slate-900 truncate max-w-[200px] uppercase">{tx.txReason || "Settlement Transfer"}</p>
+                      <p className="text-[10px] text-slate-400 font-mono tracking-tighter truncate max-w-[150px]">{tx.recipient || tx.senderAccount || "System Core"}</p>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex flex-col">
+                      <p className={cn(
+                        "text-base md:text-lg font-black tracking-tighter italic",
+                        tx.txType === 'credit' ? 'text-emerald-600' : 'text-slate-900'
+                      )}>
+                        {tx.txType === 'credit' ? '+' : '-'}{formatCurrency(tx.amount, tx.currency)}
+                      </p>
+                      <span className="text-[8px] md:text-[9px] font-black uppercase text-slate-400 tracking-[0.2em]">{tx.currency} UNIT</span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 hidden sm:table-cell">
+                    <div className={cn(
+                      "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[9px] md:text-[10px] font-black uppercase tracking-widest border",
+                      getStatusStyles(tx.txStatus)
+                    )}>
+                      {tx.txStatus === 'success' || tx.txStatus === 'completed' ? <CheckCircle className="h-3 w-3" /> : (tx.txStatus === 'pending' ? <Clock className="h-3 w-3" /> : <XCircle className="h-3 w-3" />)}
+                      {tx.txStatus}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-right">
+                    <div className="flex flex-col items-end">
+                      <p className="text-[10px] md:text-xs font-mono font-black text-slate-400 group-hover:text-orange-600 transition-colors uppercase tracking-widest">{tx.txRef.slice(0, 10)}</p>
+                      <Link href={`/admin/transactions/${tx._id}`} className="mt-1 text-[8px] font-black text-slate-300 hover:text-orange-500 uppercase tracking-widest group-hover:text-slate-500 transition-all">View Trace &rarr;</Link>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Pagination */}
+        <div className="p-4 md:p-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+            Showing <span className="text-slate-900">{Math.min(filteredTransactions.length, itemsPerPage)}</span> of <span className="text-slate-900">{filteredTransactions.length}</span> sequences
+          </p>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage(prev => prev - 1)}
+              className="h-10 px-4 rounded-xl border-slate-200 text-slate-500 font-black uppercase tracking-widest text-[10px] disabled:opacity-30"
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" /> Prev
+            </Button>
+            <div className="flex items-center px-4 bg-slate-50 border border-slate-100 rounded-xl text-[10px] font-black text-slate-900">
+              {currentPage} / {totalPages || 1}
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={currentPage === totalPages || totalPages === 0}
+              onClick={() => setCurrentPage(prev => prev + 1)}
+              className="h-10 px-4 rounded-xl border-slate-200 text-slate-500 font-black uppercase tracking-widest text-[10px] disabled:opacity-30"
+            >
+              Next <ChevronRight className="h-4 w-4 ml-1" />
+            </Button>
           </div>
-        )}
+        </div>
       </div>
     </div>
   )

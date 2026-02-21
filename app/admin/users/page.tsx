@@ -1,9 +1,8 @@
 import { Suspense } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { Plus, Search, Users, ShieldCheck, Mail, CreditCard, ChevronRight, Activity, Fingerprint, Lock, Zap, X } from "lucide-react"
+import { Plus, Search, Users, ShieldCheck, Mail, CreditCard, Activity, Lock, Zap, X, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import dbConnect from "@/lib/database"
 import User from "@/models/User"
@@ -48,56 +47,67 @@ async function getUsers(searchQuery?: string) {
 
 export default async function UsersPage({ searchParams }: { searchParams: { search?: string } }) {
   return (
-    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-8 lg:p-12 pt-20 md:pt-28 space-y-6">
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-8 lg:p-12 pt-20 md:pt-28 space-y-6 pb-20 overflow-x-hidden">
 
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="space-y-1">
-          <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">
-            Customer <span className="text-orange-600">Directory</span>
-          </h1>
-          <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Manage all registered bank customers and their accounts.</p>
-        </div>
-        <Button asChild className="bg-orange-600 hover:bg-orange-700 text-white font-black h-12 px-6 rounded-2xl shadow-sm transition-all gap-2">
-          <Link href="/admin/users/create" className="flex items-center gap-2">
-            <Plus className="h-4 w-4" />
-            <span className="uppercase tracking-widest text-xs">Add Customer</span>
-          </Link>
-        </Button>
-      </div>
-
-      {/* Search Bar */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
-        <form method="GET" className="flex flex-col md:flex-row gap-3">
-          <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
-            <Input
-              name="search"
-              placeholder="Search by name, email, or account number..."
-              defaultValue={searchParams.search}
-              className="pl-10 bg-slate-50 border-slate-200 rounded-xl h-11 text-slate-900 focus:border-orange-500 transition-all font-medium placeholder:text-slate-400"
-            />
+      {/* Header Container */}
+      <div className="max-w-7xl mx-auto space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic uppercase leading-tight">
+              Client <span className="text-orange-600">Archive</span>
+            </h1>
+            <p className="text-[10px] sm:text-xs md:text-sm text-slate-400 font-bold uppercase tracking-[0.2em] opacity-80">Global Ledger Management Systems</p>
           </div>
-          <Button type="submit" className="h-11 px-6 rounded-xl bg-slate-900 hover:bg-orange-600 text-white font-black transition-all uppercase tracking-widest text-xs">
-            Search
-          </Button>
-          {searchParams.search && (
-            <Button variant="ghost" asChild className="h-11 px-4 rounded-xl text-slate-500 hover:text-slate-900 font-black uppercase tracking-widest text-xs">
-              <Link href="/admin/users">Clear</Link>
-            </Button>
-          )}
-        </form>
-      </div>
-
-      {/* Customers Table */}
-      <Suspense fallback={
-        <div className="flex flex-col items-center justify-center p-16 gap-4 bg-white border border-slate-100 rounded-2xl shadow-sm">
-          <Activity className="w-8 h-8 text-orange-600 animate-spin" />
-          <p className="text-xs font-black text-slate-400 tracking-widest uppercase">Loading customers...</p>
+          <Link
+            href="/admin/users/create"
+            className="group relative overflow-hidden bg-slate-900 hover:bg-orange-600 text-white font-black h-11 md:h-14 px-6 md:px-8 rounded-2xl shadow-xl transition-all flex items-center gap-3 w-fit"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <Plus className="h-4 w-4 md:h-5 md:w-5 relative z-10" />
+            <span className="uppercase tracking-widest text-[10px] md:text-xs relative z-10">Deploy New Node</span>
+          </Link>
         </div>
-      }>
-        <UsersTable searchQuery={searchParams.search} />
-      </Suspense>
+
+        {/* Search Matrix */}
+        <div className="bg-white rounded-2xl md:rounded-3xl border border-slate-100 shadow-xl p-3 md:p-5">
+          <form method="GET" className="flex flex-col sm:flex-row gap-2 md:gap-3">
+            <div className="relative flex-1 group">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-orange-600 transition-colors" />
+              <Input
+                name="search"
+                placeholder="Identify client by name, email or ID..."
+                defaultValue={searchParams.search}
+                className="pl-11 bg-slate-50 border-slate-200 rounded-xl md:rounded-2xl h-11 md:h-14 text-slate-900 focus:border-orange-500 transition-all font-bold placeholder:text-slate-400 text-xs md:text-sm shadow-inner"
+              />
+            </div>
+            <div className="flex gap-2">
+              <Button type="submit" className="flex-1 sm:flex-none h-11 md:h-14 px-6 md:px-10 rounded-xl md:rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-black transition-all uppercase tracking-widest text-[10px] md:text-xs shadow-lg shadow-orange-200 border-none">
+                Execute
+              </Button>
+              {searchParams.search && (
+                <Link
+                  href="/admin/users"
+                  className="h-11 md:h-14 w-11 md:w-14 rounded-xl md:rounded-2xl bg-slate-100 text-slate-400 hover:text-red-500 flex items-center justify-center transition-all hover:bg-red-50 border border-slate-200"
+                >
+                  <X className="h-4 w-4 md:h-5 md:w-5" />
+                </Link>
+              )}
+            </div>
+          </form>
+        </div>
+
+        {/* Dynamic Ledger Output */}
+        <Suspense fallback={
+          <div className="flex flex-col items-center justify-center p-20 gap-6 bg-white border border-slate-100 rounded-3xl shadow-xl">
+            <div className="h-12 w-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 animate-pulse">
+              <Activity className="w-6 h-6 animate-spin" />
+            </div>
+            <p className="text-[10px] font-black text-slate-400 tracking-[0.3em] uppercase">Initializing Data Streams...</p>
+          </div>
+        }>
+          <UsersTable searchQuery={searchParams.search} />
+        </Suspense>
+      </div>
     </div>
   )
 }
@@ -106,106 +116,164 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
   const users = await getUsers(searchQuery)
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-      <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <h2 className="text-xl font-black text-slate-900 tracking-tighter italic">
-            {searchQuery ? `Results for "${searchQuery}"` : "All Customers"}
+    <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden relative">
+      <div className="p-4 md:p-8 border-b border-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/50 backdrop-blur-sm">
+        <div className="space-y-1">
+          <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter italic uppercase flex items-center gap-3">
+            <Users className="h-6 w-6 text-orange-600" />
+            {searchQuery ? `Target: "${searchQuery}"` : "Active Ledger"}
           </h2>
-          <p className="text-xs font-black text-slate-400 uppercase tracking-widest mt-1">{users.length} {users.length === 1 ? 'customer' : 'customers'} found</p>
-        </div>
-        <div className="px-4 py-2 bg-orange-50 border-2 border-orange-200 rounded-2xl">
-          <p className="text-xs font-black text-orange-600 uppercase tracking-widest">{users.length} Total</p>
+          <div className="flex items-center gap-2">
+            <Badge className="bg-emerald-50 text-emerald-600 border-none text-[8px] md:text-[10px] uppercase font-black tracking-widest px-2 py-0.5 animate-pulse">Live</Badge>
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{users.length} Node Identifiers Synced</p>
+          </div>
         </div>
       </div>
-      <div className="overflow-x-auto">
+
+      {/* Mobile Stream View (Optimized for Small Retinas) */}
+      <div className="block lg:hidden divide-y divide-slate-50">
+        {users.length > 0 ? (
+          users.map((user) => (
+            <div key={user.id} className="p-4 space-y-4 hover:bg-slate-50/50 transition-colors group">
+              <div className="flex items-center gap-4">
+                <div className="relative shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-slate-900 font-black text-lg overflow-hidden shadow-sm group-hover:scale-110 transition-transform">
+                    {user.profileImage ? (
+                      <img src={user.profileImage} alt="" className="w-full h-full object-cover" />
+                    ) : (
+                      user.name[0]
+                    )}
+                  </div>
+                  <div className={cn("absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-2 border-white shadow-sm", user.verified ? "bg-emerald-500" : "bg-red-500")}></div>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <Link href={`/admin/users/${user.id}`} className="block text-sm font-black text-slate-900 hover:text-orange-600 transition-colors truncate uppercase tracking-tight">
+                    {user.name}
+                  </Link>
+                  <p className="text-[10px] text-slate-400 font-mono tracking-tighter truncate">{user.email}</p>
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className="text-base font-black text-slate-900 tracking-tighter italic">
+                    {formatCurrency(user.balance, user.currency)}
+                  </p>
+                  <Badge variant="outline" className="text-[8px] border-slate-200 text-slate-400 font-black uppercase tracking-widest mt-1">USD ASSET</Badge>
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-2 border-t border-slate-50/50">
+                <div className="flex items-center gap-2">
+                  <span className="text-[9px] font-black text-orange-600 font-mono bg-orange-50 px-2 py-1 rounded-lg border border-orange-100 tracking-widest">{user.bankNumber}</span>
+                  <Badge className={cn("text-[8px] font-black uppercase tracking-widest px-2 py-0.5 border-none shadow-sm",
+                    user.verified ? "bg-emerald-600 text-white" : "bg-red-500 text-white"
+                  )}>
+                    {user.verified ? "verified" : "unverified"}
+                  </Badge>
+                </div>
+                <UserActions userId={user.id} />
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="px-6 py-20 text-center">
+            <Activity className="w-10 h-10 text-slate-100 mx-auto mb-4" />
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic leading-relaxed">
+              No matching client identifiers found in the current sector.
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Data Grid View (Desktop+) */}
+      <div className="hidden lg:block overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-slate-100 bg-slate-50 text-xs font-black uppercase tracking-widest text-slate-500">
-              <th className="px-6 py-4">Customer</th>
-              <th className="px-6 py-4">Contact & Account</th>
-              <th className="px-6 py-4">Balance</th>
-              <th className="px-6 py-4">Status</th>
-              <th className="px-6 py-4 text-right">Actions</th>
+            <tr className="border-b border-slate-100 bg-slate-50/50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+              <th className="px-8 py-5">Node Identity</th>
+              <th className="px-8 py-5">Network Access</th>
+              <th className="px-8 py-5">Asset Balance</th>
+              <th className="px-8 py-5 text-center">Status</th>
+              <th className="px-8 py-5 text-right">Control</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-slate-50">
             {users.length > 0 ? (
               users.map((user) => (
                 <tr
                   key={user.id}
-                  className="hover:bg-slate-50 transition-colors"
+                  className="hover:bg-slate-50/80 transition-all group"
                 >
-                  <td className="px-6 py-4">
+                  <td className="px-8 py-6">
                     <div className="flex items-center gap-4">
-                      <div className="relative">
-                        <div className="w-12 h-12 rounded-2xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-slate-900 font-black text-lg overflow-hidden">
+                      <div className="relative shrink-0">
+                        <div className="w-14 h-14 rounded-2xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-slate-900 font-black text-xl transition-all group-hover:scale-110 group-hover:border-orange-500/50 shadow-sm overflow-hidden">
                           {user.profileImage ? (
-                            <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
+                            <img src={user.profileImage} alt="" className="w-full h-full object-cover" />
                           ) : (
                             user.name[0]
                           )}
                         </div>
-                        <div className={cn("absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-2 border-white", user.verified ? "bg-emerald-500" : "bg-red-500")}></div>
+                        <div className={cn("absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-white shadow-md", user.verified ? "bg-emerald-500" : "bg-red-500")}></div>
                       </div>
-                      <div>
-                        <Link href={`/admin/users/${user.id}`} className="block text-sm font-black text-slate-900 hover:text-orange-600 transition-colors">
+                      <div className="min-w-0">
+                        <Link href={`/admin/users/${user.id}`} className="block text-base font-black text-slate-900 hover:text-orange-600 transition-colors truncate uppercase tracking-tighter">
                           {user.name}
                         </Link>
-                        <div className="flex gap-1.5 mt-1">
+                        <div className="flex items-center gap-2 mt-1">
                           {user.roles.map((role) => (
-                            <Badge key={role} className="bg-slate-100 text-slate-600 border border-slate-200 text-[10px] font-black uppercase tracking-widest px-2 py-0.5">
+                            <Badge key={role} className="bg-slate-900 text-white border-none text-[8px] font-black uppercase tracking-widest px-2 py-0.5 italic">
                               {role}
                             </Badge>
                           ))}
+                          <span className="text-[10px] text-slate-400 font-mono tracking-tighter truncate max-w-[120px]">{user.email}</span>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-slate-500 font-medium">
+                  <td className="px-8 py-6">
                     <div className="space-y-1.5">
-                      <div className="flex items-center gap-2 text-xs">
-                        <Mail className="w-3.5 h-3.5 text-slate-400" /> {user.email}
-                      </div>
-                      <div className="flex items-center gap-2 text-xs font-black text-orange-600 uppercase tracking-widest">
+                      <div className="flex items-center gap-2 text-[11px] font-black text-orange-600 uppercase tracking-[0.1em]">
                         <CreditCard className="w-3.5 h-3.5" /> {user.bankNumber}
                       </div>
+                      <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400">
+                        <Activity className="w-3 h-3" /> Reg: {new Date(user.registerTime).toLocaleDateString()}
+                      </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
-                    <p className="text-lg font-black text-slate-900 tracking-tighter italic">
-                      {formatCurrency(user.balance, user.currency)}
-                    </p>
+                  <td className="px-8 py-6">
+                    <div className="flex flex-col">
+                      <p className="text-xl font-black text-slate-900 tracking-tighter italic">
+                        {formatCurrency(user.balance, user.currency)}
+                      </p>
+                      <span className="text-[8px] font-black uppercase text-slate-400 tracking-[0.2em]">{user.currency} ASSET VALUE</span>
+                    </div>
                   </td>
-                  <td className="px-6 py-4">
-                    <div className="flex flex-col gap-1.5">
-                      <div className={cn("inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-black uppercase tracking-widest border w-fit",
-                        user.verified
-                          ? "bg-emerald-50 border-emerald-200 text-emerald-700"
-                          : "bg-red-50 border-red-200 text-red-700"
+                  <td className="px-8 py-6">
+                    <div className="flex flex-col items-center gap-2">
+                      <div className={cn("inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border shadow-sm",
+                        user.verified ? "bg-emerald-50 border-emerald-200 text-emerald-700" : "bg-red-50 border-red-200 text-red-700"
                       )}>
                         {user.verified ? <ShieldCheck className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
-                        {user.verified ? "Verified" : "Unverified"}
+                        {user.verified ? "Verified" : "Restricted"}
                       </div>
-                      <div className={cn("inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-black uppercase tracking-widest border w-fit",
-                        user.canTransfer
-                          ? "bg-blue-50 border-blue-200 text-blue-700"
-                          : "bg-slate-100 border-slate-200 text-slate-500"
+                      <div className={cn("inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border",
+                        user.canTransfer ? "bg-blue-50 border-blue-200 text-blue-700" : "bg-slate-100 border-slate-200 text-slate-500"
                       )}>
                         {user.canTransfer ? <Zap className="w-3 h-3" /> : <X className="w-3 h-3" />}
-                        {user.canTransfer ? "Transfers On" : "Transfers Off"}
+                        {user.canTransfer ? "Active Nodes" : "Locked Nodes"}
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-right">
-                    <UserActions userId={user.id} />
+                  <td className="px-8 py-6 text-right">
+                    <div className="flex justify-end pr-2">
+                      <UserActions userId={user.id} />
+                    </div>
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={5} className="px-6 py-16 text-center text-slate-400 font-black uppercase tracking-widest text-sm italic">
-                  {searchQuery ? `No customers found matching "${searchQuery}"` : "No customers found."}
+                <td colSpan={5} className="px-8 py-32 text-center">
+                  <Activity className="w-12 h-12 text-slate-100 mx-auto mb-4 animate-pulse" />
+                  <p className="text-sm font-black text-slate-400 uppercase tracking-widest italic">Node Query Returned Null</p>
                 </td>
               </tr>
             )}
