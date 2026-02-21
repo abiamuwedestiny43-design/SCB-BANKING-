@@ -127,44 +127,27 @@ export default function AdminSettingsPage() {
 
   if (loading) {
     return (
-      <div className="p-12 min-h-screen bg-black flex flex-col items-center justify-center gap-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-orange-600/[0.03] animate-pulse"></div>
-        <div className="relative">
-          <Cpu className="w-16 h-16 text-orange-600 animate-spin relative z-10" />
-          <div className="absolute inset-0 bg-orange-600/20 blur-xl animate-pulse"></div>
-        </div>
-        <p className="text-[10px] font-black text-slate-500 tracking-[0.6em] animate-pulse uppercase relative z-10">Modulating System Variables...</p>
+      <div className="min-h-screen bg-[#F4F6FA] flex flex-col items-center justify-center gap-4">
+        <Cpu className="w-10 h-10 text-orange-600 animate-spin" />
+        <p className="text-sm font-black text-slate-400 uppercase tracking-widest">Loading Settings...</p>
       </div>
     )
   }
 
   return (
-    <div className="p-6 md:p-12 space-y-12 relative min-h-screen bg-black selection:bg-orange-500/30">
-      {/* High-Tech Background Decor */}
-      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-500/[0.05] rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/[0.05] rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-8 lg:p-12 pt-20 md:pt-28 space-y-6">
 
-      {/* Industrial Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
-        <div className="space-y-4">
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
-            <Radio className="w-3.5 h-3.5 text-orange-500 animate-pulse" /> Architecture Config
-          </div>
-          <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase italic">
-            GLOBAL <span className="text-orange-600">SYSTEM</span>
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">
+            Bank <span className="text-orange-600">Settings</span>
           </h1>
-          <p className="text-sm md:text-lg text-slate-500 font-bold max-w-lg uppercase tracking-widest opacity-60">Fine-tuning of core infrastructure parameters and operational security protocols.</p>
+          <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Configure bank-wide settings, limits, and operational preferences.</p>
         </div>
-
-        <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
-          <div className="flex flex-col items-end">
-            <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">Node Status</p>
-            <p className="text-sm font-black text-white uppercase tracking-widest">Operational</p>
-          </div>
-          <div className="h-10 w-[1px] bg-white/5"></div>
-          <div className="h-12 w-12 rounded-xl bg-black border border-white/5 flex items-center justify-center text-orange-500 shadow-xl">
-            <Activity className="w-6 h-6 animate-pulse" />
-          </div>
+        <div className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-emerald-200 rounded-2xl shadow-sm">
+          <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
+          <p className="text-sm font-black text-emerald-600 uppercase tracking-widest">System Operational</p>
         </div>
       </div>
 
