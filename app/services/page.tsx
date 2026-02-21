@@ -15,17 +15,16 @@ const ServicesPage: React.FC = () => {
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-[10px] font-black tracking-[0.3em] uppercase mb-8">
-            <Zap className="w-4 h-4" /> The Unified Financial Ecosystem
+            <Zap className="w-4 h-4" /> Unified Financial Ecosystem
           </div>
-          <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-8 text-slate-900 uppercase">
-            Comprehensive <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-700 italic">
-              Legacy Services.
+          <h1 className="text-4xl md:text-7xl font-black leading-tight tracking-tighter mb-8 text-slate-900 uppercase italic">
+            Services for a <br />
+            <span className="text-orange-600">
+              Sustainable Legacy.
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
-            First State Bank provides an elite suite of financial frameworks designed to empower your journey.
-            From personal wealth to institutional leverage, we orchestrate success at every scale.
+          <p className="text-sm md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-bold uppercase tracking-widest opacity-60">
+            Danamon Bank provides a suite of elite financial frameworks designed to empower your journey. From personal wealth to institutional leverage, we orchestrate success at every scale.
           </p>
         </div>
       </section>
@@ -97,8 +96,10 @@ const ServicesPage: React.FC = () => {
                 <div className={`h-20 w-20 rounded-3xl ${service.bg} border border-white flex items-center justify-center mb-10 group-hover:scale-110 transition-transform shadow-sm`}>
                   <service.icon className={`w-10 h-10 ${service.color}`} />
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-4 italic tracking-tight uppercase">{service.title}</h3>
-                <p className="text-slate-500 mb-10 flex-grow leading-relaxed font-bold">{service.description}</p>
+                <h3 className="text-2xl font-black text-slate-900 mb-4 italic tracking-tight uppercase tracking-tighter">
+                  {service.title}
+                </h3>
+                <p className="text-sm md:text-base text-slate-500 mb-10 flex-grow leading-relaxed font-bold uppercase tracking-widest opacity-60">{service.description}</p>
                 <ul className="space-y-4 mb-10">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-3 text-sm text-slate-600 font-medium">
@@ -109,7 +110,7 @@ const ServicesPage: React.FC = () => {
                 </ul>
                 <Link href={service.href} className="block w-full">
                   <button className="w-full py-5 rounded-2xl bg-orange-600 text-white font-black hover:bg-orange-700 transition-all text-xs uppercase tracking-widest shadow-lg shadow-orange-600/20">
-                    Explore Solution
+                    Explore Solutions
                   </button>
                 </Link>
               </div>
@@ -123,11 +124,10 @@ const ServicesPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <p className="text-[10px] font-black tracking-[0.5em] uppercase text-orange-600 mb-6">The First State Platform</p>
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter leading-tight uppercase">Fortified <span className="text-orange-600 italic">Digital Architecture</span></h2>
+              <p className="text-[10px] font-black tracking-[0.5em] uppercase text-orange-600 mb-6">Danamon Platform</p>
+              <h2 className="text-3xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter leading-tight uppercase italic">Fortified <span className="text-orange-600">Digital Architecture</span></h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-10 font-medium">
-                Behind every service is a military-grade infrastructure designed to protect your assets
-                while providing instantaneous global access.
+                Behind every service is a military-grade infrastructure designed to protect your assets while providing instant global access.
               </p>
               <div className="grid grid-cols-2 gap-8">
                 <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
@@ -164,7 +164,7 @@ const ServicesPage: React.FC = () => {
       <section className="py-32 relative bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="relative rounded-[4rem] bg-slate-50 p-12 md:p-24 text-center space-y-10 overflow-hidden border border-slate-200 shadow-2xl">
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight relative z-10 uppercase italic">Scale Your <br /> <span className="text-orange-600 not-italic uppercase">Potential Today.</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight relative z-10 uppercase italic">Elevate <br /> <span className="text-orange-600 not-italic uppercase">Your Potential Today.</span></h2>
             <p className="text-xl text-slate-500 max-w-2xl mx-auto relative z-10 font-medium">
               Join the institutional-grade banking revolution. It takes less than 3 minutes to start your legacy.
             </p>
@@ -176,7 +176,7 @@ const ServicesPage: React.FC = () => {
               </Link>
               <Link href="/contact">
                 <button className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-900 px-12 py-6 rounded-2xl text-xl font-black border border-slate-200 transition-all shadow-sm uppercase tracking-tight">
-                  Speak to Expert
+                  Speak with an Expert
                 </button>
               </Link>
             </div>

@@ -62,7 +62,7 @@ const Header = () => {
               "text-xl font-black tracking-tighter transition-colors",
               isScrolled ? "text-slate-900" : "text-slate-900"
             )}>
-              First State<span className={isScrolled ? "text-orange-600 italic" : "text-orange-600 italic"}> Bank</span>
+              Danamon<span className={isScrolled ? "text-orange-600 italic" : "text-orange-600 italic"}> Bank</span>
             </span>
           </Link>
 

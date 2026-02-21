@@ -151,10 +151,10 @@ export default function AdminLoansPage() {
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
             <Banknote className="w-3.5 h-3.5 text-orange-500" /> Asset Distribution
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
-            CREDIT <span className="text-orange-600 italic">MATRIX</span>
+          <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase italic">
+            CREDIT <span className="text-orange-600">MATRIX</span>
           </h1>
-          <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight">Authorized vetting and execution of institutional credit frameworks across the Sovereign node.</p>
+          <p className="text-sm md:text-lg text-slate-500 font-bold max-w-lg uppercase tracking-widest opacity-60">Authorized vetting and execution of institutional credit frameworks across the Sovereign node.</p>
         </div>
 
         <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
@@ -206,7 +206,7 @@ export default function AdminLoansPage() {
         <CardHeader className="p-12 border-b border-white/5 bg-black/40 backdrop-blur-xl">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
-              <CardTitle className="text-3xl font-black text-white tracking-tighter uppercase leading-none italic">Asset Applications</CardTitle>
+              <CardTitle className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none italic">Asset Applications Grid</CardTitle>
               <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-4 flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse"></div>
                 {filteredLoans.length} Protocols Detected in Current Cycle
@@ -214,7 +214,7 @@ export default function AdminLoansPage() {
             </div>
             <div className="p-8 bg-black border border-white/5 rounded-[2.5rem] flex flex-col items-end min-w-[260px] shadow-2xl">
               <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-3">Aggregate Exposure</p>
-              <p className="text-4xl font-black text-white tracking-tighter italic">
+              <p className="text-4xl md:text-7xl font-black text-white tracking-tighter italic leading-none">
                 ${loans.filter(l => l.status === 'active' || l.status === 'approved').reduce((acc, curr) => acc + curr.amount, 0).toLocaleString()}
               </p>
             </div>

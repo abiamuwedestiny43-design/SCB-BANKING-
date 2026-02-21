@@ -1,4 +1,4 @@
-# First State Bank - Admin Dashboard Features
+# Danamon Bank - Admin Dashboard Features
 
 ## 🎯 Overview
 
@@ -11,7 +11,7 @@ The Admin Dashboard is a comprehensive control center for managing the entire ba
 ### Login Credentials
 
 - **URL**: `http://localhost:3000/login`
-- **Email**: `admin@firststatebank.com`
+- **Email**: `admin@danamonbk.com`
 - **Password**: `Admin@123456`
 - **PIN**: `1234`
 
@@ -386,7 +386,7 @@ All services show operational status with health percentages:
 
 For technical support or questions:
 
-- **Email**: <admin@firststatebank.com>
+- **Email**: <admin@danamonbk.com>
 - **Dashboard**: <http://localhost:3000/admin>
 - **Documentation**: This file
 
@@ -394,7 +394,7 @@ For technical support or questions:
 
 ## 🔄 Version Information
 
-- **Platform**: First State Bank Admin Panel
+- **Platform**: Danamon Bank Admin Panel
 - **Version**: 1.0.0
 - **Last Updated**: 2026-02-14
 - **Framework**: Next.js 14

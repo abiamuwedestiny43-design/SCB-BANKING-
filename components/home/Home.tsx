@@ -1,33 +1,78 @@
+"use client"
+import React, { useState, useEffect } from 'react';
 import { ChevronDown, Shield, TrendingUp, Home, CreditCard, Clock, ArrowRight, Building, Globe, Zap, Lock, BarChart3, Star, Users, CheckCircle2, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import LiveMarketRates from './LiveMarketRates';
 
+const bgImages = [
+  "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1601597111158-2fcee29ac902?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1556742560-60a03f444fde?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1621416848469-9c51813f810b?q=80&w=2070&auto=format&fit=crop"
+];
+
 const HomePages: React.FC = () => {
+  const [currentBg, setCurrentBg] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBg((prev) => (prev + 1) % bgImages.length);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="bg-white text-slate-900 overflow-hidden font-sans">
       {/* Hero Section */}
       <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-36 pb-20 bg-white">
-        {/* Minimal Orbital Structure */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-100 rounded-full opacity-40"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-100 rounded-full opacity-40"></div>
+        {/* Infinite Background Image Slider */}
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentBg}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 0.4, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={bgImages[currentBg]}
+                alt="Banking Background"
+                fill
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
+          {/* Subtle Glass Overlay with bottom gradient */}
+          <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60"></div>
+
+          {/* Minimal Orbital Structure preserved but subtle */}
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-100 rounded-full"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-100 rounded-full"></div>
+          </div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* modern banking hero section dev */}
             <div className="text-center lg:text-left space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-orange-600 text-xs font-black tracking-widest uppercase shadow-sm">
-                <Zap className="w-3 h-3 fill-current" /> First State Bank
+                <Zap className="w-3 h-3 fill-current" /> Danamon Bank
               </div>
-              <h1 className="text-4xl md:text-6xl font-black leading-[1.1] tracking-tighter text-slate-900">
-                Banking for the <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700">
-                  Modern Era.
-                </span>
+              <h1 className="text-4xl md:text-8xl font-black leading-[1.05] tracking-tighter text-slate-900 italic">
+                Banking for <br />
+                <p className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700">
+                  The Modern Era.
+                </p>
               </h1>
-              <p className="text-base md:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                Experience the convergence of traditional security and digital innovation. First State Bank empowers your financial journey with precision and care.
+              <p className="text-sm md:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-bold uppercase tracking-widest opacity-60">
+                Experience the harmony between traditional security and digital innovation. Danamon Bank supports your financial journey with precision.
               </p>
               <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-2">
                 <Link href="/register">
@@ -37,7 +82,7 @@ const HomePages: React.FC = () => {
                 </Link>
                 <Link href="/about">
                   <button className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-900 px-8 py-4 rounded-xl text-base font-bold border border-slate-300 transition-all hover:border-orange-500 flex items-center justify-center gap-2">
-                    Our Story
+                    About Us
                   </button>
                 </Link>
               </div>
@@ -51,7 +96,7 @@ const HomePages: React.FC = () => {
                       </div>
                     ))}
                   </div>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-widest"><span className="text-slate-900">500k+</span> Trusted Users</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-widest"><span className="text-slate-900">500k+</span> Trusted Customers</p>
                 </div>
                 <div className="h-10 w-[1px] bg-slate-300 hidden sm:block"></div>
                 <div className="hidden sm:block">
@@ -68,7 +113,7 @@ const HomePages: React.FC = () => {
               <div className="relative rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl transition-transform duration-700 hover:scale-[1.02] bg-white">
                 <Image
                   src="/business-banking-hero.jpg"
-                  alt="First State Bank - Professional Banking Services"
+                  alt="Danamon Bank - Professional Banking Services"
                   width={800}
                   height={600}
                   className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
@@ -84,7 +129,7 @@ const HomePages: React.FC = () => {
                         <CreditCard className="w-5 h-5 text-orange-600" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-slate-900 text-sm">First State Premium</h4>
+                        <h4 className="font-bold text-slate-900 text-sm">Danamon Premium</h4>
                         <p className="text-[10px] text-slate-500 uppercase tracking-widest">**** 8842</p>
                       </div>
                     </div>
@@ -112,9 +157,9 @@ const HomePages: React.FC = () => {
       {/* Trust Banner */}
       <section className="py-12 border-y border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 overflow-hidden">
-          <p className="text-center text-[10px] font-black tracking-[0.4em] uppercase text-slate-400 mb-8 opacity-60">Powering Leading Enterprises</p>
+          <p className="text-center text-[10px] font-black tracking-[0.4em] uppercase text-slate-400 mb-8 opacity-60">SUPPORTING LEADING COMPANIES</p>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60 hover:opacity-100 transition-all duration-700">
-            {['TechVentures', 'GLOBAL CORP', 'FirstState', 'SecureChain', 'NEXUS FINANCIAL'].map((brand, i) => (
+            {['TechVentures', 'GLOBAL CORP', 'Danamon', 'SecureChain', 'NEXUS FINANCIAL'].map((brand, i) => (
               <div key={i} className="text-xl md:text-2xl font-black italic tracking-tighter text-slate-700 hover:text-orange-600 transition-colors cursor-default">
                 {brand}
               </div>
@@ -130,9 +175,9 @@ const HomePages: React.FC = () => {
       <section className="py-32 relative bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 space-y-4">
-            <span className="text-orange-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm">Why First State Bank</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900">The Standard of Excellence</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto text-lg">We combine heritage with cutting-edge technology to deliver a banking experience that is second to none.</p>
+            <span className="text-orange-600 font-black tracking-[0.3em] text-[10px] md:text-xs uppercase px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm italic">Why Danamon Bank</span>
+            <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-slate-900 italic">Banking Excellence Standards</h2>
+            <p className="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto font-bold uppercase tracking-widest opacity-60">We blend a legacy of trust with cutting-edge technology to deliver an unparalleled banking experience.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -174,12 +219,12 @@ const HomePages: React.FC = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2 space-y-8">
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-tight text-slate-900">
+              <h2 className="text-3xl md:text-6xl font-black tracking-tighter leading-tight text-slate-900 italic">
                 Smart Investing for <br />
-                <span className="text-orange-600 italic">Strategic Growth</span>
+                <span className="text-orange-600">Strategic Growth</span>
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                Connect your capital to opportunities. First State Bank offers curated investment portfolios, real-time market insights, and personalized advisory services.
+              <p className="text-sm md:text-lg text-slate-600 font-bold uppercase tracking-widest opacity-60 leading-relaxed">
+                Connect your capital to opportunities. Danamon Bank offers curated investment portfolios, real-time market insights, and personalized advisory services.
               </p>
 
               <ul className="space-y-4">
@@ -198,7 +243,7 @@ const HomePages: React.FC = () => {
               <div className="pt-6">
                 <Link href="/services/investment">
                   <button className="bg-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-700 transition-colors flex items-center gap-2">
-                    Explore Investments <ArrowRight className="w-4 h-4" />
+                    Explore Investment <ArrowRight className="w-4 h-4" />
                   </button>
                 </Link>
               </div>
@@ -212,8 +257,8 @@ const HomePages: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-slate-900">Comprehensive Services</h2>
-              <p className="text-slate-600 max-w-md">Everything you need to manage, grow, and protect your wealth.</p>
+              <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-slate-900 italic">Comprehensive <span className="text-orange-600">Services</span></h2>
+              <p className="text-sm md:text-lg text-slate-600 max-w-md font-bold uppercase tracking-widest opacity-60">Everything you need to manage, grow, and protect your wealth.</p>
             </div>
             <Link href="/services">
               <span className="text-orange-600 font-bold uppercase tracking-widest text-sm hover:text-orange-700 transition-colors cursor-pointer flex items-center gap-2">
@@ -247,16 +292,16 @@ const HomePages: React.FC = () => {
       {/* NEW: Chat Support Apps Section */}
       <section className="py-32 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-600/20 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20 space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-orange-600 text-[10px] font-black tracking-widest uppercase shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-orange-600 text-[10px] md:text-xs font-black tracking-[0.3em] uppercase shadow-sm italic">
               <Lock className="w-3 h-3" /> Secure Communication Hub
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-900 italic uppercase">
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-900 italic">
               Free Apps for <br />
-              <span className="not-italic text-orange-600 uppercase">Live Bank Chat</span>
+              <span className="text-orange-600">Live Bank Chat</span>
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto text-lg font-medium leading-relaxed">
+            <p className="text-sm md:text-lg text-slate-500 max-w-2xl mx-auto font-bold uppercase tracking-widest opacity-60 leading-relaxed">
               Experience immediate, secure banking services through our curated selection of 24/7 AI-powered and encrypted communication channels.
             </p>
           </div>
@@ -381,9 +426,9 @@ const HomePages: React.FC = () => {
       {/* CTA Section */}
       <section className="py-20 pb-32 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-900">Ready to Switch?</h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Join over 500,000 customers who trust First State Bank with their financial future.
+          <h2 className="text-4xl md:text-8xl font-black tracking-tighter text-slate-900 italic">Ready to <span className="text-orange-600">Join?</span></h2>
+          <p className="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto font-bold uppercase tracking-widest opacity-60">
+            Join over 500,000 customers who trust Danamon Bank for their financial future.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/register" className="w-full sm:w-auto">

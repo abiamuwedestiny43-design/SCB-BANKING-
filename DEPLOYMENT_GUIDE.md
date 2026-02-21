@@ -1,8 +1,8 @@
-# First State Bank - Production Deployment Guide
+# Danamon Bank - Production Deployment Guide
 
 ## 🚀 Deployment Status: COMPLETE ✅
 
-Your First State Bank application has been successfully deployed to Vercel!
+Your Danamon Bank application has been successfully deployed to Vercel!
 
 ---
 
@@ -30,7 +30,7 @@ Your First State Bank application has been successfully deployed to Vercel!
 2. **Visit**: <https://novabank-rose.vercel.app/setup-admin>
 3. **Click**: "Create Super Admin" button
 4. **Save the credentials** displayed on screen:
-   - Email: `admin@firststatebank.com`
+   - Email: `admin@danamonbk.com`
    - Password: `Admin@123456`
    - PIN: `1234`
    - Account Number: (will be generated)
@@ -38,7 +38,7 @@ Your First State Bank application has been successfully deployed to Vercel!
 ### Step 2: Login to Admin Dashboard
 
 1. Go to: <https://novabank-rose.vercel.app/login>
-2. Enter email: `admin@firststatebank.com`
+2. Enter email: `admin@danamonbk.com`
 3. Enter password: `Admin@123456`
 4. Enter PIN: `1234`
 5. You'll be redirected to: <https://novabank-rose.vercel.app/admin>
@@ -121,7 +121,7 @@ git push origin master
 
 ### Previous Deployment
 
-- **Commit**: "Update First State Bank: White theme, banking design, technology page, admin features, and improved UI"
+- **Commit**: "Update Danamon Bank: White theme, banking design, technology page, admin features, and improved UI"
 - **Files Changed**: 73 files
 - **Lines Modified**: 2,255 additions, 1,390 deletions
 
@@ -187,9 +187,9 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=banknova674@gmail.com
 SMTP_PASS=ckpmgqmwyslyzehg
-SMTP_FROM=support@firststatebank.online
-ADMIN_EMAIL=support@firststatebank.online
-BASE_URL=https://www.firststatebank.online
+SMTP_FROM=support@danamonbk.com
+ADMIN_EMAIL=support@danamonbk.com
+BASE_URL=https://www.danamonbk.com
 ```
 
 **Note**: These should already be set in your Vercel project settings.
@@ -291,7 +291,7 @@ git push origin master
 
 ## 🎊 Congratulations
 
-Your First State Bank application is now live and ready for users!
+Your Danamon Bank application is now live and ready for users!
 
 **Next Steps**:
 

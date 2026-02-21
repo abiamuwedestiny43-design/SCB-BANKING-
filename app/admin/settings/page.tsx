@@ -150,10 +150,10 @@ export default function AdminSettingsPage() {
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
             <Radio className="w-3.5 h-3.5 text-orange-500 animate-pulse" /> Architecture Config
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
-            GLOBAL <span className="text-orange-600 italic">SYSTEM</span>
+          <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase italic">
+            GLOBAL <span className="text-orange-600">SYSTEM</span>
           </h1>
-          <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight leading-none mb-1">Fine-tuning of core infrastructure parameters and operational security protocols.</p>
+          <p className="text-sm md:text-lg text-slate-500 font-bold max-w-lg uppercase tracking-widest opacity-60">Fine-tuning of core infrastructure parameters and operational security protocols.</p>
         </div>
 
         <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
@@ -186,7 +186,7 @@ export default function AdminSettingsPage() {
                   <Database className="w-7 h-7" />
                 </div>
                 <div>
-                  <CardTitle className="text-3xl font-black text-white tracking-tighter uppercase italic">Transfer Matrix</CardTitle>
+                  <CardTitle className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase italic">Transfer Matrix Protocol</CardTitle>
                   <CardDescription className="text-slate-500 font-black uppercase text-[9px] tracking-[0.3em] mt-3">Control the universal flow of assets across the Sovereign network.</CardDescription>
                 </div>
               </div>
@@ -228,7 +228,7 @@ export default function AdminSettingsPage() {
                     <Label className="text-xl font-black text-white flex items-center gap-3 italic tracking-tight uppercase">
                       <Layers className="w-5 h-5 text-blue-500" /> Intrasystem Bridge
                     </Label>
-                    <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed">Restrict asset movement within the internal First State Node network.</p>
+                    <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed">Restrict asset movement within the internal Danamon Node network.</p>
                   </div>
                   <div className="flex items-center gap-8">
                     <Switch
@@ -253,7 +253,7 @@ export default function AdminSettingsPage() {
               {/* Bulk Override Section */}
               <div className="space-y-10">
                 <div className="space-y-4">
-                  <Label className="text-2xl font-black text-white italic tracking-tighter uppercase leading-none flex items-center gap-4">
+                  <Label className="text-2xl md:text-4xl font-black text-white italic tracking-tighter uppercase leading-none flex items-center gap-4">
                     <Zap className="w-6 h-6 text-orange-600 animate-pulse" /> Bulk Override Sequences
                   </Label>
                   <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed max-w-xl">

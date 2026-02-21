@@ -20,13 +20,13 @@ export default function TechnologyPage() {
                             <Server className="w-3 h-3" /> Banking Infrastructure
                         </div>
                         <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter text-slate-900">
-                            Your Money, <br />
+                            Your Finances, <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700">
                                 Perfectly Protected
                             </span>
                         </h1>
                         <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                            Our state-of-the-art banking infrastructure combines cutting-edge security, lightning-fast performance, and 99.99% uptime to serve you better.
+                            Our cutting-edge banking infrastructure combines advanced security, superfast performance, and 99.99% uptime to serve you better.
                         </p>
                     </div>
 
@@ -36,7 +36,7 @@ export default function TechnologyPage() {
                         <div className="relative rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl">
                             <Image
                                 src="/business-banking-hero.jpg"
-                                alt="First State Bank - Advanced Banking Infrastructure"
+                                alt="Danamon Bank - Advanced Banking Infrastructure"
                                 width={1200}
                                 height={700}
                                 className="w-full h-auto object-cover"
@@ -88,7 +88,7 @@ export default function TechnologyPage() {
                     <div className="text-center mb-20 space-y-4">
                         <span className="text-orange-600 font-bold tracking-wider text-xs uppercase px-3 py-1 rounded-full bg-orange-100 border border-orange-200">Our Technology</span>
                         <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900">Enterprise-Grade Infrastructure</h2>
-                        <p className="text-slate-600 max-w-2xl mx-auto text-lg">Built with the most advanced technologies to ensure security, speed, and reliability.</p>
+                        <p className="text-slate-600 max-w-2xl mx-auto text-lg">Built with the most advanced technology to ensure security, speed, and reliability.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -195,7 +195,7 @@ export default function TechnologyPage() {
                                     </div>
                                     <div>
                                         <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Processing Power</p>
-                                        <p className="text-2xl font-black text-slate-900">10K TPS</p>
+                                        <p className="text-2xl font-black text-slate-900">10k TPS</p>
                                     </div>
                                 </div>
                             </div>
@@ -266,12 +266,12 @@ export default function TechnologyPage() {
                 <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white">Experience the Future of Banking</h2>
                     <p className="text-xl text-orange-100 max-w-2xl mx-auto">
-                        Join thousands of customers who trust our technology to power their financial future.
+                        Join thousands of customers who trust our technology to support their financial future.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link href="/register" className="w-full sm:w-auto">
                             <button className="w-full bg-white text-orange-600 px-12 py-5 rounded-2xl text-xl font-black hover:bg-orange-50 transition-all hover:scale-105 shadow-2xl">
-                                Open Your Account
+                                Create Your Account
                             </button>
                         </Link>
                         <Link href="/contact" className="w-full sm:w-auto">

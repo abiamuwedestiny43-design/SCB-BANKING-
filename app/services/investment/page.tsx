@@ -227,7 +227,7 @@ export default function InvestmentServicesPage() {
               Start Scaling your <span className="text-orange-600 not-italic uppercase">Net Worth</span>
             </h2>
             <p className="text-xl text-slate-600 font-medium relative z-10">
-              Join the upper echelon of investors who leverage the First State investment platform.
+              Bergabunglah dengan kalangan atas investor yang memanfaatkan platform investasi Danamon.
             </p>
           </motion.div>
 

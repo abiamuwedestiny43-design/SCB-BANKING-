@@ -1,24 +1,22 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { Shield, ArrowLeft, Loader2 } from "lucide-react"
-import { useRouter, useParams } from "next/navigation"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Loader2, Shield, ChevronLeft, CreditCard, Lock, FileCheck } from "lucide-react"
+import { useRouter, useParams } from "next/navigation"
+import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 export default function DCOVerificationPage() {
   const [dcoCode, setDcoCode] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isVerified, setIsVerified] = useState(false)
   const [error, setError] = useState("")
   const [transferDetails, setTransferDetails] = useState<any>(null)
-  const [isVerified, setIsVerified] = useState(false)
   const router = useRouter()
   const params = useParams()
   const txRef = params.txRef as string
@@ -34,13 +32,15 @@ export default function DCOVerificationPage() {
         const data = await response.json()
         setTransferDetails(data.transfer)
       }
-    } catch { }
+    } catch (error) {
+      console.error("Failed to fetch transfer details:", error)
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!dcoCode.trim()) {
-      setError("Please enter the DCO clearance signature")
+      setError("Please enter the DCO clearance code")
       return
     }
 
@@ -53,177 +53,136 @@ export default function DCOVerificationPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ txRef, dcoCode: dcoCode.trim() }),
       })
-      const data = await response.json()
+
       if (response.ok) {
         setIsVerified(true)
-        router.push(`/dashboard/transfer/verify/tax/${txRef}`)
+        setTimeout(() => {
+          router.push(`/dashboard/transfer/verify/tax/${txRef}`)
+        }, 1200)
       } else {
-        setError(data.message || "Invalid DCO clearance signature")
+        const data = await response.json()
+        setError(data.message || "Invalid clearance signature")
       }
-    } catch {
-      setError("Network error in clearance protocol.")
+    } catch (error) {
+      setError("A connection error occurred. Please try again.")
     } finally {
       setIsLoading(false)
     }
   }
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
-  }
+  const fadeIn = { initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.3 } }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-600/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-orange-600/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-6 pt-16 lg:pt-6">
+      <div className="max-w-2xl mx-auto space-y-5">
 
-      <div className="w-full max-w-2xl space-y-10 relative z-10">
-
-        {/* Header Section */}
-        <motion.div {...fadeInUp} className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-          <Button variant="ghost" onClick={() => router.push(`/dashboard/transfer/verify/esi/${txRef}`)} className="h-14 w-14 rounded-2xl border border-slate-200 bg-white text-slate-600 hover:bg-white group px-0 shrink-0 shadow-sm">
-            <ArrowLeft className="h-6 w-6 group-hover:-translate-x-1 transition-transform" />
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+            <ChevronLeft className="h-4 w-4" />
           </Button>
-          <div className="space-y-1">
-            <div className="flex items-center gap-2 text-orange-600 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-50 border border-orange-100 w-fit mx-auto md:mx-0 rounded-full shadow-sm">
-              <Shield className="h-3 w-3" />
-              Diplomatic Protocol Clearance
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
-              Clearance <span className="text-slate-400 italic">Auth</span>
-            </h1>
-            <p className="text-slate-600 font-medium">Stage 04: Diplomatic Protocol Clearance Code</p>
+          <div>
+            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Transfer Confirmation</h1>
+            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Step 4 of 6: Verification Step</p>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Transfer Summary Artifact */}
+        {/* Transfer Summary */}
         {transferDetails && (
-          <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
-            <Card className="border border-slate-200 shadow-xl bg-white rounded-[2.5rem] overflow-hidden group">
-              <div className="p-8 border-b border-slate-100 bg-white/50 cursor-default">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Transaction Snapshot</p>
+          <motion.div {...fadeIn}>
+            <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="h-9 w-9 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600">
+                  <CreditCard className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] md:text-xs text-slate-400 font-black uppercase tracking-[0.2em]">Transfer Amount</p>
+                  <p className="text-base md:text-lg font-black text-slate-900 italic tracking-tight">{transferDetails.currency} {transferDetails.amount?.toLocaleString()}</p>
+                </div>
               </div>
-              <CardContent className="p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="space-y-1">
-                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Asset Value</p>
-                  <p className="text-2xl font-black text-slate-900 tracking-tighter">
-                    {transferDetails.currency} {transferDetails.amount?.toLocaleString()}
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Beneficiary</p>
-                  <p className="text-lg font-bold text-slate-600 uppercase truncate text-xs">{transferDetails.accountHolder}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Clearing Institution</p>
-                  <p className="text-lg font-bold text-slate-600 uppercase truncate text-xs">{transferDetails.bankName}</p>
-                </div>
-              </CardContent>
-            </Card>
+              <div className="text-right hidden sm:block">
+                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Beneficiary Bank</p>
+                <p className="text-sm font-bold text-slate-900 truncate max-w-[150px]">{transferDetails.bankName}</p>
+              </div>
+            </div>
           </motion.div>
         )}
 
-        {/* DCO Verification Card */}
-        <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
-          <Card className="border border-slate-200 shadow-2xl bg-white rounded-[3rem] overflow-hidden relative">
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-orange-600 to-transparent"></div>
-            <CardHeader className="p-10 pb-6">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-20 w-20 rounded-[2rem] bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 shadow-sm relative group overflow-hidden">
-                  <Shield className="h-10 w-10 relative z-10 group-hover:scale-110 transition-transform" />
-                  <div className="absolute inset-0 bg-orange-600/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-                <div className="space-y-2">
-                  <CardTitle className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Clearance <span className="text-slate-400 italic">Gate</span></CardTitle>
-                  <CardDescription className="text-slate-500 font-medium max-w-sm mx-auto">
-                    Provide your high-level Diplomatic Protocol code to authorize the final settlement process.
-                  </CardDescription>
-                </div>
+        <motion.div {...fadeIn} transition={{ delay: 0.1 }}>
+          <div className="bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden">
+            <div className="p-6 md:p-8 flex flex-col items-center text-center space-y-4">
+              <div className="h-14 w-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 shadow-inner border border-slate-100">
+                <FileCheck className="h-7 w-7" />
               </div>
-            </CardHeader>
-            <CardContent className="p-10 pt-0">
-              <form onSubmit={handleSubmit} className="space-y-10">
-                {error && (
-                  <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-                    <Alert className="bg-red-50 border border-red-100 text-red-600 rounded-2xl p-6">
-                      <AlertDescription className="text-center font-black uppercase text-xs tracking-widest">{error}</AlertDescription>
-                    </Alert>
-                  </motion.div>
-                )}
+              <div className="space-y-1">
+                <h2 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight italic">Authorization <span className="text-orange-600">Required</span></h2>
+                <p className="text-sm md:text-base text-slate-500 font-bold uppercase tracking-widest opacity-60 max-w-sm">
+                  Please provide your <span className="font-bold text-slate-700">Clearance Code (DCO)</span> to authorize the final settlement phase.
+                </p>
+              </div>
 
-                <div className="space-y-4 text-center">
-                  <Label htmlFor="dcoCode" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Protocol Sequence</Label>
+              <form onSubmit={handleSubmit} className="w-full space-y-6 pt-4">
+                <AnimatePresence>
+                  {error && (
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+                      <Alert className="bg-red-50 border-none text-red-700 rounded-lg py-3 px-4 flex items-center gap-2">
+                        <AlertDescription className="text-xs font-bold text-center w-full">{error}</AlertDescription>
+                      </Alert>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <div className="space-y-2">
+                  <Label htmlFor="dcoCode" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Clearance Code</Label>
                   <Input
                     id="dcoCode"
                     type="text"
                     value={dcoCode}
-                    onChange={(e) => setDcoCode(e.target.value)}
-                    placeholder="......"
+                    onChange={(e) => setDcoCode(e.target.value.toUpperCase())}
+                    placeholder="ENTER SIGNATURE"
                     disabled={isLoading || isVerified}
-                    className="h-24 text-center text-4xl font-black tracking-[0.8em] bg-white border-slate-200 rounded-[2rem] shadow-inner focus:ring-0 focus:border-orange-600 placeholder:text-slate-200 text-orange-600 transition-all uppercase"
+                    className="h-16 text-center text-3xl md:text-4xl font-black tracking-[0.4em] bg-slate-50 border-slate-200 rounded-2xl focus:border-orange-400 focus:bg-white placeholder:text-slate-200 text-slate-900 transition-all uppercase italic"
                   />
-                  <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">
-                    Mandatory secure diplomatic protocol clearance.
-                  </p>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col gap-2">
                   <Button
                     type="submit"
-                    className="flex-1 bg-orange-600 hover:bg-slate-900 text-white font-black h-16 rounded-2xl shadow-xl shadow-orange-600/10 uppercase tracking-tighter text-lg transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
+                    className="w-full bg-slate-900 hover:bg-orange-600 text-white font-black h-16 rounded-2xl transition-all shadow-xl uppercase tracking-widest italic"
                     disabled={isLoading || isVerified}
                   >
                     {isLoading ? (
-                      <Loader2 className="h-6 w-6 animate-spin" />
-                    ) : isVerified ? (
-                      "Sequence Verified ✓"
+                      <Loader2 className="h-6 w-6 animate-spin mr-2" />
                     ) : (
-                      "Verify Sequence"
+                      "Verify Code"
                     )}
                   </Button>
-                  <Button type="button" variant="ghost" className="h-16 px-8 rounded-2xl border border-slate-200 bg-white text-slate-400 font-bold uppercase tracking-widest text-[10px] hover:text-slate-900 transition-all" onClick={() => router.push("/dashboard")} disabled={isVerified}>
-                    Abort
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    className="w-full h-10 text-slate-400 font-bold text-xs"
+                    onClick={() => router.push("/dashboard")}
+                    disabled={isVerified}
+                  >
+                    Cancel Transfer
                   </Button>
                 </div>
               </form>
-            </CardContent>
-          </Card>
-        </motion.div>
+            </div>
 
-        {/* Progress Stepper Artifact */}
-        <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="pt-6 relative">
-          <div className="absolute top-0 left-0 w-full h-px bg-slate-100"></div>
-          <div className="flex items-center justify-between px-2">
-            {[
-              { label: "Initiate", percent: "✓", active: false, done: true },
-              { label: "Processing", percent: "✓", active: false, done: true },
-              { label: "Clearance", percent: "65%", active: true, done: false },
-              { label: "Complete", percent: "100%", active: false, done: false },
-            ].map((step, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-3 group">
-                <div className={cn(
-                  "h-10 w-10 rounded-xl flex items-center justify-center text-[10px] font-black border transition-all duration-500",
-                  step.active ? "bg-orange-600 border-orange-600 text-white shadow-lg shadow-orange-600/20 scale-110" :
-                    step.done ? "bg-orange-50 border-orange-100 text-orange-600 shadow-sm" :
-                      "bg-white border-slate-200 text-slate-400"
-                )}>
-                  {step.percent}
-                </div>
-                <span className={cn(
-                  "text-[8px] font-black uppercase tracking-widest transition-colors",
-                  step.active ? "text-orange-600" :
-                    step.done ? "text-orange-400" :
-                      "text-slate-300"
-                )}>{step.label}</span>
-              </div>
-            ))}
+            <div className="bg-slate-50 p-4 border-t border-slate-100 flex items-center justify-center gap-2">
+              <Shield className="h-3.5 w-3.5 text-emerald-500" />
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Digital signature verified</span>
+            </div>
           </div>
-          {/* Visual connecting lines */}
-          <div className="absolute top-[26px] left-[15%] right-[15%] h-px bg-slate-100 -z-10"></div>
         </motion.div>
 
+        {/* Progress Dots */}
+        <div className="flex items-center justify-center gap-2 pt-2">
+          {[0, 0, 0, 1, 0, 0].map((active, i) => (
+            <div key={i} className={cn("h-1.5 rounded-full transition-all", active ? "w-6 bg-orange-500" : "w-1.5 bg-slate-300")} />
+          ))}
+        </div>
       </div>
     </div>
   )

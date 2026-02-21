@@ -18,14 +18,13 @@ const MortgagePage: React.FC = () => {
             <Home className="w-4 h-4" /> PREMIUM REAL ESTATE FINANCING
           </div>
           <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-8">
-            Ownership Reimagined <br />
+            Dream Ownership <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-500 italic">
               Legacy Starts Here.
             </span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-12">
-            Secure your sanctuary with our intelligent mortgage frameworks. Whether you're a first-time buyer
-            or seeking high-value property leverage, FIRST STATE BANK BANK provides the most sophisticated solutions in the market.
+            Secure your dream home with our smart mortgage framework. Whether you are a first-time buyer or seeking leverage for high-value properties, DANAMON BANK provides the most advanced solutions in the market.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 relative z-20">
@@ -62,8 +61,8 @@ const MortgagePage: React.FC = () => {
       <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <p className="text-xs font-black tracking-[0.5em] uppercase text-orange-500 mb-4">Financial Blueprints</p>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter">Sophisticated Mortgage Options</h2>
+            <p className="text-xs font-black tracking-[0.5em] uppercase text-orange-500 mb-4">Financial Blueprint</p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter">Advanced Mortgage Options</h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">

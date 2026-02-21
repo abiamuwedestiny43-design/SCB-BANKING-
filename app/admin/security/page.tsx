@@ -23,10 +23,10 @@ export default function SecurityPage() {
                     <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
                         <Lock className="w-3.5 h-3.5 text-orange-500 fill-orange-500" /> Security Protocol Hub
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
-                        SECURITY <span className="text-orange-600 italic">CORE</span>
+                    <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase italic">
+                        SECURITY <span className="text-orange-600">CORE</span>
                     </h1>
-                    <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight">Central command for threat mitigation, policy enforcement, and integrity audits.</p>
+                    <p className="text-sm md:text-lg text-slate-500 font-bold max-w-lg uppercase tracking-widest opacity-60">Central command for threat mitigation, policy enforcement, and integrity audits.</p>
                 </div>
 
                 <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
@@ -60,7 +60,7 @@ export default function SecurityPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="p-0">
-                            <div className="text-5xl font-black text-white tracking-tighter mb-4 italic uppercase">{stat.value}</div>
+                            <div className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-4 italic uppercase">{stat.value}</div>
                             <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-relaxed">{stat.desc}</p>
                         </CardContent>
                     </Card>
@@ -85,7 +85,7 @@ export default function SecurityPage() {
                                     <Activity className="w-6 h-6 animate-pulse" />
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl font-black text-white tracking-tighter uppercase italic leading-none">Live Sequence Feed</h3>
+                                    <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase italic leading-none">Live Sequence Feed</h3>
                                     <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mt-2">Tracing global account activity across all nodes</p>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ export default function SecurityPage() {
                                 </TableHeader>
                                 <TableBody>
                                     {[
-                                        { id: "EVT-8921", action: "Login Sequence", user: "admin_alpha@novabank.io", status: "Verified", time: "2m Cycle", statusColor: "emerald" },
+                                        { id: "EVT-8921", action: "Login Sequence", user: "admin_alpha@danamonbk.com", status: "Verified", time: "2m Cycle", statusColor: "emerald" },
                                         { id: "EVT-8920", action: "Key Update", user: "identity_node_492", status: "Verified", time: "15m Cycle", statusColor: "emerald" },
                                         { id: "EVT-8919", action: "Bulk Transfer", user: "liquidity_gate_9", status: "Denied (Limit)", time: "1h Cycle", statusColor: "red" },
                                         { id: "EVT-8918", action: "Protocol Gen", user: "dev_core_node", status: "Verified", time: "3h Cycle", statusColor: "blue" },
@@ -143,7 +143,7 @@ export default function SecurityPage() {
                                 <div className="h-14 w-14 rounded-2xl bg-black border border-white/5 flex items-center justify-center text-orange-500 shadow-3xl">
                                     <ShieldCheck className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-3xl font-black text-white tracking-tighter uppercase italic leading-none">Active Guard Protocols</h3>
+                                <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase italic leading-none">Active Guard Protocols</h3>
                             </div>
                             <div className="space-y-12">
                                 {[

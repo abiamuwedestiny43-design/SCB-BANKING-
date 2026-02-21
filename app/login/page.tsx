@@ -44,10 +44,10 @@ export default function LoginPage() {
         setAuthUser(data.user)
         setShowPinModal(true)
       } else {
-        setError(data.message || "Credential mismatch. Access denied.")
+        setError(data.message || "Incorrect email or password.")
       }
     } catch (error) {
-      setError("Synchronisation failure. Please retry.")
+      setError("Connection error. Please try again.")
     } finally {
       setIsLoading(false)
     }
@@ -75,10 +75,10 @@ export default function LoginPage() {
           window.location.href = "/dashboard"
         }
       } else {
-        setPinError(data.message || "Invalid security cipher.")
+        setPinError(data.message || "Invalid security PIN.")
       }
     } catch (error) {
-      setPinError("Auth bridge failure. Retry protocol.")
+      setPinError("Authentication error. Please try again.")
     } finally {
       setIsLoading(false)
     }
@@ -90,7 +90,7 @@ export default function LoginPage() {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
           src="/login-bg-white.png"
-          alt="First State Bank"
+          alt="Danamon Bank"
           fill
           className="object-cover opacity-60"
           priority
@@ -112,10 +112,10 @@ export default function LoginPage() {
             <ShieldCheck className="w-10 h-10 text-orange-600 relative z-10 transform group-hover:scale-110 transition-transform" />
           </div>
           <div className="space-y-1">
-            <h1 className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic">
-              FIRST<span className="text-orange-600 font-medium">STATE</span>
+            <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase italic">
+              DANAMON<span className="text-orange-600">BANK</span>
             </h1>
-            <p className="text-orange-600/50 font-black text-[10px] uppercase tracking-[0.4em]">Secure Banking Platform</p>
+            <p className="text-sm md:text-base text-orange-600/50 font-black uppercase tracking-[0.4em] italic opacity-80">Secure Banking Platform</p>
           </div>
         </div>
 
@@ -123,9 +123,9 @@ export default function LoginPage() {
         <Card className="bg-white/70 backdrop-blur-2xl border-slate-200 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] rounded-[2.5rem] overflow-hidden relative">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
 
-          <CardHeader className="space-y-1 p-8 pb-0 text-center">
-            <CardTitle className="text-2xl font-black text-slate-900 uppercase tracking-tight">Secure Login</CardTitle>
-            <CardDescription className="text-slate-600 font-medium text-sm italic">Access your First State Bank account securely.</CardDescription>
+          <CardHeader className="space-y-2 p-10 pb-2 text-center">
+            <CardTitle className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter italic">Secure <span className="text-orange-600">Login</span></CardTitle>
+            <CardDescription className="text-sm md:text-base text-slate-600 font-black uppercase tracking-widest opacity-60 italic">Access your Danamon Bank account securely.</CardDescription>
           </CardHeader>
 
           <CardContent className="p-8 pt-6">
@@ -140,7 +140,7 @@ export default function LoginPage() {
 
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Terminal ID (Email)</Label>
+                  <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Email Address</Label>
                   <div className="relative group">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-orange-600 transition-colors" />
                     <Input
@@ -149,7 +149,7 @@ export default function LoginPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      placeholder="node_identifier@firststatebank.online"
+                      placeholder="user@example.com"
                       disabled={isLoading}
                       className="h-14 pl-12 bg-white border-slate-200 rounded-2xl text-slate-900 focus:border-orange-500/50 focus:ring-orange-500/20 transition-all font-medium placeholder:text-slate-400"
                     />
@@ -158,9 +158,9 @@ export default function LoginPage() {
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between ml-1">
-                    <Label htmlFor="password" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Access Cipher</Label>
+                    <Label htmlFor="password" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Password</Label>
                     <Link href="/forgot-password" className="text-[9px] font-black uppercase tracking-widest text-orange-600 hover:text-orange-700 transition-colors">
-                      Reset Password
+                      Forgot Password
                     </Link>
                   </div>
                   <div className="relative group">
@@ -189,16 +189,16 @@ export default function LoginPage() {
                   <Loader2 className="w-5 h-5 animate-spin" />
                 ) : (
                   <span className="flex items-center gap-2 relative z-10">
-                    Initialize Access <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    Enter System <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 )}
               </Button>
 
               <div className="pt-4 text-center">
                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                  New Node?{" "}
+                  Need an account?{" "}
                   <Link href="/register" className="text-orange-600 hover:underline">
-                    Register Identity
+                    Sign Up Now
                   </Link>
                 </p>
               </div>
@@ -210,7 +210,7 @@ export default function LoginPage() {
         <div className="mt-8 flex items-center justify-center gap-6 opacity-60">
           <div className="flex items-center gap-2">
             <Cpu className="w-3 h-3 text-slate-400" />
-            <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">AES-256 Meta</span>
+            <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">Secure Encryption</span>
           </div>
           <div className="flex items-center gap-2">
             <Globe className="w-3 h-3 text-slate-400" />
@@ -228,8 +228,8 @@ export default function LoginPage() {
             <div className="mx-auto w-16 h-16 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-2">
               <Fingerprint className="w-8 h-8 text-orange-600" />
             </div>
-            <DialogTitle className="text-3xl font-black text-slate-900 italic tracking-tight">Security Signature</DialogTitle>
-            <DialogDescription className="text-slate-600 font-medium">Input your 4-digit protocol PIN to finalize access.</DialogDescription>
+            <DialogTitle className="text-3xl font-black text-slate-900 italic tracking-tight">PIN Verification</DialogTitle>
+            <DialogDescription className="text-slate-600 font-medium">Input your 4-digit security PIN to finalize access.</DialogDescription>
           </DialogHeader>
 
           <form onSubmit={handlePinVerify} className="space-y-8 mt-6 relative z-10">
@@ -261,7 +261,7 @@ export default function LoginPage() {
               disabled={isLoading || pin.length !== 4}
               className="w-full h-14 bg-orange-600 hover:bg-orange-700 text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-xl shadow-orange-600/20"
             >
-              {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Verify Identity Signature"}
+              {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Verify Security PIN"}
             </Button>
 
             <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] text-center">

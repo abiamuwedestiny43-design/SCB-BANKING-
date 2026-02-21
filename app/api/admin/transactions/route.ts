@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
       txRegion: 'local',
       transferType: 'local', // required
       txStatus: 'success',
-      bankName: 'First State Bank',
+      bankName: 'Danamon Bank',
       bankAccount: user.bankNumber,
       accountNumber: user.bankNumber, // required
       bankHolder: fullName,

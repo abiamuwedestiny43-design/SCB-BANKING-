@@ -198,7 +198,7 @@ export default function PersonalBankingPage() {
               Ready to Upgrade your <span className="text-orange-600 not-italic uppercase">Financial Experience?</span>
             </h2>
             <p className="text-xl text-slate-600 font-medium max-w-2xl mx-auto relative z-10">
-              Join thousands of users who have streamlined their economic existence through the First State platform.
+              Join thousands of users who have streamlined their economic existence through the Danamon platform.
             </p>
           </motion.div>
 

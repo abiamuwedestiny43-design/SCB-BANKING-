@@ -54,7 +54,7 @@ export default function UserActions({ userId }: UserActionsProps) {
 
   const submitTransaction = async () => {
     if (!txAmount || Number.isNaN(Number(txAmount)) || Number(txAmount) <= 0) {
-      alert("Invalid liquidity volume detected. Please re-input.")
+      alert("Invalid amount detected. Please re-input.")
       return
     }
     setIsLoading(true)
@@ -79,11 +79,11 @@ export default function UserActions({ userId }: UserActionsProps) {
         }, 1500)
       } else {
         const j = await res.json().catch(() => ({}))
-        alert(j?.message || "Protocol transmission failed.")
+        alert(j?.message || "Transaction failed.")
       }
     } catch (err) {
-      console.error("[HB BANK] admin tx error:", err)
-      alert("System fault detected during migration.")
+      console.error("[DANAMON BANK] admin tx error:", err)
+      alert("System error during transaction.")
     } finally {
       setIsLoading(false)
     }
@@ -118,18 +118,18 @@ export default function UserActions({ userId }: UserActionsProps) {
           if (approveResponse.ok) {
             router.refresh()
           } else {
-            alert("Approval protocol failed.")
+            alert("Approval failed.")
           }
           break
         case "delete":
-          if (confirm("Initiate permanent data erasure for this node? This cannot be reversed.")) {
+          if (confirm("Permanently delete this user account? This cannot be reversed.")) {
             const deleteResponse = await fetch(`/api/admin/users/${userId}`, {
               method: "DELETE",
             })
             if (deleteResponse.ok) {
               router.refresh()
             } else {
-              alert("Node deletion protocol aborted.")
+              alert("User deletion canceled.")
             }
           }
           break
@@ -142,7 +142,7 @@ export default function UserActions({ userId }: UserActionsProps) {
       }
     } catch (error) {
       console.error("Action error:", error)
-      alert("Executive override error.")
+      alert("Action failed.")
     } finally {
       setIsLoading(false)
     }
@@ -169,7 +169,7 @@ export default function UserActions({ userId }: UserActionsProps) {
           onClick={toggleMenu}
           className="h-10 px-6 rounded-xl bg-slate-900 hover:bg-orange-600 text-white shadow-lg transition-all gap-3 font-black uppercase tracking-[0.2em] text-[10px] relative z-[40] group active:scale-95 border border-white/5"
         >
-          <Cpu className="h-4 w-4 group-hover:rotate-180 transition-transform duration-700" /> Protocols
+          <Cpu className="h-4 w-4 group-hover:rotate-180 transition-transform duration-700" /> Actions
         </Button>
 
         {menuOpen && (
@@ -193,7 +193,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                 <div className="h-8 w-8 rounded-lg bg-orange-600/10 flex items-center justify-center text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
                   <Edit className="h-4 w-4" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Edit Metadata</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">Edit User</span>
               </button>
 
               <div className="h-px bg-white/5 mx-2 my-2" />
@@ -205,7 +205,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                 <div className="h-8 w-8 rounded-lg bg-emerald-600/10 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all">
                   <ArrowUpRight className="h-4 w-4" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Credit Assets</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">Credit Account</span>
               </button>
 
               <button
@@ -215,7 +215,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                 <div className="h-8 w-8 rounded-lg bg-blue-600/10 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
                   <ArrowDownLeft className="h-4 w-4" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Debit Assets</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">Debit Account</span>
               </button>
 
               <div className="h-px bg-white/5 mx-2 my-2" />
@@ -227,7 +227,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                 <div className="h-8 w-8 rounded-lg bg-slate-950 flex items-center justify-center text-slate-600 group-hover:bg-orange-600 group-hover:text-white transition-all border border-white/5">
                   <CheckCircle className="h-4 w-4" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Approve Node</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">Approve User</span>
               </button>
 
               <button
@@ -237,7 +237,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                 <div className="h-8 w-8 rounded-lg bg-red-600/10 flex items-center justify-center text-red-500 group-hover:bg-white/20 group-hover:text-white transition-all">
                   <Trash2 className="h-4 w-4" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Erase Node</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">Delete User</span>
               </button>
             </div>
           </Portal.Root>
@@ -251,26 +251,24 @@ export default function UserActions({ userId }: UserActionsProps) {
           <div className="p-10 space-y-10 relative z-10">
             <DialogHeader>
               <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[9px] font-black uppercase tracking-[0.3em] mb-6 shadow-xl">
-                <Zap className="w-3.5 h-3.5 text-orange-500 animate-pulse" /> Migration Unit
+                <Zap className="w-3.5 h-3.5 text-orange-500 animate-pulse" /> Admin Transaction
               </div>
               <DialogTitle className="text-4xl font-black italic tracking-tighter flex items-center gap-4 uppercase leading-none">
                 {txType === "credit" ? (
                   <>
                     <ArrowUpRight className="w-10 h-10 text-orange-600" />
-                    ASSET <span className="text-orange-600 italic">INJECTION</span>
+                    CREDIT <span className="text-orange-600 italic">ACCOUNT</span>
                   </>
                 ) : (
                   <>
                     <ArrowDownLeft className="w-10 h-10 text-blue-600" />
-                    ASSET <span className="text-blue-600 italic font-medium">DRAIN</span>
+                    DEBIT <span className="text-blue-600 italic font-medium">ACCOUNT</span>
                   </>
                 )}
               </DialogTitle>
               <DialogDescription className="text-slate-500 font-bold uppercase text-[10px] tracking-widest mt-4">
-                {txType === "credit"
-                  ? "Initializing intra-system credit migration to subject node."
-                  : "Initializing intra-system debit extraction from subject node."
-                }
+                  ? "Applying an administrative credit to this account."
+                  : "Applying an administrative debit to this account."
               </DialogDescription>
             </DialogHeader>
 
@@ -281,14 +279,14 @@ export default function UserActions({ userId }: UserActionsProps) {
                   <CheckCircle className="w-12 h-12 text-orange-500 relative z-10" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-black uppercase tracking-[0.3em] text-white">Protocol Success</h3>
-                  <p className="text-slate-500 font-bold text-xs mt-3 uppercase tracking-widest">Assets Synchronized with Ledger</p>
+                  <h3 className="text-2xl font-black uppercase tracking-[0.3em] text-white">Transaction Successful</h3>
+                  <p className="text-slate-500 font-bold text-xs mt-3 uppercase tracking-widest">Account Balance Updated</p>
                 </div>
               </div>
             ) : (
               <div className="space-y-8">
                 <div className="space-y-3">
-                  <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Asset Volume (Amount)</Label>
+                  <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Amount</Label>
                   <div className="relative group">
                     <Input
                       type="number"
@@ -304,32 +302,32 @@ export default function UserActions({ userId }: UserActionsProps) {
                 </div>
 
                 <div className="space-y-3">
-                  <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Currency Matrix</Label>
+                  <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Currency</Label>
                   <Select value={txCurrency} onValueChange={setTxCurrency}>
                     <SelectTrigger className="bg-slate-900 border-white/5 rounded-2xl h-14 text-white font-black uppercase text-[10px] tracking-widest focus:ring-orange-500/10">
                       <SelectValue placeholder="Select currency" />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-950 border-white/10 text-white rounded-2xl">
                       {["USD", "EUR", "GBP", "JPY", "INR", "CHF", "CAD", "AUD", "SGD"].map(c => (
-                        <SelectItem key={c} value={c} className="font-black py-3 hover:bg-orange-600 hover:text-white transition-colors">{c} — PROTOCOL</SelectItem>
+                        <SelectItem key={c} value={c} className="font-black py-3 hover:bg-orange-600 hover:text-white transition-colors">{c} — BANKING</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-3">
-                  <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Protocol Remark</Label>
+                  <Label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Transaction Description</Label>
                   <Input
                     value={txDesc}
                     onChange={(e) => setTxDesc(e.target.value)}
-                    placeholder={`System ${txType === 'credit' ? 'Injection' : 'Extraction'} Sequence`}
+                    placeholder={`System ${txType === 'credit' ? 'Credit' : 'Debit'} Transaction`}
                     className="bg-slate-900 border-white/5 rounded-2xl h-14 text-white font-bold italic placeholder:text-slate-800 focus:border-orange-500 shadow-inner"
                   />
                 </div>
 
                 <div className="flex gap-6 pt-6">
                   <Button variant="ghost" onClick={() => setTxOpen(false)} className="flex-1 h-14 rounded-2xl text-slate-500 hover:text-white hover:bg-white/5 font-black uppercase tracking-widest text-[10px] transition-all">
-                    Abort
+                    Cancel
                   </Button>
                   <Button
                     onClick={submitTransaction}
@@ -356,7 +354,7 @@ export default function UserActions({ userId }: UserActionsProps) {
                 <ShieldAlert className="w-5 h-5" />
               </div>
               <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-relaxed mt-1">
-                <span className="text-orange-500">Executive Warning:</span> This override will bypass standard regional verification protocols and modify ledger state directly across all Sovereign nodes.
+                <span className="text-orange-500">Admin Warning:</span> This action will bypass standard verification and modify the account balance directly.
               </p>
             </div>
           )}

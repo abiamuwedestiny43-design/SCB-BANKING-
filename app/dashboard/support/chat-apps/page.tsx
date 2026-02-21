@@ -1,153 +1,173 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { MessageCircle, Shield, Zap, Lock, ExternalLink, HelpCircle } from "lucide-react"
+import {
+    MessageCircle,
+    Shield,
+    Zap,
+    Lock,
+    ExternalLink,
+    HelpCircle,
+    ChevronLeft
+} from "lucide-react"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 const chatApps = [
     {
-        name: "YES ROBOT (YES Bank)",
-        description: "A 24/7 AI-powered chat assistant providing immediate, secure banking services for diverse financial needs.",
+        name: "YES ROBOT",
+        description: "24/7 AI-powered chat assistant for immediate banking services.",
         category: "AI Powered",
         status: "Recommended",
-        features: ["24/7 Availability", "Secure Authentication", "AI Assistant"],
+        features: ["24/7 Availability", "Secure Authentication"],
         color: "orange"
     },
     {
         name: "tawk.to",
-        description: "A fully featured, free live chat app that enables real-time monitoring and engagement with support teams.",
+        description: "Real-time monitoring and engagement with support teams.",
         category: "Monitoring",
-        features: ["Real-time Monitoring", "Ticketing System", "Unlimited Agents"],
+        features: ["Real-time Chat", "Ticketing System"],
         color: "emerald"
     },
     {
         name: "LiveChat",
-        description: "A robust platform designed specifically for financial services, prioritizing end-to-end encryption and compliance.",
+        description: "Secure platform designed specifically for financial services.",
         category: "Enterprise",
-        features: ["End-to-End Encryption", "Compliance Ready", "Multi-channel"],
+        features: ["End-to-End Encryption", "Compliance Ready"],
         color: "blue"
     },
     {
         name: "Signal",
-        description: "State-of-the-art end-to-end encryption keeps your conversations secure and private from prying eyes.",
+        description: "State-of-the-art encryption for private conversations.",
         category: "Privacy focus",
-        features: ["Zero-knowledge encryption", "Open Source", "Private"],
+        features: ["Zero-knowledge", "Private"],
         color: "blue"
     },
     {
         name: "LiveAgent",
-        description: "Offers a comprehensive free plan for small teams, including live chat, email ticketing, and a basic knowledge base.",
+        description: "Comprehensive helpdesk including live chat and email ticketing.",
         category: "Helpdesk",
-        features: ["Email Ticketing", "Knowledge Base", "Live Chat"],
+        features: ["Email Ticketing", "Knowledge Base"],
         color: "orange"
     }
 ]
 
 export default function ChatAppsPage() {
+    const fadeIn = { initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.3 } }
+
     return (
-        <div className="p-4 md:p-10 space-y-8 min-h-screen bg-slate-50/50">
-            {/* Hero Header */}
-            <div className="relative overflow-hidden rounded-[3rem] bg-orange-600 p-8 md:p-12 text-white shadow-2xl shadow-orange-200">
-                <div className="absolute top-[-20%] right-[-10%] w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-                    <div className="space-y-4">
-                        <h1 className="text-3xl md:text-5xl font-black tracking-tighter italic uppercase">
-                            Secure Bank <br />
-                            <span className="not-italic text-orange-100">Support Apps</span>
-                        </h1>
-                        <p className="text-orange-100/80 font-medium max-w-lg leading-relaxed">
-                            Explore trusted communication channels for immediate assistance and secure financial inquiries.
-                        </p>
-                    </div>
-                    <div className="flex gap-4">
-                        <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
-                            <MessageCircle className="w-8 h-8" />
-                        </div>
-                        <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
-                            <Shield className="w-8 h-8" />
-                        </div>
+        <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-6 pt-16 lg:pt-6">
+            <div className="max-w-4xl mx-auto space-y-5">
+
+                {/* Header */}
+                <div className="flex items-center gap-3">
+                    <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+                        <Link href="/dashboard"><ChevronLeft className="h-4 w-4" /></Link>
+                    </Button>
+                    <div>
+                        <h1 className="text-base font-bold text-slate-900">Support Channels</h1>
+                        <p className="text-xs text-slate-400">Connect with our support team</p>
                     </div>
                 </div>
-            </div>
 
-            {/* Recommended Apps Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {chatApps.map((app, i) => (
-                    <Card key={i} className="group border-slate-200 hover:border-orange-300 shadow-sm hover:shadow-xl transition-all duration-500 rounded-[2.5rem] overflow-hidden bg-white">
-                        <CardHeader className="pb-4">
-                            <div className="flex justify-between items-start mb-4">
-                                <div className={`p-4 rounded-2xl bg-slate-100 text-slate-900 group-hover:bg-orange-600 group-hover:text-white transition-colors`}>
-                                    <MessageCircle className="w-6 h-6" />
+                {/* Hero Card */}
+                <motion.div {...fadeIn}>
+                    <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div className="bg-orange-600 p-6 text-white relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl" />
+                            <div className="relative z-10 space-y-2">
+                                <h2 className="text-lg font-bold">How can we help?</h2>
+                                <p className="text-xs text-orange-100 max-w-md">Our support team is available through various secure channels to assist you with your banking needs.</p>
+                            </div>
+                        </div>
+                        <div className="p-4 bg-orange-50/50 flex items-center gap-4">
+                            <div className="flex items-center gap-2">
+                                <div className="h-6 w-6 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
+                                    <Shield className="h-3.5 w-3.5" />
                                 </div>
-                                {app.status && (
-                                    <Badge className="bg-orange-100 text-orange-700 hover:bg-orange-100 border-none px-3 py-1 text-[10px] font-black uppercase tracking-widest">
-                                        {app.status}
-                                    </Badge>
-                                )}
+                                <span className="text-[10px] font-semibold text-orange-800 uppercase tracking-wider">Secure Support</span>
                             </div>
-                            <CardTitle className="text-xl font-black text-slate-900 uppercase italic tracking-tight">{app.name}</CardTitle>
-                            <p className="text-[10px] font-black text-orange-600 uppercase tracking-[0.2em]">{app.category}</p>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            <p className="text-sm text-slate-500 font-bold leading-relaxed min-h-[60px]">
-                                {app.description}
-                            </p>
+                            <div className="h-4 w-px bg-orange-200" />
+                            <div className="flex items-center gap-2">
+                                <div className="h-6 w-6 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
+                                    <Zap className="h-3.5 w-3.5" />
+                                </div>
+                                <span className="text-[10px] font-semibold text-orange-800 uppercase tracking-wider">Fast Response</span>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
 
-                            <div className="space-y-3">
-                                {app.features.map((feature, idx) => (
-                                    <div key={idx} className="flex items-center gap-2 text-xs font-black text-slate-400 border-b border-slate-50 pb-2">
-                                        <Zap className="w-3 h-3 text-orange-500" />
-                                        {feature}
+                {/* Apps Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {chatApps.map((app, i) => (
+                        <motion.div key={i} {...fadeIn} transition={{ delay: 0.1 * i }}>
+                            <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4 hover:border-orange-200 transition-all group h-full flex flex-col">
+                                <div className="flex justify-between items-start mb-3">
+                                    <div className="h-9 w-9 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-50 group-hover:text-orange-500 transition-colors">
+                                        <MessageCircle className="h-5 w-5" />
                                     </div>
-                                ))}
+                                    {app.status && (
+                                        <Badge className="bg-orange-50 text-orange-600 hover:bg-orange-100 border-none px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider">
+                                            {app.status}
+                                        </Badge>
+                                    )}
+                                </div>
+
+                                <div className="mb-3">
+                                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-orange-600 transition-colors">{app.name}</h3>
+                                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">{app.category}</p>
+                                </div>
+
+                                <p className="text-xs text-slate-500 mb-4 flex-grow">{app.description}</p>
+
+                                <div className="space-y-1.5 mb-4">
+                                    {app.features.map((feature, idx) => (
+                                        <div key={idx} className="flex items-center gap-2 text-[10px] font-medium text-slate-400">
+                                            <div className="h-1 w-1 rounded-full bg-orange-400" />
+                                            {feature}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <Button size="sm" className="w-full bg-slate-900 hover:bg-orange-600 text-white rounded-lg font-semibold text-xs h-9 transition-all">
+                                    Launch Channel <ExternalLink className="h-3.5 w-3.5 ml-1.5" />
+                                </Button>
                             </div>
+                        </motion.div>
+                    ))}
+                </div>
 
-                            <Button className="w-full bg-slate-900 hover:bg-orange-600 text-white rounded-xl py-6 font-black uppercase tracking-widest text-xs transition-all shadow-lg shadow-slate-200">
-                                Launch Channel <ExternalLink className="w-4 h-4 ml-2" />
+                {/* Footer Notice */}
+                <motion.div {...fadeIn} transition={{ delay: 0.6 }}>
+                    <div className="bg-slate-900 rounded-xl p-6 text-white relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-8 opacity-5">
+                            <Lock className="w-24 h-24 text-white" />
+                        </div>
+                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                            <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <Shield className="h-6 w-6 text-orange-500" />
+                            </div>
+                            <div className="space-y-1">
+                                <h4 className="text-sm font-bold uppercase tracking-wider">Security Advisory</h4>
+                                <p className="text-xs text-slate-400 max-w-xl">Never share your password, OTP, or PIN on any support channel. Official Danamon Bank staff will never ask for these details.</p>
+                            </div>
+                            <Button variant="outline" size="sm" className="md:ml-auto bg-transparent border-white/20 text-white hover:bg-white/10 rounded-lg text-xs h-9 px-4">
+                                View Security Tips
                             </Button>
-                        </CardContent>
-                    </Card>
-                ))}
-            </div>
-
-            {/* Official Advisory */}
-            <Card className="bg-slate-900 border-none rounded-[3rem] p-8 md:p-12 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-12 opacity-10">
-                    <Lock className="w-48 h-48 text-white" />
-                </div>
-                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                    <div className="lg:col-span-2 space-y-6">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 text-orange-300 rounded-full text-[10px] font-black uppercase tracking-widest">
-                            <Shield className="w-3 h-3" /> Enhanced Security Notice
-                        </div>
-                        <h2 className="text-2xl md:text-4xl font-black text-white italic uppercase tracking-tight">
-                            Protection of your <br />
-                            <span className="text-orange-400 not-italic">Identity as Priority</span>
-                        </h2>
-                        <p className="text-slate-400 text-sm md:text-base leading-relaxed font-bold">
-                            For the best experience, using the official app of your specific bank is recommended to ensure security and direct access to personal account information. Avoid sharing sensitive data on third-party platforms unless verified.
-                        </p>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                            <h4 className="text-white font-black text-sm uppercase italic mb-2">Direct Access</h4>
-                            <p className="text-slate-500 text-xs font-medium">Use official bank portal for account actions.</p>
-                        </div>
-                        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                            <h4 className="text-white font-black text-sm uppercase italic mb-2">Verified Channels</h4>
-                            <p className="text-slate-500 text-xs font-medium">Always look for the verification checkmark.</p>
                         </div>
                     </div>
-                </div>
-            </Card>
+                </motion.div>
 
-            {/* Additional Resource */}
-            <div className="text-center py-10">
-                <p className="text-slate-400 text-xs font-black uppercase tracking-[0.3em] flex items-center justify-center gap-2">
-                    <HelpCircle className="w-4 h-4" /> Need Immediate Assistance? <Link href="/dashboard/support" className="text-orange-600 hover:underline">Contact Internal Support</Link>
-                </p>
+                <div className="text-center pb-6">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-2">
+                        <HelpCircle className="h-3.5 w-3.5" />
+                        Need immediate assistance?
+                        <Link href="/dashboard/support" className="text-orange-600 hover:underline">Contact Support</Link>
+                    </p>
+                </div>
             </div>
         </div>
     )

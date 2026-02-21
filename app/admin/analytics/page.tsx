@@ -59,10 +59,10 @@ export default async function AnalyticsPage() {
                     <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
                         <BarChart3 className="w-3.5 h-3.5 text-orange-500" /> Intelligence Console
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none uppercase">
-                        SYSTEM <span className="text-orange-600 italic">ANALYTICS</span>
+                    <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase italic">
+                        SYSTEM <span className="text-orange-600">ANALYTICS</span>
                     </h1>
-                    <p className="text-slate-500 font-bold max-w-lg text-base uppercase tracking-tight">Real-time telemetry and deep-layer data intelligence from the Sovereign node.</p>
+                    <p className="text-sm md:text-lg text-slate-500 font-bold max-w-lg uppercase tracking-widest opacity-60">Real-time telemetry and deep-layer data intelligence from the Sovereign node.</p>
                 </div>
 
                 <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
@@ -99,7 +99,7 @@ export default async function AnalyticsPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="p-0">
-                            <div className="text-4xl font-black text-white tracking-tighter mb-6 italic">{stat.value}</div>
+                            <div className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6 italic">{stat.value}</div>
                             <div className="flex items-center gap-3 text-emerald-500 text-[10px] font-black bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full w-fit uppercase tracking-widest shadow-2xl">
                                 <TrendingUp className="w-3.5 h-3.5" /> {stat.change} <span className="text-slate-600 ml-1">v. previous cycle</span>
                             </div>

@@ -136,10 +136,10 @@ export default function AdminCardsPage() {
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
             <CreditCard className="w-3.5 h-3.5 text-orange-500" /> Asset Issuance
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
-            CARD <span className="text-orange-600 italic">REGISTRY</span>
+          <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase italic">
+            CARD <span className="text-orange-600">REGISTRY</span>
           </h1>
-          <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight">Central hub for provisioning and auditing physical and digital payment tokens.</p>
+          <p className="text-sm md:text-lg text-slate-500 font-bold max-w-lg uppercase tracking-widest opacity-60">Central hub for provisioning and auditing physical and digital payment tokens.</p>
         </div>
 
         <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
@@ -190,7 +190,7 @@ export default function AdminCardsPage() {
         <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div className="space-y-4">
-              <CardTitle className="text-3xl font-black text-white tracking-tighter uppercase leading-none italic">Active Provisioning</CardTitle>
+              <CardTitle className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none italic">Active Provisioning Sync</CardTitle>
               <CardDescription className="text-slate-500 font-black uppercase text-[9px] tracking-[0.3em] mt-3 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-2xl shadow-emerald-500/50"></div>
                 {filteredCards.length} Tokens Registered in Matrix
@@ -198,7 +198,7 @@ export default function AdminCardsPage() {
             </div>
             <div className="p-8 bg-black border border-white/5 rounded-[2.5rem] flex flex-col items-end min-w-[240px] shadow-3xl font-black border-l-orange-600/50 border-l-2">
               <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.3em] leading-none mb-3">Authenticated Assets</p>
-              <p className="text-5xl text-orange-600 tracking-tighter italic">{cards.filter(c => c.status === 'active').length}</p>
+              <p className="text-5xl md:text-8xl text-orange-600 tracking-tighter italic leading-none">{cards.filter(c => c.status === 'active').length}</p>
             </div>
           </div>
         </CardHeader>

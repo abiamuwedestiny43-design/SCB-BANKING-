@@ -1,19 +1,18 @@
-// app/dashboard/loans/apply/page.tsx
 "use client"
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { CheckCircle, AlertCircle, Calculator, DollarSign, Clock, TrendingUp } from "lucide-react"
+import { CheckCircle, AlertCircle, Calculator, DollarSign, Clock, TrendingUp, ChevronLeft, Landmark, ShieldCheck } from "lucide-react"
 import { getLoanTypeDetails, calculateMonthlyPayment } from "@/lib/utils/loan"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 const loanTypes = [
   { value: "personal", label: "Personal Loan", description: "For personal expenses, debt consolidation, etc." },
@@ -87,241 +86,260 @@ export default function ApplyForLoanPage() {
       if (response.ok) {
         setMessage({
           type: 'success',
-          text: 'Loan application submitted successfully! You will receive an email confirmation shortly.'
+          text: 'Loan application submitted! We will review it shortly.'
         })
         setTimeout(() => {
           router.push('/dashboard/loans')
-        }, 2000)
+        }, 1500)
       } else {
         setMessage({ type: 'error', text: data.error || 'Failed to submit application' })
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'An error occurred while submitting your application' })
+      setMessage({ type: 'error', text: 'An error occurred during submission' })
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  return (
-    <div className="min-h-screen bg-[#020617] w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+  const fadeIn = { initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.3 } }
+  const inputCls = "h-9 bg-slate-50 border-slate-200 rounded-lg text-slate-900 text-xs focus:bg-white focus:border-orange-400 placeholder:text-slate-300 shadow-none"
 
-      <div className="max-w-3xl mx-auto space-y-10 relative z-10">
-        <div className="space-y-2">
-          <div className="flex items-center gap-2 text-orange-500 font-black uppercase tracking-widest text-[10px] mb-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 w-fit rounded-full">
-            <Calculator className="h-3 w-3" />
-            Capital Acquisition
+  return (
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-6 pt-16 lg:pt-6">
+      <div className="max-w-4xl mx-auto space-y-5">
+
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+            <Link href="/dashboard/loans"><ChevronLeft className="h-4 w-4" /></Link>
+          </Button>
+          <div>
+            <h1 className="text-base font-bold text-slate-900">Loan Application</h1>
+            <p className="text-xs text-slate-400">Request financial capital with competitive rates</p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
-            Deploy <span className="text-slate-500 italic">Funding</span>
-          </h1>
-          <p className="text-slate-400 font-medium text-lg">Initialize a new financial protocol with competitive rates and optimized terms.</p>
         </div>
 
-        {message && (
-          <Alert className={cn(
-            "border-none shadow-2xl backdrop-blur-md rounded-2xl p-6",
-            message.type === 'success' ? 'bg-orange-500/10 border-orange-500/20' : 'bg-red-500/10 border-red-500/20'
-          )}>
-            {message.type === 'success' ? (
-              <CheckCircle className="h-6 w-6 text-orange-500" />
-            ) : (
-              <AlertCircle className="h-6 w-6 text-red-500" />
-            )}
-            <AlertDescription className={cn(
-              "font-bold text-base ml-2",
-              message.type === 'success' ? 'text-orange-400' : 'text-red-400'
-            )}>
-              {message.text}
-            </AlertDescription>
-          </Alert>
-        )}
+        <AnimatePresence>
+          {message && (
+            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+              <Alert className={cn(
+                "border-none shadow-sm rounded-xl py-3 px-4 mb-2",
+                message.type === 'success' ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-800'
+              )}>
+                {message.type === 'success' ? (
+                  <CheckCircle className="h-4 w-4 text-emerald-600" />
+                ) : (
+                  <AlertCircle className="h-4 w-4 text-red-600" />
+                )}
+                <AlertDescription className="text-xs font-semibold ml-2">
+                  {message.text}
+                </AlertDescription>
+              </Alert>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        <Card className="border border-white/5 shadow-2xl bg-white/[0.03] backdrop-blur-md rounded-[2.5rem] overflow-hidden">
-          <CardHeader className="p-8 md:p-10 border-b border-white/5 space-y-2">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-orange-500">Protocol Initialization</p>
-            <CardTitle className="text-3xl font-black text-white lowercase">Application <span className="text-slate-500 italic">Parameters</span></CardTitle>
-            <CardDescription className="text-slate-400 font-medium">Please provide precise operational data for rapid authorization processing.</CardDescription>
-          </CardHeader>
-          <CardContent className="p-8 md:p-10 space-y-8">
-            {/* Loan Type */}
-            <div className="space-y-4">
-              <Label htmlFor="loanType" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Select Protocol Class</Label>
-              <Select value={formData.loanType} onValueChange={(value) => setFormData({ ...formData, loanType: value })}>
-                <SelectTrigger className="h-16 bg-black/40 border-white/10 rounded-2xl text-white font-bold px-6 focus:ring-orange-500/40">
-                  <SelectValue placeholder="Select functional class" />
-                </SelectTrigger>
-                <SelectContent className="bg-[#020617] border-white/10 text-white rounded-2xl shadow-2xl">
-                  {loanTypes.map((type) => (
-                    <SelectItem key={type.value} value={type.value} className="focus:bg-orange-500/10 focus:text-orange-400 py-4 rounded-xl cursor-pointer">
-                      <div className="space-y-1">
-                        <div className="font-black text-sm uppercase tracking-tight">{type.label}</div>
-                        <div className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">{type.description}</div>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
 
-            {/* Loan Amount and Duration */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <Label htmlFor="amount" className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                  Principal Amount <span className="text-slate-600 block text-[9px] mt-1 italic capitalize">Range: {loanDetails?.minAmount.toLocaleString() || '0'} - {loanDetails?.maxAmount.toLocaleString() || '0'} USD</span>
-                </Label>
-                <div className="relative">
-                  <DollarSign className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-orange-500" />
-                  <Input
-                    id="amount"
-                    type="number"
-                    placeholder="0.00"
-                    className="h-16 pl-14 bg-black/40 border-white/10 rounded-2xl text-white font-black text-xl focus:ring-orange-500/40 placeholder:text-white/5"
-                    value={formData.amount}
-                    onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
-                  />
-                </div>
+          {/* Main Form Area */}
+          <motion.div {...fadeIn} className="lg:col-span-2 space-y-5">
+            <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+              <div className="flex items-center gap-2 p-4 border-b border-slate-50 bg-slate-50/50">
+                <Landmark className="h-4 w-4 text-orange-500" />
+                <h3 className="text-sm font-bold text-slate-900">Application Details</h3>
               </div>
 
-              <div className="space-y-4">
-                <Label htmlFor="duration" className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                  Term Duration <span className="text-slate-600 block text-[9px] mt-1 italic capitalize">Maximum: {loanDetails?.maxDuration || '0'} Months</span>
-                </Label>
-                <div className="relative">
-                  <Clock className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-blue-400" />
-                  <Input
-                    id="duration"
-                    type="number"
-                    placeholder="0"
-                    className="h-16 pl-14 bg-black/40 border-white/10 rounded-2xl text-white font-black text-xl focus:ring-orange-500/40 placeholder:text-white/5"
-                    value={formData.duration}
-                    onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Calculator */}
-            {formData.amount && formData.duration && loanDetails && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-orange-500/5 border border-orange-500/20 p-8 rounded-[2rem] shadow-inner relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
-
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-8 w-8 bg-orange-500/20 rounded-lg flex items-center justify-center border border-orange-500/30">
-                    <Calculator className="h-4 w-4 text-orange-500" />
-                  </div>
-                  <span className="text-[10px] font-black text-orange-500 uppercase tracking-[0.3em]">Projection Engine</span>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                  <div className="space-y-1">
-                    <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none mb-1">Interest Rate</div>
-                    <div className="text-2xl font-black text-white">{loanDetails.interestRate}<span className="text-orange-500 italic">%</span></div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none mb-1">Monthly Cost</div>
-                    <div className="text-2xl font-black text-white lowercase">
-                      {calculatedPayment ? `${calculatedPayment.toFixed(2)}` : '0.00'} <span className="text-slate-500 text-xs tracking-tighter font-bold uppercase">USD</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center md:justify-end">
-                    <Button
-                      onClick={handleCalculate}
-                      disabled={!formData.amount || !formData.duration}
-                      className="h-12 px-6 bg-orange-500 hover:bg-orange-400 text-[#020617] font-black rounded-xl shadow-lg shadow-orange-500/20 text-xs uppercase tracking-widest"
-                    >
-                      Process Feed
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            <div className="border-t border-white/5 pt-8 space-y-8">
-              {/* Employment Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <Label htmlFor="employmentStatus" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Employment Status</Label>
-                  <Select value={formData.employmentStatus} onValueChange={(value) => setFormData({ ...formData, employmentStatus: value })}>
-                    <SelectTrigger className="h-16 bg-black/40 border-white/10 rounded-2xl text-white font-bold px-6">
-                      <SelectValue placeholder="Status identifier" />
+              <div className="p-5 space-y-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-medium text-slate-600">Loan Type</Label>
+                  <Select value={formData.loanType} onValueChange={(value) => setFormData({ ...formData, loanType: value })}>
+                    <SelectTrigger className={inputCls}>
+                      <SelectValue placeholder="Select loan type" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#020617] border-white/10 text-white rounded-2xl shadow-2xl">
-                      {employmentStatuses.map((status) => (
-                        <SelectItem key={status.value} value={status.value} className="focus:bg-orange-500/10 focus:text-orange-400 py-4 rounded-xl cursor-pointer">
-                          <span className="font-bold text-xs uppercase tracking-widest">{status.label}</span>
+                    <SelectContent>
+                      {loanTypes.map((type) => (
+                        <SelectItem key={type.value} value={type.value} className="text-xs">
+                          {type.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
 
-                <div className="space-y-4">
-                  <Label htmlFor="annualIncome" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Annual Gross Velocity</Label>
-                  <div className="relative">
-                    <TrendingUp className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-orange-500" />
-                    <Input
-                      id="annualIncome"
-                      type="number"
-                      placeholder="Annual Income"
-                      className="h-16 pl-14 bg-black/40 border-white/10 rounded-2xl text-white font-black text-xl placeholder:text-white/5"
-                      value={formData.annualIncome}
-                      onChange={(e) => setFormData({ ...formData, annualIncome: e.target.value })}
-                    />
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-medium text-slate-600">Loan Amount</Label>
+                    <div className="relative">
+                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                      <Input
+                        type="number"
+                        placeholder="0.00"
+                        className={cn(inputCls, "pl-8")}
+                        value={formData.amount}
+                        onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
+                      />
+                    </div>
+                    {loanDetails && (
+                      <p className="text-[10px] text-slate-400 font-medium">Range: ${loanDetails.minAmount.toLocaleString()} - ${loanDetails.maxAmount.toLocaleString()}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-medium text-slate-600">Duration (Months)</Label>
+                    <div className="relative">
+                      <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                      <Input
+                        type="number"
+                        placeholder="e.g. 12"
+                        className={cn(inputCls, "pl-8")}
+                        value={formData.duration}
+                        onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                      />
+                    </div>
+                    {loanDetails && (
+                      <p className="text-[10px] text-slate-400 font-medium">Max: {loanDetails.maxDuration} months</p>
+                    )}
                   </div>
                 </div>
-              </div>
 
-              {/* Existing Loans */}
-              <div className="space-y-4">
-                <Label htmlFor="existingLoans" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Existing Liabilities (Monthly Sum)</Label>
-                <Input
-                  id="existingLoans"
-                  type="number"
-                  placeholder="0.00"
-                  className="h-16 bg-black/40 border-white/10 rounded-2xl text-white font-black text-xl placeholder:text-white/5"
-                  value={formData.existingLoans}
-                  onChange={(e) => setFormData({ ...formData, existingLoans: e.target.value })}
-                />
-              </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-medium text-slate-600">Employment Status</Label>
+                    <Select value={formData.employmentStatus} onValueChange={(value) => setFormData({ ...formData, employmentStatus: value })}>
+                      <SelectTrigger className={inputCls}>
+                        <SelectValue placeholder="Status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {employmentStatuses.map((status) => (
+                          <SelectItem key={status.value} value={status.value} className="text-xs">{status.label}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-              {/* Purpose */}
-              <div className="space-y-4">
-                <Label htmlFor="purpose" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Operational Objective</Label>
-                <Textarea
-                  id="purpose"
-                  placeholder="Define the primary objective for this capital procurement..."
-                  className="min-h-[150px] bg-black/40 border-white/10 rounded-2xl text-white font-medium p-6 focus:ring-orange-500/40 resize-none"
-                  value={formData.purpose}
-                  onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
-                />
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-medium text-slate-600">Annual Gross Income</Label>
+                    <div className="relative">
+                      <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                      <Input
+                        type="number"
+                        placeholder="Total per year"
+                        className={cn(inputCls, "pl-8")}
+                        value={formData.annualIncome}
+                        onChange={(e) => setFormData({ ...formData, annualIncome: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-medium text-slate-600">Existing Monthly Liabilities</Label>
+                  <Input
+                    type="number"
+                    placeholder="Current monthly loan payments"
+                    className={inputCls}
+                    value={formData.existingLoans}
+                    onChange={(e) => setFormData({ ...formData, existingLoans: e.target.value })}
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-medium text-slate-600">Purpose of Loan</Label>
+                  <Textarea
+                    placeholder="Describe how you will use these funds..."
+                    className="min-h-[100px] bg-slate-50 border-slate-200 rounded-lg text-slate-900 text-xs focus:bg-white focus:border-orange-400 placeholder:text-slate-300 resize-none shadow-none"
+                    value={formData.purpose}
+                    onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Submit Buttons */}
-            <div className="flex flex-col md:flex-row gap-4 pt-6">
+            <div className="flex flex-col sm:flex-row items-center gap-2 pt-2">
               <Button
                 variant="ghost"
-                className="h-16 flex-1 border border-white/10 text-slate-400 font-bold hover:text-white hover:bg-white/5 rounded-2xl"
+                className="flex-1 w-full h-10 border border-slate-200 text-slate-600 font-bold rounded-lg text-xs hover:bg-white"
                 onClick={() => router.back()}
               >
-                Abort Process
+                Discard Application
               </Button>
               <Button
                 onClick={handleApply}
                 disabled={isSubmitting}
-                className="h-16 flex-[2] bg-orange-500 hover:bg-orange-400 text-[#020617] font-black rounded-2xl shadow-xl shadow-orange-500/20 text-lg uppercase tracking-tight"
+                className="flex-[2] w-full h-10 bg-slate-900 hover:bg-orange-600 text-white font-bold rounded-lg text-xs transition-colors shadow-sm"
               >
-                {isSubmitting ? 'Processing Application...' : 'Deploy Protocol'}
+                {isSubmitting ? 'Processing Submission...' : 'Submit Loan Request'}
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </motion.div>
+
+          {/* Calculator Sidebar */}
+          <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="space-y-5">
+            <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden sticky top-20">
+              <div className="p-4 border-b border-slate-50 bg-orange-50/30 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Calculator className="h-4 w-4 text-orange-500" />
+                  <h3 className="text-sm font-bold text-slate-900">Loan Estimator</h3>
+                </div>
+                {loanDetails && (
+                  <Badge className="bg-orange-500 text-white border-none px-1.5 py-0.5 text-[10px] font-bold">
+                    {loanDetails.interestRate}% APR
+                  </Badge>
+                )}
+              </div>
+
+              <div className="p-5 space-y-6">
+                {!formData.amount || !formData.duration || !loanDetails ? (
+                  <div className="py-6 text-center">
+                    <p className="text-xs text-slate-400 font-medium leading-relaxed">Fill in the amount and duration to see your estimated monthly repayment.</p>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    <div className="text-center space-y-1">
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Monthly Repayment</p>
+                      <div className="text-2xl font-black text-slate-900 tracking-tight">
+                        {calculatedPayment ? `$${calculatedPayment.toFixed(2)}` : '—'}
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 pt-4 border-t border-slate-50">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-slate-500">Interest Rate</span>
+                        <span className="font-bold text-slate-900">{loanDetails.interestRate}%</span>
+                      </div>
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-slate-500">Total Interest</span>
+                        <span className="font-bold text-slate-900">
+                          {calculatedPayment ? `$${(calculatedPayment * parseInt(formData.duration) - parseFloat(formData.amount)).toFixed(2)}` : '—'}
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center text-xs pt-2 border-t border-slate-50">
+                        <span className="text-slate-700 font-bold">Total Repayment</span>
+                        <span className="font-black text-orange-600">
+                          {calculatedPayment ? `$${(calculatedPayment * parseInt(formData.duration)).toFixed(2)}` : '—'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <Button
+                      onClick={handleCalculate}
+                      size="sm"
+                      className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg text-[10px] h-8 border-none"
+                    >
+                      Refresh Estimates
+                    </Button>
+                  </div>
+                )}
+
+                <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 flex gap-3">
+                  <ShieldCheck className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <p className="text-[10px] text-slate-500 leading-relaxed">All loan applications are subject to credit verification and Danamon Bank internal policy guidelines.</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </div>
   )

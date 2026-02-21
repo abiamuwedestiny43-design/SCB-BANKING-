@@ -14,12 +14,12 @@ const ContactPage: React.FC = () => {
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-6 animate-slide-up">
-            Get in Touch
+            Contact Us
           </h1>
           <p className="text-base md:text-lg leading-relaxed animate-slide-up delay-200">
-            At First State Bank, your questions and concerns are our priority. Whether you’re seeking advice on loans, mortgages, or general banking services, our dedicated team is here to provide personalized support. Reach out to us and experience responsive, friendly, and professional assistance tailored to your needs.
+            At Danamon Bank, your questions and needs are our priority. Whether you’re looking for advice on loans, mortgages, or general banking services, our dedicated team is ready to provide personal support. Contact us and experience responsive, friendly, and professional service tailored to your needs.
             <br /><br />
-            Contact us today and let us guide you through our services, help you navigate your finances, or quickly resolve any issues you may have. With multiple channels of communication and convenient branch locations, staying connected with First State Bank has never been easier.
+            Reach out to us today and let us guide you through our services, help you manage your finances, or resolve any issues you may face. With various communication channels and convenient branch locations, staying connected with Danamon Bank is now easier than ever.
           </p>
         </div>
       </section>
@@ -31,7 +31,7 @@ const ContactPage: React.FC = () => {
             {/* Contact Form */}
             <div className="animate-slide-in-left">
               <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h2>
+                <h2 className="text-2xl font-bold text-slate-900 mb-6">Send a Message</h2>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -85,8 +85,8 @@ const ContactPage: React.FC = () => {
                     </div>
                     <div className="ml-4">
                       <h3 className="text-lg font-semibold text-slate-900">Phone</h3>
-                      <p className="text-slate-600">Customer Service: (995) 123-4567</p>
-                      <p className="text-slate-600">Loan Department: (995) 123-4568</p>
+                      <p className="text-slate-600">Customer Support: +62 (21) 8064 5000</p>
+                      <p className="text-slate-600">Loan Department: +62 (21) 8064 5001</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -97,8 +97,8 @@ const ContactPage: React.FC = () => {
                     </div>
                     <div className="ml-4">
                       <h3 className="text-lg font-semibold text-slate-900">Email</h3>
-                      <p className="text-slate-600">info@firststatebank.online</p>
-                      <p className="text-slate-600">support@firststatebank.online</p>
+                      <p className="text-slate-600">info@danamonbk.com</p>
+                      <p className="text-slate-600">support@danamonbk.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -108,11 +108,11 @@ const ContactPage: React.FC = () => {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-slate-900">Main Branch</h3>
+                      <h3 className="text-lg font-semibold text-slate-900">Head Office</h3>
                       <p className="text-slate-600">
-                        123 Financial Street<br />
-                        Downtown District<br />
-                        City, State 12345
+                        Jl. HR. Rasuna Said No. 10,<br />
+                        Block C, Karet, Setiabudi,<br />
+                        Jakarta Selatan 12920, Indonesia
                       </p>
                     </div>
                   </div>
@@ -124,11 +124,11 @@ const ContactPage: React.FC = () => {
                 <div className="space-y-2 text-slate-600">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
-                    <span>9:00 AM - 6:00 PM</span>
+                    <span>09:00 - 18:00</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Saturday</span>
-                    <span>9:00 AM - 2:00 PM</span>
+                    <span>09:00 - 14:00</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Sunday</span>
@@ -138,11 +138,11 @@ const ContactPage: React.FC = () => {
               </div>
 
               <div className="bg-orange-50 p-6 rounded-lg">
-                <h3 className="text-lg font-semibold text-slate-900 mb-3">Need Immediate Help?</h3>
+                <h3 className="text-lg font-semibold text-slate-900 mb-3">Need Urgent Help?</h3>
                 <p className="text-slate-600 mb-4">
                   For urgent account issues or to report a lost/stolen card, call our 24/7 hotline:
                 </p>
-                <div className="text-2xl font-bold text-orange-600">(995) 911-BANK</div>
+                <div className="text-2xl font-bold text-orange-600">+62 (21) 8064 5000</div>
               </div>
             </div>
           </div>
@@ -156,22 +156,22 @@ const ContactPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: 'Downtown Branch',
-                address: '123 Financial Street, Downtown District',
-                phone: '(995) 123-4567',
-                hours: 'Mon-Fri: 9AM-6PM, Sat: 9AM-2PM'
+                name: 'Sudirman Branch',
+                address: 'Jl. Jenderal Sudirman Kav. 45-46, Central Jakarta',
+                phone: '+62 (21) 123-4567',
+                hours: 'Mon-Fri: 09:00-18:00, Sat: 09:00-14:00'
               },
               {
-                name: 'Westside Branch',
-                address: '456 Commerce Ave, Westside Plaza',
-                phone: '(995) 123-4568',
-                hours: 'Mon-Fri: 9AM-5PM, Sat: 9AM-1PM'
+                name: 'Kuningan Branch',
+                address: 'Jl. HR. Rasuna Said No. 10, South Jakarta',
+                phone: '+62 (21) 123-4568',
+                hours: 'Mon-Fri: 09:00-17:00, Sat: 09:00-13:00'
               },
               {
-                name: 'Northgate Branch',
-                address: '789 Business Blvd, Northgate Center',
-                phone: '(995) 123-4569',
-                hours: 'Mon-Fri: 9AM-6PM, Sat: 9AM-2PM'
+                name: 'Kelapa Gading Branch',
+                address: 'Jl. Boulevard Raya Blok LA, North Jakarta',
+                phone: '+62 (21) 123-4569',
+                hours: 'Mon-Fri: 09:00-18:00, Sat: 09:00-14:00'
               }
             ].map((branch, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-lg animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>

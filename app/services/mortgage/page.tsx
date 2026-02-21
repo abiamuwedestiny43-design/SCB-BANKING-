@@ -62,7 +62,7 @@ export default function MortgageServicesPage() {
               mortgage <span className="text-orange-600 italic">services</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
-              Clarity from pre-qualification to the final signature. Secure your cornerstone with First State.
+              Clarity from pre-qualification to the final signature. Secure your future with Danamon.
             </p>
           </motion.div>
 
@@ -203,7 +203,7 @@ export default function MortgageServicesPage() {
               Secure your <span className="text-orange-600 not-italic uppercase">Ground Zero</span>
             </h2>
             <p className="text-xl text-slate-600 font-medium relative z-10">
-              Join the future of residency financing with First State's automated mortgage gateway.
+              Join the future of home financing with Danamon's automated mortgage gateway.
             </p>
           </motion.div>
 

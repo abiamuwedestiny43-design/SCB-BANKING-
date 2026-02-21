@@ -4,7 +4,6 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import useSWR from "swr"
 import { motion, AnimatePresence } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -13,25 +12,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import {
-  Loader2,
-  Globe,
-  MapPin,
-  ArrowRightLeft,
-  CreditCard,
-  Banknote,
-  CheckCircle2,
-  ArrowRight,
-  User,
-  ShieldCheck,
-  Search,
-  BookUser,
-  AlertCircle,
-  Zap
+  Loader2, Globe, MapPin, ArrowRightLeft, CreditCard, Banknote,
+  CheckCircle2, ArrowRight, User, ShieldCheck, BookUser, AlertCircle, ChevronLeft
 } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { cn } from "@/lib/utils"
 import { useToast } from "@/hooks/use-toast"
+import Link from "next/link"
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
@@ -55,7 +43,6 @@ export default function TransferPage() {
   const [showOtpDialog, setShowOtpDialog] = useState(false)
   const [otpCode, setOtpCode] = useState("")
   const [pendingTransfer, setPendingTransfer] = useState<any>(null)
-
   const [saveBeneficiaryChoice, setSaveBeneficiaryChoice] = useState<"no" | "yes">("no")
   const [selectedBeneficiaryId, setSelectedBeneficiaryId] = useState<string | null>(null)
 
@@ -65,14 +52,9 @@ export default function TransferPage() {
 
   const { data: beneData } = useSWR("/api/user/beneficiaries", fetcher)
   const beneficiaries = beneData?.beneficiaries || []
-  const { data: localFlagData } = useSWR("/api/system/local-transfer-enabled", fetcher)
-
   const { data: profileData } = useSWR("/api/user/profile", fetcher)
   const assignedCurrency = profileData?.user?.currency
-  const userLocalEnabled = profileData?.user?.bankAccount?.canLocalTransfer ?? true
-  const userIntlEnabled = profileData?.user?.bankAccount?.canInternationalTransfer ?? true
   const canTransferAll = profileData?.user?.bankAccount?.canTransfer ?? true
-  const localEnabled = (localFlagData?.enabled ?? true) && userLocalEnabled
 
   useEffect(() => {
     if (assignedCurrency) {
@@ -111,39 +93,19 @@ export default function TransferPage() {
     }))
   }, [selectedBeneficiaryId, beneficiaries])
 
-  // useEffect(() => {
-  //   if (!localEnabled && transferType === "local") {
-  //     setTransferType("international")
-  //   }
-  // }, [localEnabled, transferType])
-
-  // useEffect(() => {
-  //   if (!userIntlEnabled && transferType === "international") {
-  //     setTransferType("local")
-  //   }
-  // }, [userIntlEnabled, transferType])
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError("")
-
     try {
       const response = await fetch("/api/transfers/initiate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          transferType,
-          amount: Number.parseFloat(formData.amount),
-        }),
+        body: JSON.stringify({ ...formData, transferType, amount: Number.parseFloat(formData.amount) }),
       })
-
       const data = await response.json()
-
       if (response.ok) {
         setPendingTransfer(data.transfer)
-
         if (saveBeneficiaryChoice === "yes") {
           ; (async () => {
             try {
@@ -168,7 +130,6 @@ export default function TransferPage() {
             } catch { }
           })()
         }
-
         if (transferType === "local") {
           setShowOtpDialog(true)
         } else {
@@ -178,7 +139,7 @@ export default function TransferPage() {
         setError(data.message || "Transfer initiation failed")
         toast({ variant: "destructive", description: data.message || "Transfer initiation failed" })
       }
-    } catch (error) {
+    } catch {
       setError("An error occurred. Please try again.")
       toast({ variant: "destructive", description: "Network error. Please try again." })
     } finally {
@@ -187,8 +148,7 @@ export default function TransferPage() {
   }
 
   const handleOtpVerification = async () => {
-    const isSixDigits = /^\d{6}$/.test(otpCode)
-    if (!isSixDigits) {
+    if (!/^\d{6}$/.test(otpCode)) {
       setError("Please enter a valid 6-digit OTP")
       toast({ variant: "destructive", description: "Invalid OTP: please enter 6 digits." })
       return
@@ -198,10 +158,7 @@ export default function TransferPage() {
       const response = await fetch("/api/transfers/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          txRef: pendingTransfer.txRef,
-          otpCode,
-        }),
+        body: JSON.stringify({ txRef: pendingTransfer.txRef, otpCode }),
       })
       const data = await response.json()
       if (response.ok) {
@@ -211,7 +168,7 @@ export default function TransferPage() {
         setError(data.message || "OTP verification failed")
         toast({ variant: "destructive", description: data.message || "OTP verification failed" })
       }
-    } catch (error) {
+    } catch {
       setError("An error occurred. Please try again.")
       toast({ variant: "destructive", description: "Network error. Please try again." })
     } finally {
@@ -223,418 +180,322 @@ export default function TransferPage() {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
-  }
-
   return (
-    <div className="min-h-screen bg-black w-full p-4 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden selection:bg-orange-500/30">
-      {/* Dynamic Background Elements */}
-      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
-      <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none animate-float"></div>
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-6 pt-16 lg:pt-6">
+      <div className="max-w-2xl mx-auto space-y-4">
 
-      {/* Decorative Grid */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.05] pointer-events-none invert"></div>
-
-      <div className="max-w-5xl mx-auto space-y-12 relative z-10">
-
-        {/* Premium Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-6"
-        >
-          <div className="relative inline-block">
-            <div className="absolute inset-0 bg-orange-500/30 blur-2xl rounded-full"></div>
-            <div className="relative inline-flex items-center justify-center p-6 bg-slate-900 border border-white/10 rounded-[2.5rem] shadow-2xl mb-2 group">
-              <ArrowRightLeft className="h-12 w-12 text-orange-600 transition-transform group-hover:rotate-180 duration-700" />
-            </div>
+        {/* Page Header */}
+        <div className="flex items-center gap-3 mb-2">
+          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+            <Link href="/dashboard"><ChevronLeft className="h-4 w-4" /></Link>
+          </Button>
+          <div>
+            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Send Money</h1>
+            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Transfer funds securely</p>
           </div>
-
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-orange-500 text-[10px] font-black uppercase tracking-[0.25em] mx-auto shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-              </span>
-              Identity Secured Gateway
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9]">
-              FUNDING <span className="text-orange-600 italic">CLEARANCE</span>
-            </h1>
-          </div>
-          <p className="text-slate-400 font-bold max-w-2xl mx-auto text-base leading-relaxed uppercase tracking-tight">
-            Authorized portal for high-fidelity cross-border settlement and real-time ledger synchronization.
-          </p>
-        </motion.div>
-
-
-
-        <div className="grid grid-cols-1 gap-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Card className="border-none bg-transparent shadow-none overflow-visible">
-              <CardHeader className="p-0 pb-10">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 bg-slate-900/40 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/5 glass-dark">
-                  <div className="space-y-2">
-                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 flex items-center gap-2">
-                      <Zap className="w-3 h-3 fill-orange-500" /> Clearance Protocol
-                    </p>
-                    <CardTitle className="text-2xl md:text-3xl font-black text-white tracking-tighter uppercase">Transfer <span className="text-slate-400 italic">Parameters</span></CardTitle>
-                  </div>
-                  <div className="flex bg-slate-950 p-1.5 rounded-[2rem] border border-white/5 shadow-inner shrink-0">
-                    <button
-                      type="button"
-                      onClick={() => setTransferType("local")}
-                      className={cn(
-                        "flex items-center gap-2 px-8 py-4 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500",
-                        transferType === "local" ? "bg-orange-600 text-white shadow-[0_10px_25px_-5px_rgba(234,88,12,0.4)] scale-105" : "text-slate-500 hover:text-white"
-                      )}
-                    >
-                      <MapPin className="h-4 w-4" /> Local
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setTransferType("international")}
-                      className={cn(
-                        "flex items-center gap-2 px-8 py-4 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500",
-                        transferType === "international" ? "bg-white text-slate-900 shadow-2xl scale-105" : "text-slate-500 hover:text-white"
-                      )}
-                    >
-                      <Globe className="h-4 w-4" /> Global
-                    </button>
-                  </div>
-                </div>
-              </CardHeader>
-
-              <CardContent className="p-0">
-                <form onSubmit={handleSubmit} className="space-y-12">
-                  <div className="bg-slate-900/40 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/5 glass-dark space-y-12">
-                    {error && (
-                      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-                        <Alert className="bg-red-900/20 border-red-900/50 rounded-2xl p-6">
-                          <AlertDescription className="text-red-400 font-black uppercase text-sm italic">{error}</AlertDescription>
-                        </Alert>
-                      </motion.div>
-                    )}
-
-                    {/* Beneficiary registry quick select */}
-                    <div className="space-y-6">
-                      <Label className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500 ml-1 flex items-center gap-2">
-                        <BookUser className="w-3.5 h-3.5 text-orange-500" /> Authorized Entities Registry
-                      </Label>
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        <div
-                          onClick={() => setSelectedBeneficiaryId(null)}
-                          className={cn(
-                            "group p-6 rounded-[2.5rem] border transition-all cursor-pointer flex items-center gap-4 relative overflow-hidden",
-                            !selectedBeneficiaryId ? "border-orange-600 bg-orange-600/10 shadow-xl shadow-orange-600/5 scale-[1.02]" : "border-white/5 bg-slate-950 hover:border-white/10"
-                          )}
-                        >
-                          <div className={cn("h-10 w-10 rounded-2xl border flex items-center justify-center transition-all shrink-0", !selectedBeneficiaryId ? "border-orange-600 bg-orange-600 text-white" : "border-white/10 text-slate-600")}>
-                            <User className="h-5 w-5" />
-                          </div>
-                          <div>
-                            <p className="font-black text-white text-xs uppercase tracking-tight">Manual Entry</p>
-                            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">New Protocol</p>
-                          </div>
-                          {!selectedBeneficiaryId && <div className="absolute top-2 right-4 text-[8px] font-black text-orange-600 uppercase">Active</div>}
-                        </div>
-
-                        {beneficiaries.map((b: any) => (
-                          <div
-                            key={b._id}
-                            onClick={() => setSelectedBeneficiaryId(b._id)}
-                            className={cn(
-                              "group p-6 rounded-[2.5rem] border transition-all cursor-pointer flex items-center gap-4 relative overflow-hidden",
-                              selectedBeneficiaryId === b._id ? "border-orange-600 bg-orange-600/10 shadow-xl shadow-orange-600/5 scale-[1.02]" : "border-white/5 bg-slate-950 hover:border-white/10"
-                            )}
-                          >
-                            <div className={cn("h-10 w-10 rounded-2xl border flex items-center justify-center transition-all shrink-0 font-black", selectedBeneficiaryId === b._id ? "border-orange-600 bg-orange-600 text-white" : "border-white/10 bg-slate-900 text-slate-500")}>
-                              {b.bankInfo.bankHolder[0]}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="font-black text-white text-xs uppercase tracking-tight truncate">{b.bankInfo.bankHolder}</p>
-                              <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest truncate">{b.bankInfo.bankName}</p>
-                            </div>
-                            {selectedBeneficiaryId === b._id && <CheckCircle2 className="h-4 w-4 text-orange-500 absolute bottom-3 right-4" />}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                      <div className="space-y-4">
-                        <Label htmlFor="bankName" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Destination Institution</Label>
-                        <div className="relative group">
-                          <Banknote className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-600 group-focus-within:text-orange-500 transition-all duration-500" />
-                          <Input
-                            id="bankName"
-                            placeholder="NODE_PROVIDER_ID"
-                            value={formData.bankName}
-                            onChange={(e) => handleChange("bankName", e.target.value)}
-                            required
-                            disabled={isLoading}
-                            className="pl-16 h-20 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] font-bold text-white placeholder:text-slate-800 text-lg shadow-inner"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <Label htmlFor="accountNumber" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Account Registry</Label>
-                        <div className="relative group">
-                          <CreditCard className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-600 group-focus-within:text-orange-500 transition-all duration-500" />
-                          <Input
-                            id="accountNumber"
-                            placeholder="TARGET_SEQUENCE"
-                            value={formData.accountNumber}
-                            onChange={(e) => handleChange("accountNumber", e.target.value)}
-                            required
-                            disabled={isLoading}
-                            className="pl-16 h-20 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] font-bold text-white placeholder:text-slate-800 text-lg shadow-inner"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-4 col-span-1 md:col-span-2">
-                        <Label htmlFor="accountHolder" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Principal Beneficiary</Label>
-                        <div className="relative group">
-                          <User className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-600 group-focus-within:text-orange-500 transition-all duration-500" />
-                          <Input
-                            id="accountHolder"
-                            placeholder="ENTITY_LEGAL_NAME"
-                            value={formData.accountHolder}
-                            onChange={(e) => handleChange("accountHolder", e.target.value)}
-                            required
-                            disabled={isLoading}
-                            className="pl-16 h-20 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] font-bold text-white placeholder:text-slate-800 text-lg uppercase tracking-tight shadow-inner"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <Label htmlFor="branchName" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Branch Location</Label>
-                        <div className="relative group">
-                          <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-600 group-focus-within:text-orange-500 transition-all duration-500" />
-                          <Input
-                            id="branchName"
-                            placeholder="BRANCH_IDENTIFIER"
-                            value={formData.branchName}
-                            onChange={(e) => handleChange("branchName", e.target.value)}
-                            disabled={isLoading}
-                            className="pl-16 h-20 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] font-bold text-white placeholder:text-slate-800 text-lg uppercase shadow-inner"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <Label htmlFor="routingCode" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">
-                          {transferType === "international" ? "Clearing Code (SWIFT/IBAN)" : "IFSC / Routing Code"}
-                        </Label>
-                        <div className="relative group">
-                          <Globe className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-600 group-focus-within:text-orange-500 transition-all duration-500" />
-                          <Input
-                            id="routingCode"
-                            placeholder="BIC_OR_IBAN_NODE"
-                            value={formData.routingCode}
-                            onChange={(e) => handleChange("routingCode", e.target.value)}
-                            disabled={isLoading}
-                            className="pl-16 h-20 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] font-bold text-white placeholder:text-slate-800 text-lg uppercase shadow-inner"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-4 col-span-1 md:col-span-2">
-                        <Label htmlFor="accountType" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Account Category</Label>
-                        <Select value={formData.accountType} onValueChange={(value) => handleChange("accountType", value)}>
-                          <SelectTrigger className="h-20 bg-slate-950 border-white/5 rounded-[2rem] font-bold text-white focus:ring-orange-600/5 focus:border-orange-600/30 transition-all text-lg px-8 shadow-inner">
-                            <SelectValue placeholder="SET_ACCOUNT_TYPE" />
-                          </SelectTrigger>
-                          <SelectContent className="rounded-[2rem] bg-slate-950 border-white/10 text-white shadow-2xl p-2">
-                            {["Savings", "Current", "Checking"].map((t) => (
-                              <SelectItem key={t} value={t} className="rounded-2xl hover:bg-slate-900 focus:bg-orange-600 px-6 py-4 cursor-pointer font-bold uppercase tracking-widest text-[10px]">
-                                {t}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      {transferType === "international" && (
-                        <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="col-span-1 md:col-span-2">
-                          <div className="space-y-4">
-                            <Label htmlFor="country" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Jurisdiction</Label>
-                            <Select value={formData.country} onValueChange={(value) => handleChange("country", value)}>
-                              <SelectTrigger className="h-20 bg-slate-950 border-white/5 rounded-[2rem] font-bold text-white focus:ring-orange-600/5 focus:border-orange-600/30 transition-all text-lg px-8 shadow-inner">
-                                <SelectValue placeholder="SET_SOVEREIGN_STATE" />
-                              </SelectTrigger>
-                              <SelectContent className="max-h-80 rounded-[2rem] bg-slate-950 border-white/10 text-white shadow-2xl p-2">
-                                {[
-                                  "United States", "United Kingdom", "Canada", "Germany", "France", "Japan", "Singapore", "Switzerland", "United Arab Emirates"
-                                ].map((c) => (
-                                  <SelectItem key={c} value={c} className="rounded-2xl hover:bg-slate-900 focus:bg-orange-600 px-6 py-4 cursor-pointer font-bold uppercase tracking-widest text-[10px]">
-                                    {c}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                          </div>
-                        </motion.div>
-                      )}
-
-                      <div className="space-y-4 col-span-1 md:col-span-2">
-                        <Label htmlFor="amount" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Liquid Value</Label>
-                        <div className="relative group">
-                          <span className="absolute left-8 top-1/2 -translate-y-1/2 text-2xl font-black text-slate-700 group-focus-within:text-orange-500 transition-colors">{formData.currency === "USD" ? "$" : assignedCurrency}</span>
-                          <Input
-                            id="amount"
-                            type="number"
-                            step="0.01"
-                            placeholder="0.00"
-                            value={formData.amount}
-                            onChange={(e) => handleChange("amount", e.target.value)}
-                            required
-                            disabled={isLoading}
-                            className="pl-16 h-28 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/10 shadow-xl shadow-orange-950 transition-all rounded-[2.5rem] text-4xl md:text-5xl font-black text-white tracking-tighter"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-4 col-span-1 md:col-span-2">
-                        <Label htmlFor="description" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Transmission Note</Label>
-                        <Textarea
-                          id="description"
-                          placeholder="Reason for migration sequence..."
-                          value={formData.description}
-                          onChange={(e) => handleChange("description", e.target.value)}
-                          disabled={isLoading}
-                          className="h-32 bg-slate-950 border-white/5 focus:bg-slate-900 focus:border-orange-600/50 focus:ring-orange-600/5 transition-all rounded-[2rem] p-8 font-bold text-white placeholder:text-slate-800 text-lg shadow-inner resize-none"
-                        />
-                      </div>
-
-                      <div className="space-y-4 col-span-1 md:col-span-2">
-                        <Label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Fee Allocation (Charges Type)</Label>
-                        <RadioGroup
-                          value={formData.chargesType}
-                          onValueChange={(val) => handleChange("chargesType", val)}
-                          className="grid grid-cols-3 gap-4"
-                        >
-                          {[
-                            { id: "SHA", label: "SHA", desc: "Shared" },
-                            { id: "OUR", label: "OUR", desc: "Sender Pays" },
-                            { id: "BEN", label: "BEN", desc: "Recipient Pays" }
-                          ].map((type) => (
-                            <div key={type.id}>
-                              <RadioGroupItem value={type.id} id={type.id} className="peer sr-only" />
-                              <Label
-                                htmlFor={type.id}
-                                className="flex flex-col items-center justify-between rounded-2xl border-2 border-white/5 bg-slate-950 p-4 hover:bg-slate-900 peer-data-[state=checked]:border-orange-600 peer-data-[state=checked]:bg-orange-600/10 cursor-pointer transition-all"
-                              >
-                                <span className="text-sm font-black text-white">{type.label}</span>
-                                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mt-1">{type.desc}</span>
-                              </Label>
-                            </div>
-                          ))}
-                        </RadioGroup>
-                      </div>
-                    </div>
-
-                    <div className="pt-8 border-t border-white/5">
-                      <RadioGroup
-                        value={saveBeneficiaryChoice}
-                        onValueChange={(v: any) => setSaveBeneficiaryChoice(v)}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                      >
-                        {[
-                          { id: "no", label: "One-Time Migration" },
-                          { id: "yes", label: "Commit to Registry" }
-                        ].map((choice) => (
-                          <div
-                            key={choice.id}
-                            onClick={() => setSaveBeneficiaryChoice(choice.id as any)}
-                            className={cn(
-                              "flex items-center gap-4 p-6 rounded-2xl border transition-all cursor-pointer",
-                              saveBeneficiaryChoice === choice.id ? "border-orange-600/50 bg-orange-600/5 text-white" : "border-white/5 bg-slate-950/50 text-slate-500 hover:border-white/10"
-                            )}
-                          >
-                            <RadioGroupItem value={choice.id} id={`save-${choice.id}`} className="border-slate-500 text-orange-600" />
-                            <Label htmlFor={`save-${choice.id}`} className="font-bold uppercase tracking-widest text-[10px] cursor-pointer">{choice.label}</Label>
-                          </div>
-                        ))}
-                      </RadioGroup>
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isLoading || !canTransferAll}
-                      className="w-full h-24 bg-orange-600 hover:bg-orange-500 text-white rounded-[2.5rem] shadow-2xl font-black text-[10px] uppercase tracking-[0.5em] transition-all hover:scale-[1.02] active:scale-[0.98] group/btn border-none"
-                    >
-                      {isLoading ? (
-                        <div className="flex items-center gap-3">
-                          <Loader2 className="h-5 w-5 animate-spin" /> SYNCHRONIZING_PROTOCOLS...
-                        </div>
-                      ) : (
-                        <div className="flex items-center gap-4">
-                          EXECUTE_CLEARANCE_SEQUENCE <ArrowRight className="h-5 w-5 group-hover/btn:translate-x-2 transition-transform" />
-                        </div>
-                      )}
-                    </Button>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
+
+        {/* Transfer Type Toggle */}
+        <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-1 flex gap-1">
+          <button
+            type="button"
+            onClick={() => setTransferType("local")}
+            className={cn(
+              "flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm md:text-base font-black uppercase tracking-widest transition-all italic",
+              transferType === "local" ? "bg-orange-600 text-white shadow-sm" : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
+            )}
+          >
+            <MapPin className="h-4 w-4" /> Local Transfer
+          </button>
+          <button
+            type="button"
+            onClick={() => setTransferType("international")}
+            className={cn(
+              "flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm md:text-base font-black uppercase tracking-widest transition-all italic",
+              transferType === "international" ? "bg-slate-900 text-white shadow-sm" : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
+            )}
+          >
+            <Globe className="h-4 w-4" /> International
+          </button>
+        </div>
+
+        {/* Error */}
+        {error && (
+          <Alert className="bg-red-50 border-red-200 rounded-xl py-2.5 px-4">
+            <AlertCircle className="h-4 w-4 text-red-500" />
+            <AlertDescription className="text-red-600 text-xs font-medium">{error}</AlertDescription>
+          </Alert>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Saved Beneficiaries */}
+          {beneficiaries.length > 0 && (
+            <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4">
+              <div className="flex items-center gap-2 mb-4">
+                <BookUser className="h-4 w-4 text-orange-500" />
+                <p className="text-xl md:text-3xl font-black text-slate-800 uppercase tracking-tight italic">Saved <span className="text-orange-600">Beneficiaries</span></p>
+              </div>
+              <div className="flex gap-2 overflow-x-auto pb-1">
+                <button
+                  type="button"
+                  onClick={() => setSelectedBeneficiaryId(null)}
+                  className={cn(
+                    "flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 rounded-lg border text-xs transition-all",
+                    !selectedBeneficiaryId ? "border-orange-500 bg-orange-50 text-orange-700" : "border-slate-100 text-slate-500 hover:border-slate-200"
+                  )}
+                >
+                  <div className="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center">
+                    <User className="h-3.5 w-3.5 text-slate-400" />
+                  </div>
+                  <span className="font-medium text-[10px]">New</span>
+                </button>
+                {beneficiaries.map((b: any) => (
+                  <button
+                    type="button"
+                    key={b._id}
+                    onClick={() => setSelectedBeneficiaryId(b._id)}
+                    className={cn(
+                      "flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 rounded-lg border text-xs transition-all min-w-[60px]",
+                      selectedBeneficiaryId === b._id ? "border-orange-500 bg-orange-50 text-orange-700" : "border-slate-100 text-slate-500 hover:border-slate-200"
+                    )}
+                  >
+                    <div className="h-7 w-7 rounded-full bg-orange-100 flex items-center justify-center font-bold text-orange-600 text-xs">
+                      {b.bankInfo.bankHolder[0]}
+                    </div>
+                    <span className="font-medium text-[10px] truncate max-w-[56px]">{b.bankInfo.bankHolder.split(' ')[0]}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Recipient Details */}
+          <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4 space-y-4">
+            <h2 className="text-xl md:text-3xl font-black text-slate-800 uppercase tracking-tight italic flex items-center gap-2">
+              <User className="h-6 w-6 text-slate-400" /> Recipient <span className="text-orange-600">Identity Matrix</span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <Label htmlFor="bankName" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Bank Name</Label>
+                <Input
+                  id="bankName"
+                  placeholder="Enter bank name"
+                  value={formData.bankName}
+                  onChange={(e) => handleChange("bankName", e.target.value)}
+                  required
+                  disabled={isLoading}
+                  className="h-12 text-sm md:text-base font-bold rounded-xl border-slate-200 bg-slate-50 focus:bg-white focus:border-orange-400 focus:ring-orange-400/10 transition-all"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="accountNumber" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Account Number</Label>
+                <Input
+                  id="accountNumber"
+                  placeholder="Enter account number"
+                  value={formData.accountNumber}
+                  onChange={(e) => handleChange("accountNumber", e.target.value)}
+                  required
+                  disabled={isLoading}
+                  className="h-12 text-sm md:text-base font-mono font-bold rounded-xl border-slate-200 bg-slate-50 focus:bg-white focus:border-orange-400 focus:ring-orange-400/10 transition-all"
+                />
+              </div>
+              <div className="space-y-1.5 sm:col-span-2">
+                <Label htmlFor="accountHolder" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Beneficiary Name</Label>
+                <Input
+                  id="accountHolder"
+                  placeholder="Full name of account holder"
+                  value={formData.accountHolder}
+                  onChange={(e) => handleChange("accountHolder", e.target.value)}
+                  required
+                  disabled={isLoading}
+                  className="h-12 text-sm md:text-base font-bold rounded-xl border-slate-200 bg-slate-50 focus:bg-white focus:border-orange-400 focus:ring-orange-400/10 transition-all"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="branchName" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Branch Name</Label>
+                <Input
+                  id="branchName"
+                  placeholder="Branch (optional)"
+                  value={formData.branchName}
+                  onChange={(e) => handleChange("branchName", e.target.value)}
+                  disabled={isLoading}
+                  className="h-12 text-sm md:text-base font-bold rounded-xl border-slate-200 bg-slate-50 focus:bg-white focus:border-orange-400 focus:ring-orange-400/10 transition-all"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="routingCode" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">
+                  {transferType === "international" ? "SWIFT / BIC Code" : "IFSC / Routing Code"}
+                </Label>
+                <Input
+                  id="routingCode"
+                  placeholder={transferType === "international" ? "BIC / IBAN" : "IFSC code"}
+                  value={formData.routingCode}
+                  onChange={(e) => handleChange("routingCode", e.target.value)}
+                  disabled={isLoading}
+                  className="h-12 text-sm md:text-base font-bold rounded-xl border-slate-200 bg-slate-50 focus:bg-white focus:border-orange-400 focus:ring-orange-400/10 transition-all"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Account Type</Label>
+                <Select value={formData.accountType} onValueChange={(value) => handleChange("accountType", value)}>
+                  <SelectTrigger className="h-12 text-sm md:text-base font-bold rounded-xl border-slate-200 bg-slate-50">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-xl">
+                    {["Savings", "Current", "Checking"].map((t) => (
+                      <SelectItem key={t} value={t} className="text-sm md:text-base font-black uppercase tracking-tight italic">{t}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              {transferType === "international" && (
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-medium text-slate-600">Country</Label>
+                  <Select value={formData.country} onValueChange={(value) => handleChange("country", value)}>
+                    <SelectTrigger className="h-9 text-xs rounded-lg border-slate-200 bg-slate-50">
+                      <SelectValue placeholder="Select country" />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-48 rounded-lg text-xs">
+                      {["United States", "United Kingdom", "Canada", "Germany", "France", "Japan", "Singapore", "Switzerland", "United Arab Emirates"].map((c) => (
+                        <SelectItem key={c} value={c} className="text-xs">{c}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Amount */}
+          <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4 space-y-4">
+            <h2 className="text-xl md:text-3xl font-black text-slate-800 uppercase tracking-tight italic">Transaction <span className="text-orange-600">Metrics</span></h2>
+            <div className="space-y-1.5">
+              <Label htmlFor="amount" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Transfer Amount</Label>
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl font-black text-slate-300 italic">
+                  {formData.currency === "USD" ? "$" : formData.currency}
+                </span>
+                <Input
+                  id="amount"
+                  type="number"
+                  step="0.01"
+                  placeholder="0.00"
+                  value={formData.amount}
+                  onChange={(e) => handleChange("amount", e.target.value)}
+                  required
+                  disabled={isLoading}
+                  className="pl-12 h-20 text-4xl md:text-7xl font-black rounded-2xl border-slate-200 bg-slate-50 focus:bg-white focus:border-orange-400 focus:ring-orange-400/10 italic tracking-tighter transition-all"
+                />
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="description" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Description (Optional)</Label>
+              <Textarea
+                id="description"
+                placeholder="Reason for transfer..."
+                value={formData.description}
+                onChange={(e) => handleChange("description", e.target.value)}
+                disabled={isLoading}
+                className="h-24 text-sm md:text-base font-bold rounded-xl border-slate-200 bg-slate-50 focus:bg-white focus:border-orange-400 focus:ring-orange-400/10 resize-none transition-all"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label className="text-xs font-medium text-slate-600">Fee Allocation</Label>
+              <RadioGroup
+                value={formData.chargesType}
+                onValueChange={(val) => handleChange("chargesType", val)}
+                className="grid grid-cols-3 gap-2"
+              >
+                {[
+                  { id: "SHA", label: "SHA", desc: "Shared" },
+                  { id: "OUR", label: "OUR", desc: "Sender Pays" },
+                  { id: "BEN", label: "BEN", desc: "Recipient Pays" }
+                ].map((type) => (
+                  <div key={type.id}>
+                    <RadioGroupItem value={type.id} id={type.id} className="peer sr-only" />
+                    <Label
+                      htmlFor={type.id}
+                      className="flex flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 p-2.5 hover:bg-slate-100 peer-data-[state=checked]:border-orange-500 peer-data-[state=checked]:bg-orange-50 cursor-pointer transition-all"
+                    >
+                      <span className="text-xs font-bold text-slate-800">{type.label}</span>
+                      <span className="text-[9px] text-slate-400 mt-0.5">{type.desc}</span>
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+          </div>
+
+          {/* Save beneficiary toggle */}
+          <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4">
+            <RadioGroup
+              value={saveBeneficiaryChoice}
+              onValueChange={(v: any) => setSaveBeneficiaryChoice(v)}
+              className="grid grid-cols-2 gap-2"
+            >
+              {[{ id: "no", label: "One-Time Transfer" }, { id: "yes", label: "Save Beneficiary" }].map((choice) => (
+                <div key={choice.id}>
+                  <RadioGroupItem value={choice.id} id={`save-${choice.id}`} className="peer sr-only" />
+                  <Label
+                    htmlFor={`save-${choice.id}`}
+                    className="flex items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-3 py-3.5 hover:bg-slate-100 peer-data-[state=checked]:border-orange-500 peer-data-[state=checked]:bg-orange-50 cursor-pointer transition-all text-sm md:text-base font-black uppercase tracking-widest italic"
+                  >
+                    {choice.label}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* Submit */}
+          <Button
+            type="submit"
+            disabled={isLoading || !canTransferAll}
+            className="w-full h-16 bg-slate-900 hover:bg-orange-600 text-white rounded-2xl font-black text-sm md:text-base border-none shadow-xl transition-all uppercase tracking-widest italic group"
+          >
+            {isLoading ? (
+              <div className="flex items-center gap-2">
+                <Loader2 className="h-5 w-5 animate-spin" /> Processing...
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                Send Money Now <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            )}
+          </Button>
+        </form>
       </div>
 
-      {/* OTP Dialog Redesign */}
+      {/* OTP Dialog */}
       <Dialog open={showOtpDialog} onOpenChange={setShowOtpDialog}>
-        <DialogContent className="max-w-md p-0 overflow-hidden border-none bg-slate-950 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]">
-          <div className="absolute inset-0 bg-orange-600/5 blur-3xl pointer-events-none"></div>
-          <div className="relative p-12 space-y-10">
-            <DialogHeader className="space-y-4">
-              <div className="h-20 w-20 bg-slate-900 border border-white/5 rounded-[2rem] flex items-center justify-center mx-auto shadow-2xl">
-                <ShieldCheck className="h-10 w-10 text-orange-500" />
-              </div>
-              <DialogTitle className="text-3xl font-black text-center text-white tracking-tighter uppercase italic">Identity <span className="text-orange-500">Protocol</span></DialogTitle>
-              <DialogDescription className="text-center text-slate-400 font-bold uppercase tracking-widest text-[10px] leading-relaxed">
-                Verification sequence initiated. Enter the 6-digit cryptographic clearance code sent to your linked device.
-              </DialogDescription>
-            </DialogHeader>
-
-            <div className="space-y-6">
-              <Input
-                placeholder="000000"
-                value={otpCode}
-                onChange={(e) => setOtpCode(e.target.value)}
-                maxLength={6}
-                className="h-24 bg-slate-900 border-white/5 rounded-[2rem] text-center text-5xl font-black text-white tracking-[0.3em] placeholder:text-slate-800 focus:ring-orange-600/20 focus:border-orange-600/50 transition-all shadow-inner"
-              />
-              <Button
-                onClick={handleOtpVerification}
-                disabled={isLoading}
-                className="w-full h-20 bg-orange-600 hover:bg-orange-500 text-white rounded-[2rem] font-black text-[10px] uppercase tracking-[0.3em] shadow-xl transition-all hover:scale-105 active:scale-95 border-none"
-              >
-                {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : "VERIFY_IDENTITY"}
-              </Button>
+        <DialogContent className="max-w-sm bg-white rounded-2xl border border-slate-100 shadow-xl p-6">
+          <DialogHeader className="text-center space-y-2">
+            <div className="h-12 w-12 bg-orange-50 border border-orange-100 rounded-xl flex items-center justify-center mx-auto">
+              <ShieldCheck className="h-6 w-6 text-orange-500" />
             </div>
+            <DialogTitle className="text-base font-bold text-slate-900">Security Verification</DialogTitle>
+            <DialogDescription className="text-xs text-slate-500">
+              Enter the 6-digit OTP sent to your registered device.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3 mt-2">
+            <Input
+              placeholder="000000"
+              value={otpCode}
+              onChange={(e) => setOtpCode(e.target.value)}
+              maxLength={6}
+              className="h-12 text-center text-2xl font-bold tracking-widest border-slate-200 focus:border-orange-400 rounded-xl"
+            />
+            <Button
+              onClick={handleOtpVerification}
+              disabled={isLoading}
+              className="w-full h-10 bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-semibold text-xs border-none"
+            >
+              {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Verify & Complete"}
+            </Button>
           </div>
         </DialogContent>
       </Dialog>
-
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .glass-dark { background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(20px); }
-        .text-gradient { background: linear-gradient(to right, #ea580c, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        .animate-float { animation: float 10s ease-in-out infinite; }
-      `}} />
     </div>
   )
 }
-

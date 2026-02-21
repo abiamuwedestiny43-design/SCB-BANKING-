@@ -62,7 +62,7 @@ export default function BusinessBankingPage() {
               business <span className="text-orange-600 italic">banking</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
-              Scale with confidence. First State provides the liquidity, controls, and insights your venture demands.
+              Scale with confidence. Danamon provides the liquidity, controls, and insights your venture demands.
             </p>
           </motion.div>
 
@@ -202,7 +202,7 @@ export default function BusinessBankingPage() {
               Ready to <span className="text-orange-600 italic">Accelerate?</span>
             </h2>
             <p className="text-xl text-slate-600 font-medium max-w-2xl mx-auto relative z-10">
-              Onboard your venture to the First State ecosystem and experience the future of commercial banking.
+              Onboard your venture to the Danamon ecosystem and experience the future of commercial banking.
             </p>
           </motion.div>
 

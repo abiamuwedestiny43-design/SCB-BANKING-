@@ -13,17 +13,15 @@ import {
   Download,
   Info,
   MapPin,
-  ShieldCheck
+  ShieldCheck,
+  ChevronLeft,
+  ArrowUpRight,
+  ArrowDownLeft,
+  FileText
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent
-} from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 interface ReceiptPageProps {
   transfer: {
@@ -82,26 +80,25 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.setFont("helvetica", "bold")
       doc.setFontSize(24)
       doc.setTextColor(255, 255, 255)
-      doc.text("FIRST STATE", margin, 25)
-
+      doc.text("DANAMON", margin, 25)
       doc.setFont("helvetica", "normal")
       doc.setTextColor(255, 255, 255)
-      doc.text("BANK", margin + 55, 25)
+      doc.text("BANK", margin + 45, 25)
 
       doc.setFontSize(10)
       doc.setTextColor(99, 102, 241)
       doc.setFont("helvetica", "bold")
-      doc.text("SECURE TRANSFER RECEIPT", margin, 32)
+      doc.text("ELECTRONIC RECEIPT", margin, 32)
 
       // Receipt Type
       doc.setFontSize(9)
       doc.setTextColor(148, 163, 184)
       doc.setFont("helvetica", "normal")
-      doc.text("Official Ledger Entry", pageWidth - margin, 25, { align: "right" })
+      doc.text("Official Banking Record", pageWidth - margin, 25, { align: "right" })
       doc.setTextColor(255, 255, 255)
       doc.setFontSize(14)
       doc.setFont("helvetica", "bold")
-      doc.text("Payment Advice", pageWidth - margin, 32, { align: "right" })
+      doc.text("Transaction Advice", pageWidth - margin, 32, { align: "right" })
 
       y = 60
 
@@ -116,7 +113,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
 
       doc.setTextColor(...colors.success)
       doc.setFontSize(11)
-      doc.text("AUTHORIZED & VERIFIED", margin + 55, y + 12)
+      doc.text("COMPLETED & VERIFIED", margin + 55, y + 12)
 
       doc.setFontSize(9)
       doc.setTextColor(...colors.textMuted)
@@ -170,7 +167,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.text("Sender & Bank Info", margin, y)
       y += 10
 
-      y = addRow("Bank Name", "First State Bank", y)
+      y = addRow("Bank Name", "Danamon Bank", y)
       y = addRow("Reference No", transfer.txRef, y)
       y = addRow("Transfer Type", transfer.txRegion || "International", y)
 
@@ -184,16 +181,16 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       y = addRow("Account Holder", transfer.bankHolder || "N/A", y)
       y = addRow("Target Institution", transfer.bankName || "N/A", y)
       y = addRow("Branch Location", transfer.branchName || "N/A", y)
-      y = addRow("IFSC / Routing", transfer.routingCode || "N/A", y)
+      y = addRow("Routing / IFSC", transfer.routingCode || "N/A", y)
       y = addRow("Account Type", transfer.accountType || "N/A", y)
       y = addRow("Fee Allocation", transfer.chargesType || "SHA", y)
-      y = addRow("Identity Marker", transfer.bankAccount || "N/A", y)
+      y = addRow("Account Number", transfer.bankAccount || "N/A", y)
 
       y += 10
       doc.setFontSize(12)
       doc.setTextColor(...colors.primary)
       doc.setFont("helvetica", "bold")
-      doc.text("Fiscal Parameters", margin, y)
+      doc.text("Financial Details", margin, y)
       y += 10
 
       y = addRow("Transfer Amount", formatCurrency(transfer.amount, transfer.currency), y)
@@ -203,7 +200,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.roundedRect(margin, y - 2, usableWidth, 12, 1, 1, "F")
       doc.setTextColor(255, 255, 255)
       doc.setFontSize(10)
-      doc.text("TOTAL DEBIT", margin + 5, y + 6)
+      doc.text("TOTAL AMOUNT", margin + 5, y + 6)
       doc.text(formatCurrency((transfer.amount || 0) + (transfer.txCharge || 0), transfer.currency), pageWidth - margin - 5, y + 6, { align: "right" })
 
       y += 25
@@ -231,9 +228,9 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.setFontSize(8)
       doc.setTextColor(...colors.textLight)
       doc.setFont("helvetica", "normal")
-      doc.text("First State Banking System V2.4", pageWidth / 2, footerY + 8, { align: "center" })
-      doc.text("This document is an official record of a financial transfer. Issued by First State Bank.", pageWidth / 2, footerY + 12, { align: "center" })
-      doc.text("First State Bank © 2026 | Secure • Authorized • Verified", pageWidth / 2, footerY + 16, { align: "center" })
+      doc.text("Danamon Bank", pageWidth / 2, footerY + 8, { align: "center" })
+      doc.text("This document is an official record of a financial transfer. Issued by Danamon Bank.", pageWidth / 2, footerY + 12, { align: "center" })
+      doc.text("Danamon Bank © 2026 | Secure • Authorized • Verified", pageWidth / 2, footerY + 16, { align: "center" })
 
       // Watermark
       doc.setTextColor(245, 245, 245)
@@ -242,185 +239,148 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.text("VERIFIED", pageWidth / 2, pageHeight / 2 + 20, { align: "center", angle: 45 })
 
       const timestamp = new Date().toISOString().slice(0, 10)
-      doc.save(`First State_Receipt_${transfer.txRef}_${timestamp}.pdf`)
+      doc.save(`Danamon_Receipt_${transfer.txRef}_${timestamp}.pdf`)
     } catch (err) {
       console.error("Receipt generation failed:", err)
-      alert("System failed to compile receipt protocol.")
+      alert("Failed to generate receipt PDF.")
     }
   }
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
-  }
+  const fadeIn = { initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.3 } }
 
   return (
-    <div className="min-h-screen bg-white w-full p-6 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden text-slate-900">
-      {/* Minimal Background Structure */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-slate-500/[0.01] rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-slate-500/[0.01] rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-6 pt-16 lg:pt-6">
+      <div className="max-w-4xl mx-auto space-y-5">
 
-      <div className="max-w-4xl mx-auto space-y-10 relative z-10">
-
-        {/* Navigation */}
-        <motion.div {...fadeInUp} className="flex items-center justify-between gap-4 pb-6 border-b border-slate-100">
-          <Button variant="ghost" className="h-12 px-6 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 font-bold text-slate-900 flex items-center gap-2 transition-all group" asChild>
-            <Link href="/dashboard">
-              <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-              Dashboard
-            </Link>
-          </Button>
-          <div className="px-5 py-2 bg-white border border-slate-200 rounded-full text-orange-600 text-[10px] font-black uppercase tracking-widest shadow-sm">
-            Transfer Completed
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+              <Link href="/dashboard"><ChevronLeft className="h-4 w-4" /></Link>
+            </Button>
+            <div>
+              <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Transaction Receipt</h1>
+              <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Official record for transfer {transfer.txRef}</p>
+            </div>
           </div>
-        </motion.div>
+          <Badge className="bg-emerald-50 text-emerald-600 border-emerald-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider hidden sm:flex">
+            Status: Completed
+          </Badge>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
 
-          {/* Receipt Artifact */}
-          <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="lg:col-span-8">
-            <Card className="border border-slate-200 shadow-2xl shadow-orange-600/5 bg-white rounded-[3rem] overflow-hidden relative group">
-              <div className="absolute top-0 right-0 p-8">
-                <div className="h-20 w-20 rounded-3xl bg-white border border-slate-200 flex items-center justify-center text-orange-600 shadow-sm overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
-                  <CheckCircle className="h-10 w-10 relative z-10" />
-                  <div className="absolute inset-0 bg-slate-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          {/* Main Receipt */}
+          <motion.div {...fadeIn} className="lg:col-span-8 space-y-5">
+            <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+              <div className="p-6 md:p-8 flex flex-col items-center text-center border-b border-slate-50">
+                <div className="h-14 w-14 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 mb-4 shadow-sm border border-emerald-100">
+                  <CheckCircle className="h-8 w-8" />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tight italic">Transfer <span className="text-emerald-500">Successful</span></h2>
+                <p className="text-[10px] md:text-xs text-slate-400 mt-2 uppercase tracking-widest font-black opacity-60">{new Date(transfer.txDate).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+
+                <div className="mt-8">
+                  <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-2 opacity-60">Amount Disbursed</p>
+                  <p className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter italic">
+                    {formatCurrency(transfer.amount, transfer.currency)}
+                  </p>
                 </div>
               </div>
 
-              <CardHeader className="p-12 pb-6 border-b border-slate-50">
-                <div className="space-y-2">
-                  <CardTitle className="text-4xl font-black text-slate-900 tracking-tighter uppercase">
-                    Transaction <span className="text-slate-400 italic">Receipt</span>
-                  </CardTitle>
-                  <CardDescription className="text-slate-500 font-medium">Official verified transaction record.</CardDescription>
-                </div>
-              </CardHeader>
-
-              <CardContent className="p-12 space-y-12">
-                {/* Core Specs */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-1 p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Reference ID</p>
-                    <p className="font-mono font-bold text-slate-900 tracking-tight">{transfer.txRef}</p>
-                  </div>
-                  <div className="space-y-1 p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</p>
-                    <p className="font-bold text-slate-900 tracking-tight">{new Date(transfer.txDate).toLocaleString()}</p>
-                  </div>
-                </div>
-
-                {/* Value Metrics */}
-                <div className="p-10 rounded-[2.5rem] bg-orange-50 border border-orange-100 relative overflow-hidden group/value">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 blur-3xl rounded-full -mr-16 -mt-16 group-hover/value:bg-orange-500/10 transition-colors"></div>
-                  <div className="space-y-8">
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-1">
-                        <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest flex items-center gap-2">
-                          <div className="h-1.5 w-1.5 rounded-full bg-orange-600 animate-pulse"></div>
-                          Amount
-                        </p>
-                        <p className="text-5xl font-black text-slate-900 tracking-tighter">
-                          {formatCurrency(transfer.amount, transfer.currency)}
-                        </p>
-                      </div>
-                      <div className="h-16 w-16 rounded-full bg-white border border-orange-100 flex items-center justify-center text-orange-600 shadow-sm">
-                        <DollarSign className="h-8 w-8" />
-                      </div>
-                    </div>
-                    <div className="pt-8 border-t border-orange-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                      <div className="space-y-1">
-                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Service Fee</p>
-                        <p className="text-lg font-bold text-slate-600">
-                          {formatCurrency(transfer.txCharge, transfer.currency)}
-                        </p>
-                      </div>
-                      <div className="space-y-1 text-right">
-                        <p className="text-[9px] font-black text-red-500 uppercase tracking-widest">Total Debit</p>
-                        <p className="text-2xl font-black text-slate-900">
-                          {formatCurrency((transfer.amount || 0) + (transfer.txCharge || 0), transfer.currency)}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Node Trace */}
-                <div className="space-y-6 pt-6 border-t border-slate-100">
-                  <div className="flex items-center gap-3">
-                    <div className="h-4 w-4 bg-orange-50 rounded-full flex items-center justify-center">
-                      <div className="h-1.5 w-1.5 bg-orange-600 rounded-full"></div>
-                    </div>
-                    <h3 className="text-[10px] font-black text-slate-900 uppercase tracking-[0.3em]">Beneficiary Details</h3>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                    {[
-                      { label: "Account Holder", value: transfer.bankHolder, icon: User, color: 'text-orange-600', bg: 'bg-orange-50' },
-                      { label: "Account Number", value: transfer.bankAccount, icon: Hash, color: 'text-slate-600', bg: 'bg-slate-50' },
-                      { label: "Bank Name", value: transfer.bankName, icon: Building, color: 'text-orange-600', bg: 'bg-orange-50' },
-                      { label: "Branch Name", value: transfer.branchName || "N/A", icon: MapPin, color: 'text-slate-600', bg: 'bg-slate-50' },
-                      { label: "IFSC / Routing", value: transfer.routingCode || "N/A", icon: Globe, color: 'text-orange-600', bg: 'bg-orange-50' },
-                      { label: "Account Type", value: transfer.accountType || "N/A", icon: ShieldCheck, color: 'text-slate-600', bg: 'bg-slate-50' },
-                      { label: "Fee Allocation", value: transfer.chargesType || "SHA", icon: Info, color: 'text-orange-600', bg: 'bg-orange-50' },
-                      { label: "Transfer Type", value: transfer.txRegion, icon: Globe, color: 'text-slate-600', bg: 'bg-slate-50' },
-                    ].map((node, i) => (
-                      <div key={i} className="flex items-center gap-4 group/node">
-                        <div className={cn("h-10 w-10 shrink-0 rounded-xl flex items-center justify-center transition-all group-hover/node:scale-110", node.bg, node.color)}>
-                          <node.icon className="h-5 w-5" />
-                        </div>
-                        <div className="space-y-0.5">
-                          <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{node.label}</p>
-                          <p className="font-bold text-slate-900 text-sm uppercase tracking-tight">{node.value}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Transmission Memo */}
-                {transfer.txReason && (
-                  <div className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 space-y-3">
-                    <div className="flex items-center gap-2">
-                      <Info className="h-3 w-3 text-orange-600" />
-                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Description</p>
-                    </div>
-                    <p className="text-slate-600 font-medium italic leading-relaxed uppercase">
-                      "{transfer.txReason}"
+              <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                {[
+                  { label: "Account Holder", value: transfer.bankHolder, icon: User },
+                  { label: "Target Bank", value: transfer.bankName, icon: Building },
+                  { label: "Account Number", value: transfer.bankAccount, icon: Hash },
+                  { label: "Transfer Region", value: transfer.txRegion, icon: Globe },
+                  { label: "Service Fee", value: formatCurrency(transfer.txCharge, transfer.currency), icon: DollarSign },
+                  { label: "Reference ID", value: transfer.txRef, icon: FileText, mono: true },
+                ].map((item, i) => (
+                  <div key={i} className="space-y-1.5">
+                    <p className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5 opacity-60">
+                      <item.icon className="h-3.5 w-3.5" />
+                      {item.label}
+                    </p>
+                    <p className={cn("text-sm md:text-base font-black text-slate-800 uppercase tracking-tight italic", item.mono && "font-mono text-xs md:text-sm tracking-normal not-italic")}>
+                      {item.value}
                     </p>
                   </div>
-                )}
-              </CardContent>
-            </Card>
+                ))}
+              </div>
+
+              {transfer.txReason && (
+                <div className="px-6 md:px-8 pb-8">
+                  <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                    <p className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 opacity-60">Description</p>
+                    <p className="text-sm md:text-base text-slate-600 font-bold italic tracking-tight">"{transfer.txReason}"</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-slate-900 rounded-xl p-6 text-white relative overflow-hidden shadow-lg">
+              <div className="absolute top-0 right-0 p-8 opacity-5">
+                <ShieldCheck className="w-20 h-20 text-white" />
+              </div>
+              <div className="relative z-10 flex items-center gap-4">
+                <div className="h-10 w-10 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                  <ShieldCheck className="h-6 w-6" />
+                </div>
+                <div>
+                  <h4 className="text-sm md:text-base font-black uppercase tracking-widest italic tracking-tight">Compliance <span className="text-emerald-400">Verified</span></h4>
+                  <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-widest opacity-60 leading-relaxed mt-1">This receipt serves as an official verified record of your financial transfer. Issued by Danamon Bank.</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Sidebar Actions */}
-          <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="lg:col-span-4 space-y-6">
-            <div className="p-8 rounded-[2.5rem] bg-white border border-slate-200 shadow-xl space-y-8">
-              <div className="space-y-2">
-                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">Actions</h3>
-                <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Available operations for this entry.</p>
+          <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="lg:col-span-4 space-y-4">
+            <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-5 space-y-4">
+              <div>
+                <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">Receipt <span className="text-orange-600">Actions</span></h3>
+                <p className="text-[10px] md:text-xs text-slate-400 font-black uppercase tracking-widest opacity-60">Manage this transaction record</p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-2">
                 <Button
-                  className="w-full h-16 bg-orange-600 hover:bg-slate-900 text-white font-black rounded-2xl shadow-xl shadow-orange-600/10 uppercase tracking-widest text-xs transition-all hover:-translate-y-1"
                   onClick={handleDownload}
+                  className="w-full h-12 bg-slate-900 hover:bg-orange-600 text-white font-black rounded-xl text-sm uppercase tracking-widest transition-all italic"
                 >
-                  <Download className="mr-3 h-5 w-5 text-orange-200" />
+                  <Download className="h-4 w-4" />
                   Download PDF
                 </Button>
-                <Button variant="ghost" className="w-full h-16 border border-slate-200 hover:bg-slate-50 text-slate-600 font-black rounded-2xl transition-all uppercase tracking-widest text-xs" asChild>
-                  <Link href="/dashboard/transfer">New Transfer</Link>
+
+                <Button
+                  variant="outline"
+                  asChild
+                  className="w-full h-12 border-slate-200 text-slate-700 font-black rounded-xl text-sm uppercase tracking-widest hover:bg-slate-50 transition-all italic"
+                >
+                  <Link href="/dashboard/transfer">
+                    <ArrowUpRight className="h-4 w-4 mr-2" />
+                    New Transfer
+                  </Link>
+                </Button>
+
+                <Button
+                  variant="outline"
+                  asChild
+                  className="w-full h-12 border-slate-200 text-slate-700 font-black rounded-xl text-sm uppercase tracking-widest hover:bg-slate-50 transition-all italic"
+                >
+                  <Link href="/dashboard">
+                    <ChevronLeft className="h-4 w-4 mr-2" />
+                    Back to Home
+                  </Link>
                 </Button>
               </div>
+            </div>
 
-              <div className="pt-8 border-t border-slate-100 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_8px_rgb(99,102,241)]"></div>
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Compliance Verified</span>
-                </div>
-                <p className="text-[10px] text-slate-500 font-medium leading-relaxed italic">
-                  This receipt serves as an official record of transaction. Authorized use only.
+            <div className="p-4 bg-orange-50 rounded-xl border border-orange-100">
+              <div className="flex gap-3">
+                <Info className="h-4 w-4 text-orange-500 shrink-0 mt-0.5" />
+                <p className="text-[11px] text-orange-800 leading-relaxed">
+                  Need to report a problem with this transaction? Please contact our <Link href="/dashboard/support/chat-apps" className="underline font-bold">support team</Link> with your reference ID.
                 </p>
               </div>
             </div>

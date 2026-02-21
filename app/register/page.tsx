@@ -35,13 +35,13 @@ export default function RegisterPage() {
     setError("")
 
     if (formData.password !== formData.confirmPassword) {
-      setError("Cipher mismatch: Passwords do not align.")
+      setError("Passwords do not match.")
       setIsLoading(false)
       return
     }
 
     if (formData.pin.length !== 4) {
-      setError("Protocol violation: PIN must be 4 digits.")
+      setError("Security Rule: PIN must be 4 digits.")
       setIsLoading(false)
       return
     }
@@ -58,10 +58,10 @@ export default function RegisterPage() {
       if (response.ok) {
         window.location.href = "/dashboard"
       } else {
-        setError(data.message || "Node initialization failed. Check registry.")
+        setError(data.message || "Account creation failed. Please check your details.")
       }
     } catch (error) {
-      setError("Sync failure. Network instability detected.")
+      setError("Connection error. Network instability detected.")
     } finally {
       setIsLoading(false)
     }
@@ -94,14 +94,14 @@ export default function RegisterPage() {
         {/* Header Hook */}
         <div className="text-center mb-10 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-[10px] font-black uppercase tracking-[0.3em]">
-            <Activity className="w-3 h-3" /> System Onboarding
+            <Activity className="w-3 h-3" /> Account Registration
           </div>
           <div className="space-y-1">
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase italic">
-              IDENTITY <span className="text-orange-600">PROVISION</span>
+            <h1 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase italic">
+              ACCOUNT <span className="text-orange-600">REGISTRATION</span>
             </h1>
-            <p className="text-slate-500 font-medium text-sm max-w-md mx-auto italic leading-relaxed">
-              Establishing new secure node within the <span className="text-orange-600 font-bold">FIRST STATE</span> global asset perimeter.
+            <p className="text-sm md:text-base text-slate-500 font-black uppercase tracking-widest opacity-60 max-w-md mx-auto italic leading-relaxed">
+              Creating a new secure account within the <span className="text-orange-600 font-black">DANAMON</span> banking system.
             </p>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function RegisterPage() {
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent" />
 
           <CardHeader className="p-10 pb-0">
-            <CardTitle className="text-2xl font-black text-slate-900 tracking-tight uppercase border-l-4 border-orange-600 pl-6">Core Credentials</CardTitle>
+            <CardTitle className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase border-l-4 border-orange-600 pl-6 italic">Core <span className="text-orange-600">Credentials</span></CardTitle>
           </CardHeader>
 
           <CardContent className="p-10 pt-8">
@@ -127,11 +127,11 @@ export default function RegisterPage() {
               {/* SECTION: BIOSIGNATURES */}
               <div className="space-y-6">
                 <p className="text-[10px] font-black text-orange-600/50 uppercase tracking-[0.4em] mb-4 flex items-center gap-2">
-                  <User className="w-3 h-3" /> Internal Bio-Data
+                  <User className="w-3 h-3" /> Personal Information
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Legal Forename</Label>
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">First Name</Label>
                     <Input
                       value={formData.firstname}
                       onChange={(e) => handleChange("firstname", e.target.value)}
@@ -141,7 +141,7 @@ export default function RegisterPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Legal Surname</Label>
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Last Name</Label>
                     <Input
                       value={formData.lastname}
                       onChange={(e) => handleChange("lastname", e.target.value)}
@@ -154,7 +154,7 @@ export default function RegisterPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Birth Epoch</Label>
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Date of Birth</Label>
                     <div className="relative group">
                       <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-orange-600" />
                       <Input
@@ -168,15 +168,15 @@ export default function RegisterPage() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Biological Marker</Label>
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Gender</Label>
                     <Select onValueChange={(value) => handleChange("gender", value)}>
                       <SelectTrigger className="h-12 bg-white border-slate-200 rounded-xl text-slate-900 focus:border-orange-500/50 transition-all font-bold tracking-tight px-4 ring-0 focus:ring-0">
-                        <SelectValue placeholder="GENDER_SELECTOR" />
+                        <SelectValue placeholder="Select Gender" />
                       </SelectTrigger>
                       <SelectContent className="bg-white border-slate-200 text-slate-900">
-                        <SelectItem value="male" className="focus:bg-orange-50 focus:text-white font-bold">MALE_PROTOCOL</SelectItem>
-                        <SelectItem value="female" className="focus:bg-orange-50 focus:text-white font-bold">FEMALE_PROTOCOL</SelectItem>
-                        <SelectItem value="others" className="focus:bg-orange-50 focus:text-white font-bold">DIVERSE_PROTOCOL</SelectItem>
+                        <SelectItem value="male" className="focus:bg-orange-50 focus:text-white font-bold">Male</SelectItem>
+                        <SelectItem value="female" className="focus:bg-orange-50 focus:text-white font-bold">Female</SelectItem>
+                        <SelectItem value="others" className="focus:bg-orange-50 focus:text-white font-bold">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -186,12 +186,12 @@ export default function RegisterPage() {
               {/* SECTION: ACCESS PARAMETERS */}
               <div className="space-y-6">
                 <p className="text-[10px] font-black text-orange-600/50 uppercase tracking-[0.4em] mb-4 flex items-center gap-2">
-                  <Lock className="w-3 h-3" /> Access Infrastructure
+                  <Lock className="w-3 h-3" /> Account Access
                 </p>
 
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Gateway ID (Email)</Label>
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Email Address</Label>
                     <div className="relative group">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-orange-600" />
                       <Input
@@ -199,7 +199,7 @@ export default function RegisterPage() {
                         value={formData.email}
                         onChange={(e) => handleChange("email", e.target.value)}
                         required
-                        placeholder="identity_anchor@firststatebank.online"
+                        placeholder="user@example.com"
                         className="h-12 pl-12 bg-white border-slate-200 rounded-xl text-slate-900 focus:border-orange-500/50 transition-all font-bold tracking-tight placeholder:text-slate-300"
                       />
                     </div>
@@ -207,7 +207,7 @@ export default function RegisterPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Access Cipher</Label>
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Password</Label>
                       <Input
                         type="password"
                         value={formData.password}
@@ -218,7 +218,7 @@ export default function RegisterPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Cipher Confirm</Label>
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Confirm Password</Label>
                       <Input
                         type="password"
                         value={formData.confirmPassword}
@@ -232,7 +232,7 @@ export default function RegisterPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Terminal Link (Phone)</Label>
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Phone Number</Label>
                       <div className="relative group">
                         <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-orange-600" />
                         <Input
@@ -244,7 +244,7 @@ export default function RegisterPage() {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">System PIN (4 Digits)</Label>
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Account PIN (4 Digits)</Label>
                       <Input
                         type="password"
                         maxLength={4}
@@ -270,16 +270,16 @@ export default function RegisterPage() {
                     <Loader2 className="w-6 h-6 animate-spin mx-auto" />
                   ) : (
                     <span className="flex items-center justify-center gap-3 relative z-10">
-                      Provision Node Access <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                      Register Now <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                     </span>
                   )}
                 </Button>
 
                 <div className="text-center">
                   <p className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-500">
-                    Existing Node Signature?{" "}
+                    Already have an account?{" "}
                     <Link href="/login" className="text-orange-600 hover:text-orange-700 transition-colors border-b border-orange-500/20 hover:border-orange-700">
-                      Initialize Login
+                      Sign In
                     </Link>
                   </p>
                 </div>
@@ -290,15 +290,15 @@ export default function RegisterPage() {
           <div className="p-10 bg-white border-t border-slate-100 flex flex-wrap items-center justify-center gap-8">
             <div className="flex items-center gap-2">
               <Globe className="w-4 h-4 text-orange-600/40" />
-              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Cross-Region Details</span>
+              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Global Access</span>
             </div>
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-orange-600/40" />
-              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Quantum Encryption</span>
+              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Advanced Security</span>
             </div>
             <div className="flex items-center gap-2">
               <Cpu className="w-4 h-4 text-orange-600/40" />
-              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Real-Time Core</span>
+              <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Live Processing</span>
             </div>
           </div>
         </Card>
@@ -306,7 +306,7 @@ export default function RegisterPage() {
         {/* Legal Cipher */}
         <div className="mt-10 text-center opacity-20 hover:opacity-100 transition-opacity">
           <p className="text-[8px] font-black text-slate-500 uppercase tracking-[0.5em] leading-relaxed">
-            By initializing this provisioning protocol, you agree to the FIRST STATE BANK Global Asset Custody Terms and Neural Agreement.
+            By creating an account, you agree to the DANAMON BANK Terms of Service and Privacy Policy.
           </p>
         </div>
       </div>

@@ -2,31 +2,33 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, ArrowLeftRight, Users, CreditCard, Settings, LogOut, Menu, X, Banknote, BellRing, ShieldCheck, History, MessageCircle } from "lucide-react"
+import {
+  LayoutDashboard, ArrowLeftRight, Users, CreditCard, Settings, LogOut,
+  Menu, X, Banknote, BellRing, ShieldCheck, History, MessageCircle, ChevronRight
+} from "lucide-react"
 import type { IUser } from "@/models/User"
-import Image from "next/image"
 
 interface UserSidebarProps {
   user: IUser
 }
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Transfer Funds", href: "/dashboard/transfer", icon: ArrowLeftRight },
-  { name: "Transaction History", href: "/dashboard/transactions", icon: History },
+  { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Send Money", href: "/dashboard/transfer", icon: ArrowLeftRight },
+  { name: "Transactions", href: "/dashboard/transactions", icon: History },
   { name: "My Cards", href: "/dashboard/card", icon: CreditCard },
-  { name: "Loan Services", href: "/dashboard/loans", icon: Banknote },
-  { name: "Chat Support", href: "/dashboard/support/chat-apps", icon: MessageCircle },
+  { name: "Loans", href: "/dashboard/loans", icon: Banknote },
+  { name: "Beneficiaries", href: "/dashboard/beneficiaries", icon: Users },
+  { name: "Support", href: "/dashboard/support/chat-apps", icon: MessageCircle },
   { name: "Notifications", href: "/dashboard/notifications", icon: BellRing },
   { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ]
 
 export default function UserSidebar({ user }: UserSidebarProps) {
   const pathname = usePathname()
-  const router = useRouter()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const handleLogout = async () => {
@@ -36,60 +38,56 @@ export default function UserSidebar({ user }: UserSidebarProps) {
 
   return (
     <>
-      {/* Mobile menu button */}
-      <div className="lg:hidden fixed top-4 right-4 z-50">
-        <Button variant="outline" size="icon" className="bg-white border-slate-200 text-orange-600 shadow-sm" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+      {/* Mobile toggle */}
+      <div className="lg:hidden fixed top-4 left-4 z-50">
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-10 w-10 rounded-xl bg-white border-slate-200 text-slate-600 shadow-sm"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
           {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </div>
 
       {/* Sidebar */}
-      <div
-        className={cn(
-          "fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-slate-200 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static shadow-sm",
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full",
-        )}
-      >
-        <div className="flex flex-col h-full uppercase">
-          {/* Header/Logo */}
-          <div className="p-8 pb-10">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-sm group-hover:scale-110 transition-transform bg-orange-50 border border-orange-100 flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6 text-orange-600" />
+      <div className={cn(
+        "fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-100 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static flex-shrink-0",
+        isMobileMenuOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
+      )}>
+        <div className="flex flex-col h-full">
+
+          {/* Logo */}
+          <div className="px-6 py-5 border-b border-slate-100">
+            <Link href="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+              <div className="h-8 w-8 rounded-lg bg-orange-600 flex items-center justify-center flex-shrink-0">
+                <ShieldCheck className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-black tracking-tighter text-slate-900">
-                FIRST<span className="text-orange-600 italic">STATE</span>
-              </span>
+              <span className="text-base md:text-lg font-bold text-slate-900 tracking-tight">Danamon Bank</span>
             </Link>
           </div>
 
-          {/* User Profile Hook */}
-          <div className="px-6 mb-10">
-            <div className="p-4 rounded-[1.5rem] bg-orange-50 border border-orange-100 flex items-center space-x-4">
-              <div className="relative">
-                <div className="w-12 h-12 bg-white border border-orange-200 rounded-xl flex items-center justify-center text-orange-600 font-black text-lg overflow-hidden">
-                  {user.profileImage ? (
-                    <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
-                  ) : (
-                    user.bankInfo.bio.firstname[0]
-                  )}
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-600 border-2 border-white rounded-full"></div>
+          {/* User profile */}
+          <div className="px-5 py-4 border-b border-slate-100">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 font-bold text-base flex-shrink-0 overflow-hidden">
+                {user.profileImage
+                  ? <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
+                  : user.bankInfo.bio.firstname[0]
+                }
               </div>
-              <div className="overflow-hidden">
-                <p className="text-sm font-black text-slate-900 truncate">
+              <div className="min-w-0">
+                <p className="text-sm md:text-base font-semibold text-slate-900 truncate">
                   {user.bankInfo.bio.firstname} {user.bankInfo.bio.lastname}
                 </p>
-                <div className="flex items-center gap-1">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-orange-600/70 truncate">{user.bankNumber}</p>
-                </div>
+                <p className="text-xs text-slate-400 truncate font-mono">{user.bankNumber}</p>
               </div>
             </div>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-4 space-y-2 overflow-y-auto custom-scroll">
-            <p className="px-4 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-4">Banking Dashboard</p>
+          <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
+            <p className="px-2 text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Menu</p>
             {navigation.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -97,30 +95,30 @@ export default function UserSidebar({ user }: UserSidebarProps) {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "flex items-center space-x-4 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 group",
+                    "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm md:text-base font-medium transition-all group",
                     isActive
-                      ? "bg-orange-600 text-white shadow-xl shadow-orange-600/20"
-                      : "text-slate-500 hover:text-orange-600 hover:bg-orange-50",
+                      ? "bg-orange-50 text-orange-700 shadow-sm"
+                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-white" : "text-orange-500/50")} />
+                  <item.icon className={cn("h-5 w-5 flex-shrink-0 transition-colors", isActive ? "text-orange-600" : "text-slate-400 group-hover:text-slate-600")} />
                   <span>{item.name}</span>
+                  {isActive && <div className="ml-auto h-2 w-2 rounded-full bg-orange-500 shadow-sm shadow-orange-500/50" />}
                 </Link>
               )
             })}
           </nav>
 
-          {/* Footer/Logout */}
-          <div className="p-6 border-t border-slate-100 bg-white/50">
-            <Button
-              variant="ghost"
-              className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50 rounded-2xl h-12 font-black uppercase tracking-widest text-[10px] gap-3"
+          {/* Logout */}
+          <div className="px-4 py-4 border-t border-slate-100">
+            <button
               onClick={handleLogout}
+              className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm md:text-base font-medium text-slate-500 hover:text-red-700 hover:bg-red-50 transition-all group"
             >
-              <LogOut className="h-4 w-4" />
+              <LogOut className="h-5 w-5 flex-shrink-0 text-slate-400 group-hover:text-red-600" />
               Sign Out
-            </Button>
+            </button>
           </div>
         </div>
       </div>
@@ -128,7 +126,7 @@ export default function UserSidebar({ user }: UserSidebarProps) {
       {/* Mobile overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-30 lg:hidden animate-fade-in"
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}

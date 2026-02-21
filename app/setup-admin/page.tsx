@@ -48,7 +48,7 @@ export default function SetupAdminPage() {
                             Admin Setup
                         </h1>
                         <p className="text-slate-400 font-medium">
-                            Initialize your super admin account for First State Bank
+                            Initialize your super admin account for Danamon Bank
                         </p>
                     </div>
 

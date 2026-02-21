@@ -112,17 +112,19 @@ export default async function TransactionsPage({
       <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-Black & white -500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-Black & white -500/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="relative z-10">
-        <h1 className="text-xl font-bold mb-4">Transaction History</h1>
-        <TransactionsList
-          initialTransactions={transactions}
-          total={total}
-          currentPage={page}
-          totalPages={totalPages}
-          currentFilters={{ status, type, search }}
-        />
+      <div className="relative z-10 mb-8 md:mb-12">
+        <h1 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tighter italic uppercase mb-2">Transaction <span className="text-orange-600">Registry</span></h1>
+        <p className="text-sm md:text-lg text-slate-400 font-black uppercase tracking-widest opacity-60">Complete history of system-wide asset sequences.</p>
       </div>
+      <TransactionsList
+        initialTransactions={transactions}
+        total={total}
+        currentPage={page}
+        totalPages={totalPages}
+        currentFilters={{ status, type, search }}
+      />
     </div>
+    </div >
   );
 }
 

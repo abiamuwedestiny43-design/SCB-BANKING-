@@ -1,4 +1,4 @@
-# 🚀 QUICK START - First State Bank Production
+# 🚀 QUICK START - Danamon Bank Production
 
 ## 📍 Your Live Site
 
@@ -20,7 +20,7 @@
 
 ```
 🔗 Visit: https://novabank-rose.vercel.app/login
-📧 Email: admin@firststatebank.com
+📧 Email: admin@danamonbk.com
 🔑 Password: Admin@123456
 📌 PIN: 1234
 ```

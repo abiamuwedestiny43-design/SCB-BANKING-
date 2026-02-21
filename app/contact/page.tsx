@@ -16,13 +16,13 @@ const ContactPage: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-orange-600 text-[10px] font-black tracking-[0.3em] uppercase mb-8 shadow-sm">
             <Globe className="w-4 h-4" /> Global Support Network
           </div>
-          <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-8 text-slate-900 uppercase">
+          <h1 className="text-4xl md:text-7xl font-black leading-tight tracking-tighter mb-8 text-slate-900 uppercase italic">
             Connect with the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-700 italic">
+            <span className="text-orange-600">
               Financial Elite.
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
+          <p className="text-sm md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-bold uppercase tracking-widest opacity-60">
             Our dedicated advisory team is standing by to assist with your institutional and personal banking requirements.
             Experience rapid response times and expert guidance.
           </p>
@@ -37,7 +37,7 @@ const ContactPage: React.FC = () => {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/10 to-orange-600/10 rounded-[3rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
               <div className="relative bg-white border border-slate-200 p-10 md:p-12 rounded-[3rem] shadow-2xl">
-                <h2 className="text-3xl font-black text-slate-900 mb-8 italic uppercase">Secure Transmission</h2>
+                <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-8 italic uppercase tracking-tighter">Secure <span className="text-orange-600">Transmission</span></h2>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -79,7 +79,7 @@ const ContactPage: React.FC = () => {
             {/* Contact Information */}
             <div className="space-y-12">
               <div>
-                <h2 className="text-3xl font-black text-slate-900 mb-10 tracking-tight uppercase">Direct <span className="text-orange-600">Channels</span></h2>
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-10 tracking-tight uppercase italic">Direct <span className="text-orange-600">Channels</span></h2>
                 <div className="space-y-8">
                   {[
                     { icon: Phone, title: 'Voice Support', value: '+1 (995) 886 436', desc: 'Available Mon-Fri, 9AM-6PM EST', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-100' },
@@ -105,12 +105,12 @@ const ContactPage: React.FC = () => {
                   <div className="h-2 w-2 rounded-full bg-orange-600 animate-pulse"></div>
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-600">Systems Operational</span>
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 italic uppercase">24/7 Digital Concierge</h3>
-                <p className="text-slate-500 leading-relaxed font-medium">
+                <h3 className="text-2xl font-black text-slate-900 italic uppercase tracking-tighter">24/7 Digital <span className="text-orange-600">Concierge</span></h3>
+                <p className="text-sm md:text-base text-slate-500 leading-relaxed font-bold uppercase tracking-widest opacity-60">
                   Our AI-driven support ecosystem is always active for immediate account verification and urgent security reports.
                 </p>
                 <div className="pt-4">
-                  <p className="text-3xl font-black text-slate-900 underline decoration-orange-600 underline-offset-8">+1 (995) 886 436</p>
+                  <p className="text-3xl md:text-4xl font-black text-slate-900 underline decoration-orange-600 underline-offset-8 italic tracking-tighter">+1 (995) 886 436</p>
                 </div>
               </div>
             </div>
@@ -123,8 +123,8 @@ const ContactPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-xl">
-              <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tighter uppercase">Our Global <span className="text-slate-400 italic">Details</span></h2>
-              <p className="text-slate-500 font-medium">Strategically located in the world's most vital financial centers.</p>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter uppercase italic">Our Global <span className="text-orange-600">Offices</span></h2>
+              <p className="text-sm md:text-lg text-slate-500 font-bold uppercase tracking-widest opacity-60">Strategically located in the world's most vital financial centers.</p>
             </div>
             <button className="px-8 py-4 rounded-xl bg-white border border-slate-200 text-slate-900 font-bold hover:bg-slate-50 transition-all flex items-center gap-2 shadow-sm uppercase tracking-widest text-xs">
               View Global Map <Globe className="w-5 h-5 text-orange-600" />

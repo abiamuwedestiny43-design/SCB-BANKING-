@@ -59,10 +59,10 @@ export default async function UsersPage({ searchParams }: { searchParams: { sear
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
             <Fingerprint className="w-3.5 h-3.5 text-orange-500" /> Identity Matrix
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none uppercase">
-            ENTITY <span className="text-orange-600 italic">DIRECTORY</span>
+          <h1 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase italic">
+            ENTITY <span className="text-orange-600">DIRECTORY</span>
           </h1>
-          <p className="text-slate-400 font-bold max-w-lg text-base uppercase tracking-tight">Central registry for global account sequences and verification clearance.</p>
+          <p className="text-sm md:text-lg text-slate-400 font-bold max-w-lg uppercase tracking-widest opacity-60">Central registry for global account sequences and verification clearance.</p>
         </div>
 
         <Button asChild className="bg-slate-900 hover:bg-orange-600 text-white font-black h-16 px-10 rounded-[2rem] shadow-2xl transition-all hover:scale-105 active:scale-95 group border border-white/5">
@@ -118,10 +118,10 @@ async function UsersTable({ searchQuery }: { searchQuery?: string }) {
       <CardHeader className="p-8 md:p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
-            <CardTitle className="text-3xl font-black text-white tracking-tighter uppercase leading-none italic">
-              {searchQuery ? `Telemetry Results` : "Infrastructure Nodes"}
+            <CardTitle className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none italic">
+              {searchQuery ? `Telemetry Result` : "Infrastructure Nodes"}
             </CardTitle>
-            <CardDescription className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.3em] mt-4 flex items-center gap-2">
+            <CardDescription className="text-[10px] md:text-xs text-slate-500 font-black uppercase tracking-[0.3em] mt-6 flex items-center gap-2 opacity-60">
               <div className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse"></div>
               {searchQuery ? `Scanning Matrix For: ${searchQuery}` : "Authorized Access Register"}
             </CardDescription>

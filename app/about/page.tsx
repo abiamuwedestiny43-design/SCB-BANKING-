@@ -17,23 +17,21 @@ const AboutPage: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-sm font-bold tracking-wider mb-8 animate-fade-in uppercase">
             <Zap className="w-4 h-4" /> Our Legacy & Vision
           </div>
-          <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-8 text-slate-900 uppercase">
-            Pioneering the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-700 italic">
-              Future of Trust.
+          <h1 className="text-4xl md:text-7xl font-black leading-tight tracking-tighter mb-8 text-slate-900 uppercase italic">
+            Pioneering <br />
+            <span className="text-orange-600">
+              The Future of Trust.
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 animate-slide-up font-medium">
-            For over five decades, FIRST STATE BANK has been more than just a financial
-            institution — we have been a trusted partner in helping individuals,
-            families, and businesses grow and secure their futures.
+          <p className="text-sm md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 animate-slide-up font-bold uppercase tracking-widest opacity-60">
+            For over five decades, DANAMON BANK has been more than just a financial institution — we have been a trusted partner in helping individuals, families, and businesses grow and secure their future.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-slate-100">
             {[
-              { number: "500K+", label: "Active Clients" },
-              { number: "$2B+", label: "Assets Managed" },
-              { number: "50+", label: "Years Excellence" },
+              { number: "500k+", label: "Active Customers" },
+              { number: "$2B+", label: "Assets Under Management" },
+              { number: "50+", label: "Years of Excellence" },
               { number: "100+", label: "Global Hubs" },
             ].map((stat, index) => (
               <div key={index} className="text-center group">
@@ -66,21 +64,15 @@ const AboutPage: React.FC = () => {
             </div>
 
             <div className="space-y-8">
-              <h2 className="text-4xl font-black tracking-tight text-slate-900 uppercase">
-                Our <span className="text-orange-600 italic">Genesis</span>
+              <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-slate-900 uppercase italic">
+                Our <span className="text-orange-600">Origins</span>
               </h2>
-              <div className="space-y-6 text-slate-600 leading-relaxed text-lg font-medium">
+              <div className="space-y-6 text-slate-600 leading-relaxed text-sm md:text-lg font-bold uppercase tracking-widest opacity-60">
                 <p>
-                  At FIRST STATE BANK, we believe that finance is not only about numbers — it’s
-                  about people. That’s why we focus on building genuine relationships
-                  with our customers, offering personalized solutions designed to
-                  meet their unique needs.
+                  At DANAMON BANK, we believe that finance is not just about numbers — it's about people. That's why we focus on building genuine relationships with our customers, offering personalized solutions designed to meet their unique needs.
                 </p>
                 <p>
-                  Whether it’s securing your first home, planning for retirement, or
-                  scaling a business, our team is here to walk with you every step of the way.
-                  With a foundation built on trust, innovation, and sustainability,
-                  we are committed to creating opportunities.
+                  Whether it's securing your first home, planning for retirement, or growing a business, our team is here to support you every step of the way. With a foundation built on trust, innovation, and sustainability, we are committed to creating opportunities.
                 </p>
               </div>
               <div className="pt-4">
@@ -104,13 +96,9 @@ const AboutPage: React.FC = () => {
               <div className="h-16 w-16 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-8">
                 <Target className="w-8 h-8 text-orange-600" />
               </div>
-              <h2 className="text-3xl font-black text-slate-900 mb-6 uppercase">Our Mission</h2>
-              <p className="text-slate-600 leading-relaxed font-medium">
-                Empowering individuals and businesses by providing exceptional financial solutions
-                rooted in integrity, innovation, and customer-centricity. We believe banking
-                should not just be transactional — it should be transformational. Through transparent
-                practices and community investment, we strive to be more than a bank — we aim
-                to be a trusted financial partner for life.
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6 uppercase italic">Our <span className="text-orange-600">Mission</span></h2>
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed font-bold uppercase tracking-widest opacity-60">
+                Empowering individuals and businesses by providing exceptional financial solutions rooted in integrity, innovation, and customer-centricity. We believe banking is not just about transactions — it should be transformational. Through transparent practices and community investment, we strive to be more than just a bank — we aim to be a trusted financial partner for life.
               </p>
             </div>
 
@@ -120,12 +108,7 @@ const AboutPage: React.FC = () => {
               </div>
               <h2 className="text-3xl font-black text-slate-900 mb-6 uppercase">Our Vision</h2>
               <p className="text-slate-600 leading-relaxed font-medium">
-                A future where banking is seamless, accessible to all, and a force for
-                social and environmental good. Our aim is to lead in sustainable finance,
-                digital innovation, and community enrichment, becoming the go-to
-                institution for clients seeking financial growth with purpose. We see
-                a world where each investment carries meaning — driving both prosperity
-                and well-being.
+                A future where banking is seamless, accessible to all, and a force for social and environmental good. Our goal is to lead in sustainable finance, digital innovation, and community enrichment, becoming the benchmark institution for customers seeking financial growth with purpose. We see a world where every investment carries meaning — driving prosperity and well-being.
               </p>
             </div>
           </div>
@@ -137,7 +120,7 @@ const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 text-slate-900">
             <p className="text-xs font-black tracking-[0.5em] uppercase text-orange-600 mb-4">Core Principles</p>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase">The FIRST STATE BANK Standard</h2>
+            <h2 className="text-3xl md:text-6xl font-black tracking-tighter uppercase text-slate-900 italic">DANAMON <span className="text-orange-600">Standards</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -145,7 +128,7 @@ const AboutPage: React.FC = () => {
               {
                 icon: Shield,
                 title: "Integrity",
-                description: "Upholding the highest ethical standards in all we do, ensuring transparency and accountability.",
+                description: "Upholding the highest ethical standards in everything we do, ensuring transparency and accountability.",
                 color: "text-orange-600",
                 bg: "bg-orange-50",
                 border: "border-orange-100"
@@ -153,7 +136,7 @@ const AboutPage: React.FC = () => {
               {
                 icon: Users,
                 title: "Customer Focus",
-                description: "Placing you at the center. Every decision is guided by empathy and delivering value.",
+                description: "Placing you at the center. Every decision is guided by empathy and value delivery.",
                 color: "text-blue-600",
                 bg: "bg-blue-50",
                 border: "border-blue-100"
@@ -161,7 +144,7 @@ const AboutPage: React.FC = () => {
               {
                 icon: Award,
                 title: "Excellence",
-                description: "Relentless in our pursuit of quality — from efficiency to product innovation.",
+                description: "Relentless in the pursuit of quality — from efficiency to product innovation.",
                 color: "text-purple-600",
                 bg: "bg-purple-50",
                 border: "border-purple-100"
@@ -169,7 +152,7 @@ const AboutPage: React.FC = () => {
               {
                 icon: TrendingUp,
                 title: "Innovation",
-                description: "Embracing evolution and creative thinking to deliver smarter financial solutions.",
+                description: "Embracing evolution and creative thinking to provide smarter financial solutions.",
                 color: "text-orange-600",
                 bg: "bg-orange-50",
                 border: "border-orange-100"
@@ -197,14 +180,14 @@ const AboutPage: React.FC = () => {
         <div className="max-w-5xl mx-auto px-4">
           <div className="relative rounded-[3rem] bg-white p-12 md:p-20 text-center space-y-8 overflow-hidden border border-slate-200 shadow-2xl">
             <div className="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-full -mr-32 -mt-32 blur-3xl opacity-50"></div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight relative z-10 text-slate-900 uppercase">Start Your Legacy <br /> with First State Bank</h2>
+            <h2 className="text-3xl md:text-7xl font-black tracking-tighter leading-tight relative z-10 text-slate-900 uppercase italic">Start Your Legacy <br /> with <span className="text-orange-600">Danamon Bank</span></h2>
             <p className="text-slate-600 max-w-xl mx-auto relative z-10 font-medium">
-              Join thousands of clients who trust us with their financial future.
+              Join thousands of customers who trust us for their financial future.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
               <Link href="/register">
                 <button className="w-full sm:w-auto bg-orange-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-orange-700 transition-all hover:scale-105 shadow-xl shadow-orange-600/20">
-                  Get Started
+                  Start Now
                 </button>
               </Link>
               <Link href="/contact">

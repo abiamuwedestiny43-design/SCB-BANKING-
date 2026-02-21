@@ -1,4 +1,3 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Shield, Clock, MapPin, Smartphone } from "lucide-react"
 import { getCurrentUser } from "@/lib/auth"
@@ -20,164 +19,119 @@ export default async function SecurityPage() {
   const auditLogs = getAuditLogs(user._id.toString(), 10)
 
   return (
-    <div className="min-h-screen bg-white w-full p-6 md:p-8 lg:p-12 pt-24 md:pt-32 relative overflow-hidden text-slate-900">
-      {/* Minimal Background Structure */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-slate-500/[0.01] rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-slate-500/[0.01] rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-6 pt-16 lg:pt-6">
+      <div className="max-w-4xl mx-auto space-y-5">
 
-      <div className="max-w-5xl mx-auto space-y-12 relative z-10">
-
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-100">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 text-orange-600 font-black uppercase tracking-widest text-[10px] px-3 py-1 bg-white border border-slate-200 w-fit rounded-full shadow-sm">
-              <Shield className="h-3 w-3" />
-              Security
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
-              Security <span className="text-slate-400 italic">Center</span>
-            </h1>
-            <p className="text-slate-600 font-medium text-lg">Monitor account security and login history.</p>
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 bg-orange-50 rounded-lg flex items-center justify-center text-orange-500">
+            <Shield className="h-4 w-4" />
+          </div>
+          <div>
+            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Security Center</h1>
+            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Monitor account security and activity</p>
           </div>
         </div>
 
         {/* Security Status Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="border border-slate-200 shadow-xl shadow-orange-600/5 bg-white rounded-[2.5rem] overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <CardHeader className="p-8 border-b border-slate-50">
-              <CardTitle className="text-2xl font-black text-slate-900 uppercase tracking-tighter flex items-center gap-3">
-                <Shield className="h-5 w-5 text-orange-600" />
-                Account <span className="text-slate-400 italic">Status</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-8 space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="flex items-center gap-2.5 p-4 border-b border-slate-50">
+              <Shield className="h-4 w-4 text-orange-500" />
+              <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">Account <span className="text-orange-600">Status</span></h3>
+            </div>
+            <div className="p-4 space-y-3">
               {[
-                { label: "Account Verified", value: user.bankAccount.verified ? "Yes" : "No", active: user.bankAccount.verified },
+                { label: "Account Verified", value: user.bankAccount.verified ? "Verified" : "Unverified", active: user.bankAccount.verified },
                 { label: "Transfers", value: user.bankAccount.canTransfer ? "Enabled" : "Disabled", active: user.bankAccount.canTransfer },
-                { label: "Multi-Factor Authentication", value: "Offline", active: false },
+                { label: "Two-Factor Auth", value: "Offline", active: false },
                 { label: "International Transfers", value: globalEnabled ? "Enabled" : "Disabled", active: globalEnabled },
                 { label: "Local Transfers", value: localEnabled ? "Enabled" : "Disabled", active: localEnabled },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between group/row">
-                  <span className="text-slate-500 font-bold uppercase text-sm group-hover/row:text-orange-600 transition-colors">{item.label}</span>
+                <div key={idx} className="flex items-center justify-between">
+                  <span className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">{item.label}</span>
                   <Badge className={cn(
-                    "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border transition-all shadow-sm",
-                    item.active ? "bg-white text-orange-600 border-slate-200" : "bg-white text-red-600 border-red-200"
+                    "text-[9px] md:text-[10px] font-black px-2 py-0.5 rounded border uppercase italic tracking-widest",
+                    item.active ? "bg-emerald-50 text-emerald-700 border-emerald-100" : "bg-red-50 text-red-600 border-red-100"
                   )}>
                     {item.value}
                   </Badge>
                 </div>
               ))}
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          <Card className="border border-slate-200 shadow-xl shadow-orange-600/5 bg-white rounded-[2.5rem] overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <CardHeader className="p-8 border-b border-slate-50">
-              <CardTitle className="text-2xl font-black text-slate-900 uppercase tracking-tighter flex items-center gap-3">
-                <Smartphone className="h-5 w-5 text-blue-600" />
-                App <span className="text-slate-400 italic">Settings</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-8 space-y-6">
+          <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="flex items-center gap-2.5 p-4 border-b border-slate-50">
+              <Smartphone className="h-4 w-4 text-blue-500" />
+              <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">App <span className="text-orange-600">Settings</span></h3>
+            </div>
+            <div className="p-4 space-y-3">
               {[
-                { label: "PIN Protection", value: "Active", active: true, color: 'orange' },
-                { label: "Notifications", value: "Enabled", active: true, color: 'orange' },
-                { label: "Session Timeout", value: "7 Days", active: true, color: 'blue' },
-                { label: "App Status", value: "Online", active: true, color: 'orange' },
-                { label: "Privacy Mode", value: "Standard", active: false, color: 'slate' },
+                { label: "PIN Protection", value: "Active", active: true },
+                { label: "Notifications", value: "Enabled", active: true },
+                { label: "Session Timeout", value: "7 Days", active: true },
+                { label: "App Status", value: "Online", active: true },
+                { label: "Privacy Mode", value: "Standard", active: false },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between group/row">
-                  <span className="text-slate-500 font-bold uppercase text-sm group-hover/row:text-blue-600 transition-colors">{item.label}</span>
+                <div key={idx} className="flex items-center justify-between">
+                  <span className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">{item.label}</span>
                   <Badge className={cn(
-                    "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border transition-all shadow-sm",
-                    item.active ? "bg-white text-orange-600 border-slate-200" : "bg-white text-slate-500 border-slate-200"
+                    "text-[9px] md:text-[10px] font-black px-2 py-0.5 rounded border uppercase italic tracking-widest",
+                    item.active ? "bg-orange-50 text-orange-600 border-orange-100" : "bg-slate-50 text-slate-500 border-slate-200"
                   )}>
                     {item.value}
                   </Badge>
                 </div>
               ))}
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
 
-        {/* Recent Activity */}
-        <Card className="border border-slate-200 shadow-2xl shadow-orange-600/5 bg-white rounded-[3rem] overflow-hidden relative group">
-          <div className="absolute inset-0 bg-orange-500/[0.01] pointer-events-none"></div>
-          <CardHeader className="p-10 border-b border-slate-100">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div className="space-y-1">
-                <CardTitle className="text-3xl font-black text-slate-900 uppercase tracking-tighter flex items-center gap-4">
-                  <Clock className="h-6 w-6 text-orange-600" />
-                  Activity <span className="text-slate-400 italic">Logs</span>
-                </CardTitle>
-                <CardDescription className="text-slate-500 font-medium">Recent login and security activity.</CardDescription>
-              </div>
-              <div className="px-4 py-2 rounded-2xl bg-slate-50 border border-slate-200 text-slate-500 text-[9px] font-black uppercase tracking-widest">
-                Sector: Universal
-              </div>
+        {/* Activity Log */}
+        <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+          <div className="flex items-center justify-between p-4 border-b border-slate-50">
+            <div className="flex items-center gap-2.5">
+              <Clock className="h-4 w-4 text-orange-500" />
+              <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">Activity <span className="text-orange-600">Log</span></h3>
             </div>
-          </CardHeader>
-          <CardContent className="p-10">
+            <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest italic opacity-60">Recent login history</span>
+          </div>
+          <div className="divide-y divide-slate-50">
             {auditLogs.length > 0 ? (
-              <div className="space-y-4">
-                {auditLogs.map((log, index) => (
-                  <div key={index} className="flex flex-col md:flex-row items-center justify-between p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-slate-100 transition-all group/log">
-                    <div className="flex items-center gap-6 w-full md:w-auto">
-                      <div className={cn(
-                        "h-14 w-14 rounded-2xl flex items-center justify-center border shadow-sm transition-transform group-hover/log:scale-110",
-                        log.success ? "bg-white border-orange-100 text-orange-600" : "bg-white border-red-100 text-red-600"
-                      )}>
-                        <Shield className="h-6 w-6" />
-                      </div>
-                      <div className="space-y-1">
-                        <p className="font-black text-slate-900 text-lg uppercase tracking-tight">
-                          {log.action.replace(/_/g, " ")}
-                        </p>
-                        <div className="flex flex-wrap items-center gap-3 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                          <div className="flex items-center gap-1.5">
-                            <MapPin className="h-3 w-3" />
-                            {log.ipAddress}
-                          </div>
-                          <span className="h-1 w-1 rounded-full bg-slate-300"></span>
-                          <span>{log.timestamp.toLocaleString()}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <Badge className={cn(
-                      "mt-4 md:mt-0 px-5 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all",
-                      log.success ? "bg-orange-50 text-orange-600 border-orange-100" : "bg-red-50 text-red-600 border-red-100"
-                    )}>
-                      {log.success ? "Authorized" : "Denied"}
-                    </Badge>
+              auditLogs.map((log, index) => (
+                <div key={index} className="flex items-center gap-3 p-4 hover:bg-slate-50/60 transition-colors">
+                  <div className={cn(
+                    "h-8 w-8 rounded-lg flex items-center justify-center flex-shrink-0",
+                    log.success ? "bg-green-50 text-green-500" : "bg-red-50 text-red-500"
+                  )}>
+                    <Shield className="h-4 w-4" />
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="py-20 text-center space-y-4">
-                <div className="h-20 w-20 bg-slate-50 border border-slate-100 rounded-full flex items-center justify-center mx-auto text-slate-300 group-hover:scale-110 transition-transform">
-                  <Clock className="h-8 w-8" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm md:text-base font-black text-slate-800 uppercase tracking-tight italic">{log.action.replace(/_/g, " ")}</p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <MapPin className="h-3.5 w-3.5 text-slate-300" />
+                      <p className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest opacity-60">{log.ipAddress}</p>
+                      <span className="text-slate-200">·</span>
+                      <p className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest opacity-60">{log.timestamp.toLocaleString()}</p>
+                    </div>
+                  </div>
+                  <Badge className={cn(
+                    "text-[9px] md:text-[10px] font-black px-2 py-0.5 rounded border flex-shrink-0 uppercase italic tracking-widest",
+                    log.success ? "bg-emerald-50 text-emerald-700 border-emerald-100" : "bg-red-50 text-red-600 border-red-100"
+                  )}>
+                    {log.success ? "Authorized" : "Denied"}
+                  </Badge>
                 </div>
-                <p className="text-slate-400 font-black uppercase tracking-[0.2em] text-xs">No activity found.</p>
+              ))
+            ) : (
+              <div className="py-12 text-center">
+                <Clock className="h-6 w-6 text-slate-200 mx-auto mb-2" />
+                <p className="text-xs text-slate-400">No activity logs found.</p>
               </div>
             )}
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Global Utility Styles */}
-      <div className="hidden">
-        <style dangerouslySetInnerHTML={{
-          __html: `
-                .animate-spin-slow {
-                    animation: spin 8s linear infinite;
-                }
-                @keyframes spin {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-            ` }} />
+          </div>
+        </div>
       </div>
     </div>
   )

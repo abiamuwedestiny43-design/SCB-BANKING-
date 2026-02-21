@@ -9,9 +9,9 @@ import Footer from "@/components/Footer"
 import ConditionalHeader from "@/components/conditional-header"
 
 export const metadata: Metadata = {
-  title: "First State Bank - Secure Banking Solutions",
+  title: "Danamon Bank - Secure Banking in Indonesia",
   description:
-    "First State Bank provides secure banking solutions with advanced features for personal and business banking.",
+    "Danamon Bank provides secure and innovative banking solutions in Indonesia, empowering your financial journey with precision and care.",
 
 }
 
