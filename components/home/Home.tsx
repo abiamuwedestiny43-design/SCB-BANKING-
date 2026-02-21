@@ -67,9 +67,9 @@ const HomePages: React.FC = () => {
               </div>
               <h1 className="text-4xl md:text-8xl font-black leading-[1.05] tracking-tighter text-slate-900 italic">
                 Banking for <br />
-                <p className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700">
                   The Modern Era.
-                </p>
+                </span>
               </h1>
               <p className="text-sm md:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-bold uppercase tracking-widest opacity-60">
                 Experience the harmony between traditional security and digital innovation. Danamon Bank supports your financial journey with precision.
