@@ -164,12 +164,12 @@ export default function UserActions({ userId }: UserActionsProps) {
     <>
       <div className="relative">
         <Button
-          variant="ghost"
+          variant="outline"
           ref={(node) => setActiveBtn(node)}
           onClick={toggleMenu}
-          className="h-10 px-6 rounded-xl bg-slate-900 hover:bg-orange-600 text-white shadow-lg transition-all gap-3 font-black uppercase tracking-[0.2em] text-[10px] relative z-[40] group active:scale-95 border border-white/5"
+          className="h-9 px-4 rounded-xl bg-white border border-slate-200 hover:border-orange-500 hover:text-orange-600 text-slate-700 shadow-sm transition-all gap-2 font-black uppercase tracking-widest text-xs relative z-[40]"
         >
-          <Cpu className="h-4 w-4 group-hover:rotate-180 transition-transform duration-700" /> Actions
+          <Cpu className="h-3.5 w-3.5" /> Actions
         </Button>
 
         {menuOpen && (
@@ -183,61 +183,61 @@ export default function UserActions({ userId }: UserActionsProps) {
             />
             <div
               ref={menuRef}
-              className="w-64 bg-slate-900/90 backdrop-blur-3xl border border-white/10 rounded-[2rem] p-3 shadow-3xl z-[101] animate-in fade-in zoom-in-95 duration-200 glass-dark fixed"
+              className="w-52 bg-white border border-slate-200 rounded-2xl p-2 shadow-xl z-[101] animate-in fade-in zoom-in-95 duration-200 fixed"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => handleAction("view")}
-                className="w-full flex items-center gap-4 rounded-[1.2rem] px-5 py-3.5 text-slate-500 hover:text-white hover:bg-white/5 transition-all text-left group"
+                className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-600 hover:text-orange-600 hover:bg-orange-50 transition-all text-left group"
               >
-                <div className="h-8 w-8 rounded-lg bg-orange-600/10 flex items-center justify-center text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
-                  <Edit className="h-4 w-4" />
+                <div className="h-7 w-7 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all flex-shrink-0">
+                  <Edit className="h-3.5 w-3.5" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Edit User</span>
+                <span className="text-xs font-black uppercase tracking-widest">Edit Customer</span>
               </button>
 
-              <div className="h-px bg-white/5 mx-2 my-2" />
+              <div className="h-px bg-slate-100 mx-2 my-1.5" />
 
               <button
                 onClick={() => handleAction("credit")}
-                className="w-full flex items-center gap-4 rounded-[1.2rem] px-5 py-3.5 text-slate-500 hover:text-emerald-500 hover:bg-emerald-600/5 transition-all group text-left"
+                className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 transition-all group text-left"
               >
-                <div className="h-8 w-8 rounded-lg bg-emerald-600/10 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all">
-                  <ArrowUpRight className="h-4 w-4" />
+                <div className="h-7 w-7 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all flex-shrink-0">
+                  <ArrowUpRight className="h-3.5 w-3.5" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Credit Account</span>
+                <span className="text-xs font-black uppercase tracking-widest">Add Funds</span>
               </button>
 
               <button
                 onClick={() => handleAction("debit")}
-                className="w-full flex items-center gap-4 rounded-[1.2rem] px-5 py-3.5 text-slate-500 hover:text-blue-500 hover:bg-blue-600/5 transition-all group text-left"
+                className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-all group text-left"
               >
-                <div className="h-8 w-8 rounded-lg bg-blue-600/10 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                  <ArrowDownLeft className="h-4 w-4" />
+                <div className="h-7 w-7 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all flex-shrink-0">
+                  <ArrowDownLeft className="h-3.5 w-3.5" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Debit Account</span>
+                <span className="text-xs font-black uppercase tracking-widest">Deduct Funds</span>
               </button>
 
-              <div className="h-px bg-white/5 mx-2 my-2" />
+              <div className="h-px bg-slate-100 mx-2 my-1.5" />
 
               <button
                 onClick={() => handleAction("approve")}
-                className="w-full flex items-center gap-4 rounded-[1.2rem] px-5 py-3.5 text-slate-500 hover:text-white hover:bg-white/5 transition-all text-left group"
+                className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all text-left group"
               >
-                <div className="h-8 w-8 rounded-lg bg-slate-950 flex items-center justify-center text-slate-600 group-hover:bg-orange-600 group-hover:text-white transition-all border border-white/5">
-                  <CheckCircle className="h-4 w-4" />
+                <div className="h-7 w-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-slate-900 group-hover:text-white transition-all flex-shrink-0">
+                  <CheckCircle className="h-3.5 w-3.5" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Approve User</span>
+                <span className="text-xs font-black uppercase tracking-widest">Verify Account</span>
               </button>
 
               <button
                 onClick={() => handleAction("delete")}
-                className="w-full flex items-center gap-4 rounded-[1.2rem] px-5 py-3.5 text-red-500 hover:text-white hover:bg-red-600 transition-all text-left group"
+                className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-red-500 hover:text-white hover:bg-red-500 transition-all text-left group"
               >
-                <div className="h-8 w-8 rounded-lg bg-red-600/10 flex items-center justify-center text-red-500 group-hover:bg-white/20 group-hover:text-white transition-all">
-                  <Trash2 className="h-4 w-4" />
+                <div className="h-7 w-7 rounded-lg bg-red-50 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all flex-shrink-0">
+                  <Trash2 className="h-3.5 w-3.5" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest">Delete User</span>
+                <span className="text-xs font-black uppercase tracking-widest">Delete Account</span>
               </button>
             </div>
           </Portal.Root>
@@ -245,42 +245,42 @@ export default function UserActions({ userId }: UserActionsProps) {
       </div>
 
       <Dialog open={txOpen} onOpenChange={setTxOpen}>
-        <DialogContent className="sm:max-w-md bg-slate-950 border-white/5 text-white rounded-[3.5rem] overflow-hidden p-0 shadow-3xl glass-dark">
+        <DialogContent className="sm:max-w-md bg-white border-slate-200 text-slate-900 rounded-2xl overflow-hidden p-0 shadow-xl">
           <div className="absolute top-0 right-0 w-48 h-48 bg-orange-600/10 rounded-full blur-[80px] pointer-events-none"></div>
 
-          <div className="p-10 space-y-10 relative z-10">
+          <div className="p-8 space-y-6">
             <DialogHeader>
-              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[9px] font-black uppercase tracking-[0.3em] mb-6 shadow-xl">
-                <Zap className="w-3.5 h-3.5 text-orange-500 animate-pulse" /> Admin Transaction
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-500 text-xs font-black uppercase tracking-widest mb-4">
+                <Zap className="w-3.5 h-3.5 text-orange-500" /> Admin Transaction
               </div>
-              <DialogTitle className="text-4xl font-black italic tracking-tighter flex items-center gap-4 uppercase leading-none">
+              <DialogTitle className="text-2xl font-black tracking-tighter flex items-center gap-3 text-slate-900">
                 {txType === "credit" ? (
                   <>
-                    <ArrowUpRight className="w-10 h-10 text-orange-600" />
-                    CREDIT <span className="text-orange-600 italic">ACCOUNT</span>
+                    <ArrowUpRight className="w-7 h-7 text-emerald-600" />
+                    Add <span className="text-emerald-600">Funds</span>
                   </>
                 ) : (
                   <>
-                    <ArrowDownLeft className="w-10 h-10 text-blue-600" />
-                    DEBIT <span className="text-blue-600 italic font-medium">ACCOUNT</span>
+                    <ArrowDownLeft className="w-7 h-7 text-blue-600" />
+                    Deduct <span className="text-blue-600">Funds</span>
                   </>
                 )}
               </DialogTitle>
-              <DialogDescription className="text-slate-500 font-bold uppercase text-[10px] tracking-widest mt-4">
-                  ? "Applying an administrative credit to this account."
-                  : "Applying an administrative debit to this account."
+              <DialogDescription className="text-slate-500 font-medium text-sm mt-2">
+                {txType === "credit"
+                  ? "Manually add funds to this customer's account."
+                  : "Manually deduct funds from this customer's account."}
               </DialogDescription>
             </DialogHeader>
 
             {txSuccess ? (
-              <div className="py-20 flex flex-col items-center justify-center space-y-8 text-center animate-in zoom-in-95 duration-500">
-                <div className="w-24 h-24 rounded-full bg-slate-900 border border-white/5 flex items-center justify-center shadow-2xl relative overflow-hidden">
-                  <div className="absolute inset-0 bg-orange-600/20 animate-pulse"></div>
-                  <CheckCircle className="w-12 h-12 text-orange-500 relative z-10" />
+              <div className="py-12 flex flex-col items-center justify-center space-y-4 text-center">
+                <div className="w-16 h-16 rounded-full bg-emerald-50 border-2 border-emerald-200 flex items-center justify-center">
+                  <CheckCircle className="w-8 h-8 text-emerald-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-black uppercase tracking-[0.3em] text-white">Transaction Successful</h3>
-                  <p className="text-slate-500 font-bold text-xs mt-3 uppercase tracking-widest">Account Balance Updated</p>
+                  <h3 className="text-lg font-black text-slate-900">Transaction Successful</h3>
+                  <p className="text-slate-500 font-medium text-sm mt-1">Account balance has been updated.</p>
                 </div>
               </div>
             ) : (
@@ -325,22 +325,22 @@ export default function UserActions({ userId }: UserActionsProps) {
                   />
                 </div>
 
-                <div className="flex gap-6 pt-6">
-                  <Button variant="ghost" onClick={() => setTxOpen(false)} className="flex-1 h-14 rounded-2xl text-slate-500 hover:text-white hover:bg-white/5 font-black uppercase tracking-widest text-[10px] transition-all">
+                <div className="flex gap-3 pt-4">
+                  <Button variant="outline" onClick={() => setTxOpen(false)} className="flex-1 h-11 rounded-xl border-slate-200 text-slate-500 hover:text-slate-900 font-black uppercase tracking-widest text-xs transition-all">
                     Cancel
                   </Button>
                   <Button
                     onClick={submitTransaction}
                     disabled={isLoading}
-                    className={`flex-1 h-16 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] shadow-2xl transition-all hover:scale-105 active:scale-95 border-none ${txType === 'credit'
-                      ? 'bg-orange-600 text-white hover:bg-orange-500 shadow-orange-600/20'
-                      : 'bg-white text-slate-950 hover:bg-slate-200 shadow-white/10'
+                    className={`flex-1 h-11 rounded-xl font-black uppercase tracking-widest text-xs transition-all border-none ${txType === 'credit'
+                      ? 'bg-emerald-600 text-white hover:bg-emerald-700'
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
                       }`}
                   >
                     {isLoading ? (
                       <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
                     ) : (
-                      `Execute ${txType === 'credit' ? 'Credit' : 'Debit'}`
+                      txType === 'credit' ? 'Add Funds' : 'Deduct Funds'
                     )}
                   </Button>
                 </div>
@@ -349,12 +349,12 @@ export default function UserActions({ userId }: UserActionsProps) {
           </div>
 
           {!txSuccess && (
-            <div className="bg-black/60 p-6 flex items-start gap-4 border-t border-white/5">
-              <div className="h-10 w-10 min-w-[40px] rounded-xl bg-orange-600/10 flex items-center justify-center text-orange-600 border border-orange-600/20">
-                <ShieldAlert className="w-5 h-5" />
+            <div className="bg-orange-50 p-4 flex items-start gap-3 border-t border-orange-100">
+              <div className="h-8 w-8 min-w-[32px] rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
+                <ShieldAlert className="w-4 h-4" />
               </div>
-              <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-relaxed mt-1">
-                <span className="text-orange-500">Admin Warning:</span> This action will bypass standard verification and modify the account balance directly.
+              <p className="text-xs font-bold text-slate-500 leading-relaxed mt-0.5">
+                <span className="text-orange-600 font-black">Admin Warning:</span> This will directly modify the account balance, bypassing standard verification.
               </p>
             </div>
           )}

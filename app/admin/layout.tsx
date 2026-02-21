@@ -15,7 +15,7 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-black text-white selection:bg-orange-500/30">
+    <div className="flex min-h-screen bg-[#F4F6FA]">
       <AdminSidebar user={user} />
       <main className="flex-1 overflow-y-auto">{children}</main>
     </div>

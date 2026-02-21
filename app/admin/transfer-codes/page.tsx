@@ -22,7 +22,8 @@ import {
   Globe,
   Radio,
   Terminal,
-  Database
+  Database,
+  ShieldAlert
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -100,65 +101,45 @@ export default function AdminTransferCodesPage() {
   )
 
   return (
-    <div className="p-6 md:p-12 space-y-12 relative min-h-screen bg-black selection:bg-orange-500/30">
-      {/* High-Tech Background Decor */}
-      <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-orange-500/[0.05] rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/[0.05] rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-8 lg:p-12 pt-20 md:pt-28 space-y-6">
 
-      {/* Industrial Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 relative z-10">
-        <div className="space-y-4">
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900 border border-white/5 text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
-            <Lock className="w-3.5 h-3.5 text-orange-500 fill-orange-500" /> Secure Protocol Center
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none uppercase">
-            TRANSFER <span className="text-orange-600 italic">SYSTEM</span>
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">
+            Transfer <span className="text-orange-600">Codes</span>
           </h1>
-          <p className="text-slate-500 font-bold max-w-lg text-lg uppercase tracking-tight">Central hub for global verification sequences and user clearance levels.</p>
+          <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">
+            Manage global verification codes and user transfer permissions
+          </p>
         </div>
-
-        <div className="p-6 bg-slate-900/50 backdrop-blur-xl rounded-[2.5rem] border border-white/5 shadow-3xl glass-dark flex items-center gap-6">
-          <div className="flex flex-col items-end">
-            <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">Firewall Status</p>
-            <div className="flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <p className="text-sm font-black text-emerald-500 uppercase tracking-widest">Operational</p>
-            </div>
-          </div>
-          <div className="h-10 w-[1px] bg-white/5"></div>
-          <div className="h-12 w-12 rounded-xl bg-black border border-white/5 flex items-center justify-center text-orange-500 shadow-xl">
-            <Activity className="w-6 h-6 animate-pulse" />
-          </div>
+        <div className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-emerald-200 rounded-2xl shadow-sm">
+          <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50"></div>
+          <p className="text-sm font-black text-emerald-600 uppercase tracking-widest">Security Active</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 relative z-10">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
         {/* Global Security Sequences section */}
-        <Card className="xl:col-span-12 xxl:col-span-8 bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group">
-          <div className="absolute top-0 left-0 w-full h-[6px] bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 group-hover:h-2 transition-all duration-500"></div>
-          <CardHeader className="p-12 md:p-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-8">
-                <div className="h-16 w-16 rounded-2xl bg-black border border-white/5 flex items-center justify-center text-white shadow-3xl group-hover:scale-110 transition-transform duration-500">
-                  <Fingerprint className="w-8 h-8 text-orange-500 shadow-2xl" />
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-500 mb-2">Master Code Control</p>
-                  <CardTitle className="text-4xl font-black text-white tracking-tight italic uppercase">Clearance Sequences</CardTitle>
-                </div>
+        <Card className="xl:col-span-8 bg-white border border-slate-100 shadow-sm rounded-2xl overflow-hidden">
+          <CardHeader className="p-6 border-b border-slate-100 flex flex-row items-center justify-between space-y-0">
+            <div className="flex items-center gap-4">
+              <div className="h-10 w-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600">
+                <Lock className="w-5 h-5 font-black" />
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-16 w-16 rounded-[1.5rem] bg-black border border-white/5 hover:bg-orange-600 text-slate-500 hover:text-white transition-all duration-500 shadow-xl"
-                onClick={() => setExpandedSections(prev => ({ ...prev, codes: !prev.codes }))}
-              >
-                {expandedSections.codes ? <ChevronUp className="h-6 w-6" /> : <ChevronDown className="h-6 w-6" />}
-              </Button>
+              <div>
+                <CardTitle className="text-xl font-black text-slate-900 tracking-tighter italic uppercase">Global Verification Codes</CardTitle>
+                <CardDescription className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-0.5">Edit system-wide codes for all transfers</CardDescription>
+              </div>
             </div>
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-xl border-slate-200"
+              onClick={() => setExpandedSections(prev => ({ ...prev, codes: !prev.codes }))}
+            >
+              {expandedSections.codes ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </Button>
           </CardHeader>
 
           <AnimatePresence>
@@ -167,59 +148,55 @@ export default function AdminTransferCodesPage() {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                transition={{ duration: 0.3 }}
               >
-                <CardContent className="p-12 md:p-16 space-y-12">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <CardContent className="p-6 space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
-                      { label: "COT Protocol", value: cot, set: setCot, color: "text-orange-600", bg: "bg-orange-500/5", icon: ShieldCheck },
-                      { label: "IMF Sequence", value: imf, set: setImf, color: "text-blue-500", bg: "bg-blue-500/5", icon: Globe },
-                      { label: "ESI Auth", value: esi, set: setEsi, color: "text-purple-500", bg: "bg-purple-500/5", icon: Key },
-                      { label: "DCO Matrix", value: dco, set: setDco, color: "text-emerald-500", bg: "bg-emerald-500/5", icon: RefreshCw },
-                      { label: "TAX Token", value: tax, set: setTax, color: "text-red-500", bg: "bg-red-500/5", icon: Activity },
-                      { label: "TAC Link", value: tac, set: setTac, color: "text-cyan-500", bg: "bg-cyan-500/5", icon: Cpu },
+                      { label: "Verification Code (COT)", value: cot, set: setCot, icon: ShieldCheck, color: "text-orange-600", bg: "bg-orange-50" },
+                      { label: "Institutional Code (IMF)", value: imf, set: setImf, icon: Globe, color: "text-blue-600", bg: "bg-blue-50" },
+                      { label: "Auth Code (ESI)", value: esi, set: setEsi, icon: Key, color: "text-purple-600", bg: "bg-purple-50" },
+                      { label: "System Matrix (DCO)", value: dco, set: setDco, icon: RefreshCw, color: "text-emerald-600", bg: "bg-emerald-50" },
+                      { label: "Tax Token (TAX)", value: tax, set: setTax, icon: Activity, color: "text-red-600", bg: "bg-red-50" },
+                      { label: "Transfer Link (TAC)", value: tac, set: setTac, icon: Cpu, color: "text-cyan-600", bg: "bg-cyan-50" },
                     ].map((row) => (
-                      <div key={row.label} className="group/item relative space-y-4">
-                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 flex items-center gap-3 group-hover/item:text-white transition-colors">
-                          <row.icon className={cn("w-4 h-4", row.color)} /> {row.label}
+                      <div key={row.label} className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                          <row.icon className={cn("w-3.5 h-3.5", row.color)} /> {row.label}
                         </label>
-                        <div className="flex gap-4">
+                        <div className="flex gap-2">
                           <Input
                             value={row.value}
                             onChange={(e) => row.set(e.target.value)}
-                            className="h-16 bg-black border-white/5 focus:bg-slate-950 focus:border-orange-600/50 focus:ring-8 focus:ring-orange-600/5 transition-all rounded-[1.5rem] font-mono text-2xl font-black text-white shadow-inner px-6"
+                            className="h-12 bg-slate-50 border-slate-100 rounded-xl font-mono text-lg font-black text-slate-900 px-4 focus:border-orange-500 transition-all"
                           />
                           <Button
                             type="button"
-                            variant="ghost"
+                            variant="outline"
+                            size="icon"
                             onClick={() => row.set(genCode())}
-                            className="h-16 w-16 rounded-[1.5rem] bg-slate-900 border border-white/5 text-orange-500 hover:bg-orange-600 hover:text-white shadow-2xl transition-all duration-500 group/btn"
+                            className="h-12 w-12 rounded-xl border-slate-200 hover:text-orange-600 hover:border-orange-500 transition-all"
                           >
-                            <RefreshCw className="h-5 w-5 group-hover/btn:rotate-180 transition-transform duration-700" />
+                            <RefreshCw className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="pt-8">
+                  <div className="pt-4">
                     <Button
                       onClick={save}
                       disabled={saving}
-                      className="w-full bg-orange-600 hover:bg-white hover:text-black text-white font-black h-24 rounded-[3rem] shadow-3xl transition-all hover:scale-[1.01] active:scale-[0.98] uppercase tracking-[0.4em] text-xs group border-none"
+                      className="w-full bg-slate-900 hover:bg-orange-600 text-white font-black h-14 rounded-2xl shadow-lg transition-all uppercase tracking-widest text-xs gap-3"
                     >
                       {saving ? (
-                        <RefreshCw className="w-8 h-8 animate-spin" />
+                        <RefreshCw className="w-5 h-5 animate-spin" />
                       ) : (
-                        <span className="flex items-center gap-4">
-                          <Terminal className="w-5 h-5 group-hover:animate-pulse" />
-                          COMMIT SECURITY PROTOCOLS
-                        </span>
+                        <Terminal className="w-5 h-5" />
                       )}
+                      {saving ? "SAVING PROTOCOLS..." : "UPDATE GLOBAL SYSTEM CODES"}
                     </Button>
-                    <div className="mt-12 flex justify-center gap-8 opacity-20">
-                      {[1, 2, 3, 4, 5, 6].map(i => <div key={i} className="h-1 w-8 bg-orange-600 rounded-full animate-pulse"></div>)}
-                    </div>
                   </div>
                 </CardContent>
               </motion.div>
@@ -228,78 +205,74 @@ export default function AdminTransferCodesPage() {
         </Card>
 
         {/* User Permission Matrix */}
-        <Card className="xl:col-span-12 xxl:col-span-4 bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark group">
-          <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
-            <div className="space-y-8">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-5">
-                  <div className="h-14 w-14 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-3xl group-hover:rotate-12 transition-transform duration-500">
-                    <Users className="w-7 h-7" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500 mb-1">Authorization</p>
-                    <CardTitle className="text-2xl font-black text-white tracking-tight italic uppercase">User Clearance</CardTitle>
-                  </div>
+        <Card className="xl:col-span-4 bg-white border border-slate-100 shadow-sm rounded-2xl overflow-hidden">
+          <CardHeader className="p-6 border-b border-slate-100">
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+                  <Users className="w-5 h-5 font-black" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl font-black text-slate-900 tracking-tighter italic uppercase">Customer Clearance</CardTitle>
                 </div>
               </div>
 
-              <div className="relative group">
-                <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-700 group-focus-within:text-blue-500 transition-colors" />
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <Input
-                  placeholder="Query Registry..."
+                  placeholder="Search Customers..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-16 h-18 bg-black/60 border-white/5 rounded-[2rem] font-black text-lg placeholder:text-slate-800 text-white focus:ring-8 focus:ring-blue-500/5 transition-all shadow-inner"
+                  className="pl-10 h-11 bg-slate-50 border-slate-100 rounded-xl font-bold text-sm"
                 />
               </div>
             </div>
           </CardHeader>
 
-          <CardContent className="p-0 bg-transparent">
-            <div className="max-h-[600px] overflow-y-auto custom-scrollbar p-12 space-y-6">
+          <CardContent className="p-0">
+            <div className="max-h-[500px] overflow-y-auto p-4 space-y-3">
               {filteredUsers?.map((user: any) => (
-                <motion.div
-                  layout
+                <div
                   key={user._id}
-                  className="flex items-center justify-between p-8 bg-black/40 border border-white/5 rounded-[2.5rem] hover:shadow-3xl hover:border-white/20 transition-all group/user shadow-inner"
+                  className="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-xl hover:border-orange-200 hover:bg-orange-50/30 transition-all group"
                 >
-                  <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-4">
                     <div className={cn(
-                      "w-16 h-16 rounded-2xl flex items-center justify-center font-black text-xl transition-all shadow-2xl group-hover/user:scale-110 duration-500 italic",
+                      "w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm",
                       user.bankAccount?.canTransfer
-                        ? 'bg-blue-600 text-white shadow-blue-500/20'
-                        : 'bg-slate-900 text-slate-600'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'bg-slate-100 text-slate-400'
                     )}>
                       {user.bankInfo?.bio?.firstname?.[0] || 'U'}
                     </div>
-                    <div>
-                      <p className="font-black text-white text-sm uppercase tracking-widest group-hover/user:text-blue-500 transition-colors italic">
+                    <div className="overflow-hidden">
+                      <p className="font-black text-slate-900 text-xs uppercase tracking-widest truncate">
                         {user.bankInfo?.bio?.firstname} {user.bankInfo?.bio?.lastname}
                       </p>
-                      <p className="text-[10px] text-slate-600 font-black italic tracking-tighter truncate max-w-[150px] mt-2 uppercase">{user.email}</p>
+                      <p className="text-[10px] text-slate-400 font-bold truncate">{user.email}</p>
                     </div>
                   </div>
                   <Button
                     size="sm"
-                    variant="ghost"
+                    variant={user.bankAccount?.canTransfer ? "default" : "outline"}
                     onClick={() => toggleUserTransfer(user._id, user.bankAccount?.canTransfer)}
                     className={cn(
-                      "h-12 px-8 rounded-xl font-black text-[9px] uppercase tracking-widest transition-all duration-500 shadow-xl",
+                      "h-9 px-4 rounded-lg font-black text-[9px] uppercase tracking-widest transition-all",
                       user.bankAccount?.canTransfer
-                        ? "bg-slate-900 border border-white/10 text-white hover:bg-emerald-600"
-                        : "bg-black border border-white/5 text-slate-600 hover:bg-blue-600 hover:text-white"
+                        ? "bg-emerald-600 hover:bg-emerald-700 text-white border-none"
+                        : "bg-white border-slate-200 text-slate-400 hover:text-blue-600 hover:border-blue-600"
                     )}
                   >
                     {user.bankAccount?.canTransfer ? "AUTHORIZED" : "REVOKED"}
                   </Button>
-                </motion.div>
+                </div>
               ))}
               {!filteredUsers?.length && (
-                <div className="text-center py-20 px-10 space-y-8 grayscale opacity-20 animate-pulse">
-                  <div className="w-24 h-24 rounded-[3rem] bg-slate-900 border border-white/5 flex items-center justify-center mx-auto shadow-3xl">
-                    <Database className="w-10 h-10 text-orange-500" />
+                <div className="text-center py-12 px-6">
+                  <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-4">
+                    <Database className="w-5 h-5 text-slate-300" />
                   </div>
-                  <p className="text-white font-black uppercase tracking-[0.5em] text-[10px] italic leading-relaxed">No Identity Signatures Found</p>
+                  <p className="text-slate-400 font-black uppercase tracking-widest text-[9px]">No customers found</p>
                 </div>
               )}
             </div>

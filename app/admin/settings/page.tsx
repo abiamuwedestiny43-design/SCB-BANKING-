@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
 import { Input } from "@/components/ui/input"
-import { Settings, ShieldCheck, Zap, Globe, Lock, Cpu, Database, Activity, RefreshCw, Key, Layers, Radio } from "lucide-react"
+import { Settings, ShieldCheck, Zap, Globe, Lock, Cpu, Database, Activity, RefreshCw, Key, Layers, Radio, ChevronRight, ShieldAlert } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export default function AdminSettingsPage() {
@@ -135,7 +135,7 @@ export default function AdminSettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-8 lg:p-12 pt-20 md:pt-28 space-y-6">
+    <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-8 lg:p-12 pt-20 md:pt-28 space-y-6 pb-20">
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -152,126 +152,111 @@ export default function AdminSettingsPage() {
       </div>
 
       {error && (
-        <Alert className="bg-red-500/10 border-red-500/20 text-red-500 rounded-[2rem] p-6 relative z-10 shadow-3xl animate-in slide-in-from-top-4 duration-500">
-          <AlertDescription className="font-black uppercase tracking-[0.2em] text-[10px] flex items-center gap-4">
-            <Lock className="w-5 h-5" /> Protocol Conflict: {error}
-          </AlertDescription>
+        <Alert className="bg-red-50 border-red-200 text-red-600 rounded-2xl p-4">
+          <ShieldAlert className="h-5 w-5" />
+          <AlertDescription className="font-bold text-sm ml-2">Error: {error}</AlertDescription>
         </Alert>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
-        <div className="lg:col-span-2 space-y-12">
-          {/* Main Protocol Card */}
-          <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[4rem] overflow-hidden glass-dark">
-            <CardHeader className="p-12 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl">
-              <div className="flex items-center gap-6">
-                <div className="h-14 w-14 rounded-2xl bg-black border border-white/5 flex items-center justify-center text-white shadow-3xl">
-                  <Database className="w-7 h-7" />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 space-y-6">
+          {/* Main Transfer Controls */}
+          <Card className="bg-white border border-slate-100 shadow-sm rounded-2xl overflow-hidden">
+            <CardHeader className="p-6 border-b border-slate-100 bg-slate-50/30">
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600">
+                  <Globe className="w-5 h-5 font-black" />
                 </div>
                 <div>
-                  <CardTitle className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase italic">Transfer Matrix Protocol</CardTitle>
-                  <CardDescription className="text-slate-500 font-black uppercase text-[9px] tracking-[0.3em] mt-3">Control the universal flow of assets across the Sovereign network.</CardDescription>
+                  <CardTitle className="text-xl font-black text-slate-900 tracking-tighter italic uppercase">Transfer Protocol Controls</CardTitle>
+                  <CardDescription className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-0.5">Global switches for bank-wide asset movement</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="p-12 space-y-12">
+            <CardContent className="p-6 space-y-6">
               {/* Global Transfers Switch */}
-              <div className="group p-8 rounded-[3rem] bg-black/40 border border-white/5 hover:bg-orange-600/5 hover:border-orange-600/20 transition-all duration-500 relative overflow-hidden shadow-inner">
-                <div className="absolute top-0 right-0 h-40 w-40 bg-orange-600/5 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
-                  <div className="space-y-4">
-                    <Label className="text-xl font-black text-white flex items-center gap-3 italic tracking-tight uppercase">
-                      <Globe className="w-5 h-5 text-orange-600" /> Unified Registry
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-orange-200 transition-all group shadow-inner">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div className="space-y-1">
+                    <Label className="text-lg font-black text-slate-900 flex items-center gap-2 italic tracking-tight uppercase">
+                      Universal Transacting Flow
                     </Label>
-                    <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed">Kill-switch for ALL asset migrations (Local & Intl) cluster-wide.</p>
+                    <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Emergency kill-switch for ALL transfers (Local & International) bank-wide.</p>
                   </div>
-                  <div className="flex items-center gap-8">
+                  <div className="flex items-center gap-6">
                     <Switch
                       checked={globalEnabled}
                       onCheckedChange={setGlobalEnabled}
-                      className="data-[state=checked]:bg-orange-600 scale-125 border-white/10"
-                      disabled={saving}
+                      className="data-[state=checked]:bg-orange-600"
                     />
                     <Button
                       onClick={handleSaveGlobal}
                       disabled={saving}
-                      className="bg-slate-900 border border-white/5 hover:bg-white hover:text-black text-white font-black px-8 rounded-2xl h-14 text-[10px] uppercase tracking-[0.3em] shadow-3xl"
+                      className="bg-slate-900 hover:bg-orange-600 text-white font-black px-6 rounded-xl h-11 text-[10px] uppercase tracking-widest transition-all"
                     >
-                      {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : "SYNC UNIT"}
+                      {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : "Save Global"}
                     </Button>
                   </div>
                 </div>
               </div>
 
               {/* Local Transfers Switch */}
-              <div className="group p-8 rounded-[3rem] bg-black/40 border border-white/5 hover:bg-blue-600/5 hover:border-blue-600/20 transition-all duration-500 relative overflow-hidden shadow-inner">
-                <div className="absolute top-0 right-0 h-40 w-40 bg-blue-600/5 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
-                  <div className="space-y-4">
-                    <Label className="text-xl font-black text-white flex items-center gap-3 italic tracking-tight uppercase">
-                      <Layers className="w-5 h-5 text-blue-500" /> Intrasystem Bridge
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-blue-200 transition-all group shadow-inner">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div className="space-y-1">
+                    <Label className="text-lg font-black text-slate-900 flex items-center gap-2 italic tracking-tight uppercase">
+                      Intra-Bank Transfers
                     </Label>
-                    <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed">Restrict asset movement within the internal Danamon Node network.</p>
+                    <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Restrict or allow asset movement between internal bank accounts.</p>
                   </div>
-                  <div className="flex items-center gap-8">
+                  <div className="flex items-center gap-6">
                     <Switch
                       checked={localEnabled}
                       onCheckedChange={setLocalEnabled}
-                      className="data-[state=checked]:bg-blue-600 scale-125 border-white/10"
-                      disabled={saving}
+                      className="data-[state=checked]:bg-blue-600"
                     />
                     <Button
                       onClick={handleSaveLocal}
                       disabled={saving}
-                      className="bg-slate-900 border border-white/5 hover:bg-white hover:text-black text-white font-black px-8 rounded-2xl h-14 text-[10px] uppercase tracking-[0.3em] shadow-3xl"
+                      className="bg-slate-900 hover:bg-blue-600 text-white font-black px-6 rounded-xl h-11 text-[10px] uppercase tracking-widest transition-all"
                     >
-                      {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : "SYNC BRIDGE"}
+                      {saving ? <RefreshCw className="w-4 h-4 animate-spin" /> : "Save Local"}
                     </Button>
                   </div>
                 </div>
               </div>
 
-              <div className="h-px bg-white/5" />
-
-              {/* Bulk Override Section */}
-              <div className="space-y-10">
-                <div className="space-y-4">
-                  <Label className="text-2xl md:text-4xl font-black text-white italic tracking-tighter uppercase leading-none flex items-center gap-4">
-                    <Zap className="w-6 h-6 text-orange-600 animate-pulse" /> Bulk Override Sequences
-                  </Label>
-                  <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-relaxed max-w-xl">
-                    Atomic permission synchronization for the entire user directory. <span className="text-red-500 italic">WARNING: HIGH ENTROPY ACTION.</span>
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Bulk Actions */}
+              <div className="pt-6 border-t border-slate-100">
+                <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-orange-600" /> Bulk Permission Overrides
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { label: "Unified Protocol", type: "all", color: "orange", icon: ShieldCheck },
-                    { label: "Local Registry", type: "blue", color: "blue", icon: Database },
-                    { label: "Intl Clearance", type: "international", color: "orange", icon: Globe },
+                    { label: "All Transfers", type: "all", color: "orange" },
+                    { label: "Local Only", type: "local", color: "blue" },
+                    { label: "International", type: "international", color: "orange" },
                   ].map((btn, i) => (
-                    <div key={i} className="space-y-6 p-8 rounded-[2.5rem] bg-black/40 border border-white/5 shadow-inner group hover:border-white/20 transition-all">
-                      <div className="flex items-center gap-3">
-                        <btn.icon className={cn("w-4 h-4", btn.color === 'orange' ? "text-orange-600" : "text-blue-500")} />
-                        <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em]">{btn.label}</p>
-                      </div>
-                      <div className="flex flex-col gap-4">
+                    <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-4">
+                      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">{btn.label}</p>
+                      <div className="flex flex-col gap-2">
                         <Button
                           onClick={() => bulkSetUsersTransfer(true, btn.type as any)}
                           disabled={bulkBusy}
                           className={cn(
-                            "w-full text-white font-black hover:bg-white hover:text-black transition-all uppercase tracking-widest text-[9px] h-14 rounded-xl shadow-3xl border-none",
-                            btn.color === 'orange' ? "bg-orange-600" : "bg-blue-600"
+                            "w-full h-10 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all",
+                            btn.color === 'orange' ? "bg-orange-600 hover:bg-orange-700" : "bg-blue-600 hover:bg-blue-700"
                           )}
                         >
-                          Enable Set
+                          Enable All
                         </Button>
                         <Button
                           onClick={() => bulkSetUsersTransfer(false, btn.type as any)}
                           disabled={bulkBusy}
-                          className="w-full bg-slate-900 border border-white/5 text-red-500 font-black hover:bg-red-500 hover:text-white transition-all uppercase tracking-widest text-[9px] h-14 rounded-xl shadow-3xl"
+                          variant="outline"
+                          className="w-full h-10 rounded-xl text-[9px] font-black uppercase tracking-widest border-slate-200 text-red-500 hover:bg-red-50 hover:border-red-200"
                         >
-                          Revoke Set
+                          Revoke All
                         </Button>
                       </div>
                     </div>
@@ -282,31 +267,24 @@ export default function AdminSettingsPage() {
           </Card>
         </div>
 
-        {/* Side Control Units */}
-        <div className="space-y-12">
-          {/* Individual Target Controller */}
-          <Card className="bg-slate-900/40 border-white/5 shadow-3xl rounded-[3.5rem] p-10 overflow-hidden relative glass-dark">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-600/10 rounded-full blur-3xl"></div>
-            <div className="space-y-8 relative z-10">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter leading-none flex items-center gap-3">
-                  <Key className="w-6 h-6 text-orange-600 rotate-12" /> Node Override
-                </h3>
-                <p className="text-[9px] font-black text-slate-600 uppercase tracking-[0.4em] leading-relaxed">
-                  Target precise identity nodes for protocol modulation.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                <div className="relative group">
+        {/* Individual Node Controller */}
+        <div className="space-y-6">
+          <Card className="bg-white border-2 border-slate-900 shadow-sm rounded-2xl overflow-hidden">
+            <CardHeader className="p-6 border-b border-slate-900 bg-slate-900 text-white">
+              <CardTitle className="text-xl font-black italic tracking-tighter uppercase leading-none">Precise Override</CardTitle>
+              <CardDescription className="text-white/40 font-bold uppercase text-[9px] tracking-widest mt-1">Target specific customer for override</CardDescription>
+            </CardHeader>
+            <CardContent className="p-6 space-y-6">
+              <div className="space-y-2">
+                <Label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Customer Identifier</Label>
+                <div className="flex gap-2">
                   <Input
-                    placeholder="Entity Identifier (Email/ID)"
+                    placeholder="Email or Account ID"
                     value={singleUserId}
                     onChange={(e) => setSingleUserId(e.target.value)}
-                    className="bg-black/60 border-white/5 rounded-2xl h-18 text-white font-black uppercase text-xs tracking-widest focus:border-orange-600 transition-all placeholder:text-slate-800 shadow-inner px-6"
+                    className="h-11 bg-slate-50 border-slate-100 rounded-xl font-bold"
                   />
                   <Button
-                    size="sm"
                     onClick={async () => {
                       if (!singleUserId) return
                       setSingleBusy(true)
@@ -315,74 +293,69 @@ export default function AdminSettingsPage() {
                         const res = await fetch(`/api/admin/users/permissions?identifier=${encodeURIComponent(singleUserId)}`)
                         const data = await res.json()
                         if (!res.ok) {
-                          setError(data?.message || "Node signature not found.")
+                          setError(data?.message || "Customer not found.")
                           setFoundUser(null)
                         } else {
                           setFoundUser(data)
                         }
                       } catch {
-                        setError("Network interrupt during node lookup.")
+                        setError("Network error.")
                       } finally {
                         setSingleBusy(false)
                       }
                     }}
-                    className="absolute right-2 top-2 h-14 px-6 rounded-xl bg-orange-600 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black shadow-3xl transition-all border-none"
+                    disabled={singleBusy}
+                    className="aspect-square h-11 rounded-xl bg-orange-600 hover:bg-orange-700 p-0"
                   >
-                    {singleBusy ? <RefreshCw className="w-4 h-4 animate-spin" /> : "QUERY"}
+                    {singleBusy ? <RefreshCw className="h-4 w-4 animate-spin" /> : <ChevronRight className="h-4 w-4" />}
                   </Button>
                 </div>
+              </div>
 
-                {foundUser && (
-                  <div className="p-8 rounded-[3rem] bg-black/40 border border-white/5 space-y-10 animate-in fade-in slide-in-from-top-6 duration-700 shadow-inner group">
-                    <div className="flex items-center gap-6">
-                      <div className="w-16 h-16 rounded-[1.5rem] bg-slate-900 border border-white/10 flex items-center justify-center text-orange-600 font-black text-2xl uppercase shadow-2xl group-hover:scale-110 transition-transform italic">
-                        {foundUser.name[0]}
-                      </div>
-                      <div className="space-y-2">
-                        <p className="text-sm font-black text-white uppercase tracking-widest italic">{foundUser.name}</p>
-                        <p className="text-[10px] text-slate-600 font-black truncate max-w-[160px] uppercase tracking-tighter">{foundUser.email}</p>
-                      </div>
+              {foundUser && (
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-4 animate-in fade-in slide-in-from-top-2">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black italic">
+                      {foundUser.name[0]}
                     </div>
-
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between p-6 bg-slate-900/60 rounded-2xl border border-white/5 shadow-2xl">
-                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Local Matrix</span>
-                        <Switch
-                          checked={foundUser.canLocalTransfer}
-                          onCheckedChange={(val) => toggleUserPerm("local", val)}
-                          className="data-[state=checked]:bg-blue-600 border-white/10"
-                        />
-                      </div>
-                      <div className="flex items-center justify-between p-6 bg-slate-900/60 rounded-2xl border border-white/5 shadow-2xl">
-                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Intl Matrix</span>
-                        <Switch
-                          checked={foundUser.canInternationalTransfer}
-                          onCheckedChange={(val) => toggleUserPerm("international", val)}
-                          className="data-[state=checked]:bg-orange-600 border-white/10"
-                        />
-                      </div>
+                    <div>
+                      <p className="text-xs font-black text-slate-900 uppercase tracking-widest">{foundUser.name}</p>
+                      <p className="text-[10px] text-slate-500 font-bold truncate max-w-[150px]">{foundUser.email}</p>
                     </div>
                   </div>
-                )}
-              </div>
-            </div>
+                  <div className="space-y-2 pt-2 border-t border-slate-200">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Local</span>
+                      <Switch
+                        checked={foundUser.canLocalTransfer}
+                        onCheckedChange={(val) => toggleUserPerm("local", val)}
+                      />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Global</span>
+                      <Switch
+                        checked={foundUser.canInternationalTransfer}
+                        onCheckedChange={(val) => toggleUserPerm("international", val)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </CardContent>
           </Card>
 
-          {/* System Security Advisory */}
-          <Card className="bg-slate-950 border border-white/10 rounded-[3.5rem] p-10 shadow-3xl relative overflow-hidden group glass-dark">
-            <div className="absolute top-[-20%] left-[-20%] w-[100%] h-[100%] bg-orange-600/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-orange-600/10 transition-all duration-1000"></div>
-            <div className="relative z-10 space-y-8">
-              <div className="h-14 w-14 rounded-2xl bg-orange-600/20 flex items-center justify-center text-orange-500 mb-2 shadow-2xl border border-orange-600/20">
-                <ShieldCheck className="w-7 h-7 animate-pulse" />
+          <Card className="bg-emerald-600 border-none rounded-2xl shadow-lg text-white">
+            <CardContent className="p-6 flex items-start gap-4">
+              <div className="h-10 w-10 rounded-xl bg-white/20 flex items-center justify-center">
+                <ShieldCheck className="w-6 h-6" />
               </div>
-              <div className="space-y-4">
-                <p className="text-[10px] font-black text-orange-500 uppercase tracking-[0.6em]">Propagating Node</p>
-                <h3 className="text-3xl font-black text-white italic tracking-tighter uppercase leading-none">Security <span className="text-white/30">Advisory</span></h3>
+              <div className="space-y-1">
+                <p className="text-xs font-black uppercase tracking-widest">Security Advisory</p>
+                <p className="text-[10px] font-bold opacity-80 leading-relaxed italic">
+                  Changes to bank-wide transfer protocols take effect immediately. Ensure all compliance checks are completed before global shifts.
+                </p>
               </div>
-              <p className="text-xs text-orange-100/30 font-bold leading-relaxed italic border-l-2 border-orange-600/30 pl-4">
-                "System architecture changes propagate instantly through the global Sovereign server cluster. Authorized administrative clearance is required for all modulation sequences."
-              </p>
-            </div>
+            </CardContent>
           </Card>
         </div>
       </div>
