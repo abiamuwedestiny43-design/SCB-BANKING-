@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import TransactionsList from "./TransactionsList";
 import { getCurrentUser } from "@/lib/auth";
 import dbConnect from "@/lib/database";
 import Transfer from "@/models/Transfer";
 import { toPlainObject } from "@/lib/serialization";
 import { redirect } from "next/navigation";
+import TransactionsList from "./transactions/TransactionsList";
 
 async function getTransactionsData(userId: string, page: number = 1, limit: number = 10, filters: any = {}) {
   await dbConnect();

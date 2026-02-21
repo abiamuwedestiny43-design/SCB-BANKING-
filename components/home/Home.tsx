@@ -19,7 +19,7 @@ const HomePages: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentBg((prev) => (prev + 1) % bgImages.length);
-    }, 1000);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
