@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import {
   Users,
+  UserPlus,
   ArrowUpRight,
   ArrowDownLeft,
   Wallet,
@@ -19,6 +21,7 @@ import {
   Filter,
   Zap,
   Globe,
+  Lock,
   Database
 } from "lucide-react"
 import Link from "next/link"
