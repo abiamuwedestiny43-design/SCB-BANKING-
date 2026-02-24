@@ -72,7 +72,7 @@ export default function ResetPasswordPage() {
 
     if (!token || !email) {
         return (
-            <div className="relative min-h-screen flex items-center justify-center bg-slate-900">
+            <div className="relative min-h-screen flex items-center justify-center bg-black">
                 <Card className="w-full max-w-md mx-auto bg-white/10 backdrop-blur-md border border-white/20">
                     <CardContent className="pt-6 text-center">
                         <Alert variant="destructive" className="mb-4">
@@ -88,7 +88,7 @@ export default function ResetPasswordPage() {
     }
 
     return (
-        <div className="relative min-h-screen flex items-center justify-center bg-slate-900">
+        <div className="relative min-h-screen flex items-center justify-center bg-black">
             {/* Background Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center"
@@ -114,7 +114,7 @@ export default function ResetPasswordPage() {
                             </Alert>
                         )}
                         {message && (
-                            <Alert className="bg-orange-500/20 text-orange-100 border-orange-500/50">
+                            <Alert className="bg-black/20 text-orange-100 border-black/50">
                                 <AlertDescription>{message}</AlertDescription>
                             </Alert>
                         )}

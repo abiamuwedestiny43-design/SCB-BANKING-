@@ -20,6 +20,8 @@ export interface IUser extends Document {
       birthdate: Date
       gender: "male" | "female" | "others" | ""
       religion: string
+      idNumber?: string
+      idImage?: string
     }
     address: {
       location: string
@@ -88,6 +90,8 @@ const UserSchema = new Schema<IUser>({
         default: "",
       },
       religion: { type: String, default: "" },
+      idNumber: { type: String, default: "" },
+      idImage: { type: String, default: "" },
     },
     address: {
       location: String,

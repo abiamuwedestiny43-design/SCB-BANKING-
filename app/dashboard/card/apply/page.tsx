@@ -100,12 +100,12 @@ export default function ApplyForCardPage() {
 
         {/* Header */}
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-black hover:bg-white">
             <Link href="/dashboard/card"><ChevronLeft className="h-4 w-4" /></Link>
           </Button>
           <div>
-            <h1 className="text-base font-bold text-slate-900">Request New Card</h1>
-            <p className="text-xs text-slate-400">Choose a card that fits your lifestyle</p>
+            <h1 className="text-base font-bold text-black">Request New Card</h1>
+            <p className="text-xs text-black">Choose a card that fits your lifestyle</p>
           </div>
         </div>
 
@@ -142,14 +142,14 @@ export default function ApplyForCardPage() {
                 className={cn(
                   "block cursor-pointer transition-all duration-300 rounded-xl border p-5 relative overflow-hidden h-full",
                   selectedCard === `${card.type}-${card.vendor}`
-                    ? 'bg-orange-50/30 border-orange-400 shadow-sm'
+                    ? 'bg-slate-50/30 border-orange-400 shadow-sm'
                     : 'bg-white border-slate-100 hover:border-slate-200 shadow-sm'
                 )}
               >
                 <div className="flex justify-between items-start mb-4">
                   <div className={cn(
                     "h-10 w-10 rounded-lg flex items-center justify-center transition-colors",
-                    selectedCard === `${card.type}-${card.vendor}` ? "bg-orange-500 text-white" : "bg-slate-50 text-slate-400"
+                    selectedCard === `${card.type}-${card.vendor}` ? "bg-black text-white" : "bg-slate-50 text-black"
                   )}>
                     <CreditCard className="h-5 w-5" />
                   </div>
@@ -162,21 +162,21 @@ export default function ApplyForCardPage() {
                 </div>
 
                 <div className="space-y-1 mb-4">
-                  <h3 className="text-sm font-bold text-slate-900">{card.name}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed font-medium">{card.description}</p>
+                  <h3 className="text-sm font-bold text-black">{card.name}</h3>
+                  <p className="text-xs text-black leading-relaxed font-medium">{card.description}</p>
                 </div>
 
                 <div className="space-y-2 pt-4 border-t border-slate-50">
                   {card.features.map((feature, fIdx) => (
                     <div key={fIdx} className="flex items-center gap-2">
                       <div className="h-1 w-1 rounded-full bg-orange-400" />
-                      <span className="text-[10px] text-slate-500 font-medium">{feature}</span>
+                      <span className="text-[10px] text-black font-medium">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 {selectedCard === `${card.type}-${card.vendor}` && (
-                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-4 right-4 text-orange-500">
+                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-4 right-4 text-black">
                     <CheckCircle className="h-5 w-5 fill-white" />
                   </motion.div>
                 )}
@@ -187,17 +187,17 @@ export default function ApplyForCardPage() {
 
         <motion.div {...fadeIn} transition={{ delay: 0.3 }} className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center gap-3 bg-slate-100/50 px-4 py-3 rounded-xl border border-slate-200 flex-1 w-full">
-            <ShieldCheck className="h-5 w-5 text-slate-400" />
+            <ShieldCheck className="h-5 w-5 text-black" />
             <div className="min-w-0">
-              <p className="text-[10px] font-bold text-slate-800 uppercase tracking-wider">Identity Protected</p>
-              <p className="text-[10px] text-slate-500 truncate">Application is secured by 256-bit encryption</p>
+              <p className="text-[10px] font-bold text-black uppercase tracking-wider">Identity Protected</p>
+              <p className="text-[10px] text-black truncate">Application is secured by 256-bit encryption</p>
             </div>
           </div>
 
           <div className="flex gap-2 w-full sm:w-auto">
             <Button
               variant="outline"
-              className="flex-1 sm:w-32 h-11 border-slate-200 text-slate-600 font-bold rounded-lg text-xs"
+              className="flex-1 sm:w-32 h-11 border-slate-200 text-black font-bold rounded-lg text-xs"
               onClick={() => router.back()}
             >
               Cancel
@@ -205,7 +205,7 @@ export default function ApplyForCardPage() {
             <Button
               onClick={handleApply}
               disabled={isSubmitting || !selectedCard}
-              className="flex-[2] sm:w-48 h-11 bg-slate-900 hover:bg-orange-600 text-white font-bold rounded-lg text-xs transition-colors shadow-sm"
+              className="flex-[2] sm:w-48 h-11 bg-black hover:bg-black text-white font-bold rounded-lg text-xs transition-colors shadow-sm"
             >
               {isSubmitting ? 'Processing...' : 'Submit Application'}
             </Button>

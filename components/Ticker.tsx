@@ -78,10 +78,10 @@ const Ticker = () => {
     const displayItems = [...repeatedItems, ...repeatedItems]
 
     return (
-        <div className="h-10 w-full bg-[#020617]/95 backdrop-blur-md border-b border-orange-500/10 flex items-center overflow-hidden z-[60] fixed top-0">
-            <div className="flex items-center gap-4 px-6 border-r border-orange-500/20 bg-[#020617] z-20 shrink-0">
-                <Activity className="w-4 h-4 text-orange-500 animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500/70">Live Market</span>
+        <div className="h-10 w-full bg-[#020617]/95 backdrop-blur-md border-b border-black/10 flex items-center overflow-hidden z-[60] fixed top-0">
+            <div className="flex items-center gap-4 px-6 border-r border-black/20 bg-[#020617] z-20 shrink-0">
+                <Activity className="w-4 h-4 text-black animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/70">Live Market</span>
             </div>
 
             <div className="flex-1 overflow-hidden relative">
@@ -92,7 +92,7 @@ const Ticker = () => {
                         {displayItems.map((item, index) => (
                             <div key={index} className="flex items-center gap-6 px-8 border-r border-white/5 shrink-0">
                                 <div className="flex items-center gap-2">
-                                    <span className="text-[11px] font-bold text-slate-400">{item.label}</span>
+                                    <span className="text-[11px] font-bold text-black">{item.label}</span>
                                     <span className="text-xs font-mono font-bold text-white tracking-wider">${item.price}</span>
                                 </div>
                                 <div className={`flex items-center gap-1 text-[10px] font-bold ${item.change >= 0 ? 'text-orange-400' : 'text-rose-400'}`}>

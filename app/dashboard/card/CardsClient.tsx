@@ -23,15 +23,15 @@ export default function CardsClient({ cards }: CardsClientProps) {
                 {/* Header */}
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+                        <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-black hover:bg-white">
                             <Link href="/dashboard"><ChevronLeft className="h-4 w-4" /></Link>
                         </Button>
                         <div>
-                            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">My Cards</h1>
-                            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Manage your payment cards</p>
+                            <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">My Cards</h1>
+                            <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">Manage your payment cards</p>
                         </div>
                     </div>
-                    <Button asChild size="sm" className="bg-slate-900 hover:bg-orange-600 text-white rounded-xl font-black text-sm uppercase tracking-widest transition-all italic h-12 px-6">
+                    <Button asChild size="sm" className="bg-black hover:bg-black text-white rounded-xl font-black text-sm uppercase tracking-widest transition-all italic h-12 px-6">
                         <Link href="/dashboard/card/apply">
                             <Plus className="h-4 w-4" /> Request Card
                         </Link>
@@ -41,9 +41,9 @@ export default function CardsClient({ cards }: CardsClientProps) {
                 {/* Feature Pills */}
                 <div className="grid grid-cols-3 gap-3">
                     {[
-                        { label: "PIN Protected", sub: "Secure Core", icon: ShieldCheck, color: "text-orange-500", bg: "bg-orange-50" },
-                        { label: "Instant Issue", sub: "Fast Delivery", icon: Zap, color: "text-blue-500", bg: "bg-blue-50" },
-                        { label: "Global Access", sub: "Worldwide", icon: Globe, color: "text-purple-500", bg: "bg-purple-50" },
+                        { label: "PIN Protected", sub: "Secure Core", icon: ShieldCheck, color: "text-black", bg: "bg-slate-50" },
+                        { label: "Instant Issue", sub: "Fast Delivery", icon: Zap, color: "text-black", bg: "bg-blue-50" },
+                        { label: "Global Access", sub: "Worldwide", icon: Globe, color: "text-black", bg: "bg-purple-50" },
                     ].map((item, i) => (
                         <motion.div key={i} {...fadeIn} transition={{ delay: 0.05 * i }}>
                             <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4 flex items-center gap-3">
@@ -51,8 +51,8 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                     <item.icon className="h-4 w-4" />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] md:text-xs text-slate-400 font-black uppercase tracking-widest opacity-60 mb-0.5">{item.label}</p>
-                                    <p className="text-sm md:text-base font-black text-slate-900 uppercase tracking-tight italic">{item.sub}</p>
+                                    <p className="text-[10px] md:text-xs text-black font-black uppercase tracking-widest opacity-60 mb-0.5">{item.label}</p>
+                                    <p className="text-sm md:text-base font-black text-black uppercase tracking-tight italic">{item.sub}</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -67,10 +67,10 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                 <CreditCard className="h-6 w-6" />
                             </div>
                             <div>
-                                <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">No cards yet</h3>
-                                <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60 mt-1">Request a card to get started.</p>
+                                <h3 className="text-base md:text-lg font-black text-black uppercase tracking-tight italic">No cards yet</h3>
+                                <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60 mt-1">Request a card to get started.</p>
                             </div>
-                            <Button asChild size="sm" className="bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs border-none h-9 px-4">
+                            <Button asChild size="sm" className="bg-black hover:bg-black text-white rounded-lg text-xs border-none h-9 px-4">
                                 <Link href="/dashboard/card/apply">Request a Card</Link>
                             </Button>
                         </div>
@@ -92,11 +92,11 @@ export default function CardsClient({ cards }: CardsClientProps) {
                                         <div className="flex items-center gap-2">
                                             <div className={cn(
                                                 "h-1.5 w-1.5 rounded-full",
-                                                card.status === 'active' ? 'bg-emerald-500' : 'bg-orange-400'
+                                                card.status === 'active' ? 'bg-black' : 'bg-orange-400'
                                             )} />
-                                            <span className="text-[10px] md:text-xs font-black text-slate-600 uppercase tracking-widest italic">{card.status}</span>
+                                            <span className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest italic">{card.status}</span>
                                         </div>
-                                        <div className="flex items-center gap-1.5 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest opacity-60">
+                                        <div className="flex items-center gap-1.5 text-[10px] md:text-xs font-black text-black uppercase tracking-widest opacity-60">
                                             <ShieldCheck className="h-3.5 w-3.5 text-orange-400" />
                                             PIN Protected
                                         </div>

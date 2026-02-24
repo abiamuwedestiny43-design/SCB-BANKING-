@@ -17,9 +17,9 @@ const ContactPage: React.FC = () => {
             Contact Us
           </h1>
           <p className="text-base md:text-lg leading-relaxed animate-slide-up delay-200">
-            At Danamon Bank, your questions and needs are our priority. Whether you’re looking for advice on loans, mortgages, or general banking services, our dedicated team is ready to provide personal support. Contact us and experience responsive, friendly, and professional service tailored to your needs.
+            At SCB BANKING, your questions and needs are our priority. Whether you’re looking for advice on loans, mortgages, or general banking services, our dedicated team is ready to provide personal support. Contact us and experience responsive, friendly, and professional service tailored to your needs.
             <br /><br />
-            Reach out to us today and let us guide you through our services, help you manage your finances, or resolve any issues you may face. With various communication channels and convenient branch locations, staying connected with Danamon Bank is now easier than ever.
+            Reach out to us today and let us guide you through our services, help you manage your finances, or resolve any issues you may face. With various communication channels and convenient branch locations, staying connected with SCB BANKING is now easier than ever.
           </p>
         </div>
       </section>
@@ -31,29 +31,29 @@ const ContactPage: React.FC = () => {
             {/* Contact Form */}
             <div className="animate-slide-in-left">
               <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">Send a Message</h2>
+                <h2 className="text-2xl font-bold text-black mb-6">Send a Message</h2>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
-                      <input type="text" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" />
+                      <label className="block text-sm font-medium text-black mb-2">First Name</label>
+                      <input type="text" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
-                      <input type="text" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" />
+                      <label className="block text-sm font-medium text-black mb-2">Last Name</label>
+                      <input type="text" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
-                    <input type="email" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" />
+                    <label className="block text-sm font-medium text-black mb-2">Email</label>
+                    <input type="email" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Phone</label>
-                    <input type="tel" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" />
+                    <label className="block text-sm font-medium text-black mb-2">Phone</label>
+                    <input type="tel" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
-                    <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    <label className="block text-sm font-medium text-black mb-2">Subject</label>
+                    <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent">
                       <option>General Inquiry</option>
                       <option>Account Services</option>
                       <option>Loan Information</option>
@@ -62,10 +62,10 @@ const ContactPage: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                    <textarea rows={5} className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="How can we help you?"></textarea>
+                    <label className="block text-sm font-medium text-black mb-2">Message</label>
+                    <textarea rows={5} className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" placeholder="How can we help you?"></textarea>
                   </div>
-                  <button className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
+                  <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-black transition-colors font-medium">
                     Send Message
                   </button>
                 </form>
@@ -75,44 +75,44 @@ const ContactPage: React.FC = () => {
             {/* Contact Information */}
             <div className="animate-slide-in-right space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">Contact Information</h2>
+                <h2 className="text-2xl font-bold text-black mb-6">Contact Information</h2>
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <Phone className="w-6 h-6 text-orange-600" />
+                      <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center">
+                        <Phone className="w-6 h-6 text-black" />
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-slate-900">Phone</h3>
-                      <p className="text-slate-600">Customer Support: +62 (21) 8064 5000</p>
-                      <p className="text-slate-600">Loan Department: +62 (21) 8064 5001</p>
+                      <h3 className="text-lg font-semibold text-black">Phone</h3>
+                      <p className="text-black">Customer Support: +44 7552 984349</p>
+                      <p className="text-black">Loan Department: +44 7552 984350</p>
                     </div>
                   </div>
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <Mail className="w-6 h-6 text-orange-600" />
+                      <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center">
+                        <Mail className="w-6 h-6 text-black" />
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-slate-900">Email</h3>
-                      <p className="text-slate-600">info@danamonbk.com</p>
-                      <p className="text-slate-600">support@danamonbk.com</p>
+                      <h3 className="text-lg font-semibold text-black">Email</h3>
+                      <p className="text-black">support@scbbankiing.com</p>
+                      <p className="text-black">support@scbbankiing.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <MapPin className="w-6 h-6 text-orange-600" />
+                      <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center">
+                        <MapPin className="w-6 h-6 text-black" />
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-slate-900">Head Office</h3>
-                      <p className="text-slate-600">
-                        Jl. HR. Rasuna Said No. 10,<br />
-                        Block C, Karet, Setiabudi,<br />
-                        Jakarta Selatan 12920, Indonesia
+                      <h3 className="text-lg font-semibold text-black">Head Office</h3>
+                      <p className="text-black">
+                        One Canary Wharf,<br />
+                        London, E14 5AB,<br />
+                        United Kingdom
                       </p>
                     </div>
                   </div>
@@ -120,8 +120,8 @@ const ContactPage: React.FC = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">Business Hours</h3>
-                <div className="space-y-2 text-slate-600">
+                <h3 className="text-xl font-semibold text-black mb-4">Business Hours</h3>
+                <div className="space-y-2 text-black">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
                     <span>09:00 - 18:00</span>
@@ -137,12 +137,12 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-orange-50 p-6 rounded-lg">
-                <h3 className="text-lg font-semibold text-slate-900 mb-3">Need Urgent Help?</h3>
-                <p className="text-slate-600 mb-4">
+              <div className="bg-slate-50 p-6 rounded-lg">
+                <h3 className="text-lg font-semibold text-black mb-3">Need Urgent Help?</h3>
+                <p className="text-black mb-4">
                   For urgent account issues or to report a lost/stolen card, call our 24/7 hotline:
                 </p>
-                <div className="text-2xl font-bold text-orange-600">+62 (21) 8064 5000</div>
+                <div className="text-2xl font-bold text-black">+44 7552 984349</div>
               </div>
             </div>
           </div>
@@ -152,45 +152,45 @@ const ContactPage: React.FC = () => {
       {/* Branch Locations */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-16">Branch Locations</h2>
+          <h2 className="text-2xl font-bold text-center text-black mb-16">Branch Locations</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: 'Sudirman Branch',
-                address: 'Jl. Jenderal Sudirman Kav. 45-46, Central Jakarta',
-                phone: '+62 (21) 123-4567',
+                name: 'Canary Wharf Branch',
+                address: 'One Canary Wharf, London, E14 5AB',
+                phone: '+44 7552 984349',
                 hours: 'Mon-Fri: 09:00-18:00, Sat: 09:00-14:00'
               },
               {
-                name: 'Kuningan Branch',
-                address: 'Jl. HR. Rasuna Said No. 10, South Jakarta',
-                phone: '+62 (21) 123-4568',
+                name: 'Manchester Central',
+                address: '100 Barbirolli Square, Manchester, M2 3BD',
+                phone: '+44 7552 984351',
                 hours: 'Mon-Fri: 09:00-17:00, Sat: 09:00-13:00'
               },
               {
-                name: 'Kelapa Gading Branch',
-                address: 'Jl. Boulevard Raya Blok LA, North Jakarta',
-                phone: '+62 (21) 123-4569',
+                name: 'Birmingham Business District',
+                address: '1 Colmore Row, Birmingham, B3 2BJ',
+                phone: '+44 7552 984352',
                 hours: 'Mon-Fri: 09:00-18:00, Sat: 09:00-14:00'
               }
             ].map((branch, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-lg animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">{branch.name}</h3>
-                <div className="space-y-3 text-slate-600">
+                <h3 className="text-xl font-semibold text-black mb-4">{branch.name}</h3>
+                <div className="space-y-3 text-black">
                   <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-orange-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <MapPin className="w-5 h-5 text-black mr-2 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{branch.address}</span>
                   </div>
                   <div className="flex items-center">
-                    <Phone className="w-5 h-5 text-orange-600 mr-2 flex-shrink-0" />
+                    <Phone className="w-5 h-5 text-black mr-2 flex-shrink-0" />
                     <span className="text-sm">{branch.phone}</span>
                   </div>
                   <div className="flex items-start">
-                    <Clock className="w-5 h-5 text-orange-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <Clock className="w-5 h-5 text-black mr-2 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{branch.hours}</span>
                   </div>
                 </div>
-                <button className="mt-4 w-full text-orange-600 font-medium hover:text-orange-700 text-sm border border-orange-600 py-2 rounded-lg hover:bg-orange-50 transition-colors">
+                <button className="mt-4 w-full text-black font-medium hover:text-black text-sm border border-black py-2 rounded-lg hover:bg-slate-50 transition-colors">
                   Get Directions
                 </button>
               </div>

@@ -69,8 +69,8 @@ export default async function DashboardPage() {
       return (
         <div className="min-h-screen flex items-center justify-center p-6 bg-[#f8fafc]">
           <div className="text-center p-12 bg-white rounded-[2rem] shadow-2xl">
-            <h1 className="text-3xl font-black text-slate-800">Authentication Required</h1>
-            <p className="text-slate-500 mt-4 font-medium">Please log in to access your dashboard.</p>
+            <h1 className="text-3xl font-black text-black">Authentication Required</h1>
+            <p className="text-black mt-4 font-medium">Please log in to access your dashboard.</p>
           </div>
         </div>
       )
@@ -82,7 +82,7 @@ export default async function DashboardPage() {
         <div className="min-h-screen flex items-center justify-center p-6 bg-[#f8fafc]">
           <div className="text-center p-12 bg-white rounded-[2rem] shadow-2xl">
             <h1 className="text-3xl font-black text-red-600">Data Error</h1>
-            <p className="text-slate-500 mt-4 font-medium">Invalid user data. Please contact support.</p>
+            <p className="text-black mt-4 font-medium">Invalid user data. Please contact support.</p>
           </div>
         </div>
       )
@@ -122,7 +122,7 @@ export default async function DashboardPage() {
       <div className="min-h-screen flex items-center justify-center p-6 bg-[#f8fafc]">
         <div className="text-center p-12 bg-white rounded-[2rem] shadow-2xl max-w-md">
           <h1 className="text-3xl font-black text-red-600 mb-4">Something went wrong</h1>
-          <p className="text-slate-500 font-medium">Please try again later or contact support if the problem persists.</p>
+          <p className="text-black font-medium">Please try again later or contact support if the problem persists.</p>
         </div>
       </div>
     )

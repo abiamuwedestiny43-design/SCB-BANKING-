@@ -33,7 +33,7 @@ export default function NotificationsPage() {
       toast({
         title: "All Caught Up!",
         description: "All notifications marked as read.",
-        className: "bg-orange-600 border-none text-white font-bold"
+        className: "bg-black border-none text-white font-bold"
       })
       mutate()
     }
@@ -48,12 +48,12 @@ export default function NotificationsPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+            <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-black hover:bg-white">
               <Link href="/dashboard"><ChevronLeft className="h-4 w-4" /></Link>
             </Button>
             <div>
-              <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Notifications</h1>
-              <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">
+              <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">Notifications</h1>
+              <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">
                 {unreadCount > 0 ? `${unreadCount} unread alerts` : "All caught up"}
               </p>
             </div>
@@ -62,7 +62,7 @@ export default function NotificationsPage() {
             <Button
               size="sm"
               onClick={markAllRead}
-              className="bg-slate-900 hover:bg-orange-600 text-white rounded-xl font-black text-sm uppercase tracking-widest transition-all italic h-12 px-6"
+              className="bg-black hover:bg-black text-white rounded-xl font-black text-sm uppercase tracking-widest transition-all italic h-12 px-6"
             >
               <CheckCheck className="h-4 w-4" /> Mark all read
             </Button>
@@ -74,8 +74,8 @@ export default function NotificationsPage() {
           <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
             {isLoading ? (
               <div className="py-16 text-center">
-                <div className="h-8 w-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-                <p className="text-xs text-slate-400">Loading notifications...</p>
+                <div className="h-8 w-8 border-2 border-black border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                <p className="text-xs text-black">Loading notifications...</p>
               </div>
             ) : notifications.length === 0 ? (
               <div className="py-16 text-center space-y-3">
@@ -83,8 +83,8 @@ export default function NotificationsPage() {
                   <Inbox className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-slate-700">No notifications</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">You're all caught up!</p>
+                  <h3 className="text-sm font-semibold text-black">No notifications</h3>
+                  <p className="text-xs text-black mt-0.5">You're all caught up!</p>
                 </div>
               </div>
             ) : (
@@ -102,19 +102,19 @@ export default function NotificationsPage() {
                         transition={{ delay: idx * 0.03 }}
                         className={cn(
                           "flex items-start gap-3 p-4 transition-colors hover:bg-slate-50/70 relative",
-                          !n.viewed && "bg-orange-50/40"
+                          !n.viewed && "bg-slate-50/40"
                         )}
                       >
                         {/* Unread indicator */}
                         {!n.viewed && (
-                          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-orange-500 rounded-r" />
+                          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-black rounded-r" />
                         )}
 
                         <div className={cn(
                           "h-8 w-8 rounded-lg flex items-center justify-center shrink-0",
-                          isDebit ? "bg-red-50 text-red-500" :
-                            isCredit ? "bg-emerald-50 text-emerald-500" :
-                              "bg-blue-50 text-blue-500"
+                          isDebit ? "bg-red-50 text-black" :
+                            isCredit ? "bg-emerald-50 text-black" :
+                              "bg-blue-50 text-black"
                         )}>
                           {n.viewed ? (
                             <MailOpen className="h-4 w-4 opacity-60" />
@@ -135,10 +135,10 @@ export default function NotificationsPage() {
                                 {isDebit ? "Debit" : isCredit ? "Credit" : "Info"}
                               </span>
                               {!n.viewed && (
-                                <div className="h-1.5 w-1.5 bg-orange-500 rounded-full" />
+                                <div className="h-1.5 w-1.5 bg-black rounded-full" />
                               )}
                             </div>
-                            <div className="flex items-center gap-1 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest opacity-60 flex-shrink-0">
+                            <div className="flex items-center gap-1 text-[10px] md:text-xs font-black text-black uppercase tracking-widest opacity-60 flex-shrink-0">
                               <Clock className="h-3.5 w-3.5" />
                               {new Date(n.period).toLocaleString(undefined, {
                                 month: 'short',
@@ -148,11 +148,11 @@ export default function NotificationsPage() {
                               })}
                             </div>
                           </div>
-                          <p className="text-sm md:text-base font-bold text-slate-800 mt-2 leading-relaxed tracking-tight italic opacity-90">{n.message}</p>
+                          <p className="text-sm md:text-base font-bold text-black mt-2 leading-relaxed tracking-tight italic opacity-90">{n.message}</p>
                           {n.redirect && (
                             <Link
                               href={n.redirect}
-                              className="inline-flex items-center gap-1 text-[10px] md:text-xs font-black uppercase tracking-widest text-orange-600 hover:text-orange-700 mt-2 italic group"
+                              className="inline-flex items-center gap-1 text-[10px] md:text-xs font-black uppercase tracking-widest text-black hover:text-black mt-2 italic group"
                             >
                               View details <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                             </Link>

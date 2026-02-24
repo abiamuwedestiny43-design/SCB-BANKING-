@@ -1,8 +1,8 @@
-# Danamon Bank - Production Deployment Guide
+# SCB BANKING - Production Deployment Guide
 
 ## 🚀 Deployment Status: COMPLETE ✅
 
-Your Danamon Bank application has been successfully deployed to Vercel!
+Your SCB BANKING application has been successfully deployed to Vercel!
 
 ---
 
@@ -30,7 +30,7 @@ Your Danamon Bank application has been successfully deployed to Vercel!
 2. **Visit**: <https://novabank-rose.vercel.app/setup-admin>
 3. **Click**: "Create Super Admin" button
 4. **Save the credentials** displayed on screen:
-   - Email: `admin@danamonbk.com`
+   - Email: `admin@scbbankiing.com`
    - Password: `Admin@123456`
    - PIN: `1234`
    - Account Number: (will be generated)
@@ -38,7 +38,7 @@ Your Danamon Bank application has been successfully deployed to Vercel!
 ### Step 2: Login to Admin Dashboard
 
 1. Go to: <https://novabank-rose.vercel.app/login>
-2. Enter email: `admin@danamonbk.com`
+2. Enter email: `admin@scbbankiing.com`
 3. Enter password: `Admin@123456`
 4. Enter PIN: `1234`
 5. You'll be redirected to: <https://novabank-rose.vercel.app/admin>
@@ -121,7 +121,7 @@ git push origin master
 
 ### Previous Deployment
 
-- **Commit**: "Update Danamon Bank: White theme, banking design, technology page, admin features, and improved UI"
+- **Commit**: "Update SCB BANKING: White theme, banking design, technology page, admin features, and improved UI"
 - **Files Changed**: 73 files
 - **Lines Modified**: 2,255 additions, 1,390 deletions
 
@@ -187,9 +187,9 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=banknova674@gmail.com
 SMTP_PASS=ckpmgqmwyslyzehg
-SMTP_FROM=support@danamonbk.com
-ADMIN_EMAIL=support@danamonbk.com
-BASE_URL=https://www.danamonbk.com
+SMTP_FROM=support@scbbankiing.com
+ADMIN_EMAIL=support@scbbankiing.com
+BASE_URL=https://www.scbbankiing.com
 ```
 
 **Note**: These should already be set in your Vercel project settings.
@@ -291,7 +291,7 @@ git push origin master
 
 ## 🎊 Congratulations
 
-Your Danamon Bank application is now live and ready for users!
+Your SCB BANKING application is now live and ready for users!
 
 **Next Steps**:
 

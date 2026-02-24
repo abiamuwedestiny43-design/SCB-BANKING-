@@ -101,11 +101,11 @@
   }
 
   .glass-dark {
-    @apply bg-slate-900/60 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-black to-orange-400;
   }
 
   .premium-shadow {

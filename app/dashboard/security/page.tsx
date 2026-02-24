@@ -24,12 +24,12 @@ export default async function SecurityPage() {
 
         {/* Header */}
         <div className="flex items-center gap-3">
-          <div className="h-8 w-8 bg-orange-50 rounded-lg flex items-center justify-center text-orange-500">
+          <div className="h-8 w-8 bg-slate-50 rounded-lg flex items-center justify-center text-black">
             <Shield className="h-4 w-4" />
           </div>
           <div>
-            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Security Center</h1>
-            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Monitor account security and activity</p>
+            <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">Security Center</h1>
+            <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">Monitor account security and activity</p>
           </div>
         </div>
 
@@ -37,8 +37,8 @@ export default async function SecurityPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
             <div className="flex items-center gap-2.5 p-4 border-b border-slate-50">
-              <Shield className="h-4 w-4 text-orange-500" />
-              <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">Account <span className="text-orange-600">Status</span></h3>
+              <Shield className="h-4 w-4 text-black" />
+              <h3 className="text-base md:text-lg font-black text-black uppercase tracking-tight italic">Account <span className="text-black">Status</span></h3>
             </div>
             <div className="p-4 space-y-3">
               {[
@@ -49,7 +49,7 @@ export default async function SecurityPage() {
                 { label: "Local Transfers", value: localEnabled ? "Enabled" : "Disabled", active: localEnabled },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between">
-                  <span className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">{item.label}</span>
+                  <span className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest">{item.label}</span>
                   <Badge className={cn(
                     "text-[9px] md:text-[10px] font-black px-2 py-0.5 rounded border uppercase italic tracking-widest",
                     item.active ? "bg-emerald-50 text-emerald-700 border-emerald-100" : "bg-red-50 text-red-600 border-red-100"
@@ -63,8 +63,8 @@ export default async function SecurityPage() {
 
           <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
             <div className="flex items-center gap-2.5 p-4 border-b border-slate-50">
-              <Smartphone className="h-4 w-4 text-blue-500" />
-              <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">App <span className="text-orange-600">Settings</span></h3>
+              <Smartphone className="h-4 w-4 text-black" />
+              <h3 className="text-base md:text-lg font-black text-black uppercase tracking-tight italic">App <span className="text-black">Settings</span></h3>
             </div>
             <div className="p-4 space-y-3">
               {[
@@ -75,10 +75,10 @@ export default async function SecurityPage() {
                 { label: "Privacy Mode", value: "Standard", active: false },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between">
-                  <span className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">{item.label}</span>
+                  <span className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest">{item.label}</span>
                   <Badge className={cn(
                     "text-[9px] md:text-[10px] font-black px-2 py-0.5 rounded border uppercase italic tracking-widest",
-                    item.active ? "bg-orange-50 text-orange-600 border-orange-100" : "bg-slate-50 text-slate-500 border-slate-200"
+                    item.active ? "bg-slate-50 text-black border-slate-100" : "bg-slate-50 text-black border-slate-200"
                   )}>
                     {item.value}
                   </Badge>
@@ -92,10 +92,10 @@ export default async function SecurityPage() {
         <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
           <div className="flex items-center justify-between p-4 border-b border-slate-50">
             <div className="flex items-center gap-2.5">
-              <Clock className="h-4 w-4 text-orange-500" />
-              <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">Activity <span className="text-orange-600">Log</span></h3>
+              <Clock className="h-4 w-4 text-black" />
+              <h3 className="text-base md:text-lg font-black text-black uppercase tracking-tight italic">Activity <span className="text-black">Log</span></h3>
             </div>
-            <span className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest italic opacity-60">Recent login history</span>
+            <span className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest italic opacity-60">Recent login history</span>
           </div>
           <div className="divide-y divide-slate-50">
             {auditLogs.length > 0 ? (
@@ -103,17 +103,17 @@ export default async function SecurityPage() {
                 <div key={index} className="flex items-center gap-3 p-4 hover:bg-slate-50/60 transition-colors">
                   <div className={cn(
                     "h-8 w-8 rounded-lg flex items-center justify-center flex-shrink-0",
-                    log.success ? "bg-green-50 text-green-500" : "bg-red-50 text-red-500"
+                    log.success ? "bg-green-50 text-green-500" : "bg-red-50 text-black"
                   )}>
                     <Shield className="h-4 w-4" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm md:text-base font-black text-slate-800 uppercase tracking-tight italic">{log.action.replace(/_/g, " ")}</p>
+                    <p className="text-sm md:text-base font-black text-black uppercase tracking-tight italic">{log.action.replace(/_/g, " ")}</p>
                     <div className="flex items-center gap-1.5 mt-0.5">
                       <MapPin className="h-3.5 w-3.5 text-slate-300" />
-                      <p className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest opacity-60">{log.ipAddress}</p>
+                      <p className="text-[10px] md:text-xs font-bold text-black uppercase tracking-widest opacity-60">{log.ipAddress}</p>
                       <span className="text-slate-200">·</span>
-                      <p className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest opacity-60">{log.timestamp.toLocaleString()}</p>
+                      <p className="text-[10px] md:text-xs font-bold text-black uppercase tracking-widest opacity-60">{log.timestamp.toLocaleString()}</p>
                     </div>
                   </div>
                   <Badge className={cn(
@@ -127,7 +127,7 @@ export default async function SecurityPage() {
             ) : (
               <div className="py-12 text-center">
                 <Clock className="h-6 w-6 text-slate-200 mx-auto mb-2" />
-                <p className="text-xs text-slate-400">No activity logs found.</p>
+                <p className="text-xs text-black">No activity logs found.</p>
               </div>
             )}
           </div>

@@ -14,22 +14,22 @@ const MortgagePage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-900/50 border border-orange-500/30 text-orange-400 text-sm font-bold tracking-wider mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-900/50 border border-black/30 text-orange-400 text-sm font-bold tracking-wider mb-8">
             <Home className="w-4 h-4" /> PREMIUM REAL ESTATE FINANCING
           </div>
           <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-8">
             Dream Ownership <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-500 italic">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-black italic">
               Legacy Starts Here.
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-12">
-            Secure your dream home with our smart mortgage framework. Whether you are a first-time buyer or seeking leverage for high-value properties, DANAMON BANK provides the most advanced solutions in the market.
+          <p className="text-lg md:text-xl text-black max-w-3xl mx-auto leading-relaxed mb-12">
+            Secure your dream home with our smart mortgage framework. Whether you are a first-time buyer or seeking leverage for high-value properties, SCB BANKING BANK provides the most advanced solutions in the market.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 relative z-20">
             <Link href="/register">
-              <button className="w-full sm:w-auto bg-orange-500 hover:bg-orange-400 text-[#020617] px-10 py-5 rounded-2xl text-lg font-black transition-all hover:scale-105 shadow-xl shadow-orange-500/20">
+              <button className="w-full sm:w-auto bg-black hover:bg-orange-400 text-[#020617] px-10 py-5 rounded-2xl text-lg font-black transition-all hover:scale-105 shadow-xl shadow-black/20">
                 Get Pre-Approved
               </button>
             </Link>
@@ -39,7 +39,7 @@ const MortgagePage: React.FC = () => {
           </div>
 
           <div className="relative group max-w-6xl mx-auto mt-20">
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-black to-black rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
             <div className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-3xl">
               <img
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&auto=format&fit=crop&q=90"
@@ -48,7 +48,7 @@ const MortgagePage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
               <div className="absolute bottom-10 left-10 text-left space-y-4">
-                <div className="px-5 py-2 inline-block rounded-full bg-orange-500 text-[#020617] text-[10px] font-black uppercase tracking-widest">Global Portfolio Coverage</div>
+                <div className="px-5 py-2 inline-block rounded-full bg-black text-[#020617] text-[10px] font-black uppercase tracking-widest">Global Portfolio Coverage</div>
                 <h3 className="text-4xl font-black text-white leading-tight">Elite Property Financing</h3>
                 <p className="text-slate-200 font-medium max-w-lg">Advanced protocols for domestic and international real estate acquisitions.</p>
               </div>
@@ -61,7 +61,7 @@ const MortgagePage: React.FC = () => {
       <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <p className="text-xs font-black tracking-[0.5em] uppercase text-orange-500 mb-4">Financial Blueprint</p>
+            <p className="text-xs font-black tracking-[0.5em] uppercase text-black mb-4">Financial Blueprint</p>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter">Advanced Mortgage Options</h2>
           </div>
 
@@ -73,7 +73,7 @@ const MortgagePage: React.FC = () => {
                 features: ['30-year bedrock terms', 'Locked APR protocols', 'Zero inflation volatility'],
                 icon: Shield,
                 color: 'text-orange-400',
-                bg: 'bg-orange-500/10'
+                bg: 'bg-black/10'
               },
               {
                 title: 'Global Elite (Jumbo)',
@@ -81,7 +81,7 @@ const MortgagePage: React.FC = () => {
                 features: ['Up to $5M+ funding', 'Bespoke underwriting', 'Portfolio lending options'],
                 icon: Award,
                 color: 'text-blue-400',
-                bg: 'bg-blue-500/10'
+                bg: 'bg-black/10'
               },
               {
                 title: 'Agile Variable (ARM)',
@@ -89,7 +89,7 @@ const MortgagePage: React.FC = () => {
                 features: ['Hybrid entry rates', 'Annual cap protection', 'Conversion options'],
                 icon: Zap,
                 color: 'text-purple-400',
-                bg: 'bg-purple-500/10'
+                bg: 'bg-black/10'
               },
               {
                 title: 'Institutional Refinancing',
@@ -97,7 +97,7 @@ const MortgagePage: React.FC = () => {
                 features: ['Instant rate audits', 'Cash-out protocols', 'Consolidated management'],
                 icon: Globe,
                 color: 'text-orange-400',
-                bg: 'bg-orange-500/10'
+                bg: 'bg-black/10'
               }
             ].map((mortgage, index) => (
               <div key={index} className="group p-10 rounded-[3.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all duration-500 hover:-translate-y-2 flex flex-col md:flex-row gap-8 items-start">
@@ -106,7 +106,7 @@ const MortgagePage: React.FC = () => {
                 </div>
                 <div className="flex-grow">
                   <h3 className="text-2xl font-black text-white mb-4 italic">{mortgage.title}</h3>
-                  <p className="text-slate-500 mb-8 leading-relaxed">{mortgage.description}</p>
+                  <p className="text-black mb-8 leading-relaxed">{mortgage.description}</p>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {mortgage.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-3 text-sm text-slate-300">
@@ -115,7 +115,7 @@ const MortgagePage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <button className="mt-10 px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-black hover:bg-orange-500 hover:text-[#020617] transition-all text-xs uppercase tracking-widest">
+                  <button className="mt-10 px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-black hover:bg-black hover:text-[#020617] transition-all text-xs uppercase tracking-widest">
                     View Blueprint
                   </button>
                 </div>
@@ -127,28 +127,28 @@ const MortgagePage: React.FC = () => {
 
       {/* Analytics (Calculator) */}
       <section className="py-24 bg-[#0f172a] relative border-y border-white/5 overflow-hidden">
-        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-orange-500/10 rounded-full blur-[100px]"></div>
+        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-black/10 rounded-full blur-[100px]"></div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="p-12 md:p-20 rounded-[4rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-3xl">
             <h2 className="text-4xl font-black text-center text-white mb-16 tracking-tighter">Financial Projection Engine</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               <div className="space-y-8">
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-orange-500 mb-4">Total Asset Value</label>
-                  <input type="number" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white focus:outline-none focus:border-orange-500 text-xl font-bold" placeholder="$500,000" />
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-black mb-4">Total Asset Value</label>
+                  <input type="number" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white focus:outline-none focus:border-black text-xl font-bold" placeholder="$500,000" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-orange-500 mb-4">Initial Capital (Down Payment)</label>
-                  <input type="number" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white focus:outline-none focus:border-orange-500 text-xl font-bold" placeholder="$100,000" />
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-black mb-4">Initial Capital (Down Payment)</label>
+                  <input type="number" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white focus:outline-none focus:border-black text-xl font-bold" placeholder="$100,000" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-orange-500 mb-4">Target Rate (%)</label>
-                    <input type="number" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white focus:outline-none focus:border-orange-500 font-bold" placeholder="3.5" step="0.1" />
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-black mb-4">Target Rate (%)</label>
+                    <input type="number" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white focus:outline-none focus:border-black font-bold" placeholder="3.5" step="0.1" />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-orange-500 mb-4">Time Horizon</label>
-                    <select className="w-full bg-[#0f172a] border border-white/10 rounded-2xl p-5 text-white focus:outline-none focus:border-orange-500 font-bold appearance-none">
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-black mb-4">Time Horizon</label>
+                    <select className="w-full bg-[#0f172a] border border-white/10 rounded-2xl p-5 text-white focus:outline-none focus:border-black font-bold appearance-none">
                       <option>30 Years</option>
                       <option>15 Years</option>
                     </select>
@@ -159,23 +159,23 @@ const MortgagePage: React.FC = () => {
               <div className="flex flex-col justify-between pt-6 lg:pt-0">
                 <div className="space-y-6">
                   <div className="flex justify-between items-center p-6 rounded-3xl bg-white/5 border border-white/5">
-                    <span className="text-slate-400 font-bold">Principal & Interest</span>
+                    <span className="text-black font-bold">Principal & Interest</span>
                     <span className="text-2xl font-black text-orange-400">$1,796</span>
                   </div>
                   <div className="flex justify-between items-center p-6 rounded-3xl bg-white/5 border border-white/5">
-                    <span className="text-slate-400 font-bold">Estimated Tax</span>
+                    <span className="text-black font-bold">Estimated Tax</span>
                     <span className="text-2xl font-black text-blue-400">$450</span>
                   </div>
                   <div className="flex justify-between items-center p-6 rounded-3xl bg-white/5 border border-white/5">
-                    <span className="text-slate-400 font-bold">Insurance</span>
+                    <span className="text-black font-bold">Insurance</span>
                     <span className="text-2xl font-black text-purple-400">$120</span>
                   </div>
                 </div>
 
-                <div className="mt-12 p-10 rounded-[2.5rem] bg-gradient-to-br from-orange-500/20 to-orange-600/20 border border-orange-500/30 text-center">
+                <div className="mt-12 p-10 rounded-[2.5rem] bg-gradient-to-br from-black/20 to-black/20 border border-black/30 text-center">
                   <p className="text-[10px] font-black uppercase tracking-widest text-orange-400 mb-4 italic">TOTAL MONTHLY PROJECTION</p>
                   <p className="text-6xl font-black text-white">$2,366</p>
-                  <button className="w-full mt-10 bg-orange-500 hover:bg-orange-400 text-[#020617] py-5 rounded-2xl font-black transition-all hover:scale-105 shadow-2xl">
+                  <button className="w-full mt-10 bg-black hover:bg-orange-400 text-[#020617] py-5 rounded-2xl font-black transition-all hover:scale-105 shadow-2xl">
                     Finalize Application
                   </button>
                 </div>
@@ -197,12 +197,12 @@ const MortgagePage: React.FC = () => {
               { step: '04', title: 'Rapid Closing', desc: 'Digital signature and immediate access.', icon: Star }
             ].map((item, index) => (
               <div key={index} className="relative p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 group hover:bg-white/[0.04] transition-all">
-                <div className="text-6xl font-black text-orange-500/5 mb-8 group-hover:text-orange-500/10 transition-colors">{item.step}</div>
-                <div className="h-16 w-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-8">
+                <div className="text-6xl font-black text-black/5 mb-8 group-hover:text-black/10 transition-colors">{item.step}</div>
+                <div className="h-16 w-16 rounded-2xl bg-black/10 flex items-center justify-center mb-8">
                   <item.icon className="w-8 h-8 text-orange-400" />
                 </div>
                 <h3 className="text-xl font-black text-white mb-4 italic leading-tight">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                <p className="text-black text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

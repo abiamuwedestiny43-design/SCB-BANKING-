@@ -1,4 +1,4 @@
-# 🚀 QUICK START - Danamon Bank Production
+# 🚀 QUICK START - SCB BANKING Production
 
 ## 📍 Your Live Site
 
@@ -20,7 +20,7 @@
 
 ```
 🔗 Visit: https://novabank-rose.vercel.app/login
-📧 Email: admin@danamonbk.com
+📧 Email: admin@scbbankiing.com
 🔑 Password: Admin@123456
 📌 PIN: 1234
 ```

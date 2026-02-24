@@ -19,7 +19,8 @@ export interface EmailOptions {
 
 export async function sendEmail({ to, subject, html, from }: EmailOptions) {
   const mailOptions = {
-    from: from || process.env.SMTP_FROM || "noreply@danamonbk.com",
+    from: from || process.env.SMTP_FROM || "noreply@.com
+    .com",
     to,
     subject,
     html,
@@ -69,7 +70,7 @@ const brandStyles = `
 
 export const emailTemplates = {
   welcome: (name: string, accountNumber: string) => ({
-    subject: "Welcome to Danamon Bank - Account Activated",
+    subject: "Welcome to SCB BANKING - Account Activated",
     html: `
       <!DOCTYPE html>
       <html>
@@ -81,11 +82,11 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Account Activation</div>
-              <h1>Welcome to the Danamon Family</h1>
+              <h1>Welcome to the SCB Family</h1>
               <p>Hello ${name}, your global banking identity has been established. You now have access to our secure banking network.</p>
               
               <div class="info-box">
@@ -99,7 +100,7 @@ export const emailTemplates = {
                   </div>
                   <div>
                     <div class="info-label">Network</div>
-                    <div class="info-value">Danamon Global Network</div>
+                    <div class="info-value">SCB Global Network</div>
                   </div>
                 </div>
               </div>
@@ -111,7 +112,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
               <p>Secure Transaction ID: ${Math.random().toString(36).substring(7).toUpperCase()}</p>
             </div>
           </div>
@@ -133,7 +134,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">High Priority Authorization</div>
@@ -156,7 +157,7 @@ export const emailTemplates = {
               <p style="font-size: 12px; color: #64748b;">Security Notice: If you did not initiate this transfer, immediately disable your account and contact support.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -186,7 +187,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge ${type === "credit" ? "badge-success" : "badge-danger"}">
@@ -219,7 +220,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -240,7 +241,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Verification Complete</div>
@@ -260,7 +261,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -281,7 +282,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">Security Recovery</div>
@@ -295,7 +296,7 @@ export const emailTemplates = {
               <p style="font-size: 12px; color: #64748b;">This link will expire in 60 minutes. If you did not request this, please ignore this transmission.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -316,7 +317,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Profile Update</div>
@@ -332,7 +333,7 @@ export const emailTemplates = {
               </div>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -353,12 +354,12 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-danger">Security Synchronized</div>
               <h1>Password Updated</h1>
-              <p>Your Danamon Bank password has been successfully changed.</p>
+              <p>Your SCB BANKING password has been successfully changed.</p>
               
               <div class="info-box">
                 <div class="info-label">Change Status</div>
@@ -371,7 +372,7 @@ export const emailTemplates = {
               <p style="font-size: 12px; color: #64748b;">If you did not authorize this change, immediately terminate all active sessions and contact security.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -397,7 +398,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Application Logged</div>
@@ -418,7 +419,7 @@ export const emailTemplates = {
               <p>The review process typically completes within 72-96 hours. You will receive an alert once the decision is finalized.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -446,7 +447,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge ${status === 'approved' ? 'badge-success' : 'badge-danger'}">
@@ -472,7 +473,7 @@ export const emailTemplates = {
         : `<p>If you require clarification on this decision, contact support.</p>`}
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -481,7 +482,7 @@ export const emailTemplates = {
   }),
 
   cardApplication: (name: string, cardType: string, vendor: string) => ({
-    subject: "Danamon Bank Card Application Request",
+    subject: "SCB BANKING Card Application Request",
     html: `
       <!DOCTYPE html>
       <html>
@@ -493,7 +494,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-warning">Application Processed</div>
@@ -514,7 +515,7 @@ export const emailTemplates = {
               <p>Once approved, your physical card will be sent via secure courier. Virtual credentials will be active immediately upon approval.</p>
             </div>
             <div class="footer">
-              <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -541,7 +542,7 @@ export const emailTemplates = {
               <body>
                 <div class="container">
                   <div class="header">
-                    <div class="logo">danamon<span>bank</span></div>
+                    <div class="logo">scb<span>banking</span></div>
                   </div>
                   <div class="content">
                     <div class="badge ${status === 'active' ? 'badge-success' : 'badge-danger'}">
@@ -574,7 +575,7 @@ export const emailTemplates = {
         : `<p>Identity or credit requirements have not been met for this specific card request.</p>`}
                   </div>
                   <div class="footer">
-                    <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+                    <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
                   </div>
                 </div>
               </body>
@@ -595,7 +596,7 @@ export const emailTemplates = {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">danamon<span>bank</span></div>
+              <div class="logo">scb<span>banking</span></div>
             </div>
             <div class="content">
               <div class="badge badge-success">Manual Clearance</div>
@@ -611,7 +612,7 @@ export const emailTemplates = {
                   <div class="info-value">${notes}</div>
                 ` : ''}
               <div class="footer">
-                <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+                <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
               </div>
             </div>
           </body>
@@ -632,7 +633,7 @@ export const emailTemplates = {
           <body>
             <div class="container">
               <div class="header">
-                <div class="logo">danamon<span>bank</span></div>
+                <div class="logo">scb<span>banking</span></div>
               </div>
               <div class="content">
                 <div class="badge badge-success">Enhanced Access</div>
@@ -650,7 +651,7 @@ export const emailTemplates = {
                 <p>New dashboard capabilities will be visible upon your next login session.</p>
               </div>
               <div class="footer">
-                <p>&copy; 2026 PT BANK DANAMON INDONESIA TBK. All rights reserved.</p>
+                <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
               </div>
             </div>
           </body>

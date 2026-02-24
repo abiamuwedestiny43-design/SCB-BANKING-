@@ -49,20 +49,20 @@ const Header = () => {
   return (
     <nav className={cn(
       "fixed top-10 w-full z-50 transition-all duration-500",
-      isScrolled ? "bg-white/80 backdrop-blur-xl border-b border-slate-200 py-2 shadow-sm" : "bg-white/10 backdrop-blur-md py-4 text-slate-900 border border-white/20 mx-auto max-w-7xl left-1/2 -translate-x-1/2 rounded-[2rem] shadow-2xl"
+      isScrolled ? "bg-white/80 backdrop-blur-xl border-b border-slate-200 py-2 shadow-sm" : "bg-white/10 backdrop-blur-md py-4 text-black border border-white/20 mx-auto max-w-7xl left-1/2 -translate-x-1/2 rounded-[2rem] shadow-2xl"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative h-12 w-12 rounded-xl overflow-hidden shadow-2xl group-hover:scale-110 transition-transform bg-orange-50 flex items-center justify-center p-2">
-              <ShieldCheck className="w-8 h-8 text-orange-600" />
+            <div className="relative h-12 w-12 rounded-xl overflow-hidden shadow-2xl group-hover:scale-110 transition-transform bg-slate-50 flex items-center justify-center p-2">
+              <ShieldCheck className="w-8 h-8 text-black" />
             </div>
             <span className={cn(
               "text-xl font-black tracking-tighter transition-colors",
-              isScrolled ? "text-slate-900" : "text-slate-900"
+              isScrolled ? "text-black" : "text-black"
             )}>
-              Danamon<span className={isScrolled ? "text-orange-600 italic" : "text-orange-600 italic"}> Bank</span>
+              SCB<span className={isScrolled ? "text-black italic" : "text-black italic"}> Bank</span>
             </span>
           </Link>
 
@@ -74,7 +74,7 @@ const Header = () => {
                 href={item.href}
                 className={cn(
                   "px-4 py-2 text-sm font-bold tracking-tight rounded-xl transition-all",
-                  isScrolled ? "text-slate-600 hover:text-orange-600 hover:bg-orange-50" : "text-slate-600 hover:text-orange-600 hover:bg-white/50"
+                  isScrolled ? "text-black hover:text-black hover:bg-slate-50" : "text-black hover:text-black hover:bg-white/50"
                 )}
               >
                 {item.label}
@@ -84,17 +84,17 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger className={cn(
                 "px-4 py-2 text-sm font-bold tracking-tight rounded-xl transition-all flex items-center gap-1",
-                isScrolled ? "text-slate-600 hover:text-orange-600 hover:bg-orange-50" : "text-slate-600 hover:text-orange-600 hover:bg-white/50"
+                isScrolled ? "text-black hover:text-black hover:bg-slate-50" : "text-black hover:text-black hover:bg-white/50"
               )}>
                 Services <ChevronDown className="w-3 h-3 opacity-50" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56 p-2 bg-white border-slate-200 text-slate-900 rounded-2xl shadow-2xl backdrop-blur-xl">
-                <DropdownMenuItem asChild className="rounded-xl focus:bg-orange-600 focus:text-white"><Link href="/services/">Overview</Link></DropdownMenuItem>
+              <DropdownMenuContent align="start" className="w-56 p-2 bg-white border-slate-200 text-black rounded-2xl shadow-2xl backdrop-blur-xl">
+                <DropdownMenuItem asChild className="rounded-xl focus:bg-black focus:text-white"><Link href="/services/">Overview</Link></DropdownMenuItem>
                 <DropdownMenuSeparator className="bg-slate-100" />
-                <DropdownMenuItem asChild className="rounded-xl focus:bg-orange-600 focus:text-white"><Link href="/services/personal">Personal Banking</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl focus:bg-orange-600 focus:text-white"><Link href="/services/business">Business Banking</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl focus:bg-orange-600 focus:text-white"><Link href="/services/investment">Investments</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl focus:bg-orange-600 focus:text-white"><Link href="/services/mortgage">Mortgages</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild className="rounded-xl focus:bg-black focus:text-white"><Link href="/services/personal">Personal Banking</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild className="rounded-xl focus:bg-black focus:text-white"><Link href="/services/business">Business Banking</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild className="rounded-xl focus:bg-black focus:text-white"><Link href="/services/investment">Investments</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild className="rounded-xl focus:bg-black focus:text-white"><Link href="/services/mortgage">Mortgages</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -106,11 +106,11 @@ const Header = () => {
                 <DropdownMenuTrigger asChild>
                   <button className={cn(
                     "flex items-center gap-3 p-1 pr-4 rounded-2xl border transition-all",
-                    isScrolled ? "bg-orange-50 border-orange-100 hover:bg-orange-100" : "bg-white border-slate-200 hover:bg-slate-50"
+                    isScrolled ? "bg-slate-50 border-slate-100 hover:bg-slate-100" : "bg-white border-slate-200 hover:bg-slate-50"
                   )}>
                     <div className={cn(
                       "h-10 w-10 rounded-xl flex items-center justify-center font-black overflow-hidden shadow-sm",
-                      currentUser?.profileImage ? "" : "bg-orange-600 text-white"
+                      currentUser?.profileImage ? "" : "bg-black text-white"
                     )}>
                       {currentUser?.profileImage ? (
                         <img src={currentUser.profileImage} alt="Profile" className="w-full h-full object-cover" />
@@ -120,26 +120,26 @@ const Header = () => {
                     </div>
                     <span className={cn(
                       "text-sm font-black transition-colors",
-                      isScrolled ? "text-slate-900" : "text-slate-900"
+                      isScrolled ? "text-black" : "text-black"
                     )}>{currentUser?.bankInfo?.bio?.firstname || 'Account'}</span>
-                    <ChevronDown className={isScrolled ? "w-4 h-4 text-orange-600" : "w-4 h-4 text-orange-600"} />
+                    <ChevronDown className={isScrolled ? "w-4 h-4 text-black" : "w-4 h-4 text-black"} />
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-64 p-2 bg-white border-slate-200 text-slate-900 rounded-2xl shadow-2xl backdrop-blur-xl">
-                  <DropdownMenuItem asChild className="rounded-xl focus:bg-orange-600 focus:text-white py-3">
+                <DropdownMenuContent align="end" className="w-64 p-2 bg-white border-slate-200 text-black rounded-2xl shadow-2xl backdrop-blur-xl">
+                  <DropdownMenuItem asChild className="rounded-xl focus:bg-black focus:text-white py-3">
                     <Link href="/dashboard" className="flex items-center gap-3">
                       <LayoutDashboard className="w-4 h-4" /> Dashboard
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="rounded-xl focus:bg-orange-600 focus:text-white py-3">
+                  <DropdownMenuItem asChild className="rounded-xl focus:bg-black focus:text-white py-3">
                     <Link href="/dashboard/settings" className="flex items-center gap-3">
                       <User className="w-4 h-4" /> Profile Details
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator className="bg-slate-100" />
-                  <DropdownMenuItem onClick={handleLogout} className="rounded-xl focus:bg-red-500 focus:text-white py-3 group">
+                  <DropdownMenuItem onClick={handleLogout} className="rounded-xl focus:bg-black focus:text-white py-3 group">
                     <div className="flex items-center gap-3">
-                      <LogOut className="w-4 h-4 text-red-500 group-focus:text-white" /> Sign Out
+                      <LogOut className="w-4 h-4 text-black group-focus:text-white" /> Sign Out
                     </div>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -150,14 +150,14 @@ const Header = () => {
                   href="/login"
                   className={cn(
                     "text-sm font-black uppercase tracking-widest px-6 py-3 rounded-xl transition-all",
-                    isScrolled ? "text-slate-900 hover:text-orange-600" : "text-slate-900 hover:text-orange-600"
+                    isScrolled ? "text-black hover:text-black" : "text-black hover:text-black"
                   )}
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/register"
-                  className="bg-orange-600 hover:bg-orange-700 text-white text-sm font-black uppercase tracking-widest px-8 py-3 rounded-xl transition-all hover:scale-105 shadow-xl shadow-orange-600/10"
+                  className="bg-black hover:bg-black text-white text-sm font-black uppercase tracking-widest px-8 py-3 rounded-xl transition-all hover:scale-105 shadow-xl shadow-black/10"
                 >
                   Open Account
                 </Link>
@@ -167,7 +167,7 @@ const Header = () => {
 
           {/* Mobile Menu Toggle */}
           <button
-            className={cn("lg:hidden p-2 rounded-xl transition-colors", isScrolled ? "text-orange-600 bg-orange-50" : "text-orange-600 bg-white/50 border border-slate-200")}
+            className={cn("lg:hidden p-2 rounded-xl transition-colors", isScrolled ? "text-black bg-slate-50" : "text-black bg-white/50 border border-slate-200")}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -186,7 +186,7 @@ const Header = () => {
             <Link
               key={item.id}
               href={item.href}
-              className="block p-4 text-lg font-black text-slate-900 hover:bg-orange-50 hover:text-orange-600 rounded-2xl transition-all"
+              className="block p-4 text-lg font-black text-black hover:bg-slate-50 hover:text-black rounded-2xl transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               {item.label}
@@ -194,12 +194,12 @@ const Header = () => {
           ))}
 
           <DropdownMenu>
-            <DropdownMenuTrigger className="w-full text-left p-4 text-lg font-black text-slate-900 hover:bg-orange-50 hover:text-orange-600 rounded-2xl transition-all flex items-center justify-between">
-              Services <ChevronDown className="w-4 h-4 text-orange-600" />
+            <DropdownMenuTrigger className="w-full text-left p-4 text-lg font-black text-black hover:bg-slate-50 hover:text-black rounded-2xl transition-all flex items-center justify-between">
+              Services <ChevronDown className="w-4 h-4 text-black" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-[85vw] mx-auto bg-white border-slate-100 text-slate-900 rounded-2xl p-2 shadow-xl">
+            <DropdownMenuContent className="w-[85vw] mx-auto bg-white border-slate-100 text-black rounded-2xl p-2 shadow-xl">
               {['Personal Banking', 'Business Banking', 'Investments', 'Mortgages'].map((s, i) => (
-                <DropdownMenuItem key={i} className="rounded-xl py-3 focus:bg-orange-600 focus:text-white">{s}</DropdownMenuItem>
+                <DropdownMenuItem key={i} className="rounded-xl py-3 focus:bg-black focus:text-white">{s}</DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
@@ -209,7 +209,7 @@ const Header = () => {
               <>
                 <Link
                   href="/dashboard"
-                  className="flex items-center justify-center gap-2 p-5 text-lg font-black rounded-[1.5rem] bg-orange-600 text-white shadow-xl shadow-orange-600/10"
+                  className="flex items-center justify-center gap-2 p-5 text-lg font-black rounded-[1.5rem] bg-black text-white shadow-xl shadow-black/10"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <LayoutDashboard className="w-5 h-5" /> My Dashboard
@@ -228,14 +228,14 @@ const Header = () => {
               <div className="grid grid-cols-2 gap-4">
                 <Link
                   href="/login"
-                  className="flex items-center justify-center p-5 text-sm font-black uppercase tracking-widest text-slate-900 bg-slate-100 rounded-[1.5rem]"
+                  className="flex items-center justify-center p-5 text-sm font-black uppercase tracking-widest text-black bg-slate-100 rounded-[1.5rem]"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/register"
-                  className="flex items-center justify-center p-5 text-sm font-black uppercase tracking-widest text-white bg-orange-600 rounded-[1.5rem]"
+                  className="flex items-center justify-center p-5 text-sm font-black uppercase tracking-widest text-white bg-black rounded-[1.5rem]"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Open Account

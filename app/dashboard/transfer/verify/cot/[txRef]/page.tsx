@@ -81,12 +81,12 @@ export default function COTVerificationPage() {
 
         {/* Header */}
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+          <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 rounded-lg text-black hover:bg-white">
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Identity Check</h1>
-            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Step 1 of 6: Identification</p>
+            <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">Identity Check</h1>
+            <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">Step 1 of 6: Identification</p>
           </div>
         </div>
 
@@ -95,17 +95,17 @@ export default function COTVerificationPage() {
           <motion.div {...fadeIn}>
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600">
+                <div className="h-9 w-9 rounded-lg bg-slate-50 flex items-center justify-center text-black">
                   <CreditCard className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] md:text-xs text-slate-400 font-black uppercase tracking-[0.2em]">Transfer Amount</p>
-                  <p className="text-base md:text-lg font-black text-slate-900 italic tracking-tight">{transferDetails.currency} {transferDetails.amount?.toLocaleString()}</p>
+                  <p className="text-[10px] md:text-xs text-black font-black uppercase tracking-[0.2em]">Transfer Amount</p>
+                  <p className="text-base md:text-lg font-black text-black italic tracking-tight">{transferDetails.currency} {transferDetails.amount?.toLocaleString()}</p>
                 </div>
               </div>
               <div className="text-right hidden sm:block">
-                <p className="text-[10px] md:text-xs text-slate-400 font-black uppercase tracking-[0.2em]">Recipient</p>
-                <p className="text-base md:text-lg font-black text-slate-900 italic tracking-tight truncate max-w-[150px]">{transferDetails.accountHolder}</p>
+                <p className="text-[10px] md:text-xs text-black font-black uppercase tracking-[0.2em]">Recipient</p>
+                <p className="text-base md:text-lg font-black text-black italic tracking-tight truncate max-w-[150px]">{transferDetails.accountHolder}</p>
               </div>
             </div>
           </motion.div>
@@ -114,13 +114,13 @@ export default function COTVerificationPage() {
         <motion.div {...fadeIn} transition={{ delay: 0.1 }}>
           <div className="bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden">
             <div className="p-6 md:p-8 flex flex-col items-center text-center space-y-4">
-              <div className="h-14 w-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 shadow-inner border border-slate-100">
+              <div className="h-14 w-14 rounded-full bg-slate-50 flex items-center justify-center text-black shadow-inner border border-slate-100">
                 <Lock className="h-7 w-7" />
               </div>
               <div className="space-y-1">
-                <h2 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight italic">Transfer <span className="text-orange-600">Verification</span></h2>
-                <p className="text-sm md:text-base text-slate-500 font-bold uppercase tracking-widest opacity-60 max-w-sm">
-                  To protect your account, please enter the <span className="font-bold text-slate-700">Clearance Code (COT)</span> provided to you.
+                <h2 className="text-2xl md:text-3xl font-black text-black uppercase tracking-tight italic">Transfer <span className="text-black">Verification</span></h2>
+                <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60 max-w-sm">
+                  To protect your account, please enter the <span className="font-bold text-black">Clearance Code (COT)</span> provided to you.
                 </p>
               </div>
 
@@ -136,7 +136,7 @@ export default function COTVerificationPage() {
                 </AnimatePresence>
 
                 <div className="space-y-2">
-                  <Label htmlFor="cotCode" className="text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest">Verification Code</Label>
+                  <Label htmlFor="cotCode" className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest">Verification Code</Label>
                   <Input
                     id="cotCode"
                     type="text"
@@ -144,14 +144,14 @@ export default function COTVerificationPage() {
                     onChange={(e) => setCotCode(e.target.value.toUpperCase())}
                     placeholder="ENTER CODE"
                     disabled={isLoading || isVerified}
-                    className="h-16 text-center text-3xl md:text-4xl font-black tracking-[0.4em] bg-slate-50 border-slate-200 rounded-2xl focus:border-orange-400 focus:bg-white placeholder:text-slate-200 text-slate-900 transition-all uppercase italic"
+                    className="h-16 text-center text-3xl md:text-4xl font-black tracking-[0.4em] bg-slate-50 border-slate-200 rounded-2xl focus:border-orange-400 focus:bg-white placeholder:text-slate-200 text-black transition-all uppercase italic"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
                   <Button
                     type="submit"
-                    className="w-full bg-slate-900 hover:bg-orange-600 text-white font-black h-16 rounded-2xl transition-all shadow-xl uppercase tracking-widest italic"
+                    className="w-full bg-black hover:bg-black text-white font-black h-16 rounded-2xl transition-all shadow-xl uppercase tracking-widest italic"
                     disabled={isLoading || isVerified}
                   >
                     {isLoading ? (
@@ -163,7 +163,7 @@ export default function COTVerificationPage() {
                   <Button
                     type="button"
                     variant="ghost"
-                    className="w-full h-10 text-slate-400 font-bold text-xs"
+                    className="w-full h-10 text-black font-bold text-xs"
                     onClick={() => router.push("/dashboard")}
                     disabled={isVerified}
                   >
@@ -174,8 +174,8 @@ export default function COTVerificationPage() {
             </div>
 
             <div className="bg-slate-50 p-4 border-t border-slate-100 flex items-center justify-center gap-2">
-              <Shield className="h-3.5 w-3.5 text-emerald-500" />
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Secured by 256-bit encryption</span>
+              <Shield className="h-3.5 w-3.5 text-black" />
+              <span className="text-[10px] font-bold text-black uppercase tracking-widest">Secured by 256-bit encryption</span>
             </div>
           </div>
         </motion.div>
@@ -183,7 +183,7 @@ export default function COTVerificationPage() {
         {/* Progress Dots */}
         <div className="flex items-center justify-center gap-2 pt-2">
           {[1, 0, 0, 0, 0, 0].map((active, i) => (
-            <div key={i} className={cn("h-1.5 rounded-full transition-all", active ? "w-6 bg-orange-500" : "w-1.5 bg-slate-300")} />
+            <div key={i} className={cn("h-1.5 rounded-full transition-all", active ? "w-6 bg-black" : "w-1.5 bg-slate-300")} />
           ))}
         </div>
       </div>

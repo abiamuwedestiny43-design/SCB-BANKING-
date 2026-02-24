@@ -36,19 +36,19 @@ export default function SetupAdminPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gradient-to-br from-black via-black to-black flex items-center justify-center p-4">
             <div className="max-w-2xl w-full">
                 <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
                     {/* Header */}
                     <div className="text-center mb-8">
-                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 mb-4">
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black/10 border border-black/20 mb-4">
                             <Shield className="w-8 h-8 text-orange-400" />
                         </div>
                         <h1 className="text-3xl md:text-4xl font-black text-white mb-2">
                             Admin Setup
                         </h1>
-                        <p className="text-slate-400 font-medium">
-                            Initialize your super admin account for Danamon Bank
+                        <p className="text-black font-medium">
+                            Initialize your super admin account for SCB BANKING
                         </p>
                     </div>
 
@@ -71,7 +71,7 @@ export default function SetupAdminPage() {
                         <button
                             onClick={createAdmin}
                             disabled={loading}
-                            className="w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
+                            className="w-full bg-black hover:bg-orange-400 text-white font-black py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
                         >
                             {loading ? (
                                 <>
@@ -89,7 +89,7 @@ export default function SetupAdminPage() {
 
                     {/* Error Message */}
                     {error && (
-                        <div className="mt-6 bg-red-500/10 border border-red-500/20 rounded-2xl p-6">
+                        <div className="mt-6 bg-black/10 border border-black/20 rounded-2xl p-6">
                             <div className="flex items-start gap-3">
                                 <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
                                 <div>
@@ -103,7 +103,7 @@ export default function SetupAdminPage() {
                     {/* Success Result */}
                     {result && result.success && (
                         <div className="mt-6 space-y-4">
-                            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6">
+                            <div className="bg-black/10 border border-black/20 rounded-2xl p-6">
                                 <div className="flex items-start gap-3 mb-4">
                                     <CheckCircle className="w-6 h-6 text-emerald-400 flex-shrink-0" />
                                     <div>
@@ -117,19 +117,19 @@ export default function SetupAdminPage() {
                                         <h5 className="text-white font-bold text-sm mb-3">Login Credentials:</h5>
                                         <div className="space-y-2 text-sm">
                                             <div className="flex justify-between items-center">
-                                                <span className="text-slate-400">Email:</span>
+                                                <span className="text-black">Email:</span>
                                                 <span className="text-white font-mono">{result.credentials.email}</span>
                                             </div>
                                             <div className="flex justify-between items-center">
-                                                <span className="text-slate-400">Password:</span>
+                                                <span className="text-black">Password:</span>
                                                 <span className="text-white font-mono">{result.credentials.password}</span>
                                             </div>
                                             <div className="flex justify-between items-center">
-                                                <span className="text-slate-400">PIN:</span>
+                                                <span className="text-black">PIN:</span>
                                                 <span className="text-white font-mono">{result.credentials.pin}</span>
                                             </div>
                                             <div className="flex justify-between items-center">
-                                                <span className="text-slate-400">Account:</span>
+                                                <span className="text-black">Account:</span>
                                                 <span className="text-white font-mono">{result.credentials.accountNumber}</span>
                                             </div>
                                         </div>
@@ -138,7 +138,7 @@ export default function SetupAdminPage() {
                             </div>
 
                             {/* Warning */}
-                            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-2xl p-6">
+                            <div className="bg-black/10 border border-black/20 rounded-2xl p-6">
                                 <div className="flex items-start gap-3">
                                     <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                                     <div>
@@ -158,7 +158,7 @@ export default function SetupAdminPage() {
                             {/* Login Button */}
                             <a
                                 href="/login"
-                                className="block w-full bg-white text-slate-900 font-black py-4 rounded-xl text-center hover:bg-slate-100 transition-all"
+                                className="block w-full bg-white text-black font-black py-4 rounded-xl text-center hover:bg-slate-100 transition-all"
                             >
                                 Go to Login Page →
                             </a>
@@ -168,7 +168,7 @@ export default function SetupAdminPage() {
                     {/* Already Exists */}
                     {result && !result.success && result.message.includes("already exists") && (
                         <div className="mt-6">
-                            <div className="bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 mb-4">
+                            <div className="bg-black/10 border border-black/20 rounded-2xl p-6 mb-4">
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                                     <div>
@@ -180,7 +180,7 @@ export default function SetupAdminPage() {
 
                             <a
                                 href="/login"
-                                className="block w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-4 rounded-xl text-center transition-all"
+                                className="block w-full bg-black hover:bg-orange-400 text-white font-black py-4 rounded-xl text-center transition-all"
                             >
                                 Go to Login Page →
                             </a>

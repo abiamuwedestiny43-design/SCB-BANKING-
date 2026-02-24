@@ -115,10 +115,10 @@ export default async function AdminTransactionsPage({
               <ShieldCheck className="w-10 h-10" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-3xl font-black text-slate-900 tracking-tighter uppercase italic leading-none">Access Denied</h1>
-              <p className="text-slate-400 font-bold uppercase text-[9px] tracking-[0.3em]">Authorized personnel only</p>
+              <h1 className="text-3xl font-black text-black tracking-tighter uppercase italic leading-none">Access Denied</h1>
+              <p className="text-black font-bold uppercase text-[9px] tracking-[0.3em]">Authorized personnel only</p>
             </div>
-            <Button asChild className="w-full bg-slate-900 text-white font-black h-14 rounded-2xl shadow-xl shadow-slate-900/10">
+            <Button asChild className="w-full bg-black text-white font-black h-14 rounded-2xl shadow-xl shadow-black/10">
               <Link href="/login">Re-authenticate</Link>
             </Button>
           </div>
@@ -151,14 +151,14 @@ export default async function AdminTransactionsPage({
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
-            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">
-              All <span className="text-orange-600">Transactions</span>
+            <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">
+              All <span className="text-black">Transactions</span>
             </h1>
-            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">
+            <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">
               Complete history of all bank transfers and payments.
             </p>
           </div>
-          <Button asChild variant="outline" className="h-12 px-6 rounded-2xl border-slate-200 font-black gap-2 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition-all uppercase tracking-widest text-xs">
+          <Button asChild variant="outline" className="h-12 px-6 rounded-2xl border-slate-200 font-black gap-2 text-black hover:border-black hover:text-black transition-all uppercase tracking-widest text-xs">
             <Link href="/admin">
               <ChevronLeft className="h-4 w-4" /> Admin Home
             </Link>
@@ -168,13 +168,13 @@ export default async function AdminTransactionsPage({
         {/* Stats Row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label: "Total Transactions", value: total, accent: "text-slate-900", iconBg: "bg-slate-100", border: "border-slate-200" },
+            { label: "Total Transactions", value: total, accent: "text-black", iconBg: "bg-slate-100", border: "border-slate-200" },
             { label: "Completed", value: successCount, accent: "text-emerald-600", iconBg: "bg-emerald-50", border: "border-emerald-200" },
             { label: "Pending", value: pendingCount, accent: "text-yellow-600", iconBg: "bg-yellow-50", border: "border-yellow-200" },
             { label: "Failed", value: failedCount, accent: "text-red-600", iconBg: "bg-red-50", border: "border-red-200" },
           ].map((stat, i) => (
             <div key={i} className={cn("bg-white rounded-2xl p-5 shadow-sm border-2 flex flex-col gap-2 hover:shadow-md transition-shadow", stat.border)}>
-              <p className="text-xs font-black text-slate-500 uppercase tracking-widest">{stat.label}</p>
+              <p className="text-xs font-black text-black uppercase tracking-widest">{stat.label}</p>
               <p className={cn("text-3xl md:text-4xl font-black tracking-tighter italic", stat.accent)}>{stat.value}</p>
             </div>
           ))}
@@ -203,10 +203,10 @@ export default async function AdminTransactionsPage({
             <ShieldCheck className="w-8 h-8" />
           </div>
           <div className="space-y-2">
-            <h1 className="text-2xl font-black text-slate-900 tracking-tighter italic">Something Went Wrong</h1>
-            <p className="text-slate-400 font-bold text-sm">We couldn&apos;t load the transaction data. Please try again.</p>
+            <h1 className="text-2xl font-black text-black tracking-tighter italic">Something Went Wrong</h1>
+            <p className="text-black font-bold text-sm">We couldn&apos;t load the transaction data. Please try again.</p>
           </div>
-          <Button asChild className="w-full bg-slate-900 hover:bg-orange-600 text-white font-black h-12 rounded-2xl transition-all uppercase tracking-widest text-xs">
+          <Button asChild className="w-full bg-black hover:bg-black text-white font-black h-12 rounded-2xl transition-all uppercase tracking-widest text-xs">
             <Link href="/admin/transactions">Reload Page</Link>
           </Button>
         </div>

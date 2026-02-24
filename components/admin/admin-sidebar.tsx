@@ -43,7 +43,7 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
     <>
       {/* Mobile menu button */}
       <div className="lg:hidden fixed top-5 right-5 z-50">
-        <Button variant="outline" size="icon" className="h-11 w-11 rounded-xl bg-white border border-slate-200 text-slate-700 shadow-md hover:border-orange-500 hover:text-orange-600 transition-all" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <Button variant="outline" size="icon" className="h-11 w-11 rounded-xl bg-white border border-slate-200 text-black shadow-md hover:border-black hover:text-black transition-all" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </div>
@@ -59,14 +59,14 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
           {/* Header/Logo */}
           <div className="p-6 pb-4 border-b border-slate-100">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-10 w-10 rounded-xl bg-orange-50 border border-orange-200 p-1.5 overflow-hidden">
+              <div className="relative h-10 w-10 rounded-xl bg-slate-50 border border-slate-200 p-1.5 overflow-hidden">
                 <Image src="/logo.svg" alt="Logo" fill className="object-contain p-1" />
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-black tracking-tighter text-slate-900 leading-none">
-                  FIRST<span className="text-orange-600 italic">STATE</span>
+                <span className="text-lg font-black tracking-tighter text-black leading-none">
+                  FIRST<span className="text-black italic">STATE</span>
                 </span>
-                <span className="text-[9px] font-black tracking-[0.3em] text-slate-400 mt-0.5 uppercase">Admin Panel</span>
+                <span className="text-[9px] font-black tracking-[0.3em] text-black mt-0.5 uppercase">Admin Panel</span>
               </div>
             </Link>
           </div>
@@ -75,20 +75,20 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
           <div className="px-4 py-4 border-b border-slate-100">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-3">
               <div className="relative flex-shrink-0">
-                <div className="w-10 h-10 bg-orange-100 border-2 border-orange-200 rounded-xl flex items-center justify-center text-orange-700 font-black text-base overflow-hidden">
+                <div className="w-10 h-10 bg-slate-100 border-2 border-slate-200 rounded-xl flex items-center justify-center text-black font-black text-base overflow-hidden">
                   {user.profileImage ? (
                     <img src={user.profileImage} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     user.bankInfo.bio.firstname[0]
                   )}
                 </div>
-                <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></div>
+                <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-black border-2 border-white rounded-full"></div>
               </div>
               <div className="overflow-hidden flex-1 min-w-0">
-                <p className="text-sm font-black text-slate-900 truncate">
+                <p className="text-sm font-black text-black truncate">
                   {user.bankInfo.bio.firstname} {user.bankInfo.bio.lastname}
                 </p>
-                <p className="text-xs font-bold text-orange-600 uppercase tracking-widest">Admin</p>
+                <p className="text-xs font-bold text-black uppercase tracking-widest">Admin</p>
               </div>
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
             {navigation.map((item, idx) => {
               if ('group' in item) {
                 return (
-                  <p key={idx} className="px-3 text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 mt-5 mb-2 flex items-center gap-3">
+                  <p key={idx} className="px-3 text-[9px] font-black uppercase tracking-[0.4em] text-black mt-5 mb-2 flex items-center gap-3">
                     <span className="whitespace-nowrap">{item.group}</span>
                     <span className="h-px w-full bg-slate-100"></span>
                   </p>
@@ -115,19 +115,19 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
                   className={cn(
                     "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 group",
                     isActive
-                      ? "bg-orange-50 text-orange-700 border border-orange-200"
-                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-50",
+                      ? "bg-slate-50 text-black border border-slate-200"
+                      : "text-black hover:text-black hover:bg-slate-50",
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <div className={cn(
                     "h-8 w-8 rounded-lg flex items-center justify-center transition-all duration-200 flex-shrink-0",
-                    isActive ? "bg-orange-600 text-white" : "bg-slate-100 text-slate-500 group-hover:bg-slate-200 group-hover:text-slate-900"
+                    isActive ? "bg-black text-white" : "bg-slate-100 text-black group-hover:bg-slate-200 group-hover:text-black"
                   )}>
                     <Icon className="h-4 w-4" />
                   </div>
                   <span>{item.name}</span>
-                  {isActive && <div className="ml-auto h-1.5 w-1.5 rounded-full bg-orange-600" />}
+                  {isActive && <div className="ml-auto h-1.5 w-1.5 rounded-full bg-black" />}
                 </Link>
               )
             })}
@@ -137,7 +137,7 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
           <div className="p-4 border-t border-slate-100 relative z-10">
             <Button
               variant="ghost"
-              className="w-full justify-start text-red-500 hover:bg-red-50 hover:text-red-600 rounded-xl h-11 font-bold text-sm gap-3 transition-all duration-200 group"
+              className="w-full justify-start text-black hover:bg-red-50 hover:text-red-600 rounded-xl h-11 font-bold text-sm gap-3 transition-all duration-200 group"
               onClick={handleLogout}
             >
               <div className="h-8 w-8 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center group-hover:bg-red-100 transition-all">

@@ -134,7 +134,7 @@ export default function UserActions({ userId }: UserActionsProps) {
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
-            className="h-9 w-9 p-0 rounded-xl bg-white border-slate-200 hover:border-orange-500 text-slate-400 hover:text-orange-600 transition-all shadow-sm flex items-center justify-center group"
+            className="h-9 w-9 p-0 rounded-xl bg-white border-slate-200 hover:border-black text-black hover:text-black transition-all shadow-sm flex items-center justify-center group"
           >
             <MoreHorizontal className="h-5 w-5 group-hover:scale-110 transition-transform" />
             <span className="sr-only">Open menu</span>
@@ -143,9 +143,9 @@ export default function UserActions({ userId }: UserActionsProps) {
         <DropdownMenuContent align="end" className="w-56 bg-white border border-slate-200 rounded-2xl p-2 shadow-2xl z-[9999]" sideOffset={8}>
           <DropdownMenuItem
             onClick={() => router.push(`/admin/users/${userId}`)}
-            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-700 hover:text-orange-600 hover:bg-orange-50 transition-all cursor-pointer outline-none group"
+            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-black hover:text-black hover:bg-slate-50 transition-all cursor-pointer outline-none group"
           >
-            <div className="h-8 w-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
+            <div className="h-8 w-8 rounded-lg bg-slate-50 flex items-center justify-center text-black group-hover:bg-black group-hover:text-white transition-all">
               <Edit className="h-4 w-4" />
             </div>
             <span className="text-xs font-black uppercase tracking-widest">Profile & Edit</span>
@@ -155,7 +155,7 @@ export default function UserActions({ userId }: UserActionsProps) {
 
           <DropdownMenuItem
             onClick={() => openTxModal("credit")}
-            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-700 hover:text-emerald-700 hover:bg-emerald-50 transition-all cursor-pointer outline-none group"
+            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-black hover:text-emerald-700 hover:bg-emerald-50 transition-all cursor-pointer outline-none group"
           >
             <div className="h-8 w-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all">
               <ArrowUpRight className="h-4 w-4" />
@@ -165,7 +165,7 @@ export default function UserActions({ userId }: UserActionsProps) {
 
           <DropdownMenuItem
             onClick={() => openTxModal("debit")}
-            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition-all cursor-pointer outline-none group"
+            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-black hover:text-blue-700 hover:bg-blue-50 transition-all cursor-pointer outline-none group"
           >
             <div className="h-8 w-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
               <ArrowDownLeft className="h-4 w-4" />
@@ -177,9 +177,9 @@ export default function UserActions({ userId }: UserActionsProps) {
 
           <DropdownMenuItem
             onClick={() => handleAction("approve")}
-            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all cursor-pointer outline-none group"
+            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-black hover:text-black hover:bg-slate-50 transition-all cursor-pointer outline-none group"
           >
-            <div className="h-8 w-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-slate-900 group-hover:text-white transition-all">
+            <div className="h-8 w-8 rounded-lg bg-slate-100 flex items-center justify-center text-black group-hover:bg-black group-hover:text-white transition-all">
               <UserCheck className="h-4 w-4" />
             </div>
             <span className="text-xs font-black uppercase tracking-widest">Verify Status</span>
@@ -187,9 +187,9 @@ export default function UserActions({ userId }: UserActionsProps) {
 
           <DropdownMenuItem
             onClick={() => handleAction("delete")}
-            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-red-500 hover:text-white hover:bg-red-500 transition-all cursor-pointer outline-none group"
+            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-black hover:text-white hover:bg-black transition-all cursor-pointer outline-none group"
           >
-            <div className="h-8 w-8 rounded-lg bg-red-50 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all">
+            <div className="h-8 w-8 rounded-lg bg-red-50 flex items-center justify-center text-black group-hover:bg-red-600 group-hover:text-white transition-all">
               <Trash2 className="h-4 w-4" />
             </div>
             <span className="text-xs font-black uppercase tracking-widest">Delete User</span>
@@ -198,22 +198,22 @@ export default function UserActions({ userId }: UserActionsProps) {
       </DropdownMenu>
 
       <Dialog open={txOpen} onOpenChange={setTxOpen}>
-        <DialogContent className="sm:max-w-md bg-white border-slate-200 text-slate-900 rounded-3xl overflow-hidden p-0 shadow-2xl z-[10000]">
+        <DialogContent className="sm:max-w-md bg-white border-slate-200 text-black rounded-3xl overflow-hidden p-0 shadow-2xl z-[10000]">
           <div className="p-6 md:p-8 space-y-6">
             <DialogHeader>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 w-fit">
-                <Zap className="w-3.5 h-3.5 text-orange-500" /> Admin Transaction
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-black text-[10px] font-black uppercase tracking-widest mb-4 w-fit">
+                <Zap className="w-3.5 h-3.5 text-black" /> Admin Transaction
               </div>
-              <DialogTitle className="text-xl md:text-2xl font-black tracking-tighter flex items-center gap-3 text-slate-900 italic uppercase">
+              <DialogTitle className="text-xl md:text-2xl font-black tracking-tighter flex items-center gap-3 text-black italic uppercase">
                 {txType === "credit" ? (
                   <>
                     <ArrowUpRight className="w-7 h-7 text-emerald-600" />
-                    Credit <span className="text-orange-600">Account</span>
+                    Credit <span className="text-black">Account</span>
                   </>
                 ) : (
                   <>
                     <ArrowDownLeft className="w-7 h-7 text-blue-600" />
-                    Debit <span className="text-orange-600">Account</span>
+                    Debit <span className="text-black">Account</span>
                   </>
                 )}
               </DialogTitle>
@@ -224,31 +224,31 @@ export default function UserActions({ userId }: UserActionsProps) {
                 <div className="w-16 h-16 rounded-full bg-emerald-50 border-2 border-emerald-200 flex items-center justify-center">
                   <CheckCircle className="w-8 h-8 text-emerald-600" />
                 </div>
-                <h3 className="text-lg font-black text-slate-900 uppercase italic">Ledger Updated</h3>
+                <h3 className="text-lg font-black text-black uppercase italic">Ledger Updated</h3>
               </div>
             ) : (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <Label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Amount</Label>
+                  <Label className="text-[10px] font-black text-black uppercase tracking-widest ml-1">Amount</Label>
                   <div className="relative">
                     <Input
                       type="number"
                       value={txAmount}
                       onChange={(e) => setTxAmount(e.target.value)}
                       placeholder="0.00"
-                      className="bg-slate-50 border-slate-200 rounded-2xl h-14 text-2xl font-black text-slate-900 pl-12"
+                      className="bg-slate-50 border-slate-200 rounded-2xl h-14 text-2xl font-black text-black pl-12"
                     />
                     <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-300" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Currency</Label>
+                  <Label className="text-[10px] font-black text-black uppercase tracking-widest ml-1">Currency</Label>
                   <Select value={txCurrency} onValueChange={setTxCurrency}>
-                    <SelectTrigger className="bg-slate-50 border-slate-200 rounded-xl h-12 text-slate-900 font-black uppercase text-[10px] tracking-widest">
+                    <SelectTrigger className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black font-black uppercase text-[10px] tracking-widest">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-white border-slate-200 text-slate-900 rounded-xl">
+                    <SelectContent className="bg-white border-slate-200 text-black rounded-xl">
                       {["USD", "EUR", "GBP", "JPY", "INR", "CHF", "CAD", "AUD", "SGD"].map(c => (
                         <SelectItem key={c} value={c} className="font-black text-[10px] tracking-widest uppercase">{c}</SelectItem>
                       ))}
@@ -257,17 +257,17 @@ export default function UserActions({ userId }: UserActionsProps) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Memo</Label>
+                  <Label className="text-[10px] font-black text-black uppercase tracking-widest ml-1">Memo</Label>
                   <Input
                     value={txDesc}
                     onChange={(e) => setTxDesc(e.target.value)}
                     placeholder="Transaction reason..."
-                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-slate-900 font-bold"
+                    className="bg-slate-50 border-slate-200 rounded-xl h-12 text-black font-bold"
                   />
                 </div>
 
                 <div className="flex gap-3 pt-4">
-                  <Button variant="outline" onClick={() => setTxOpen(false)} className="flex-1 h-12 rounded-xl border-slate-200 text-slate-400 font-black uppercase tracking-widest text-[10px]">
+                  <Button variant="outline" onClick={() => setTxOpen(false)} className="flex-1 h-12 rounded-xl border-slate-200 text-black font-black uppercase tracking-widest text-[10px]">
                     Cancel
                   </Button>
                   <Button

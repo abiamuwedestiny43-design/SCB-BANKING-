@@ -25,15 +25,15 @@ export default function LoansClient({ loans }: LoansClientProps) {
                 {/* Header */}
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+                        <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-black hover:bg-white">
                             <Link href="/dashboard"><ChevronLeft className="h-4 w-4" /></Link>
                         </Button>
                         <div>
-                            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Loan Services</h1>
-                            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Manage your financing options</p>
+                            <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">Loan Services</h1>
+                            <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">Manage your financing options</p>
                         </div>
                     </div>
-                    <Button asChild size="sm" className="bg-slate-900 hover:bg-orange-600 text-white rounded-xl font-black text-sm uppercase tracking-widest transition-all italic h-12 px-6">
+                    <Button asChild size="sm" className="bg-black hover:bg-black text-white rounded-xl font-black text-sm uppercase tracking-widest transition-all italic h-12 px-6">
                         <Link href="/dashboard/loans/apply">
                             <Plus className="h-4 w-4" /> Apply for Loan
                         </Link>
@@ -43,9 +43,9 @@ export default function LoansClient({ loans }: LoansClientProps) {
                 {/* Stats Row */}
                 <div className="grid grid-cols-3 gap-3">
                     {[
-                        { label: "Active Loans", val: activeLoans.length, icon: TrendingUp, color: "text-orange-600", bg: "bg-orange-50" },
+                        { label: "Active Loans", val: activeLoans.length, icon: TrendingUp, color: "text-black", bg: "bg-slate-50" },
                         { label: "Processing", val: pendingLoans.length, icon: Clock, color: "text-yellow-600", bg: "bg-yellow-50" },
-                        { label: "Completed", val: completedLoans.length, icon: CheckCircle2, color: "text-slate-500", bg: "bg-slate-50" },
+                        { label: "Completed", val: completedLoans.length, icon: CheckCircle2, color: "text-black", bg: "bg-slate-50" },
                     ].map((item, i) => (
                         <motion.div key={i} {...fadeIn} transition={{ delay: 0.05 * i }}>
                             <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4 flex items-center gap-3">
@@ -53,8 +53,8 @@ export default function LoansClient({ loans }: LoansClientProps) {
                                     <item.icon className="h-4 w-4" />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] md:text-xs text-slate-400 font-black uppercase tracking-widest mb-0.5">{item.label}</p>
-                                    <p className="text-xl md:text-2xl font-black text-slate-900 italic tracking-tighter">{item.val}</p>
+                                    <p className="text-[10px] md:text-xs text-black font-black uppercase tracking-widest mb-0.5">{item.label}</p>
+                                    <p className="text-xl md:text-2xl font-black text-black italic tracking-tighter">{item.val}</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -69,10 +69,10 @@ export default function LoansClient({ loans }: LoansClientProps) {
                                 <FileText className="h-6 w-6" />
                             </div>
                             <div>
-                                <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">No active loans</h3>
-                                <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60 mt-1">Apply for a loan to get started.</p>
+                                <h3 className="text-base md:text-lg font-black text-black uppercase tracking-tight italic">No active loans</h3>
+                                <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60 mt-1">Apply for a loan to get started.</p>
                             </div>
-                            <Button asChild size="sm" className="bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-black text-xs md:text-sm uppercase tracking-widest italic h-12 px-8">
+                            <Button asChild size="sm" className="bg-black hover:bg-black text-white rounded-xl font-black text-xs md:text-sm uppercase tracking-widest italic h-12 px-8">
                                 <Link href="/dashboard/loans/apply">Apply Now</Link>
                             </Button>
                         </div>
@@ -84,15 +84,15 @@ export default function LoansClient({ loans }: LoansClientProps) {
                         {pendingLoans.length > 0 && (
                             <div className="space-y-3">
                                 <div className="flex items-center gap-2 px-1">
-                                    <Clock className="h-4 w-4 text-yellow-500" />
-                                    <h2 className="text-sm md:text-base font-black text-slate-600 uppercase tracking-widest italic">Pending Approval</h2>
+                                    <Clock className="h-4 w-4 text-black" />
+                                    <h2 className="text-sm md:text-base font-black text-black uppercase tracking-widest italic">Pending Approval</h2>
                                     <span className="ml-auto bg-yellow-50 text-yellow-700 text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase italic">{pendingLoans.length}</span>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {pendingLoans.map((loan, idx) => (
                                         <div key={loan._id} className="relative">
                                             <LoanComponent loan={loan} />
-                                            <span className="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">Reviewing</span>
+                                            <span className="absolute top-3 right-3 bg-black text-white px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">Reviewing</span>
                                         </div>
                                     ))}
                                 </div>
@@ -103,9 +103,9 @@ export default function LoansClient({ loans }: LoansClientProps) {
                         {activeLoans.length > 0 && (
                             <div className="space-y-3">
                                 <div className="flex items-center gap-2 px-1">
-                                    <TrendingUp className="h-4 w-4 text-orange-500" />
-                                    <h2 className="text-sm md:text-base font-black text-slate-600 uppercase tracking-widest italic">Active Loans</h2>
-                                    <span className="ml-auto bg-orange-50 text-orange-700 text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase italic">{activeLoans.length}</span>
+                                    <TrendingUp className="h-4 w-4 text-black" />
+                                    <h2 className="text-sm md:text-base font-black text-black uppercase tracking-widest italic">Active Loans</h2>
+                                    <span className="ml-auto bg-slate-50 text-black text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase italic">{activeLoans.length}</span>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {activeLoans.map((loan, idx) => (
@@ -119,9 +119,9 @@ export default function LoansClient({ loans }: LoansClientProps) {
                         {completedLoans.length > 0 && (
                             <div className="space-y-3">
                                 <div className="flex items-center gap-2 px-1">
-                                    <CheckCircle2 className="h-4 w-4 text-slate-400" />
-                                    <h2 className="text-sm md:text-base font-black text-slate-400 uppercase tracking-widest italic">Loan History</h2>
-                                    <span className="ml-auto bg-slate-50 text-slate-500 text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase italic">{completedLoans.length}</span>
+                                    <CheckCircle2 className="h-4 w-4 text-black" />
+                                    <h2 className="text-sm md:text-base font-black text-black uppercase tracking-widest italic">Loan History</h2>
+                                    <span className="ml-auto bg-slate-50 text-black text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase italic">{completedLoans.length}</span>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {completedLoans.map((loan) => (

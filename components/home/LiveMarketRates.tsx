@@ -105,13 +105,13 @@ export default function LiveMarketRates() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-200 text-orange-600 text-xs font-black tracking-widest uppercase mb-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-black text-xs font-black tracking-widest uppercase mb-4">
                         <Activity className="w-3 h-3 animate-pulse" /> Live Market Rates
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-3">
+                    <h2 className="text-3xl md:text-4xl font-black tracking-tight text-black mb-3">
                         Real-Time Market Data
                     </h2>
-                    <p className="text-slate-600 max-w-2xl mx-auto">
+                    <p className="text-black max-w-2xl mx-auto">
                         Stay informed with live cryptocurrency and forex rates, updated every 30 seconds.
                     </p>
                 </div>
@@ -135,18 +135,18 @@ export default function LiveMarketRates() {
                                 <div className="flex items-start justify-between mb-4">
                                     <div className="flex items-center gap-3">
                                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.type === 'crypto'
-                                                ? 'bg-orange-100 text-orange-600'
+                                                ? 'bg-slate-100 text-black'
                                                 : 'bg-blue-100 text-blue-600'
                                             }`}>
                                             <item.icon className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">{item.symbol}</p>
-                                            <p className="text-sm font-bold text-slate-900">{item.label}</p>
+                                            <p className="text-xs font-bold text-black uppercase tracking-wider">{item.symbol}</p>
+                                            <p className="text-sm font-bold text-black">{item.label}</p>
                                         </div>
                                     </div>
                                     <div className={`px-2 py-1 rounded-lg text-[10px] font-black uppercase ${item.type === 'crypto'
-                                            ? 'bg-orange-100 text-orange-600'
+                                            ? 'bg-slate-100 text-black'
                                             : 'bg-blue-100 text-blue-600'
                                         }`}>
                                         {item.type}
@@ -155,7 +155,7 @@ export default function LiveMarketRates() {
 
                                 {/* Price */}
                                 <div className="mb-3">
-                                    <p className="text-2xl font-black text-slate-900 tracking-tight">
+                                    <p className="text-2xl font-black text-black tracking-tight">
                                         {item.price}
                                     </p>
                                 </div>
@@ -169,13 +169,13 @@ export default function LiveMarketRates() {
                                         <TrendingDown className="w-4 h-4" />
                                     )}
                                     <span>{item.change >= 0 ? '+' : ''}{item.change.toFixed(2)}%</span>
-                                    <span className="text-xs text-slate-400 font-medium">24h</span>
+                                    <span className="text-xs text-black font-medium">24h</span>
                                 </div>
                             </div>
 
                             {/* Animated Border */}
                             <div className={`absolute bottom-0 left-0 right-0 h-1 ${item.change >= 0
-                                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-400'
+                                    ? 'bg-gradient-to-r from-black to-emerald-400'
                                     : 'bg-gradient-to-r from-rose-500 to-rose-400'
                                 } transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left`}></div>
                         </div>
@@ -184,7 +184,7 @@ export default function LiveMarketRates() {
 
                 {/* Disclaimer */}
                 <div className="mt-8 text-center">
-                    <p className="text-xs text-slate-500 italic">
+                    <p className="text-xs text-black italic">
                         Market data provided for informational purposes only. Rates update automatically every 30-60 seconds.
                     </p>
                 </div>

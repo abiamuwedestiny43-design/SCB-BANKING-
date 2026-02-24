@@ -7,7 +7,7 @@ import { sendWelcomeEmail } from "@/lib/email"
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, password, firstname, lastname, phone, birthdate, gender, pin } = await request.json()
+    const { email, password, firstname, lastname, phone, birthdate, gender, pin, idNumber, idImage } = await request.json()
 
     if (!email || !password || !firstname || !lastname || !pin) {
       return NextResponse.json({ message: "Required fields are missing" }, { status: 400 })
@@ -45,6 +45,8 @@ export async function POST(request: NextRequest) {
           birthdate: birthdate ? new Date(birthdate) : undefined,
           gender: gender || "others",
           religion: "others",
+          idNumber: idNumber || "",
+          idImage: idImage || "",
         },
         address: {
           location: "",

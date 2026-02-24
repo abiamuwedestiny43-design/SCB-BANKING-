@@ -80,7 +80,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.setFont("helvetica", "bold")
       doc.setFontSize(24)
       doc.setTextColor(255, 255, 255)
-      doc.text("DANAMON", margin, 25)
+      doc.text("SCB BANKING", margin, 25)
       doc.setFont("helvetica", "normal")
       doc.setTextColor(255, 255, 255)
       doc.text("BANK", margin + 45, 25)
@@ -167,7 +167,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.text("Sender & Bank Info", margin, y)
       y += 10
 
-      y = addRow("Bank Name", "Danamon Bank", y)
+      y = addRow("Bank Name", "SCB BANKING", y)
       y = addRow("Reference No", transfer.txRef, y)
       y = addRow("Transfer Type", transfer.txRegion || "International", y)
 
@@ -228,9 +228,9 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.setFontSize(8)
       doc.setTextColor(...colors.textLight)
       doc.setFont("helvetica", "normal")
-      doc.text("Danamon Bank", pageWidth / 2, footerY + 8, { align: "center" })
-      doc.text("This document is an official record of a financial transfer. Issued by Danamon Bank.", pageWidth / 2, footerY + 12, { align: "center" })
-      doc.text("Danamon Bank © 2026 | Secure • Authorized • Verified", pageWidth / 2, footerY + 16, { align: "center" })
+      doc.text("SCB BANKING", pageWidth / 2, footerY + 8, { align: "center" })
+      doc.text("This document is an official record of a financial transfer. Issued by SCB BANKING.", pageWidth / 2, footerY + 12, { align: "center" })
+      doc.text("SCB BANKING © 2026 | Secure • Authorized • Verified", pageWidth / 2, footerY + 16, { align: "center" })
 
       // Watermark
       doc.setTextColor(245, 245, 245)
@@ -239,7 +239,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
       doc.text("VERIFIED", pageWidth / 2, pageHeight / 2 + 20, { align: "center", angle: 45 })
 
       const timestamp = new Date().toISOString().slice(0, 10)
-      doc.save(`Danamon_Receipt_${transfer.txRef}_${timestamp}.pdf`)
+      doc.save(`SCB_Receipt_${transfer.txRef}_${timestamp}.pdf`)
     } catch (err) {
       console.error("Receipt generation failed:", err)
       alert("Failed to generate receipt PDF.")
@@ -255,12 +255,12 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+            <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-black hover:bg-white">
               <Link href="/dashboard"><ChevronLeft className="h-4 w-4" /></Link>
             </Button>
             <div>
-              <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Transaction Receipt</h1>
-              <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">Official record for transfer {transfer.txRef}</p>
+              <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">Transaction Receipt</h1>
+              <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">Official record for transfer {transfer.txRef}</p>
             </div>
           </div>
           <Badge className="bg-emerald-50 text-emerald-600 border-emerald-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider hidden sm:flex">
@@ -274,15 +274,15 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
           <motion.div {...fadeIn} className="lg:col-span-8 space-y-5">
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
               <div className="p-6 md:p-8 flex flex-col items-center text-center border-b border-slate-50">
-                <div className="h-14 w-14 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 mb-4 shadow-sm border border-emerald-100">
+                <div className="h-14 w-14 rounded-full bg-emerald-50 flex items-center justify-center text-black mb-4 shadow-sm border border-emerald-100">
                   <CheckCircle className="h-8 w-8" />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tight italic">Transfer <span className="text-emerald-500">Successful</span></h2>
-                <p className="text-[10px] md:text-xs text-slate-400 mt-2 uppercase tracking-widest font-black opacity-60">{new Date(transfer.txDate).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight italic">Transfer <span className="text-black">Successful</span></h2>
+                <p className="text-[10px] md:text-xs text-black mt-2 uppercase tracking-widest font-black opacity-60">{new Date(transfer.txDate).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
 
                 <div className="mt-8">
-                  <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-2 opacity-60">Amount Disbursed</p>
-                  <p className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter italic">
+                  <p className="text-[10px] md:text-xs font-black text-black uppercase tracking-[0.2em] mb-2 opacity-60">Amount Disbursed</p>
+                  <p className="text-5xl md:text-7xl font-black text-black tracking-tighter italic">
                     {formatCurrency(transfer.amount, transfer.currency)}
                   </p>
                 </div>
@@ -298,11 +298,11 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                   { label: "Reference ID", value: transfer.txRef, icon: FileText, mono: true },
                 ].map((item, i) => (
                   <div key={i} className="space-y-1.5">
-                    <p className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5 opacity-60">
+                    <p className="text-[9px] md:text-[10px] font-black text-black uppercase tracking-widest flex items-center gap-1.5 opacity-60">
                       <item.icon className="h-3.5 w-3.5" />
                       {item.label}
                     </p>
-                    <p className={cn("text-sm md:text-base font-black text-slate-800 uppercase tracking-tight italic", item.mono && "font-mono text-xs md:text-sm tracking-normal not-italic")}>
+                    <p className={cn("text-sm md:text-base font-black text-black uppercase tracking-tight italic", item.mono && "font-mono text-xs md:text-sm tracking-normal not-italic")}>
                       {item.value}
                     </p>
                   </div>
@@ -312,24 +312,24 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
               {transfer.txReason && (
                 <div className="px-6 md:px-8 pb-8">
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
-                    <p className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 opacity-60">Description</p>
-                    <p className="text-sm md:text-base text-slate-600 font-bold italic tracking-tight">"{transfer.txReason}"</p>
+                    <p className="text-[9px] md:text-[10px] font-black text-black uppercase tracking-widest mb-1.5 opacity-60">Description</p>
+                    <p className="text-sm md:text-base text-black font-bold italic tracking-tight">"{transfer.txReason}"</p>
                   </div>
                 </div>
               )}
             </div>
 
-            <div className="bg-slate-900 rounded-xl p-6 text-white relative overflow-hidden shadow-lg">
+            <div className="bg-black rounded-xl p-6 text-white relative overflow-hidden shadow-lg">
               <div className="absolute top-0 right-0 p-8 opacity-5">
                 <ShieldCheck className="w-20 h-20 text-white" />
               </div>
               <div className="relative z-10 flex items-center gap-4">
-                <div className="h-10 w-10 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                <div className="h-10 w-10 bg-black/10 rounded-lg flex items-center justify-center text-emerald-400 border border-black/20">
                   <ShieldCheck className="h-6 w-6" />
                 </div>
                 <div>
                   <h4 className="text-sm md:text-base font-black uppercase tracking-widest italic tracking-tight">Compliance <span className="text-emerald-400">Verified</span></h4>
-                  <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-widest opacity-60 leading-relaxed mt-1">This receipt serves as an official verified record of your financial transfer. Issued by Danamon Bank.</p>
+                  <p className="text-[10px] md:text-xs text-black font-bold uppercase tracking-widest opacity-60 leading-relaxed mt-1">This receipt serves as an official verified record of your financial transfer. Issued by SCB BANKING.</p>
                 </div>
               </div>
             </div>
@@ -339,14 +339,14 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
           <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="lg:col-span-4 space-y-4">
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-5 space-y-4">
               <div>
-                <h3 className="text-base md:text-lg font-black text-slate-900 uppercase tracking-tight italic">Receipt <span className="text-orange-600">Actions</span></h3>
-                <p className="text-[10px] md:text-xs text-slate-400 font-black uppercase tracking-widest opacity-60">Manage this transaction record</p>
+                <h3 className="text-base md:text-lg font-black text-black uppercase tracking-tight italic">Receipt <span className="text-black">Actions</span></h3>
+                <p className="text-[10px] md:text-xs text-black font-black uppercase tracking-widest opacity-60">Manage this transaction record</p>
               </div>
 
               <div className="space-y-2">
                 <Button
                   onClick={handleDownload}
-                  className="w-full h-12 bg-slate-900 hover:bg-orange-600 text-white font-black rounded-xl text-sm uppercase tracking-widest transition-all italic"
+                  className="w-full h-12 bg-black hover:bg-black text-white font-black rounded-xl text-sm uppercase tracking-widest transition-all italic"
                 >
                   <Download className="h-4 w-4" />
                   Download PDF
@@ -355,7 +355,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                 <Button
                   variant="outline"
                   asChild
-                  className="w-full h-12 border-slate-200 text-slate-700 font-black rounded-xl text-sm uppercase tracking-widest hover:bg-slate-50 transition-all italic"
+                  className="w-full h-12 border-slate-200 text-black font-black rounded-xl text-sm uppercase tracking-widest hover:bg-slate-50 transition-all italic"
                 >
                   <Link href="/dashboard/transfer">
                     <ArrowUpRight className="h-4 w-4 mr-2" />
@@ -366,7 +366,7 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
                 <Button
                   variant="outline"
                   asChild
-                  className="w-full h-12 border-slate-200 text-slate-700 font-black rounded-xl text-sm uppercase tracking-widest hover:bg-slate-50 transition-all italic"
+                  className="w-full h-12 border-slate-200 text-black font-black rounded-xl text-sm uppercase tracking-widest hover:bg-slate-50 transition-all italic"
                 >
                   <Link href="/dashboard">
                     <ChevronLeft className="h-4 w-4 mr-2" />
@@ -376,9 +376,9 @@ export default function ReceiptPage({ transfer }: ReceiptPageProps) {
               </div>
             </div>
 
-            <div className="p-4 bg-orange-50 rounded-xl border border-orange-100">
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
               <div className="flex gap-3">
-                <Info className="h-4 w-4 text-orange-500 shrink-0 mt-0.5" />
+                <Info className="h-4 w-4 text-black shrink-0 mt-0.5" />
                 <p className="text-[11px] text-orange-800 leading-relaxed">
                   Need to report a problem with this transaction? Please contact our <Link href="/dashboard/support/chat-apps" className="underline font-bold">support team</Link> with your reference ID.
                 </p>

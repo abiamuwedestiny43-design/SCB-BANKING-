@@ -28,7 +28,7 @@ const integrations = [
         connected: true,
         category: "Banking",
         icon: (
-            <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg">
+            <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg">
                 P
             </div>
         )
@@ -92,15 +92,15 @@ export default function IntegrationsPage() {
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="space-y-1">
-                    <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">
-                        Bank <span className="text-orange-600">Integrations</span>
+                    <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">
+                        Bank <span className="text-black">Integrations</span>
                     </h1>
-                    <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">
+                    <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">
                         Connect external services and financial protocols
                     </p>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-emerald-200 rounded-2xl shadow-sm">
-                    <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50"></div>
+                    <div className="h-2 w-2 rounded-full bg-black shadow-lg shadow-black/50"></div>
                     <p className="text-sm font-black text-emerald-600 uppercase tracking-widest">API Links Secure</p>
                 </div>
             </div>
@@ -116,34 +116,34 @@ export default function IntegrationsPage() {
                                 {item.icon}
                                 <div>
                                     <div className="flex items-center gap-2">
-                                        <CardTitle className="text-lg font-black text-slate-900 tracking-tighter italic uppercase leading-none">{item.name}</CardTitle>
-                                        {item.connected && <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>}
+                                        <CardTitle className="text-lg font-black text-black tracking-tighter italic uppercase leading-none">{item.name}</CardTitle>
+                                        {item.connected && <div className="h-2 w-2 rounded-full bg-black animate-pulse"></div>}
                                     </div>
-                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">{item.category}</p>
+                                    <p className="text-[10px] font-black text-black uppercase tracking-widest mt-1">{item.category}</p>
                                 </div>
                             </div>
                             <Switch
                                 checked={item.connected}
                                 onCheckedChange={() => toggleIntegration(item.id)}
                                 disabled={loading === item.id}
-                                className="data-[state=checked]:bg-orange-600"
+                                className="data-[state=checked]:bg-black"
                             />
                         </CardHeader>
                         <CardContent className="p-6 space-y-6">
-                            <p className="text-sm text-slate-500 font-bold leading-relaxed">
+                            <p className="text-sm text-black font-bold leading-relaxed">
                                 {item.description}
                             </p>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Status</p>
-                                    <p className={cn("text-[10px] font-black uppercase tracking-widest", item.connected ? "text-emerald-600" : "text-slate-400")}>
+                                    <p className="text-[9px] font-black text-black uppercase tracking-widest mb-1">Status</p>
+                                    <p className={cn("text-[10px] font-black uppercase tracking-widest", item.connected ? "text-emerald-600" : "text-black")}>
                                         {item.connected ? "Connected" : "Disabled"}
                                     </p>
                                 </div>
                                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Latency</p>
-                                    <p className="text-[10px] font-black text-slate-700 uppercase tracking-widest">{item.connected ? "12ms" : "—"}</p>
+                                    <p className="text-[9px] font-black text-black uppercase tracking-widest mb-1">Latency</p>
+                                    <p className="text-[10px] font-black text-black uppercase tracking-widest">{item.connected ? "12ms" : "—"}</p>
                                 </div>
                             </div>
 
@@ -152,8 +152,8 @@ export default function IntegrationsPage() {
                                 className={cn(
                                     "w-full h-12 rounded-xl text-xs font-black uppercase tracking-widest transition-all gap-2",
                                     item.connected
-                                        ? "border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-500"
-                                        : "bg-slate-900 text-white hover:bg-orange-600"
+                                        ? "border-slate-200 text-black hover:text-black hover:border-black"
+                                        : "bg-black text-white hover:bg-black"
                                 )}
                                 onClick={() => !item.connected && toggleIntegration(item.id)}
                                 disabled={loading === item.id}
@@ -171,13 +171,13 @@ export default function IntegrationsPage() {
                 ))}
 
                 {/* Add New Integration Placeholder */}
-                <div className="border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center p-8 text-center group cursor-pointer hover:border-orange-300 hover:bg-orange-50/30 transition-all">
-                    <div className="h-16 w-16 rounded-2xl bg-slate-50 border border-slate-100 text-slate-300 group-hover:text-orange-500 group-hover:scale-110 flex items-center justify-center transition-all duration-300">
+                <div className="border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center p-8 text-center group cursor-pointer hover:border-orange-300 hover:bg-slate-50/30 transition-all">
+                    <div className="h-16 w-16 rounded-2xl bg-slate-50 border border-slate-100 text-slate-300 group-hover:text-black group-hover:scale-110 flex items-center justify-center transition-all duration-300">
                         <Cpu className="w-8 h-8" />
                     </div>
                     <div className="mt-6 space-y-2">
-                        <p className="text-xl font-black text-slate-900 tracking-tighter uppercase italic leading-none">New Service</p>
-                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest max-w-[180px]">
+                        <p className="text-xl font-black text-black tracking-tighter uppercase italic leading-none">New Service</p>
+                        <p className="text-[10px] text-black font-bold uppercase tracking-widest max-w-[180px]">
                             Connect a custom financial protocol or API
                         </p>
                     </div>

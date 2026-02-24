@@ -102,7 +102,7 @@ export default function ApplyForLoanPage() {
   }
 
   const fadeIn = { initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.3 } }
-  const inputCls = "h-9 bg-slate-50 border-slate-200 rounded-lg text-slate-900 text-xs focus:bg-white focus:border-orange-400 placeholder:text-slate-300 shadow-none"
+  const inputCls = "h-9 bg-slate-50 border-slate-200 rounded-lg text-black text-xs focus:bg-white focus:border-orange-400 placeholder:text-slate-300 shadow-none"
 
   return (
     <div className="min-h-screen bg-[#F4F6FA] p-4 md:p-6 pt-16 lg:pt-6">
@@ -110,12 +110,12 @@ export default function ApplyForLoanPage() {
 
         {/* Header */}
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white">
+          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-black hover:bg-white">
             <Link href="/dashboard/loans"><ChevronLeft className="h-4 w-4" /></Link>
           </Button>
           <div>
-            <h1 className="text-base font-bold text-slate-900">Loan Application</h1>
-            <p className="text-xs text-slate-400">Request financial capital with competitive rates</p>
+            <h1 className="text-base font-bold text-black">Loan Application</h1>
+            <p className="text-xs text-black">Request financial capital with competitive rates</p>
           </div>
         </div>
 
@@ -145,13 +145,13 @@ export default function ApplyForLoanPage() {
           <motion.div {...fadeIn} className="lg:col-span-2 space-y-5">
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
               <div className="flex items-center gap-2 p-4 border-b border-slate-50 bg-slate-50/50">
-                <Landmark className="h-4 w-4 text-orange-500" />
-                <h3 className="text-sm font-bold text-slate-900">Application Details</h3>
+                <Landmark className="h-4 w-4 text-black" />
+                <h3 className="text-sm font-bold text-black">Application Details</h3>
               </div>
 
               <div className="p-5 space-y-4">
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-medium text-slate-600">Loan Type</Label>
+                  <Label className="text-xs font-medium text-black">Loan Type</Label>
                   <Select value={formData.loanType} onValueChange={(value) => setFormData({ ...formData, loanType: value })}>
                     <SelectTrigger className={inputCls}>
                       <SelectValue placeholder="Select loan type" />
@@ -168,9 +168,9 @@ export default function ApplyForLoanPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-slate-600">Loan Amount</Label>
+                    <Label className="text-xs font-medium text-black">Loan Amount</Label>
                     <div className="relative">
-                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black" />
                       <Input
                         type="number"
                         placeholder="0.00"
@@ -180,14 +180,14 @@ export default function ApplyForLoanPage() {
                       />
                     </div>
                     {loanDetails && (
-                      <p className="text-[10px] text-slate-400 font-medium">Range: ${loanDetails.minAmount.toLocaleString()} - ${loanDetails.maxAmount.toLocaleString()}</p>
+                      <p className="text-[10px] text-black font-medium">Range: ${loanDetails.minAmount.toLocaleString()} - ${loanDetails.maxAmount.toLocaleString()}</p>
                     )}
                   </div>
 
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-slate-600">Duration (Months)</Label>
+                    <Label className="text-xs font-medium text-black">Duration (Months)</Label>
                     <div className="relative">
-                      <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                      <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black" />
                       <Input
                         type="number"
                         placeholder="e.g. 12"
@@ -197,14 +197,14 @@ export default function ApplyForLoanPage() {
                       />
                     </div>
                     {loanDetails && (
-                      <p className="text-[10px] text-slate-400 font-medium">Max: {loanDetails.maxDuration} months</p>
+                      <p className="text-[10px] text-black font-medium">Max: {loanDetails.maxDuration} months</p>
                     )}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-slate-600">Employment Status</Label>
+                    <Label className="text-xs font-medium text-black">Employment Status</Label>
                     <Select value={formData.employmentStatus} onValueChange={(value) => setFormData({ ...formData, employmentStatus: value })}>
                       <SelectTrigger className={inputCls}>
                         <SelectValue placeholder="Status" />
@@ -218,9 +218,9 @@ export default function ApplyForLoanPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-slate-600">Annual Gross Income</Label>
+                    <Label className="text-xs font-medium text-black">Annual Gross Income</Label>
                     <div className="relative">
-                      <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                      <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black" />
                       <Input
                         type="number"
                         placeholder="Total per year"
@@ -233,7 +233,7 @@ export default function ApplyForLoanPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-medium text-slate-600">Existing Monthly Liabilities</Label>
+                  <Label className="text-xs font-medium text-black">Existing Monthly Liabilities</Label>
                   <Input
                     type="number"
                     placeholder="Current monthly loan payments"
@@ -244,10 +244,10 @@ export default function ApplyForLoanPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-medium text-slate-600">Purpose of Loan</Label>
+                  <Label className="text-xs font-medium text-black">Purpose of Loan</Label>
                   <Textarea
                     placeholder="Describe how you will use these funds..."
-                    className="min-h-[100px] bg-slate-50 border-slate-200 rounded-lg text-slate-900 text-xs focus:bg-white focus:border-orange-400 placeholder:text-slate-300 resize-none shadow-none"
+                    className="min-h-[100px] bg-slate-50 border-slate-200 rounded-lg text-black text-xs focus:bg-white focus:border-orange-400 placeholder:text-slate-300 resize-none shadow-none"
                     value={formData.purpose}
                     onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
                   />
@@ -258,7 +258,7 @@ export default function ApplyForLoanPage() {
             <div className="flex flex-col sm:flex-row items-center gap-2 pt-2">
               <Button
                 variant="ghost"
-                className="flex-1 w-full h-10 border border-slate-200 text-slate-600 font-bold rounded-lg text-xs hover:bg-white"
+                className="flex-1 w-full h-10 border border-slate-200 text-black font-bold rounded-lg text-xs hover:bg-white"
                 onClick={() => router.back()}
               >
                 Discard Application
@@ -266,7 +266,7 @@ export default function ApplyForLoanPage() {
               <Button
                 onClick={handleApply}
                 disabled={isSubmitting}
-                className="flex-[2] w-full h-10 bg-slate-900 hover:bg-orange-600 text-white font-bold rounded-lg text-xs transition-colors shadow-sm"
+                className="flex-[2] w-full h-10 bg-black hover:bg-black text-white font-bold rounded-lg text-xs transition-colors shadow-sm"
               >
                 {isSubmitting ? 'Processing Submission...' : 'Submit Loan Request'}
               </Button>
@@ -276,13 +276,13 @@ export default function ApplyForLoanPage() {
           {/* Calculator Sidebar */}
           <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="space-y-5">
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden sticky top-20">
-              <div className="p-4 border-b border-slate-50 bg-orange-50/30 flex items-center justify-between">
+              <div className="p-4 border-b border-slate-50 bg-slate-50/30 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Calculator className="h-4 w-4 text-orange-500" />
-                  <h3 className="text-sm font-bold text-slate-900">Loan Estimator</h3>
+                  <Calculator className="h-4 w-4 text-black" />
+                  <h3 className="text-sm font-bold text-black">Loan Estimator</h3>
                 </div>
                 {loanDetails && (
-                  <Badge className="bg-orange-500 text-white border-none px-1.5 py-0.5 text-[10px] font-bold">
+                  <Badge className="bg-black text-white border-none px-1.5 py-0.5 text-[10px] font-bold">
                     {loanDetails.interestRate}% APR
                   </Badge>
                 )}
@@ -291,31 +291,31 @@ export default function ApplyForLoanPage() {
               <div className="p-5 space-y-6">
                 {!formData.amount || !formData.duration || !loanDetails ? (
                   <div className="py-6 text-center">
-                    <p className="text-xs text-slate-400 font-medium leading-relaxed">Fill in the amount and duration to see your estimated monthly repayment.</p>
+                    <p className="text-xs text-black font-medium leading-relaxed">Fill in the amount and duration to see your estimated monthly repayment.</p>
                   </div>
                 ) : (
                   <div className="space-y-6">
                     <div className="text-center space-y-1">
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Monthly Repayment</p>
-                      <div className="text-2xl font-black text-slate-900 tracking-tight">
+                      <p className="text-[10px] font-bold text-black uppercase tracking-widest">Monthly Repayment</p>
+                      <div className="text-2xl font-black text-black tracking-tight">
                         {calculatedPayment ? `$${calculatedPayment.toFixed(2)}` : '—'}
                       </div>
                     </div>
 
                     <div className="space-y-3 pt-4 border-t border-slate-50">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-slate-500">Interest Rate</span>
-                        <span className="font-bold text-slate-900">{loanDetails.interestRate}%</span>
+                        <span className="text-black">Interest Rate</span>
+                        <span className="font-bold text-black">{loanDetails.interestRate}%</span>
                       </div>
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-slate-500">Total Interest</span>
-                        <span className="font-bold text-slate-900">
+                        <span className="text-black">Total Interest</span>
+                        <span className="font-bold text-black">
                           {calculatedPayment ? `$${(calculatedPayment * parseInt(formData.duration) - parseFloat(formData.amount)).toFixed(2)}` : '—'}
                         </span>
                       </div>
                       <div className="flex justify-between items-center text-xs pt-2 border-t border-slate-50">
-                        <span className="text-slate-700 font-bold">Total Repayment</span>
-                        <span className="font-black text-orange-600">
+                        <span className="text-black font-bold">Total Repayment</span>
+                        <span className="font-black text-black">
                           {calculatedPayment ? `$${(calculatedPayment * parseInt(formData.duration)).toFixed(2)}` : '—'}
                         </span>
                       </div>
@@ -324,7 +324,7 @@ export default function ApplyForLoanPage() {
                     <Button
                       onClick={handleCalculate}
                       size="sm"
-                      className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg text-[10px] h-8 border-none"
+                      className="w-full bg-slate-100 hover:bg-slate-200 text-black font-bold rounded-lg text-[10px] h-8 border-none"
                     >
                       Refresh Estimates
                     </Button>
@@ -332,8 +332,8 @@ export default function ApplyForLoanPage() {
                 )}
 
                 <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 flex gap-3">
-                  <ShieldCheck className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
-                  <p className="text-[10px] text-slate-500 leading-relaxed">All loan applications are subject to credit verification and Danamon Bank internal policy guidelines.</p>
+                  <ShieldCheck className="h-4 w-4 text-black shrink-0 mt-0.5" />
+                  <p className="text-[10px] text-black leading-relaxed">All loan applications are subject to credit verification and SCB BANKING internal policy guidelines.</p>
                 </div>
               </div>
             </div>

@@ -76,29 +76,29 @@ export default function PinVerification({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-[#020617] border-orange-500/20 rounded-[3rem] p-0 max-w-md overflow-hidden shadow-3xl">
+      <DialogContent className="bg-[#020617] border-black/20 rounded-[3rem] p-0 max-w-md overflow-hidden shadow-3xl">
         {/* Aesthetic Header Decoration */}
-        <div className="h-2 bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
+        <div className="h-2 bg-gradient-to-r from-transparent via-black/50 to-transparent" />
 
         <div className="p-10 relative overflow-hidden">
           {/* Background Glow */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-black/10 rounded-full blur-3xl pointer-events-none" />
 
           <DialogHeader className="text-center relative z-10 space-y-4">
-            <div className="mx-auto w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-2 animate-pulse">
-              <Fingerprint className="w-8 h-8 text-orange-500" />
+            <div className="mx-auto w-16 h-16 rounded-2xl bg-black/10 border border-black/20 flex items-center justify-center mb-2 animate-pulse">
+              <Fingerprint className="w-8 h-8 text-black" />
             </div>
             <DialogTitle className="text-3xl font-black text-white italic tracking-tight uppercase">
               {title}
             </DialogTitle>
-            <DialogDescription className="text-slate-500 font-medium text-sm leading-relaxed max-w-xs mx-auto">
+            <DialogDescription className="text-black font-medium text-sm leading-relaxed max-w-xs mx-auto">
               {description}
             </DialogDescription>
           </DialogHeader>
 
           <form onSubmit={handleSubmit} className="space-y-8 mt-10 relative z-10">
             {error && (
-              <Alert className="bg-red-500/10 border-red-500/20 text-red-500 rounded-2xl py-3 border italic font-black text-[10px] uppercase tracking-widest text-center">
+              <Alert className="bg-black/10 border-black/20 text-black rounded-2xl py-3 border italic font-black text-[10px] uppercase tracking-widest text-center">
                 <AlertDescription className="flex items-center justify-center gap-2">
                   <Activity className="w-4 h-4 opacity-50" /> {error}
                 </AlertDescription>
@@ -108,8 +108,8 @@ export default function PinVerification({
             <div className="space-y-4">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-2">
-                  <Cpu className="w-3 h-3 text-orange-500/50" />
-                  <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Encrypted Local Input</span>
+                  <Cpu className="w-3 h-3 text-black/50" />
+                  <span className="text-[8px] font-black text-black uppercase tracking-widest">Encrypted Local Input</span>
                 </div>
               </div>
 
@@ -121,18 +121,18 @@ export default function PinVerification({
                   onChange={(e) => handlePinChange(e.target.value)}
                   placeholder="••••"
                   maxLength={4}
-                  className="h-24 text-center text-4xl font-black tracking-[1em] bg-white/5 border-white/10 rounded-2xl text-white focus:border-orange-500/50 focus:ring-orange-500/20 transition-all placeholder:text-white/5"
+                  className="h-24 text-center text-4xl font-black tracking-[1em] bg-white/5 border-white/10 rounded-2xl text-white focus:border-black/50 focus:ring-black/20 transition-all placeholder:text-white/5"
                   disabled={isLoading || attempts >= 3}
                   autoFocus
                 />
-                <div className="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
+                <div className="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-black/20 to-transparent" />
               </div>
             </div>
 
             <div className="flex flex-col gap-4">
               <Button
                 type="submit"
-                className="w-full h-16 bg-orange-500 hover:bg-orange-400 text-[#020617] font-black uppercase tracking-[0.3em] text-[11px] rounded-2xl shadow-xl shadow-orange-500/20 group relative overflow-hidden"
+                className="w-full h-16 bg-black hover:bg-orange-400 text-[#020617] font-black uppercase tracking-[0.3em] text-[11px] rounded-2xl shadow-xl shadow-black/20 group relative overflow-hidden"
                 disabled={isLoading || pin.length !== 4 || attempts >= 3}
               >
                 <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12" />
@@ -150,7 +150,7 @@ export default function PinVerification({
                 variant="ghost"
                 onClick={onClose}
                 disabled={isLoading}
-                className="w-full h-12 text-slate-500 hover:text-white hover:bg-white/5 font-black uppercase tracking-widest text-[9px] rounded-xl"
+                className="w-full h-12 text-black hover:text-white hover:bg-white/5 font-black uppercase tracking-widest text-[9px] rounded-xl"
               >
                 Abort Migration
               </Button>
@@ -159,9 +159,9 @@ export default function PinVerification({
 
           {/* Footer Cipher */}
           <div className="mt-8 flex items-center justify-center gap-4 opacity-30">
-            <div className="w-1 h-1 rounded-full bg-orange-500" />
-            <span className="text-[7px] font-black text-slate-500 uppercase tracking-[0.5em]">Auth0_HBBank_v4.2</span>
-            <div className="w-1 h-1 rounded-full bg-orange-500" />
+            <div className="w-1 h-1 rounded-full bg-black" />
+            <span className="text-[7px] font-black text-black uppercase tracking-[0.5em]">Auth0_HBBank_v4.2</span>
+            <div className="w-1 h-1 rounded-full bg-black" />
           </div>
         </div>
       </DialogContent>

@@ -106,15 +106,15 @@ export default function AdminTransferCodesPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">
-            Transfer <span className="text-orange-600">Codes</span>
+          <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">
+            Transfer <span className="text-black">Codes</span>
           </h1>
-          <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">
+          <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">
             Manage global verification codes and user transfer permissions
           </p>
         </div>
         <div className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-emerald-200 rounded-2xl shadow-sm">
-          <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50"></div>
+          <div className="h-2 w-2 rounded-full bg-black shadow-lg shadow-black/50"></div>
           <p className="text-sm font-black text-emerald-600 uppercase tracking-widest">Security Active</p>
         </div>
       </div>
@@ -124,12 +124,12 @@ export default function AdminTransferCodesPage() {
         <Card className="xl:col-span-8 bg-white border border-slate-100 shadow-sm rounded-2xl overflow-hidden">
           <CardHeader className="p-6 border-b border-slate-100 flex flex-row items-center justify-between space-y-0">
             <div className="flex items-center gap-4">
-              <div className="h-10 w-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600">
+              <div className="h-10 w-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-black">
                 <Lock className="w-5 h-5 font-black" />
               </div>
               <div>
-                <CardTitle className="text-xl font-black text-slate-900 tracking-tighter italic uppercase">Global Verification Codes</CardTitle>
-                <CardDescription className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-0.5">Edit system-wide codes for all transfers</CardDescription>
+                <CardTitle className="text-xl font-black text-black tracking-tighter italic uppercase">Global Verification Codes</CardTitle>
+                <CardDescription className="text-xs font-bold text-black uppercase tracking-widest mt-0.5">Edit system-wide codes for all transfers</CardDescription>
               </div>
             </div>
             <Button
@@ -153,7 +153,7 @@ export default function AdminTransferCodesPage() {
                 <CardContent className="p-6 space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
-                      { label: "Verification Code (COT)", value: cot, set: setCot, icon: ShieldCheck, color: "text-orange-600", bg: "bg-orange-50" },
+                      { label: "Verification Code (COT)", value: cot, set: setCot, icon: ShieldCheck, color: "text-black", bg: "bg-slate-50" },
                       { label: "Institutional Code (IMF)", value: imf, set: setImf, icon: Globe, color: "text-blue-600", bg: "bg-blue-50" },
                       { label: "Auth Code (ESI)", value: esi, set: setEsi, icon: Key, color: "text-purple-600", bg: "bg-purple-50" },
                       { label: "System Matrix (DCO)", value: dco, set: setDco, icon: RefreshCw, color: "text-emerald-600", bg: "bg-emerald-50" },
@@ -161,21 +161,21 @@ export default function AdminTransferCodesPage() {
                       { label: "Transfer Link (TAC)", value: tac, set: setTac, icon: Cpu, color: "text-cyan-600", bg: "bg-cyan-50" },
                     ].map((row) => (
                       <div key={row.label} className="space-y-3">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-black flex items-center gap-2">
                           <row.icon className={cn("w-3.5 h-3.5", row.color)} /> {row.label}
                         </label>
                         <div className="flex gap-2">
                           <Input
                             value={row.value}
                             onChange={(e) => row.set(e.target.value)}
-                            className="h-12 bg-slate-50 border-slate-100 rounded-xl font-mono text-lg font-black text-slate-900 px-4 focus:border-orange-500 transition-all"
+                            className="h-12 bg-slate-50 border-slate-100 rounded-xl font-mono text-lg font-black text-black px-4 focus:border-black transition-all"
                           />
                           <Button
                             type="button"
                             variant="outline"
                             size="icon"
                             onClick={() => row.set(genCode())}
-                            className="h-12 w-12 rounded-xl border-slate-200 hover:text-orange-600 hover:border-orange-500 transition-all"
+                            className="h-12 w-12 rounded-xl border-slate-200 hover:text-black hover:border-black transition-all"
                           >
                             <RefreshCw className="h-4 w-4" />
                           </Button>
@@ -188,7 +188,7 @@ export default function AdminTransferCodesPage() {
                     <Button
                       onClick={save}
                       disabled={saving}
-                      className="w-full bg-slate-900 hover:bg-orange-600 text-white font-black h-14 rounded-2xl shadow-lg transition-all uppercase tracking-widest text-xs gap-3"
+                      className="w-full bg-black hover:bg-black text-white font-black h-14 rounded-2xl shadow-lg transition-all uppercase tracking-widest text-xs gap-3"
                     >
                       {saving ? (
                         <RefreshCw className="w-5 h-5 animate-spin" />
@@ -213,12 +213,12 @@ export default function AdminTransferCodesPage() {
                   <Users className="w-5 h-5 font-black" />
                 </div>
                 <div>
-                  <CardTitle className="text-xl font-black text-slate-900 tracking-tighter italic uppercase">Customer Clearance</CardTitle>
+                  <CardTitle className="text-xl font-black text-black tracking-tighter italic uppercase">Customer Clearance</CardTitle>
                 </div>
               </div>
 
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-black" />
                 <Input
                   placeholder="Search Customers..."
                   value={searchTerm}
@@ -234,22 +234,22 @@ export default function AdminTransferCodesPage() {
               {filteredUsers?.map((user: any) => (
                 <div
                   key={user._id}
-                  className="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-xl hover:border-orange-200 hover:bg-orange-50/30 transition-all group"
+                  className="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-xl hover:border-slate-200 hover:bg-slate-50/30 transition-all group"
                 >
                   <div className="flex items-center gap-4">
                     <div className={cn(
                       "w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm",
                       user.bankAccount?.canTransfer
                         ? 'bg-blue-100 text-blue-700'
-                        : 'bg-slate-100 text-slate-400'
+                        : 'bg-slate-100 text-black'
                     )}>
                       {user.bankInfo?.bio?.firstname?.[0] || 'U'}
                     </div>
                     <div className="overflow-hidden">
-                      <p className="font-black text-slate-900 text-xs uppercase tracking-widest truncate">
+                      <p className="font-black text-black text-xs uppercase tracking-widest truncate">
                         {user.bankInfo?.bio?.firstname} {user.bankInfo?.bio?.lastname}
                       </p>
-                      <p className="text-[10px] text-slate-400 font-bold truncate">{user.email}</p>
+                      <p className="text-[10px] text-black font-bold truncate">{user.email}</p>
                     </div>
                   </div>
                   <Button
@@ -260,7 +260,7 @@ export default function AdminTransferCodesPage() {
                       "h-9 px-4 rounded-lg font-black text-[9px] uppercase tracking-widest transition-all",
                       user.bankAccount?.canTransfer
                         ? "bg-emerald-600 hover:bg-emerald-700 text-white border-none"
-                        : "bg-white border-slate-200 text-slate-400 hover:text-blue-600 hover:border-blue-600"
+                        : "bg-white border-slate-200 text-black hover:text-blue-600 hover:border-blue-600"
                     )}
                   >
                     {user.bankAccount?.canTransfer ? "AUTHORIZED" : "REVOKED"}
@@ -272,7 +272,7 @@ export default function AdminTransferCodesPage() {
                   <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-4">
                     <Database className="w-5 h-5 text-slate-300" />
                   </div>
-                  <p className="text-slate-400 font-black uppercase tracking-widest text-[9px]">No customers found</p>
+                  <p className="text-black font-black uppercase tracking-widest text-[9px]">No customers found</p>
                 </div>
               )}
             </div>

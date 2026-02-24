@@ -120,7 +120,7 @@ export default function AdminLoansPage() {
       case "completed":
         return "bg-blue-50 text-blue-700 border-blue-200"
       default:
-        return "bg-slate-50 text-slate-700 border-slate-200"
+        return "bg-slate-50 text-black border-slate-200"
     }
   }
 
@@ -147,14 +147,14 @@ export default function AdminLoansPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic uppercase">
-            Loans & <span className="text-orange-600">Credit</span>
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-black tracking-tighter italic uppercase">
+            Loans & <span className="text-black">Credit</span>
           </h1>
-          <p className="text-[10px] sm:text-xs md:text-sm text-slate-400 font-bold uppercase tracking-widest opacity-60">Review and manage all customer loan applications.</p>
+          <p className="text-[10px] sm:text-xs md:text-sm text-black font-bold uppercase tracking-widest opacity-60">Review and manage all customer loan applications.</p>
         </div>
         <Link
           href="/admin"
-          className="h-10 md:h-12 px-4 md:px-6 rounded-xl border border-slate-200 bg-white font-black gap-2 text-slate-700 hover:border-orange-500 hover:text-orange-600 transition-all uppercase tracking-widest text-[10px] flex items-center w-fit shadow-sm"
+          className="h-10 md:h-12 px-4 md:px-6 rounded-xl border border-slate-200 bg-white font-black gap-2 text-black hover:border-black hover:text-black transition-all uppercase tracking-widest text-[10px] flex items-center w-fit shadow-sm"
         >
           <ChevronLeft className="h-4 w-4" /> Admin Home
         </Link>
@@ -163,13 +163,13 @@ export default function AdminLoansPage() {
       {/* Stats Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         {[
-          { label: "Total Applications", value: loans.length, accent: "text-slate-900", borderColor: "border-slate-200", bg: "bg-white" },
+          { label: "Total Applications", value: loans.length, accent: "text-black", borderColor: "border-slate-200", bg: "bg-white" },
           { label: "Active Loans", value: loans.filter(l => l.status === 'active' || l.status === 'approved').length, accent: "text-emerald-600", borderColor: "border-emerald-200", bg: "bg-emerald-50/30" },
           { label: "Pending Review", value: loans.filter(l => l.status === 'pending').length, accent: "text-yellow-600", borderColor: "border-yellow-200", bg: "bg-yellow-50/30" },
-          { label: "Total Exposure", value: `$${totalExposure.toLocaleString()}`, accent: "text-orange-600", borderColor: "border-orange-200", bg: "bg-orange-50/30" },
+          { label: "Total Exposure", value: `$${totalExposure.toLocaleString()}`, accent: "text-black", borderColor: "border-slate-200", bg: "bg-slate-50/30" },
         ].map((stat, i) => (
           <div key={i} className={cn("rounded-2xl p-4 md:p-6 shadow-sm border-2 flex flex-col gap-1 hover:shadow-md transition-all", stat.borderColor, stat.bg)}>
-            <p className="text-[9px] md:text-[10px] font-black text-slate-500 uppercase tracking-widest">{stat.label}</p>
+            <p className="text-[9px] md:text-[10px] font-black text-black uppercase tracking-widest">{stat.label}</p>
             <p className={cn("text-xl md:text-3xl lg:text-4xl font-black tracking-tighter italic", stat.accent)}>{stat.value}</p>
           </div>
         ))}
@@ -179,20 +179,20 @@ export default function AdminLoansPage() {
       <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-3 md:p-4">
         <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black" />
             <Input
               placeholder="Search applicant or type..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-slate-50 border-slate-200 rounded-xl h-10 md:h-12 text-slate-900 focus:border-orange-500 transition-all font-medium placeholder:text-slate-400 text-sm"
+              className="pl-10 bg-slate-50 border-slate-200 rounded-xl h-10 md:h-12 text-black focus:border-black transition-all font-medium placeholder:text-black text-sm"
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="h-10 md:h-12 w-full sm:w-[180px] md:w-[220px] bg-slate-50 border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-600">
+            <SelectTrigger className="h-10 md:h-12 w-full sm:w-[180px] md:w-[220px] bg-slate-50 border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-black">
               <SelectValue placeholder="All Statuses" />
             </SelectTrigger>
             <SelectContent className="bg-white border-slate-200 rounded-xl">
-              <SelectItem value="all" className="text-[10px] font-black uppercase tracking-widest focus:bg-orange-50">All Statuses</SelectItem>
+              <SelectItem value="all" className="text-[10px] font-black uppercase tracking-widest focus:bg-slate-50">All Statuses</SelectItem>
               <SelectItem value="pending" className="text-[10px] font-black uppercase tracking-widest focus:bg-yellow-50">Pending</SelectItem>
               <SelectItem value="approved" className="text-[10px] font-black uppercase tracking-widest focus:bg-emerald-50">Approved</SelectItem>
               <SelectItem value="active" className="text-[10px] font-black uppercase tracking-widest focus:bg-emerald-50">Active</SelectItem>
@@ -207,12 +207,12 @@ export default function AdminLoansPage() {
       <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
         <div className="p-4 md:p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <div>
-            <h2 className="text-lg md:text-xl font-black text-slate-900 tracking-tighter italic uppercase">Application Ledger</h2>
-            <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest mt-1">{filteredLoans.length} sequences found</p>
+            <h2 className="text-lg md:text-xl font-black text-black tracking-tighter italic uppercase">Application Ledger</h2>
+            <p className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest mt-1">{filteredLoans.length} sequences found</p>
           </div>
-          <div className="px-3 md:px-4 py-1.5 md:py-2 bg-orange-50 border-2 border-orange-200 rounded-xl md:rounded-2xl flex items-center gap-2">
-            <Activity className="h-3.5 w-3.5 text-orange-600" />
-            <p className="text-[10px] md:text-xs font-black text-orange-600 uppercase tracking-widest">${totalExposure.toLocaleString()} Exposure</p>
+          <div className="px-3 md:px-4 py-1.5 md:py-2 bg-slate-50 border-2 border-slate-200 rounded-xl md:rounded-2xl flex items-center gap-2">
+            <Activity className="h-3.5 w-3.5 text-black" />
+            <p className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest">${totalExposure.toLocaleString()} Exposure</p>
           </div>
         </div>
 
@@ -223,18 +223,18 @@ export default function AdminLoansPage() {
               <div key={loan._id} className="p-4 space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-slate-900 font-black text-sm">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-black font-black text-sm">
                       {loan.userId.bankInfo.bio.firstname[0]}
                     </div>
                     <div>
-                      <p className="text-sm font-black text-slate-900 uppercase truncate max-w-[150px]">
+                      <p className="text-sm font-black text-black uppercase truncate max-w-[150px]">
                         {loan.userId.bankInfo.bio.firstname} {loan.userId.bankInfo.bio.lastname}
                       </p>
-                      <p className="text-[10px] text-slate-400 uppercase tracking-tight">{loan.loanType}</p>
+                      <p className="text-[10px] text-black uppercase tracking-tight">{loan.loanType}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-base font-black text-slate-900 tracking-tighter italic">${loan.amount.toLocaleString()}</p>
+                    <p className="text-base font-black text-black tracking-tighter italic">${loan.amount.toLocaleString()}</p>
                     <div className={cn(
                       "inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[8px] font-black uppercase tracking-widest border mt-1",
                       getStatusStyles(loan.status)
@@ -245,8 +245,8 @@ export default function AdminLoansPage() {
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-slate-50">
                   <div className="flex flex-col">
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Duration</span>
-                    <span className="text-[10px] font-black text-slate-700 uppercase">{loan.duration} Months</span>
+                    <span className="text-[9px] font-bold text-black uppercase tracking-widest">Duration</span>
+                    <span className="text-[10px] font-black text-black uppercase">{loan.duration} Months</span>
                   </div>
                   <div className="flex gap-2">
                     {loan.status === 'pending' ? (
@@ -262,13 +262,13 @@ export default function AdminLoansPage() {
                           size="sm"
                           onClick={() => handleReject(loan)}
                           variant="outline"
-                          className="h-8 px-3 rounded-lg border-red-200 text-red-500 font-black text-[9px] uppercase tracking-widest"
+                          className="h-8 px-3 rounded-lg border-red-200 text-black font-black text-[9px] uppercase tracking-widest"
                         >
                           Deny
                         </Button>
                       </>
                     ) : (
-                      <Button variant="outline" className="h-8 px-3 rounded-lg border-slate-200 bg-slate-50 text-slate-400 font-black text-[9px] uppercase tracking-widest">
+                      <Button variant="outline" className="h-8 px-3 rounded-lg border-slate-200 bg-slate-50 text-black font-black text-[9px] uppercase tracking-widest">
                         View Details
                       </Button>
                     )}
@@ -279,7 +279,7 @@ export default function AdminLoansPage() {
           ) : (
             <div className="p-16 text-center">
               <AlertCircle className="h-8 w-8 text-slate-200 mx-auto mb-2" />
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">No matching applications</p>
+              <p className="text-[10px] font-black text-black uppercase tracking-widest italic">No matching applications</p>
             </div>
           )}
         </div>
@@ -288,7 +288,7 @@ export default function AdminLoansPage() {
         <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50 text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-500">
+              <tr className="border-b border-slate-100 bg-slate-50 text-[10px] md:text-xs font-black uppercase tracking-widest text-black">
                 <th className="px-6 py-4">Applicant</th>
                 <th className="px-6 py-4 hidden lg:table-cell">Loan Details</th>
                 <th className="px-6 py-4">Amount</th>
@@ -301,29 +301,29 @@ export default function AdminLoansPage() {
                 <tr key={loan._id} className="hover:bg-slate-50 transition-colors group">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3 md:gap-4">
-                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-slate-900 font-black text-base md:text-lg flex-shrink-0">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center text-black font-black text-base md:text-lg flex-shrink-0">
                         {loan.userId.bankInfo.bio.firstname[0]}
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm md:text-base font-black text-slate-900 uppercase tracking-tight group-hover:text-orange-600 transition-colors truncate">
+                        <p className="text-sm md:text-base font-black text-black uppercase tracking-tight group-hover:text-black transition-colors truncate">
                           {loan.userId.bankInfo.bio.firstname} {loan.userId.bankInfo.bio.lastname}
                         </p>
-                        <p className="text-[10px] md:text-xs text-slate-400 truncate max-w-[180px]">{loan.userId.email}</p>
+                        <p className="text-[10px] md:text-xs text-black truncate max-w-[180px]">{loan.userId.email}</p>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4 hidden lg:table-cell">
                     <div className="space-y-1.5">
-                      <Badge className="bg-orange-50 text-orange-700 border border-orange-200 text-[10px] font-black uppercase tracking-widest px-2 py-0.5">
+                      <Badge className="bg-slate-50 text-black border border-slate-200 text-[10px] font-black uppercase tracking-widest px-2 py-0.5">
                         {loan.loanType}
                       </Badge>
-                      <p className="text-[10px] text-slate-500 font-medium line-clamp-1 max-w-[200px] italic">"{loan.purpose}"</p>
+                      <p className="text-[10px] text-black font-medium line-clamp-1 max-w-[200px] italic">"{loan.purpose}"</p>
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     <div>
-                      <p className="text-base md:text-lg font-black text-slate-900 tracking-tighter italic uppercase underline decoration-orange-500/20 underline-offset-4">${loan.amount.toLocaleString()}</p>
-                      <p className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{loan.duration} mos @ {loan.interestRate}% APR</p>
+                      <p className="text-base md:text-lg font-black text-black tracking-tighter italic uppercase underline decoration-black/20 underline-offset-4">${loan.amount.toLocaleString()}</p>
+                      <p className="text-[9px] md:text-[10px] font-bold text-black uppercase tracking-widest mt-0.5">{loan.duration} mos @ {loan.interestRate}% APR</p>
                     </div>
                   </td>
                   <td className="px-6 py-4">
@@ -342,7 +342,7 @@ export default function AdminLoansPage() {
                           <Button
                             size="sm"
                             onClick={() => updateLoanStatus(loan._id, 'approved')}
-                            className="h-9 px-4 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-black text-[10px] uppercase tracking-widest shadow-lg shadow-orange-100 transition-all border-none"
+                            className="h-9 px-4 rounded-lg bg-black hover:bg-black text-white font-black text-[10px] uppercase tracking-widest shadow-lg shadow-orange-100 transition-all border-none"
                           >
                             Approve
                           </Button>
@@ -350,13 +350,13 @@ export default function AdminLoansPage() {
                             size="sm"
                             variant="outline"
                             onClick={() => handleReject(loan)}
-                            className="h-9 px-4 rounded-lg border-red-200 text-red-500 hover:bg-red-50 font-black text-[10px] uppercase tracking-widest transition-all"
+                            className="h-9 px-4 rounded-lg border-red-200 text-black hover:bg-red-50 font-black text-[10px] uppercase tracking-widest transition-all"
                           >
                             Deny
                           </Button>
                         </>
                       ) : (
-                        <Button size="sm" variant="outline" className="h-9 px-4 rounded-lg border-slate-200 text-slate-400 hover:text-orange-600 hover:border-orange-200 font-black text-[10px] uppercase tracking-widest transition-all bg-white shadow-sm">
+                        <Button size="sm" variant="outline" className="h-9 px-4 rounded-lg border-slate-200 text-black hover:text-black hover:border-slate-200 font-black text-[10px] uppercase tracking-widest transition-all bg-white shadow-sm">
                           <Eye className="h-4 w-4" />
                         </Button>
                       )}
@@ -369,7 +369,7 @@ export default function AdminLoansPage() {
                   <td colSpan={5} className="px-6 py-16 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <AlertCircle className="h-8 w-8 text-slate-200" />
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">No data sequences found in archive</p>
+                      <p className="text-[10px] font-black text-black uppercase tracking-widest italic">No data sequences found in archive</p>
                     </div>
                   </td>
                 </tr>
@@ -381,29 +381,29 @@ export default function AdminLoansPage() {
 
       {/* Reject Dialog */}
       <Dialog open={rejectDialogOpen} onOpenChange={setRejectDialogOpen}>
-        <DialogContent className="sm:max-w-md bg-white border-slate-200 text-slate-900 rounded-2xl p-0 overflow-hidden shadow-2xl">
+        <DialogContent className="sm:max-w-md bg-white border-slate-200 text-black rounded-2xl p-0 overflow-hidden shadow-2xl">
           <div className="p-6 md:p-8 space-y-6">
             <DialogHeader>
-              <div className="h-10 w-10 text-red-500 bg-red-50 rounded-xl flex items-center justify-center mb-4">
+              <div className="h-10 w-10 text-black bg-red-50 rounded-xl flex items-center justify-center mb-4">
                 <XCircle className="h-6 w-6" />
               </div>
-              <DialogTitle className="text-xl md:text-2xl font-black tracking-tighter italic uppercase text-slate-900 border-l-4 border-red-500 pl-4">
-                Reject <span className="text-red-500">Application</span>
+              <DialogTitle className="text-xl md:text-2xl font-black tracking-tighter italic uppercase text-black border-l-4 border-black pl-4">
+                Reject <span className="text-black">Application</span>
               </DialogTitle>
-              <DialogDescription className="text-slate-400 font-bold uppercase tracking-widest text-[10px] mt-2">
+              <DialogDescription className="text-black font-bold uppercase tracking-widest text-[10px] mt-2">
                 This action is irreversible. provide a reason for the client.
               </DialogDescription>
             </DialogHeader>
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="reason" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Rejection Manifesto</Label>
+                <Label htmlFor="reason" className="text-[10px] font-black text-black uppercase tracking-widest ml-1">Rejection Manifesto</Label>
                 <Textarea
                   id="reason"
                   placeholder="The application was dismissed due to insuffienct leverage..."
                   value={rejectionReason}
                   onChange={(e) => setRejectionReason(e.target.value)}
-                  className="bg-slate-50 border-slate-200 rounded-xl min-h-[120px] font-bold italic placeholder:text-slate-300 focus:border-red-500 transition-all text-sm p-4"
+                  className="bg-slate-50 border-slate-200 rounded-xl min-h-[120px] font-bold italic placeholder:text-slate-300 focus:border-black transition-all text-sm p-4"
                 />
               </div>
             </div>
@@ -412,14 +412,14 @@ export default function AdminLoansPage() {
               <Button
                 variant="outline"
                 onClick={() => setRejectDialogOpen(false)}
-                className="flex-1 h-12 rounded-xl border-slate-200 text-slate-400 font-black uppercase tracking-widest text-[10px] hover:text-slate-900"
+                className="flex-1 h-12 rounded-xl border-slate-200 text-black font-black uppercase tracking-widest text-[10px] hover:text-black"
               >
                 Abort
               </Button>
               <Button
                 onClick={() => updateLoanStatus(selectedLoan?._id, 'rejected', rejectionReason)}
                 disabled={isProcessing || !rejectionReason.trim()}
-                className="flex-1 h-12 rounded-xl bg-red-500 hover:bg-red-600 text-white font-black uppercase tracking-widest text-[10px] shadow-lg shadow-red-100 border-none transition-all disabled:opacity-30"
+                className="flex-1 h-12 rounded-xl bg-black hover:bg-red-600 text-white font-black uppercase tracking-widest text-[10px] shadow-lg shadow-red-100 border-none transition-all disabled:opacity-30"
               >
                 {isProcessing ? <RefreshCw className="h-4 w-4 animate-spin" /> : "Confirm Rejection"}
               </Button>

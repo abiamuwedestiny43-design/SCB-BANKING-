@@ -81,15 +81,15 @@ export default function TransactionsList({
     switch (status.toLowerCase()) {
       case 'completed':
       case 'success':
-        return <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
+        return <CheckCircle2 className="h-3.5 w-3.5 text-black" />
       case 'pending':
       case 'processing':
         return <Clock className="h-3.5 w-3.5 text-orange-400" />
       case 'failed':
       case 'cancelled':
-        return <XCircle className="h-3.5 w-3.5 text-red-500" />
+        return <XCircle className="h-3.5 w-3.5 text-black" />
       default:
-        return <AlertCircle className="h-3.5 w-3.5 text-slate-400" />
+        return <AlertCircle className="h-3.5 w-3.5 text-black" />
     }
   }
 
@@ -100,12 +100,12 @@ export default function TransactionsList({
         return "bg-emerald-50 text-emerald-700 border-emerald-100"
       case 'pending':
       case 'processing':
-        return "bg-orange-50 text-orange-700 border-orange-100"
+        return "bg-slate-50 text-black border-slate-100"
       case 'failed':
       case 'cancelled':
         return "bg-red-50 text-red-700 border-red-100"
       default:
-        return "bg-slate-50 text-slate-700 border-slate-200"
+        return "bg-slate-50 text-black border-slate-200"
     }
   }
 
@@ -116,18 +116,18 @@ export default function TransactionsList({
       {/* Header & Controls */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-slate-500 hover:bg-white flex-shrink-0">
+          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-lg text-black hover:bg-white flex-shrink-0">
             <Link href="/dashboard"><ChevronLeft className="h-4 w-4" /></Link>
           </Button>
           <div>
-            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter italic">Transactions</h1>
-            <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest opacity-60">View and manage your recent activity</p>
+            <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter italic">Transactions</h1>
+            <p className="text-sm md:text-base text-black font-bold uppercase tracking-widest opacity-60">View and manage your recent activity</p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <form onSubmit={handleSearch} className="relative w-full md:w-64">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black" />
             <Input
               placeholder="Search reference, recipient..."
               value={searchTerm}
@@ -142,7 +142,7 @@ export default function TransactionsList({
             onClick={() => setIsFilterOpen(!isFilterOpen)}
             className={cn(
               "h-9 rounded-lg border-slate-200 text-xs font-semibold gap-1.5",
-              (currentFilters.status !== 'all' || currentFilters.type !== 'all' || isFilterOpen) && "bg-slate-50 border-orange-200 text-orange-700"
+              (currentFilters.status !== 'all' || currentFilters.type !== 'all' || isFilterOpen) && "bg-slate-50 border-slate-200 text-black"
             )}
           >
             <Filter className="h-3.5 w-3.5" />
@@ -167,7 +167,7 @@ export default function TransactionsList({
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-3 bg-white rounded-xl border border-slate-100 shadow-sm mb-2 mt-1">
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Status</label>
+                <label className="text-[10px] uppercase font-bold text-black tracking-wider">Status</label>
                 <Select value={currentFilters.status} onValueChange={(v) => handleFilterChange('status', v)}>
                   <SelectTrigger className="h-8 text-xs rounded-lg bg-slate-50 border-none shadow-none focus:ring-1 focus:ring-orange-400/20">
                     <SelectValue />
@@ -182,7 +182,7 @@ export default function TransactionsList({
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Type</label>
+                <label className="text-[10px] uppercase font-bold text-black tracking-wider">Type</label>
                 <Select value={currentFilters.type} onValueChange={(v) => handleFilterChange('type', v)}>
                   <SelectTrigger className="h-8 text-xs rounded-lg bg-slate-50 border-none shadow-none focus:ring-1 focus:ring-orange-400/20">
                     <SelectValue />
@@ -203,7 +203,7 @@ export default function TransactionsList({
                     setSearchTerm('')
                     router.push(pathname)
                   }}
-                  className="h-8 text-[10px] font-bold text-slate-400 hover:text-orange-600 uppercase tracking-wider"
+                  className="h-8 text-[10px] font-bold text-black hover:text-black uppercase tracking-wider"
                 >
                   Reset Defaults
                 </Button>
@@ -219,11 +219,11 @@ export default function TransactionsList({
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-slate-50 bg-slate-50/50">
-                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">Transaction</th>
-                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest hidden md:table-cell">Details</th>
-                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest hidden sm:table-cell">Status</th>
-                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest text-right">Amount</th>
-                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest w-10"></th>
+                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-black uppercase tracking-widest">Transaction</th>
+                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-black uppercase tracking-widest hidden md:table-cell">Details</th>
+                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-black uppercase tracking-widest hidden sm:table-cell">Status</th>
+                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-black uppercase tracking-widest text-right">Amount</th>
+                <th className="px-5 py-4 text-[10px] md:text-xs font-black text-black uppercase tracking-widest w-10"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 text-xs">
@@ -233,8 +233,8 @@ export default function TransactionsList({
                     <div className="h-10 w-10 bg-slate-50 rounded-xl flex items-center justify-center mx-auto mb-3 text-slate-300">
                       <History className="h-5 w-5" />
                     </div>
-                    <p className="text-sm font-semibold text-slate-700">No transactions found</p>
-                    <p className="text-[10px] text-slate-400 mt-0.5">Try adjusting your filters or search term</p>
+                    <p className="text-sm font-semibold text-black">No transactions found</p>
+                    <p className="text-[10px] text-black mt-0.5">Try adjusting your filters or search term</p>
                   </td>
                 </tr>
               ) : (
@@ -249,15 +249,15 @@ export default function TransactionsList({
                       <div className="flex items-center gap-3">
                         <div className={cn(
                           "h-8 w-8 rounded-lg flex items-center justify-center flex-shrink-0",
-                          tx.txType === 'credit' ? "bg-emerald-50 text-emerald-500" : "bg-orange-50 text-orange-500"
+                          tx.txType === 'credit' ? "bg-emerald-50 text-black" : "bg-slate-50 text-black"
                         )}>
                           {tx.txType === 'credit' ? <ArrowDownLeft className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
                         </div>
                         <div className="min-w-0">
-                          <p className="text-sm md:text-base font-black text-slate-900 uppercase tracking-tight italic">
+                          <p className="text-sm md:text-base font-black text-black uppercase tracking-tight italic">
                             {tx.recipient || tx.description || 'Transaction'}
                           </p>
-                          <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-widest mt-0.5">
+                          <p className="text-[10px] md:text-xs text-black font-bold uppercase tracking-widest mt-0.5">
                             {new Date(tx.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
                           </p>
                         </div>
@@ -266,7 +266,7 @@ export default function TransactionsList({
                     <td className="px-5 py-3.5 hidden md:table-cell">
                       <div className="flex items-center gap-1.5">
                         <FileText className="h-3 w-3 text-slate-300" />
-                        <span className="text-[10px] text-slate-500 font-medium font-mono uppercase truncate max-w-[120px]">
+                        <span className="text-[10px] text-black font-medium font-mono uppercase truncate max-w-[120px]">
                           {tx.txRef}
                         </span>
                       </div>
@@ -283,13 +283,13 @@ export default function TransactionsList({
                     <td className="px-5 py-3.5 text-right">
                       <p className={cn(
                         "text-sm md:text-base font-black italic tracking-tighter",
-                        tx.txType === 'credit' ? "text-emerald-500" : "text-slate-900"
+                        tx.txType === 'credit' ? "text-black" : "text-black"
                       )}>
                         {tx.txType === 'credit' ? '+' : '−'}{formatCurrency(tx.amount, tx.currency)}
                       </p>
                     </td>
                     <td className="px-5 py-3.5">
-                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-slate-400 group-hover:text-slate-600">
+                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-black group-hover:text-black">
                         <MoreHorizontal className="h-4 w-4" />
                       </Button>
                     </td>
@@ -303,8 +303,8 @@ export default function TransactionsList({
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="px-5 py-3 bg-slate-50/30 border-t border-slate-50 flex items-center justify-between">
-            <p className="text-[10px] font-medium text-slate-400">
-              Showing <span className="text-slate-700">{initialTransactions.length}</span> of <span className="text-slate-700">{total}</span>
+            <p className="text-[10px] font-medium text-black">
+              Showing <span className="text-black">{initialTransactions.length}</span> of <span className="text-black">{total}</span>
             </p>
             <div className="flex items-center gap-1">
               <Button
@@ -317,9 +317,9 @@ export default function TransactionsList({
                 <ChevronLeft className="h-3.5 w-3.5" />
               </Button>
               <div className="flex items-center px-2">
-                <span className="text-[10px] font-bold text-slate-700">{currentPage}</span>
+                <span className="text-[10px] font-bold text-black">{currentPage}</span>
                 <span className="text-[10px] font-medium text-slate-300 mx-1">/</span>
-                <span className="text-[10px] font-medium text-slate-400">{totalPages}</span>
+                <span className="text-[10px] font-medium text-black">{totalPages}</span>
               </div>
               <Button
                 variant="outline"

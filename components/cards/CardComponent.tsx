@@ -26,11 +26,11 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
 
   const getStatusConfig = (status: string) => {
     switch (status) {
-      case "active": return { label: "Live Gateway", color: "text-orange-400 bg-orange-500/10 border-orange-500/20 shadow-[0_0_10px_rgba(99,102,241,0.2)]" }
-      case "pending": return { label: "Pending Auth", color: "text-yellow-400 bg-yellow-500/10 border-yellow-500/20" }
-      case "blocked": return { label: "Circuit Broken", color: "text-red-500 bg-red-500/10 border-red-500/20 animate-pulse" }
-      case "rejected": return { label: "Auth Denied", color: "text-red-400 bg-red-500/10 border-red-500/20" }
-      default: return { label: status, color: "text-slate-500 bg-white/5" }
+      case "active": return { label: "Live Gateway", color: "text-orange-400 bg-black/10 border-black/20 shadow-[0_0_10px_rgba(99,102,241,0.2)]" }
+      case "pending": return { label: "Pending Auth", color: "text-yellow-400 bg-black/10 border-black/20" }
+      case "blocked": return { label: "Circuit Broken", color: "text-black bg-black/10 border-black/20 animate-pulse" }
+      case "rejected": return { label: "Auth Denied", color: "text-red-400 bg-black/10 border-black/20" }
+      default: return { label: status, color: "text-black bg-white/5" }
     }
   }
 
@@ -40,7 +40,7 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
   return (
     <div className="w-full max-w-xl mx-auto space-y-6 relative group">
       {/* Glossy Overlay for the whole container */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+      <div className="absolute -inset-1 bg-gradient-to-r from-black/20 to-black/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
 
       {/* Card Front */}
       <div
@@ -54,7 +54,7 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
         {/* Header */}
         <div className="flex justify-between items-start relative z-10">
           <div className="space-y-1">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Danamon Bank <span className="text-orange-500 italic">Premium</span></p>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">SCB BANKING <span className="text-black italic">Premium</span></p>
             <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-white/90">
               {card.cardType} <span className="opacity-40 italic">System</span>
             </h3>
@@ -128,7 +128,7 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
               <div className="flex-1 space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="space-y-1">
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Verification Node</p>
+                    <p className="text-[10px] font-black text-black uppercase tracking-widest">Verification Node</p>
                     <h4 className="text-white font-black text-lg">Master CVV Control</h4>
                   </div>
                   <div className="px-5 py-2 bg-black/40 border border-white/10 rounded-2xl flex items-center gap-4">
@@ -138,7 +138,7 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="h-10 w-10 p-0 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white rounded-xl"
+                      className="h-10 w-10 p-0 bg-white/5 hover:bg-white/10 text-black hover:text-white rounded-xl"
                       onClick={() => setShowCVV(!showCVV)}
                     >
                       {showCVV ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -149,11 +149,11 @@ export default function CardComponent({ card, showDetails = false }: CardCompone
 
               <div className="flex-1 grid grid-cols-2 gap-6">
                 <div className="space-y-2 p-5 bg-white/5 border border-white/10 rounded-2xl">
-                  <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-none">Daily Flux</p>
+                  <p className="text-[9px] font-black text-black uppercase tracking-widest leading-none">Daily Flux</p>
                   <p className="text-xl font-black text-white lowercase">${card.dailyLimit?.toLocaleString()}</p>
                 </div>
                 <div className="space-y-2 p-5 bg-white/5 border border-white/10 rounded-2xl">
-                  <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-none">Monthly Band</p>
+                  <p className="text-[9px] font-black text-black uppercase tracking-widest leading-none">Monthly Band</p>
                   <p className="text-xl font-black text-white lowercase">${card.monthlyLimit?.toLocaleString()}</p>
                 </div>
               </div>

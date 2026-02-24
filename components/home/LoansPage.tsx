@@ -17,9 +17,9 @@ const LoansPage: React.FC = () => {
             Personal Loans
           </h1>
           <p className="text-lg md:text-xl leading-relaxed animate-slide-up delay-200">
-            At Danamon Bank, we provide flexible personal loan solutions designed to help you achieve your goals efficiently and securely. Whether you're planning to purchase a new car, renovate your home, or invest in your education, our loans are tailored to meet your unique needs.
+            At SCB BANKING, we provide flexible personal loan solutions designed to help you achieve your goals efficiently and securely. Whether you're planning to purchase a new car, renovate your home, or invest in your education, our loans are tailored to meet your unique needs.
             <br /><br />
-            Our expert team ensures that every loan process is simple, transparent, and fast. With competitive interest rates, flexible repayment options, and minimal paperwork, you can focus on what truly matters—turning your dreams into reality. We also offer guidance and support at every step, from application to funding, so you feel confident and informed throughout the process. Choose Danamon Bank for personal loans that empower you to reach your financial goals while maintaining peace of mind.
+            Our expert team ensures that every loan process is simple, transparent, and fast. With competitive interest rates, flexible repayment options, and minimal paperwork, you can focus on what truly matters—turning your dreams into reality. We also offer guidance and support at every step, from application to funding, so you feel confident and informed throughout the process. Choose SCB BANKING for personal loans that empower you to reach your financial goals while maintaining peace of mind.
           </p>
         </div>
       </section>
@@ -52,21 +52,21 @@ const LoansPage: React.FC = () => {
               }
             ].map((loan, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-6">
-                  <loan.icon className="w-8 h-8 text-orange-600" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 rounded-full mb-6">
+                  <loan.icon className="w-8 h-8 text-black" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">{loan.title}</h3>
-                <div className="text-2xl font-bold text-orange-600 mb-4">Starting at {loan.rate}</div>
-                <p className="text-slate-600 mb-6">{loan.description}</p>
+                <h3 className="text-xl font-semibold text-black mb-2">{loan.title}</h3>
+                <div className="text-2xl font-bold text-black mb-4">Starting at {loan.rate}</div>
+                <p className="text-black mb-6">{loan.description}</p>
                 <ul className="space-y-2 mb-8">
                   {loan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-orange-600 mr-2" />
+                    <li key={idx} className="flex items-center text-sm text-black">
+                      <CheckCircle className="w-4 h-4 text-black mr-2" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <button className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
+                <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-black transition-colors font-medium">
                   Apply Now
                 </button>
               </div>
@@ -79,19 +79,19 @@ const LoansPage: React.FC = () => {
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-3xl font-bold text-center text-slate-900 mb-8">Loan Calculator</h2>
+            <h2 className="text-3xl font-bold text-center text-black mb-8">Loan Calculator</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Loan Amount</label>
-                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="$10,000" />
+                <label className="block text-sm font-medium text-black mb-2">Loan Amount</label>
+                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" placeholder="$10,000" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Interest Rate (%)</label>
-                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="4.5" step="0.1" />
+                <label className="block text-sm font-medium text-black mb-2">Interest Rate (%)</label>
+                <input type="number" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" placeholder="4.5" step="0.1" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Loan Term (Years)</label>
-                <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                <label className="block text-sm font-medium text-black mb-2">Loan Term (Years)</label>
+                <select className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent">
                   <option>1 Year</option>
                   <option>2 Years</option>
                   <option>3 Years</option>
@@ -100,14 +100,14 @@ const LoansPage: React.FC = () => {
                 </select>
               </div>
               <div className="flex items-end">
-                <button className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium">
+                <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-black transition-colors font-medium">
                   Calculate Payment
                 </button>
               </div>
             </div>
-            <div className="mt-8 p-6 bg-orange-50 rounded-lg text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">$247.50</div>
-              <div className="text-slate-600">Estimated Monthly Payment</div>
+            <div className="mt-8 p-6 bg-slate-50 rounded-lg text-center">
+              <div className="text-3xl font-bold text-black mb-2">$247.50</div>
+              <div className="text-black">Estimated Monthly Payment</div>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ const LoansPage: React.FC = () => {
       {/* Application Process */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-16">Simple Application Process</h2>
+          <h2 className="text-3xl font-bold text-center text-black mb-16">Simple Application Process</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { step: '1', title: 'Apply Online', description: 'Complete our secure online application in minutes' },
@@ -124,11 +124,11 @@ const LoansPage: React.FC = () => {
               { step: '3', title: 'Receive Funds', description: 'Get your money deposited directly to your account' }
             ].map((item, index) => (
               <div key={index} className="text-center animate-slide-in-up" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-600 text-white rounded-full text-2xl font-bold mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-black text-white rounded-full text-2xl font-bold mb-6">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">{item.title}</h3>
-                <p className="text-slate-600">{item.description}</p>
+                <h3 className="text-xl font-semibold text-black mb-4">{item.title}</h3>
+                <p className="text-black">{item.description}</p>
               </div>
             ))}
           </div>
