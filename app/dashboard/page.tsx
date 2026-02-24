@@ -3,6 +3,10 @@ import { formatCurrency } from "@/lib/utils/banking"
 import dbConnect from "@/lib/database"
 import Transfer from "@/models/Transfer"
 import { toPlainObject } from "@/lib/serialization"
+import { redirect } from "next/navigation"
+
+export const dynamic = 'force-dynamic'
+
 import CardModel from "@/models/Card"
 import DashboardClient from "./DashboardClient"
 import LoansPage from "./loans/page"

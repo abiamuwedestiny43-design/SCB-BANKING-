@@ -4,6 +4,8 @@ import dbConnect from "@/lib/database"
 import Loan from "@/models/Loan"
 import { toPlainObject } from "@/lib/serialization"
 import { redirect } from "next/navigation"
+
+export const dynamic = 'force-dynamic'
 import LoansClient from "./LoansClient"
 
 async function getUserLoans(userId: string) {

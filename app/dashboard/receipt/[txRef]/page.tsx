@@ -3,6 +3,8 @@ import { getCurrentUser } from "@/lib/auth"
 import dbConnect from "@/lib/database"
 import Transfer from "@/models/Transfer"
 import { redirect } from "next/navigation"
+
+export const dynamic = 'force-dynamic'
 import ReceiptPage from "../ReceiptPage" // client component in same folder
 
 type Props = { params: { txRef: string } }

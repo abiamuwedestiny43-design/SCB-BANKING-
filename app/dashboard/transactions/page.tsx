@@ -8,6 +8,8 @@ import Transfer from "@/models/Transfer"
 import { toPlainObject } from "@/lib/serialization"
 import { redirect } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 async function getTransactionsData(userId: string, page: number = 1, limit: number = 10, filters: any = {}) {
   await dbConnect()
 

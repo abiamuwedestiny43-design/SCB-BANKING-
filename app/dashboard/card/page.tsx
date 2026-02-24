@@ -3,6 +3,8 @@ import dbConnect from "@/lib/database"
 import Card from "@/models/Card"
 import { toPlainObject } from "@/lib/serialization"
 import { redirect } from "next/navigation"
+
+export const dynamic = 'force-dynamic'
 import CardsClient from "./CardsClient"
 
 async function getUserCards(userId: string) {

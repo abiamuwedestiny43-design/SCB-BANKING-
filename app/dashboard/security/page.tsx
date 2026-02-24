@@ -6,6 +6,8 @@ import dbConnect from "@/lib/database"
 import SystemOption from "@/models/SystemOption"
 import { cn } from "@/lib/utils"
 
+export const dynamic = 'force-dynamic'
+
 export default async function SecurityPage() {
   const user = await getCurrentUser()
   if (!user) return null

@@ -5,6 +5,8 @@ import Transfer from "@/models/Transfer"
 import AnalyticsCharts from "@/components/admin/analytics-charts"
 import { cn } from "@/lib/utils"
 
+export const dynamic = 'force-dynamic'
+
 async function getAnalytics() {
     await dbConnect()
 

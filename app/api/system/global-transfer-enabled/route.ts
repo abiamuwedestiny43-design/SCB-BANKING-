@@ -2,6 +2,8 @@ import { NextResponse } from "next/server"
 import dbConnect from "@/lib/database"
 import SystemOption from "@/models/SystemOption"
 
+export const dynamic = 'force-dynamic'
+
 const KEY = "bank:transfer.global.enabled"
 
 export async function GET() {
