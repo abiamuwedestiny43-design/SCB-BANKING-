@@ -19,8 +19,7 @@ export interface EmailOptions {
 
 export async function sendEmail({ to, subject, html, from }: EmailOptions) {
   const mailOptions = {
-    from: from || process.env.SMTP_FROM || "noreply@.com
-    .com",
+    from: from || process.env.SMTP_FROM || "support@scbbankiing.com",
     to,
     subject,
     html,
@@ -611,12 +610,14 @@ export const emailTemplates = {
                   <div class="info-label">Admin Notes</div>
                   <div class="info-value">${notes}</div>
                 ` : ''}
-              <div class="footer">
-                <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
               </div>
             </div>
-          </body>
-        </html>
+            <div class="footer">
+              <p>&copy; 2026 SCB BANKING GROUP. All rights reserved.</p>
+            </div>
+          </div>
+        </body>
+      </html>
       `,
   }),
 
